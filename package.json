@@ -1,0 +1,33 @@
+{
+  "name": "aliascss",
+  "version": "1.0.0",
+  "description": "Aliascss is css postprocessor, where we define clasname first then compile ",
+  "main": "index.js",
+  "type": "module",
+  "bin":"bin/aliascss",
+  "scripts": {
+    "test": "mocha",
+    "build":"webpack",
+    "watch":"webpack --watch",
+    "acss-build":" node bin/aliascss --config",
+    "acss-watch":" node bin/aliascss --config --watch"
+  },
+  "keywords": [
+    "aliascss",
+    "css",
+    "post",
+    "processor"
+  ],
+  "author": "Bikram Thapa",
+  "license": "MIT",
+  "dependencies": {
+    "fast-glob": "^3.2.12"
+  },
+  "devDependencies": {
+    "browser-sync-webpack-plugin": "^2.3.0",
+    "mocha": "^10.1.0",
+    "prettier": "^2.8.0",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.0"
+  }
+}

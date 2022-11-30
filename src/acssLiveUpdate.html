@@ -1,0 +1,104 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ACSS Live Update</title>
+  </head>
+  <body>
+    <div class="df h100vh w12col jcc aic">
+      <!-- ACSS-Live-Update -->
+
+      <div
+        sid="alias-css-live-editor"
+        $$id="quickChangeBox"
+        class="bsbb $dont-include zi1111111111 df fww bxs0px0px1px0px-c-0000000000d5 _input-lhi2 _button-lhi2 ffi2 fs12px bgc-fff w300px h200px b1px-s-00000000002 br5px r5px btm5px bgc-505050"
+      >
+        <!--Header  -->
+        <div
+          s$$id="alias-css-live-editorheader"
+          $$id="quickChangeBoxheader"
+          class="bsbb df aic jcsb w100p br5px5px0p0p bgc-ccc h15px bb1px-s-00000000002 -h-cm mb10px $dont-include"
+        >
+          <span
+            $$id="acss-title"
+            class="bsbb dib fs12px m0px5px ff-arial c-333333 $dont-include"
+            >Acss Live Update 1.0.3</span
+          >
+          <div class="bsbb df $dont-include jcc aic">
+            <button
+              $$id="quickChangeMin"
+              class="bsbb mr5px b0d5px-s-535353 dif aic jcc bgc-e3e3e3 --hover-bgc-warning w30px h12px br10px -fo-oln $dont-include p0px ff-verdana fs9px"
+            >
+              min
+            </button>
+            <button
+              $$id="quickChangeClose"
+              class="bsbb mr5px dif aic jcc b0d5px-s-535353 bgc-e3e3e3 w30px --hover-bgc-danger h12px br10px -fo-oln $dont-include p0px ff-verdana fs9px"
+            >
+              close
+            </button>
+          </div>
+        </div>
+
+        <!-- Buttons -->
+        <div
+          class="w20p bsbb p5px $dont-include _button-oln _button-ff-verdana _button-w100p _button-bgc-505050 _button-c-ccc _button-br50px _button-h-c-grey _button-fo-oln _button-fw1 _button-fs9px _button-mb8px"
+        >
+          <button class="$dont-include" $$id="buttonPrev">Prev</button>
+          <button class="$dont-include" $$id="buttonNext">Next</button>
+          <button class="$dont-include" $$id="buttonParent">Parent</button>
+          <button class="$dont-include" $$id="buttonChild">Child</button>
+          <hr class="mt0px mb10px $dont-include bc-666" />
+          <button $$id="acssLiveUpadateCopy" class="$dont-include">copy</button>
+          <button $$id="acssPush" class="fs7px $dont-include">
+            &uarr;push
+          </button>
+        </div>
+
+        <div class="bsbb w80p $dont-include" $$id="acss-live-editor-content">
+          <!-- input area  -->
+          <div
+            class="bsbb $dont-include w100p p0px10px h160px bl1px-s-606060 mt-10px"
+          >
+            <!-- input -->
+            <p class="bsbb fs13px m0px p3px $dont-include mb5px">
+              <span class="c_bbb $dont-include dib mb5px"
+                >Click element-or-input id</span
+              >
+              <input
+                type="text"
+                style=""
+                spellcheck="false"
+                $$id="quickChangeIdInput"
+                class="$dont-include w100p b1px-s-606060 br15px bgc-909090 -fo-oln pl15px"
+                placeholder="input id of element"
+              />
+            </p>
+            <!-- text-are -->
+            <div class="bsbb tal $dont-include">
+              <small
+                $$id="infoEle"
+                class="c-bbb ff-arial fs11px tac $dont-include dib mb5px"
+                >Input classname/s, press enter</small
+              ><small $$id="infoMsg" class="fs11px $dont-include"></small>
+              <textarea
+                $$id="quickChangeAcssInput"
+                class="dib $dont-include bgc-909090 ff-courier h100px w100p oln c-333333 fw9"
+                placeholder="Input ACSS class names "
+                spellcheck="false"
+              >
+              </textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- END OF ACSS-Live-Update -->
+    </div>
+
+    <script src="../build/aliascss.js"></script>
+    <script type="text/javascript">
+      AliasCSS.liveEditor();
+    </script>
+  </body>
+</html>

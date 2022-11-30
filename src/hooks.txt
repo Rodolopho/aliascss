@@ -1,0 +1,44 @@
+ACSS={
+	
+}
+
+classPrinter.run()// deafult root or can be provided custom el
+	each(el)//where el has either class or acss-class attribute
+	 	classPrinter.print(el)// trim and sepearete class name
+	 		each(classname)
+	 			statementMaker.make(classname)// returns statemente .class{property:value}
+	 			//appendStementto htmldoc
+
+
+
+
+
+
+@statementMaker.make(classname)// .make(classname, as, bool) as=>group, bool=> return [selector,property:value]
+	->keyframe //returns keyframes statements ; break
+	->device// replace device : continue
+	->selector// repalce selector :continue
+	->suffix // replace sufix i.e -i ot --important :continue
+	->propertyAndValue(classname, customObject);//statement.custom
+	return statement i.e .class:sedu{p:v}
+
+
+
+
+
+@propertyAndValue(classname, custom) //return property:value
+
+	->if staticeClassName return property:value
+	-> if customClassName return property:value
+	-> if --var-- classNAme return property:value
+	-> Process dyanamicClassname
+		-> extarct property alias
+		->extarct valueportion and feed to corresponding compiler from prpertyAliasCompile hint
+		  ->valuecomiler(value); return value
+		  return property:value
+			
+
+@valueCompiler(valuePortion) returns value or null
+->
+
+
