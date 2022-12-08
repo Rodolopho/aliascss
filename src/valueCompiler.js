@@ -24,6 +24,7 @@ export default function valueCompiler(
   valuePortion,
   custom
 ) {
+  
   let value;
 
   for (var i = compiler.length - 1; i >= 0; i--) {
@@ -31,7 +32,9 @@ export default function valueCompiler(
     if (compilers.hasOwnProperty(compiler[i])) {
       //try to match
       if (compilers[compiler[i]].match.test(valuePortion)) {
+        
         value = compilers[compiler[i]].call(valuePortion, custom);
+        // console.log('----------------------------ValueComp',value,valuePortion);
         // console.log(compiler[i]);
         break;
       }

@@ -11,7 +11,6 @@ import { customStaticClassNames } from "./static/customStaticClassNames.js";
 
 export default function propertyAndValue(classname, custom, events) {
   // console.info("%c"+classname+":",'color:red')
-
   if (!custom) custom = {};
 
   // 1.STATICCLASSNAMES

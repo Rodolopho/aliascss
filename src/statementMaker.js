@@ -16,7 +16,7 @@ export let statementMaker = {
   selector: null,
   propertyAndValue: null,
   hasSuffix: null,
-  keyframesMatch: /^(keyframes|kf|k)-([\w]+)[-_]{1,2}/,
+  keyframesMatch: /^(animate|keyframes|kf|k)-([a-zA-Z-]+)[_]{2}/,
   cache: {
     propertyAndValue: {},
   },
@@ -61,15 +61,17 @@ export let statementMaker = {
 
     //-----  ---KeyFrames-------------------------------------
     if (this.keyframesMatch.test(classname)) {
-      let extract = classname.match(/(keyframes|kf|k)-([\w]+)[-_]{1,2}/);
+      // (animate|keyframes|kf|k)-([\w]+)[-_]{1,2}/,
+      let extract = classname.match(this.keyframesMatch);
       // classname=classname.replace(extract[0],'');
+      let name=extract[2];
       let $result = keyframes(
         classname.replace(extract[0], ""),
-        extract[2],
-        propertyAndValue
+        this.custom
       );
       if ($result) {
-        return $result + `\n .${classname}{animation-name: ${extract[2]}}`;
+        // return "@keyframes" +name+ " {/n"+ $result +"\n}\n" + `\n .${classname}{animation-name: ${name}}`;
+        return `@keyframes ${name}   ${$result} \n .${classname}{animation-name: ${name}}`;
       } else {
         console.log(
           `Can not able to process classname "${classname}" @keyframes`

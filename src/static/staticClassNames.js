@@ -1248,6 +1248,9 @@ export let staticClassNames = {
   "filter-initial": "filter: initial",
   fli: "filter: initial",
 
+  "filter-none": "filter: none",
+  fln: "filter: none",
+
   "filter-unset": "filter: unset",
   flu: "filter: unset",
   fi4: "filter: inherit",

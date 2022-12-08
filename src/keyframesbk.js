@@ -1,50 +1,18 @@
-import propertyAndValue from "./provertyAndValue.js";
-export default function keyframes(data,custom) {
-  let statement="{\n";
-  let section =data.split('__');
+export default function keyframes(data, name, propertyValue, custom) {
+  [animate|kf|keyframes]-([0-9]+[p])?-pnv---pnv---pnv__([0-9]+[p])?-pnv---pnv---pnv__([0-9]+[p])?-pnv---pnv---pnv
+  //Step
+  //1. Extract name and @keyframes
 
-  section.forEach((each,i)=>{
-      let result=eachSection(each,i+1,section.length,custom);
-      if(result){
-        statement+=result;
-      }else{
-        console.log("Invalid Section:"+each+" @keyframes:"+data);
-      }
+  //.
+  let statement = "@keyframes " + name + "{\n";
+  let splits = data.split("__");
+  splits.forEach((each) => {
+    let result = at(each, propertyValue, custom);
+    if (result !== false) statement += "\t" + result;
   });
 
   return statement + "}";
 }
-
-  function eachSection(eachPart,index,totalLength,custom){
-    let time;
-    if(/^[0-9][0-9|d|p]*[0-9]?[p]/.test(eachPart)){
-      let extractTime=eachPart.match(/^[0-9][0-9|d|p]*[0-9]?[p]/)[0];
-      time=extractTime.replace(/p/g, "% ,").replace(/[,]$/, "").replace('d',".");
-      eachPart=eachPart.replace(extractTime+'-',"");
-
-    }else if(index==totalLength){
-      time="100%";
-    }else if(index==1){
-      time='0%';
-    }else{
-      console.log('Provide percentage information in your animation keyframes: '+eachPart);
-      return false;
-    }
-
-    let statement="{"
-
-  let eachPnv=eachPart.split('---');
-    eachPnv.forEach(e => {
-        let pnv=propertyAndValue(e,custom);
-        if(pnv){
-          statement=statement+ pnv +";";
-        }else{
-          console.log("cannot find property and value for :"+e +"@keyframe:"+eachPart);
-        }
-    });
-
-    return time +" "+ statement + "}\n ";
-  }
 
 function at(data, propertyValue, custom) {
   if (!data.match(/^(from|to|[0-9]+[p])/)) return false;

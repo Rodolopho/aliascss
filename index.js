@@ -6,7 +6,7 @@ import path from 'path';
 
 
 
-// export let acssCompiler={
+// export let aliascssBrowser=statementMaker;
 export default {
     styleInline(classnames){ //return String
         return statementMaker.groupForStyle(classnames);

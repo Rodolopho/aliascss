@@ -1,22 +1,42 @@
 import shadow from "./shadow.js";
 
-export default function filter(f, v) {
-  if (f.match(/drop-shadow|ds/)) {
-    return func[f] + "( " + shadow(v) + " )";
-  }
+export default function filter(valuePortion, custom) {
+  let extractFnV=valuePortion.split('--');
+  let result='';
+  extractFnV.forEach(element => {
+    result=result + extractValue(element,custom) +" ";
+    
+  });
 
-  if (func.hasOwnProperty(f)) {
+  return result.replace(/[\s]$/,'');
+  
+}
+
+// return f(value); blur(40px)
+ function extractValue(each,custom){
+    let extractFnV=each.split(/^[-]?([a-zA-Z-]+)/);
+    let f=extractFnV[1];
+    let v=extractFnV[2];
+    if(/-$/.test(f)){
+      f=f.replace(/-$/,"");
+      v='-'+v;
+    }
+     if (f.match(/drop-shadow|ds/)) {
+      return func[f] + "( " + shadow(v,custom) + " )";
+    }
+
+    if (func.hasOwnProperty(f)) {
     let fn = func[f];
-    if (fn) {
-      return (
-        fn +
-        "( " +
-        v.replace(/p$/, "%").replace(/(?<=[0-9])[d](?=[0-9])/, ".") +
-        " )"
-      );
+      if (fn) {
+        return (
+          fn +
+          "( " +
+          v.replace(/p$/, "%").replace(/(?<=[0-9])[d](?=[0-9])/, ".") +
+          " )"
+        );
+      }
     }
   }
-}
 
 let func = {
   b: "blur",

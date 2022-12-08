@@ -358,7 +358,7 @@ export default function openAcssRibbionBar() {
             <!-- input -->\
             <p class="bsbb fs13px m0px p3px dont-include mb5px">\
             <span class="c_bbb dont-include dib mb5px">Click element-or-input css selector</span>\
-             <input type="text" spellcheck="false" id="quickChangeIdInput" class="dont-include xw100p w100p b1px-s-606060 bsbb br15px bgc-bbbbbb -fo-oln pl15px" placeholder="input querySelector">\
+             <input type="text" spellcheck="false" id="quickChangeIdInput" class="dont-include ff-courier xw100p w100p b1px-s-606060 bsbb br15px bgc-bbbbbb -fo-oln pl15px" placeholder="input querySelector">\
             </p>\
                 <!-- text-are -->\
             <div class="bsbb tal dont-include ">\

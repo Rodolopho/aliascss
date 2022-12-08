@@ -7,6 +7,17 @@ let AliasCSS = {
   compile: function (classname) {
     return this.statementMaker.make(classname);
   },
+  //style="{AliasCSS.inline('fs10px br5px)}"
+  inline:function(string){
+    return this.statementMaker.groupForStyle(string);
+  },
+  run:function(el){
+    if(typeof el == 'string' ) el=document.querySelector(el);
+    if(el && el.toString().includes('HTML')){
+      AliasCSS.classPrinter.run(el);
+    }
+    
+  },
 
   toString: function () {
     return "AliasCSS Object";
@@ -25,8 +36,8 @@ let AliasCSS = {
     var ele = document.getElementById("quickChangeBox");
     if (ele) ele.parentNode.removeChild(ele);
   },
-
-  appendCss: function (str, group) {
+  //string can be passed with psedu and selector, group is optional
+  appendCSS: function (str, group) {
     this.classPrinter.appendToStyleTag(
       this.statementMaker.fromString(str, group)
     );

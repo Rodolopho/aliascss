@@ -19,12 +19,17 @@ export default function color(color, custom) {
     if (color.length === 9) {
       return `rgb(${rgb[0]},${rgb[1]},${rgb[2]})`;
     } else {
-      let a = color.slice(9).replace("d", ".");
+      let a = color.slice(9).replace("d", ".").replace('p','%');
       return `rgba(${rgb[0]},${rgb[1]},${rgb[2]},${a})`;
     }
     //rgb/a in pecentage
-  } else if (/[0-9]+p/.test(color) && color.match(/[0-9]+p/g).length === 3) {
-    if (/[\d]p$/.test(color)) {
+  //------------New
+  
+  // }else if(){
+
+  //------------End
+  } else if (/^[0-9]{1,3}p/.test(color) && color.match(/[0-9]+p/g).length >= 3) {
+    if (/[\d]p$/.test(color) && color.match(/[0-9]+p/g).length == 3) {
       return (
         "rgb(" + color.replace(/([\d]+)p([\d]+)p([\d]+)p/, "$1%,$2%,$3%") + ")"
       );
@@ -36,11 +41,11 @@ export default function color(color, custom) {
           "$1%,$2%,$3%,$4"
         ) +
         ")"
-      ).replace("d", ".");
+      ).replace("d", ".").replace("p","%");
     }
     //HSL/a
-  } else if (/[0-9]+p/.test(color) && color.match(/[0-9]+p/g).length == 2) {
-    if (/[\d]p$/.test(color)) {
+  } else if (/[0-9]+p/.test(color) && color.match(/[0-9]+p/g).length >= 2) {
+    if (/[\d]p$/.test(color) && color.match(/[0-9]+p/g).length == 2) {
       return (
         "hsl(" + color.replace(/([\d]{3})([\d]+)p([\d]+)p/, "$1,$2%,$3%") + ")"
       );
@@ -52,7 +57,7 @@ export default function color(color, custom) {
           "$1,$2%,$3%,$4"
         ) +
         ")"
-      ).replace("d", ".");
+      ).replace("d", ".").replace("p",'%');
     }
   } else {
     return false;

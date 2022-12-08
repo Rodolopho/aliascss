@@ -86,9 +86,9 @@ if(isConfigFile && fs.existsSync(path.resolve('./aliascss.config.js'))){
 
         acssCompiler.input=input;
         acssCompiler.output=output;
-         console.log(123)
+         console.log('AliasCSS is compiling............started')
         acssCompiler.run();
-        console.log(1234)
+        // console.log(1234)
         if(watch){
              acssCompiler.append=true;
              acssCompiler.watch();

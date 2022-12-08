@@ -10,11 +10,11 @@ export default function font(str, custom) {
     .split(/--/)
     .forEach((e) => {
       if (e.search(/_/) !== -1) {
-        holder += '"' + e.replace(/_/g, " ") + '" ,';
+        holder += '"' + e.replace(/_/g, " ") + '" , ';
       } else {
-        holder += e + ",";
+        holder += e + " , ";
       }
     });
 
-  return holder.replace(/,$/, "");
+  return holder.replace(/,[\s]$/, "");
 }
