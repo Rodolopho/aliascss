@@ -3,8 +3,8 @@ export let staticClassNames = {
   "align-content-center": "align-content: center",
   acc: "align-content: center",
 
-  "align-content-end": "align-content:-end",
-  ace: "align-content:-end",
+  "align-content-end": "align-content:end",
+  ace: "align-content:end",
 
   "align-content-flex-start": "align-content: flex-start",
   acfs: "align-content: flex-start",

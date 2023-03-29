@@ -192,11 +192,40 @@ export let customStaticClassNames = {
   "display-sm": "font-size: 30px; line-height: 38px;",
   "display-xs": "font-size: 24px; line-height: 32px;",
 
+  "heading-2xl": "font-size:72px ; line-height:90px ; line-spacing:-0.02em",
+  "heading-xl": "font-size: 60px; line-height: 72px; line-spacing:-0.02em",
+  "heading-lg": "font-size:48px ; line-height: 60px; line-spacing:-0.02em",
+  "heading-md": "font-size: 36px; line-height: 44px; line-spacing:-0.02em",
+  "heading-sm": "font-size: 30px; line-height: 38px;",
+  "heading-xs": "font-size: 24px; line-height: 32px;",
+
+  
+
+  "h-2xl": "font-size:72px ; line-height:90px ; line-spacing:-0.02em",
+  "h-xl": "font-size: 60px; line-height: 72px; line-spacing:-0.02em",
+  "h-lg": "font-size:48px ; line-height: 60px; line-spacing:-0.02em",
+  "h-md": "font-size: 36px; line-height: 44px; line-spacing:-0.02em",
+  "h-sm": "font-size: 30px; line-height: 38px;",
+  "h-xs": "font-size: 24px; line-height: 32px;",
+
   "text-xl": "font-size:20px;line-height:30px",
   "text-lg": "font-size:18px;line-height:28px",
   "text-md": "font-size:16px;line-height:24px",
   "text-sm": "font-size:14px;line-height:20px",
   "text-xs": "font-size:12px;line-height:18px",
+
+  "t-xl": "font-size:20px;line-height:30px",
+  "t-lg": "font-size:18px;line-height:28px",
+  "t-md": "font-size:16px;line-height:24px",
+  "t-sm": "font-size:14px;line-height:20px",
+  "t-xs": "font-size:12px;line-height:18px",
+
+  "button-2xl": "display:inline-flex;justify-content:center;align-items:center;gap:8px;padding:16px 28px;border-radius:8px;box-sizing:border-box",
+  "button-xl": "display:inline-flex;justify-content:center;align-items:center;gap:8px;padding:12px 20px;border-radius:8px;box-sizing:border-box",
+  "button-lg": "display:inline-flex;justify-content:center;align-items:center;gap:8px;padding:10px 18px;border-radius:8px;box-sizing:border-box",
+  "button-md": "display:inline-flex;justify-content:center;align-items:center;gap:8px;padding:10px 16px;border-radius:8px;box-sizing:border-box",
+  "button-sm": "display:inline-flex;justify-content:center;align-items:center;gap:8px;padding:8px 14px;border-radius:8px;box-sizing:border-box",
+  "button-xs": "display:inline-flex;justify-content:center;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;box-sizing:border-box",
 
   "shadow-3xl": "box-shadow: 0px 32px 64px -12px rgba(16, 24, 40, 0.14)",
   "shadow-2xl": "box-shadow: 0px 24px 48px -12px rgba(16, 24, 40, 0.18)",

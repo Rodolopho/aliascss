@@ -5,7 +5,7 @@
 AliasCSS or in short acss, is a post css processor/compiler means it lets you first define classnames in your html element then get processed to corresponig css declaration. 
 
 ## What it is?
-With aliascss you can  style you webpages using class attribute with  post-define classname, for example
+With aliascss you can  style your webpages using class attribute with  post-define classname, for example
 ```html
 <h1 class="color-red font-size12px display-inline-block"> Hello world</h1>
 ```
@@ -494,7 +494,7 @@ export let config= {
             --col-5:calc(var(--col-1)*5)
             --col-6:50%
             --col-8:calc(var(--col-1)*8)
-            --col-12:100*
+            --col-12:100%
         }
 
         body{

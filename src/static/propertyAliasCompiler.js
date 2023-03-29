@@ -4,6 +4,7 @@ export let propertyAliasCompiler = {
   color: ["color"],
 
   "background-color": ["color"],
+  "accent-color":["color"],
 
   "border-color": ["color"],
 

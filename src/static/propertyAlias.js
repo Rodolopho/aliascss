@@ -2,6 +2,8 @@ export let propertyAlias = {
   //color
   color: "color",
   c: "color",
+  "accent-color":'accent-color',
+  "ac":'accent-color',
   "background-color": "background-color",
   bgc: "background-color",
   "border-color": "border-color",
