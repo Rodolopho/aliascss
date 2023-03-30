@@ -26,7 +26,7 @@ npm install aliascss
 
 ### CDN
 
-[https://cdn.jsdelivr.net/npm/aliascss@1.0.1/build/aliascss.js](https://cdn.jsdelivr.net/npm/aliascss@1.0.1/build/aliascss.js)
+[https://cdn.jsdelivr.net/npm/aliascss/build/aliascss.js](https://cdn.jsdelivr.net/npm/aliascss/build/aliascss.js)
 
 # Documentation
  If you know CSS then your know already Aliascss. Aliascss let you to apply css directly in the html with the help of post define classname. Let's assume we need to style our h1 element
