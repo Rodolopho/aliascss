@@ -2,6 +2,8 @@ export let propertyAlias = {
   //color
   color: "color",
   c: "color",
+  "caret-color": "color",
+  cc: "color",
   "accent-color":'accent-color',
   "ac":'accent-color',
   "background-color": "background-color",
@@ -152,6 +154,8 @@ export let propertyAlias = {
   "stroke-dashoffset": "stroke-dashoffset",
   t: "top",
   top: "top",
+  "tab-size":"tab-size",
+  "ts":"tab-size",
   tfo: "transform-origin", //--------
   to: "transform-origin",
   "transform-origin": "transform-origin", //--------

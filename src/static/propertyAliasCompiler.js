@@ -5,6 +5,7 @@ export let propertyAliasCompiler = {
 
   "background-color": ["color"],
   "accent-color":["color"],
+  "caret-color":["color"],
 
   "border-color": ["color"],
 
@@ -148,6 +149,7 @@ export let propertyAliasCompiler = {
   "stroke-dashoffset": ["length"],
 
   top: ["length"],
+  "tab-size":["length"],
 
   "transform-origin": ["length"], //--------
 

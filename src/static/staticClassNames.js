@@ -222,16 +222,11 @@ export let staticClassNames = {
   bbav: "break-before: avoid",
   bba2: "break-before: avoid",
 
-  "border-bottom-color-transparent": "border-bottom-color: transparent",
-  bbc_t: "border-bottom-color: transparent",
-  bbct: "border-bottom-color: transparent",
 
-  "border-bottom-color-none": "border-bottom-color:none",
-  bbcn: "border-bottom-color:none",
 
-  "border-bottom-inherit": "border-bottom: inherit",
-  bbcin: "border-bottom: inherit",
-  bbc_in: "border-bottom: inherit",
+  // "border-bottom-inherit": "border-bottom: inherit",
+  // bbcin: "border-bottom: inherit",
+  // bbc_in: "border-bottom: inherit",
 
   "break-before-column": "break-before: column",
   bbc: "break-before: column",
@@ -2040,16 +2035,16 @@ export let staticClassNames = {
   slr2: "stroke-linejoin:round",
   sljr: "stroke-linejoin:round",
 
-  "scroll-behavior-smooth": "scroll-behavior-smooth",
-  sbs: "scroll-behavior-smooth",
+  "scroll-behavior-smooth": "scroll-behavior:smooth",
+  sbs: "scroll-behavior:smooth",
 
-  "scroll-behavior-auto": "scroll-behavior-auto",
-  sba: "scroll-behavior-auto",
+  "scroll-behavior-auto": "scroll-behavior:auto",
+  sba: "scroll-behavior:auto",
 
-  "scroll-behavior-initial": "scroll-behavior-initial",
+  "scroll-behavior-initial": "scroll-behavior:initial",
   sbi: "scroll-behavior-initial",
 
-  "scroll-behavior-inherit": "scroll-behavior-inherit",
+  "scroll-behavior-inherit": "scroll-behavior:inherit",
   sbin: "scroll-behavior-inherit",
   sbi2: "scroll-behavior-inherit",
 
@@ -2101,17 +2096,17 @@ export let staticClassNames = {
   "text-align-start": "text-align: start",
   tas: "text-align: start",
 
-  "text-align-vertical-auto": "text-align-vertical-auto",
-  tava: "text-align-vertical-auto",
+  "text-align-vertical-auto": "text-align-vertical:auto",
+  tava: "text-align-vertical:auto",
 
-  "text-align-vertical-top": "text-align-vertical-top",
-  tavt: "text-align-vertical-top",
+  "text-align-vertical-top": "text-align-vertical:top",
+  tavt: "text-align-vertical:top",
 
-  "text-align-vertical-bottom": "text-align-vertical-bottom",
-  tavb: "text-align-vertical-bottom",
+  "text-align-vertical-bottom": "text-align-vertical:bottom",
+  tavb: "text-align-vertical:bottom",
 
-  "text-align-vertical-center": "text-align-vertical-center",
-  tavc: "text-align-vertical-center",
+  "text-align-vertical-center": "text-align-vertical:center",
+  tavc: "text-align-vertical:center",
 
   "top-auto": "top: auto",
   ta: "top: auto",
@@ -2310,58 +2305,58 @@ export let staticClassNames = {
   tobtm: "transform-origin: bottom",
   tob: "transform-origin: bottom",
 
-  "transform-origin-centerleft": "transform-origin: center  left",
+  "transform-origin-center-left": "transform-origin: center  left",
   tocl: "transform-origin: center  left",
 
   "text-overflow-clip": "text-overflow: clip",
   toc2: "text-overflow: clip",
 
-  "transform-origin-leftcenter": "transform-origin: left center",
+  "transform-origin-left-center": "transform-origin: left center",
   tolc: "transform-origin: left center",
 
-  "transform-origin-lefttop": "transform-origin: left top",
+  "transform-origin-left-top": "transform-origin: left top",
   tolt: "transform-origin: left top",
 
-  "transform-origin-leftbottom": "transform-origin: left bottom",
+  "transform-origin-left-bottom": "transform-origin: left bottom",
   tolb: "transform-origin: left bottom",
 
-  "transform-origin-rightbottom": "transform-origin: right  bottom",
+  "transform-origin-right-bottom": "transform-origin: right  bottom",
   torb: "transform-origin: right  bottom",
 
-  "transform-origin-righttop": "transform-origin: right  top",
+  "transform-origin-right-top": "transform-origin: right  top",
   tort: "transform-origin: right  top",
 
-  "transform-origin-rightcenter": "transform-origin: right  center",
+  "transform-origin-right-center": "transform-origin: right  center",
   torc: "transform-origin: right  center",
 
-  "transform-origin-centercenter": "transform-origin: center  center",
+  "transform-origin-center-center": "transform-origin: center  center",
   tocc: "transform-origin: center  center",
 
-  "transform-origin-centerbottom": "transform-origin: center  bottom",
+  "transform-origin-center-bottom": "transform-origin: center  bottom",
   tocb: "transform-origin: center  bottom",
 
-  "transform-origin-centertop": "transform-origin: center  top",
+  "transform-origin-center-top": "transform-origin: center  top",
   toct: "transform-origin: center  top",
 
-  "transform-origin-centerright": "transform-origin: center  right",
+  "transform-origin-center-right": "transform-origin: center  right",
   tocr: "transform-origin: center  right",
 
-  "transform-origin-topcenter": "transform-origin: top center  ",
+  "transform-origin-top-center": "transform-origin: top center  ",
   totc: "transform-origin: top center  ",
 
-  "transform-origin-topright": "transform-origin: top right  ",
+  "transform-origin-top-right": "transform-origin: top right  ",
   totr: "transform-origin: top right  ",
 
-  "transform-origin-topleft": "transform-origin: top left  ",
+  "transform-origin-top-left": "transform-origin: top left  ",
   totl: "transform-origin: top left  ",
 
-  "transform-origin-bottomcenter": "transform-origin: bottom center  ",
+  "transform-origin-bottom-center": "transform-origin: bottom center  ",
   tobc: "transform-origin: bottom center  ",
 
-  "transform-origin-bottomleft": "transform-origin: bottom left  ",
+  "transform-origin-bottom-left": "transform-origin: bottom left  ",
   tobl: "transform-origin: bottom left  ",
 
-  "transform-origin-bottomright": "transform-origin: bottom right  ",
+  "transform-origin-bottom-right": "transform-origin: bottom right  ",
   tobr: "transform-origin: bottom right  ",
 
   "transform-origin-center": "transform-origin: center",
@@ -2478,6 +2473,18 @@ export let staticClassNames = {
 
   "text-transform-full-width": "text-transform: full-width",
   ttfw: "text-transform: full-width",
+
+  "tab-size-initial":"tab-size:initial",
+  "tbsi":"tab-size:initial",
+
+  "tab-size-inherit":"tab-size:inherit",
+  "tbsin":"tab-size:inherit",
+
+  "tab-size-revert":"tab-size:revert",
+  "tbsr":"tab-size:revert",
+
+  "tab-size-unset":"tab-size:unset",
+  "tbsu":"tab-size:unset",
 
   "text-transform-lowercase": "text-transform: lowercase",
   ttl: "text-transform: lowercase",

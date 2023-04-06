@@ -15,6 +15,7 @@ export default function gradient(datas, customColor) {
     let holder = "";
     //data=45deg-color_position-color_position
     data = matched[6].replace(/^[-]([a-z])/, "$1");
+    
     if (alias.hasOwnProperty(grad)) {
       //set gradient to grdeint fucn e.g lineargradient()
       gradientFunc = alias[grad];
@@ -36,9 +37,17 @@ export default function gradient(datas, customColor) {
         data = data.replace(m[0], "");
       }
 
-      data = data.replace(/_/g, " ").replace(/-/g, ",");
-      // console.log(data);
-      data = data.replace(/[,][A-Za-z0-9]+/g, function (mch) {
+      data = data.replace(/_([0-9]+)[d]([0-9])/g, " _$1.$2").replace(/_/g,' ').replace(/-/g, ",");
+      console.log(data);
+      data = data.
+
+      replace(/^[A-Za-z0-9]+/g, function (mch) {
+        // console.log(mch);
+        let proccessedColor = color(mch.replace(/[,]/, ""), customColor);
+        return proccessedColor ? ", " + proccessedColor : mch;
+      }).
+      
+      replace(/[,][A-Za-z0-9]+/g, function (mch) {
         // console.log(mch);
         let proccessedColor = color(mch.replace(/[,]/, ""), customColor);
         return proccessedColor ? ", " + proccessedColor : mch;
@@ -46,7 +55,7 @@ export default function gradient(datas, customColor) {
 
       data = data
         .replace(/(?<=[0-9])[p](?=[\W]|$)/g, "%")
-        .replace(/(?<=[\W]([0-9])+)[d](?=[0-9])/g, ".");
+        // .replace(/(?<=[\W]([0-9])+)[d](?=[0-9])/g, ".");
       holder += data.replace(/^[,]/, "").replace(/[_]/g, "");
 
       // return gradientFunc + "( " + holder.replace(/,$/, "") + " )";

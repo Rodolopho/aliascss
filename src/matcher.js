@@ -21,7 +21,7 @@ export let matcher = {
   compilers: {
     color: {
       match:
-        /^((background-color|accent-color|fill|stroke|border(-(right|left|top|bottom|text-decoration|text-shadow))?-color|outline-color|color|text)|(bgc|b[rltb]?c|oc|c|ac|txsc|tdc))[-_]/,
+        /^((background-color|accent-color|caret-color|fill|stroke|border(-(right|left|top|bottom|text-decoration|text-shadow))?-color|outline-color|color|text)|(bgc|b[rltb]?c|oc|c|cc|ac|txsc|tdc))[-_]/,
       call: (data, custom, classname) =>
         color(classname.replace(data[0], ""), custom.color),
     },

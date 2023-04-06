@@ -181,7 +181,7 @@ export let customStaticClassNames = {
   "min-width12col": "min-width: 100%",
   //--------col unit end
 
-  "auto-center": "dislay:flex; justify-content:center;align-content:center",
+  "flex-center": "dislay:flex; justify-content:center;align-content:center",
 
   //Typogrpy
 
@@ -189,15 +189,15 @@ export let customStaticClassNames = {
   "display-xl": "font-size: 60px; line-height: 72px; line-spacing:-0.02em",
   "display-lg": "font-size:48px ; line-height: 60px; line-spacing:-0.02em",
   "display-md": "font-size: 36px; line-height: 44px; line-spacing:-0.02em",
-  "display-sm": "font-size: 30px; line-height: 38px;",
-  "display-xs": "font-size: 24px; line-height: 32px;",
+  "display-sm": "font-size: 30px; line-height: 38px",
+  "display-xs": "font-size: 24px; line-height: 32px",
 
   "heading-2xl": "font-size:72px ; line-height:90px ; line-spacing:-0.02em",
   "heading-xl": "font-size: 60px; line-height: 72px; line-spacing:-0.02em",
   "heading-lg": "font-size:48px ; line-height: 60px; line-spacing:-0.02em",
   "heading-md": "font-size: 36px; line-height: 44px; line-spacing:-0.02em",
-  "heading-sm": "font-size: 30px; line-height: 38px;",
-  "heading-xs": "font-size: 24px; line-height: 32px;",
+  "heading-sm": "font-size: 30px; line-height: 38px",
+  "heading-xs": "font-size: 24px; line-height: 32px",
 
   
 
@@ -205,8 +205,8 @@ export let customStaticClassNames = {
   "h-xl": "font-size: 60px; line-height: 72px; line-spacing:-0.02em",
   "h-lg": "font-size:48px ; line-height: 60px; line-spacing:-0.02em",
   "h-md": "font-size: 36px; line-height: 44px; line-spacing:-0.02em",
-  "h-sm": "font-size: 30px; line-height: 38px;",
-  "h-xs": "font-size: 24px; line-height: 32px;",
+  "h-sm": "font-size: 30px; line-height: 38px",
+  "h-xs": "font-size: 24px; line-height: 32px",
 
   "text-xl": "font-size:20px;line-height:30px",
   "text-lg": "font-size:18px;line-height:28px",

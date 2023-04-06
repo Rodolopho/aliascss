@@ -116,9 +116,15 @@ export let classPrinter = {
       }
     });
   }, //eomain
-  run: function (el) {
+  run: function (el,id) {
     // const event = new Event('acss:init');
-
+    if(id){
+    let styleTag = document.createElement("style");
+    styleTag.id = id;
+    document.getElementsByTagName("head")[0].appendChild(styleTag);
+    this.styleTag = styleTag;
+    this.styleTagExists = true;
+    }
     let $root = el || document;
 
     // $root.dispatchEvent(event);
