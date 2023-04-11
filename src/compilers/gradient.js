@@ -23,7 +23,7 @@ export default function gradient(datas, customColor) {
       //setting  direction/angle/position/shape e.g right/45deg/center/circle
       let m1 = /^[-]?[0-9]+[d]?[0-9]*(deg|grad|rad|turn)/;
       let m2 =
-        /^((to-)?(right|left|top|bottom)?[-]?(right|left|top|bottom))|([t]?[rltb]?[rltb])(?=[0-9-])/;
+        /^((to-)?(right|left|top|bottom)?[-]?(right|left|top|bottom))|^([t]?[rltb]?[rltb])(?=[0-9-])/;
       if (m1.test(data)) {
         let m = m1.exec(data);
         holder += m[0].replace(/[d](?=[0-9])/, ".") + ", ";
