@@ -17,8 +17,8 @@ export default {
     },
 
     //extract class="dn fs12pc" and acss-class="" acss-group or className=""
-    newRegex:/[\s](acss-)?class(Name)?=['|"]([\w-_\s]+)['|"]([\s]+acss-group=['|"][\s]*([\w-_]+)[\s]*['|"])?/,
-    newRegexGlobal:/[\s](acss-)?class(Name)?=['|"]([\w-_\s]+)['|"]([\s]+acss-group=['|"][\s]*([\w-_]+)[\s]*['|"])?/g,
+    newRegex:/[\s](acss-)?class(Name)?=['|"]([\w-_\s:]+)['|"]([\s]+acss-group=['|"][\s]*([\w-_:]+)[\s]*['|"])?/,
+    newRegexGlobal:/[\s](acss-)?class(Name)?=['|"]([\w-_\s:]+)['|"]([\s]+acss-group=['|"][\s]*([\w-_:]+)[\s]*['|"])?/g,
 
   //it will hold all the classname list that had been alreay compiled
   classList: [],
