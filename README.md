@@ -25,8 +25,10 @@ npm install aliascss
 ```
 
 ### CDN
+```html
+<script defer src="https://cdn.jsdelivr.net/npm/aliascss/build/aliascss.js"></script>
 
-[https://cdn.jsdelivr.net/npm/aliascss/build/aliascss.js](https://cdn.jsdelivr.net/npm/aliascss/build/aliascss.js)
+```
 
 # Documentation
  If you know CSS then your know already Aliascss. Aliascss let you to apply css directly in the html with the help of post define classname. Let's assume we need to style our h1 element
@@ -462,9 +464,9 @@ export let config= {
 
     //Truncate the css file , you should let it true unless you know what your are doing
     truncate:true,
-    	//input glob patterns, can be array of folder or files or both,
+    	
 
-    //    
+      
 	custom:{
 		color:{
 			'main':"rgb(12,23,45)",// now you can use bgc-main
@@ -478,7 +480,6 @@ export let config= {
 	},
     // predine classname and
 	extend:{
-		//in browser-mode you can simply group class="c-blue" acss-group="color-primary"
 		'outline-color':'color: blue',
 		//now you can use it with device or seduo --hover-outline-color
 	},
@@ -487,18 +488,18 @@ export let config= {
         :root{
             --bg-color: teal;
             --outline-color:blue;
-            --col-1:8.33%
-            --col-2:calc(var(--col-1)*2)
-            --col-3:calc(var(--col-1)*3)
-            --col-4:calc(var(--col-1)*4)
-            --col-5:calc(var(--col-1)*5)
+            --col-1:8.33%;
+            --col-2:calc(var(--col-1)*2);
+            --col-3:calc(var(--col-1)*3);
+            --col-4:calc(var(--col-1)*4);
+            --col-5:calc(var(--col-1)*5);
             --col-6:50%
-            --col-8:calc(var(--col-1)*8)
+            --col-8:calc(var(--col-1)*8);
             --col-12:100%
         }
 
         body{
-            font:BlinkMacSystemFont , -apple-system , "Segoe UI" , Roboto , Oxygen , Ubuntu , Cantarell , "Fira Sans" , "Droid Sans" , "Helvetica Neue" , Helvetica , Arial , sans-serif , "Apple Color Emoji" , "Segoe UI Emoji" , "Segoe UI Symbol" , "Noto Color Emoji";
+            font-family:BlinkMacSystemFont , -apple-system , "Segoe UI" , Roboto , Oxygen , Ubuntu , Cantarell , "Fira Sans" , "Droid Sans" , "Helvetica Neue" , Helvetica , Arial , sans-serif , "Apple Color Emoji" , "Segoe UI Emoji" , "Segoe UI Symbol" , "Noto Color Emoji";
         }
 
 	`,
