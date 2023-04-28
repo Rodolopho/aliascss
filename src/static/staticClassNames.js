@@ -132,6 +132,9 @@ export let staticClassNames = {
     "animation-timing-function: step-start",
   atfss: "animation-timing-function: step-start",
 
+  "aspect-ratio-auto":"aspect-ratio: auto",
+  "ara":"aspect-ratio: auto",
+
   "all-unset": "all: unset",
   au: "all: unset",
 
@@ -893,6 +896,30 @@ export let staticClassNames = {
   cpg: "cursor: progress",
   cp2: "cursor: progress",
 
+  "clip-path-none": "clip-path: none",
+  "cpn": "clip-path: none",
+
+ "clip-path: margin-box":"clip-path: margin-box",
+ "cpmb":"clip-path: margin-box",
+
+"clip-path-border-box":"clip-path: border-box",
+"cpbb":"clip-path: border-box",
+
+"clip-path-padding-box":"clip-path: padding-box",
+"cppb":"clip-path: padding-box",
+
+"clip-path-content-box":"clip-path: content-box",
+"cpcb":"clip-path: content-box",
+
+"clip-path-fill-box":"clip-path: fill-box",
+"cpfb":"clip-path: fill-box",
+
+"clip-path-stroke-box":"clip-path: stroke-box",
+"cpsb":"clip-path: stroke-box",
+
+"clip-path-view-box":"clip-path: view-box",
+"cpvb":"clip-path: view-box",
+
   "cursor-pointer": "cursor: pointer",
   cp: "cursor: pointer",
 
@@ -1578,6 +1605,150 @@ export let staticClassNames = {
   "justify-content-space-between": "justify-content: space-between",
   jcsb: "justify-content: space-between",
 
+
+"justify-items-normal":"justify-items: normal",
+"jin":"justify-items: normal",
+
+"justify-items-stretch":"justify-items: stretch",
+"jist":"justify-items: stretch",
+"jis2":"justify-items: stretch",
+
+"justify-items-center" :"justify-items: center" ,
+"jic" :"justify-items: center" ,
+
+"justify-items-start" :"justify-items: start" ,
+"jis" :"justify-items: start" ,
+
+"justify-items-end" :"justify-items: end" ,
+"jie" :"justify-items: end" ,
+
+"justify-items-flex-start":"justify-items: flex-start",
+"jifs":"justify-items: flex-start",
+
+"justify-items-flex-end" :"justify-items: flex-end" ,
+"jife" :"justify-items: flex-end" ,
+
+"justify-items-self-start":"justify-items: self-start",
+"jiss":"justify-items: self-start",
+
+"justify-items-self-end":"justify-items: self-end",
+"jise":"justify-items: self-end",
+
+"justify-items-left" :"justify-items: left" ,
+"jil" :"justify-items: left" ,
+
+"justify-items-right" :"justify-items: right" ,
+"jir" :"justify-items: right" ,
+
+"justify-items-baseline":"justify-items: baseline",
+"jib":"justify-items: baseline",
+
+"justify-items-first-baseline":"justify-items: first baseline",
+"jifb":"justify-items: first baseline",
+
+"justify-items-last-baseline":"justify-items: last baseline",
+"jilb":"justify-items: last baseline",
+
+"justify-items-safe-center":"justify-items: safe center",
+"jisc":"justify-items: safe center",
+
+"justify-items-unsafe-center":"justify-items: unsafe center",
+"jiuc":"justify-items: unsafe center",
+
+"justify-items-legacy-right":"justify-items: legacy right",
+"jilr":"justify-items: legacy right",
+
+"justify-items-legacy-left":"justify-items: legacy left",
+"jill":"justify-items: legacy left",
+
+"justify-items-legacy-center":"justify-items: legacy center",
+"jilc":"justify-items: legacy center",
+
+"justify-items-inherit":"justify-items: inherit",
+"jin":"justify-items: inherit",
+
+"justify-items-initial":"justify-items: initial",
+"jii":"justify-items: initial",
+
+"justify-items-revert":"justify-items: revert",
+"jirv":"justify-items: revert",
+"jir2":"justify-items: revert",
+
+"justify-items-revert-layer":"justify-items: revert-layer",
+"jirl":"justify-items: revert-layer",
+
+"justify-items-unset":"justify-items: unset",
+"jiu":"justify-items: unset",
+
+"justify-self-auto":"justify-self: auto",
+"jsa":"justify-self: auto",
+
+"justify-self-normal":"justify-self: normal",
+"jsn":"justify-self: normal",
+
+"justify-self-stretch":"justify-self: stretch",
+"jsst":"justify-self: stretch",
+"jss2":"justify-self: stretch",
+
+"justify-self-center":"justify-self: center",
+"jsc":"justify-self: center",
+
+"justify-self-start": "justify-self: start",
+"jss": "justify-self: start",
+
+"justify-self-end": "justify-self: end",
+"jse": "justify-self: end",
+
+"justify-self-flex-start":"justify-self: flex-start",
+"jsfs":"justify-self: flex-start",
+
+"justify-self-flex-end": "justify-self: flex-end",
+"jsfe": "justify-self: flex-end",
+
+"justify-self-self-start":"justify-self: self-start",
+"jsss":"justify-self: self-start",
+
+"justify-self-self-end":"justify-self: self-end",
+"jsse":"justify-self: self-end",
+
+"justify-self-left": "justify-self: left",
+"jsl": "justify-self: left",
+
+"justify-self-right": "justify-self: right",
+"jsr": "justify-self: right",
+
+"justify-self-baseline":"justify-self: baseline",
+"jsb":"justify-self: baseline",
+
+"justify-self-first-baseline":"justify-self: first baseline",
+"jsfb":"justify-self: first baseline",
+
+"justify-self-last-baseline":"justify-self: last baseline",
+"jslb":"justify-self: last baseline",
+
+"justify-self-safe-center":"justify-self: safe center",
+"jssc":"justify-self: safe center",
+
+"justify-self-unsafe-center":"justify-self: unsafe center",
+"jsuc":"justify-self: unsafe center",
+
+"justify-self-inherit":"justify-self: inherit",
+"jsin":"justify-self: inherit",
+
+"justify-self-initial":"justify-self: initial",
+"jsi":"justify-self: initial",
+
+"justify-self-revert":"justify-self: revert",
+"jsrv":"justify-self: revert",
+"jsr2":"justify-self: revert",
+
+"justify-self-revert-layer":"justify-self: revert-layer",
+"jsrl":"justify-self: revert-layer",
+
+"justify-self-unset":"justify-self: unset",
+"jsu":"justify-self: unset",
+
+
   "left-auto": "left: auto",
   la: "left: auto",
 
@@ -1978,6 +2149,169 @@ export let staticClassNames = {
 
   "perspective-origin-top": "perspective-origin: top",
   pot: "perspective-origin: top",
+
+"place-content-center-start":"place-content: center start",
+"pccs":"place-content: center start",
+
+"place-content-start-center":"place-content: start center",
+"pcsc":"place-content: start center",
+
+"place-content-end-left":"place-content: end left",
+"pcel":"place-content: end left",
+
+"place-content-flex-start-center":"place-content: flex-start center",
+"pcfsc":"place-content: flex-start center",
+
+"place-content-flex-end-center":"place-content: flex-end center",
+"pcfec":"place-content: flex-end center",
+
+"place-content-baseline-center":"place-content: baseline center",
+"pcbc":"place-content: baseline center",
+
+"place-content-first-baseline space-evenly":"place-content: first baseline space-evenly",
+"pcfbse":"place-content: first baseline space-evenly",
+
+"place-content-last-baseline-right":"place-content: last baseline right",
+"pclbr":"place-content: last baseline right",
+
+"place-content-space-between-space-evenly":"place-content: space-between space-evenly",
+"pcsbse":"place-content: space-between space-evenly",
+
+"place-content-space-around-space-evenly":"place-content: space-around space-evenly",
+"pcsase":"place-content: space-around space-evenly",
+
+"place-content-space-evenly-stretch":"place-content: space-evenly stretch",
+"pcses":"place-content: space-evenly stretch",
+
+"place-content-stretch-space-evenly":"place-content: stretch space-evenly",
+"pcsse":"place-content: stretch space-evenly",
+
+"place-content-inherit":"place-content: inherit",
+"pcin":"place-content: inherit",
+
+"place-content-initial":"place-content: initial",
+"pci":"place-content: initial",
+
+"place-content-revert":"place-content: revert",
+"pcrv":"place-content: revert",
+
+"place-content-revert-layer":"place-content: revert-layer",
+"pcrl":"place-content: revert-layer",
+
+"place-content-unset":"place-content: unset",
+"pcu":"place-content: unset",
+
+"place-items-center":"place-items: center",
+"pic":"place-items: center",
+
+"place-items-normal-start":"place-items: normal start",
+"pins":"place-items: normal start",
+
+"place-items-center-normal":"place-items: center normal",
+"picn":"place-items: center normal",
+
+"place-items-start-legacy":"place-items: start legacy",
+"pisl":"place-items: start legacy",
+
+"place-items-end-normal":"place-items: end normal",
+"pien":"place-items: end normal",
+
+"place-items-self-start-legacy":"place-items: self-start legacy",
+"pissl":"place-items: self-start legacy",
+
+"place-items-self-end-normal":"place-items: self-end normal",
+"pisen":"place-items: self-end normal",
+
+"place-items-flex-start-legacy":"place-items: flex-start legacy",
+"pifsl":"place-items: flex-start legacy",
+
+"place-items-flex-end-normal":"place-items: flex-end normal",
+"pifen":"place-items: flex-end normal",
+
+"place-items-baseline-normal":"place-items: baseline normal",
+"pibn":"place-items: baseline normal",
+
+"place-items-first-baseline-legacy":"place-items: first baseline legacy",
+"pifbl":"place-items: first baseline legacy",
+
+"place-items-last-baseline-normal":"place-items: last baseline normal",
+"pilbn":"place-items: last baseline normal",
+
+"place-items-stretch-legacy":"place-items: stretch legacy",
+"pisl":"place-items: stretch legacy",
+
+"place-items-inherit":"place-items: inherit",
+"piin":"place-items: inherit",
+
+"place-items-initial":"place-items: initial",
+"pii":"place-items: initial",
+
+"place-items-revert":"place-items: revert",
+"pir":"place-items: revert",
+
+"place-items-revert-layer":"place-items: revert-layer",
+"pirl":"place-items: revert-layer",
+
+"place-items-unset":"place-items: unset",
+"piu":"place-items: unset",
+
+"place-self-auto-center":"place-self: auto center",
+"psac":"place-self: auto center",
+
+"place-self-normal-start":"place-self: normal start",
+"psns":"place-self: normal start",
+
+"place-self-center-normal":"place-self: center normal",
+"pscn":"place-self: center normal",
+
+"place-self-start-auto":"place-self: start auto",
+"pssa":"place-self: start auto",
+
+"place-self-end-normal":"place-self: end normal",
+"psen":"place-self: end normal",
+
+"place-self-self-start-auto":"place-self: self-start auto",
+"psssa":"place-self: self-start auto",
+
+"place-self-self-end-normal":"place-self: self-end normal",
+"pssen":"place-self: self-end normal",
+
+"place-self-flex-start-auto":"place-self: flex-start auto",
+"psfsa":"place-self: flex-start auto",
+
+"place-self-flex-end-normal":"place-self: flex-end normal",
+"psfen":"place-self: flex-end normal",
+
+"place-self-baseline-normal":"place-self: baseline normal",
+"psbn":"place-self: baseline normal",
+
+"place-self-first-baseline-auto":"place-self: first baseline auto",
+"psfba":"place-self: first baseline auto",
+
+"place-self-last-baseline-normal":"place-self: last baseline normal",
+"pslbn":"place-self: last baseline normal",
+
+"place-self-stretch-auto":"place-self: stretch auto",
+"pssta":"place-self: stretch auto",
+"pssa2":"place-self: stretch auto",
+
+"place-self-inherit":"place-self: inherit",
+"ps-inherit":"place-self: inherit",
+
+"place-self-initial":"place-self: initial",
+"psi":"place-self: initial",
+
+"place-self-revert":"place-self: revert",
+"psr":"place-self: revert",
+
+"place-self-revert-layer":"place-self: revert-layer",
+"psrl":"place-self: revert-layer",
+
+"place-self-unset":"place-self: unset",
+"psu":"place-self: unset",
+
+
+
 
   "position-page": "position: page",
   pp: "position: page",

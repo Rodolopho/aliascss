@@ -11,6 +11,7 @@ import shadow from "./compilers/shadow.js";
 import url from "./compilers/url.js";
 import filter from "./compilers/filter.js";
 import timingFunction from "./compilers/timingFunction.js";
+import clipPath from "./compilers/clipPath.js";
 import grid from "./compilers/grid.js";
 // import keyframes from './compilers/keyframes.js';
 
@@ -59,7 +60,7 @@ export let matcher = {
     },
     border: {
       match:
-        /^(b|border|brt|border-right|bl|border-left|bt|border-top|border-bottom|bb|ol|outline|cr|counter-reset)([-]?[0-9]+[d]?[0-9]*(px|em|p|ex|ch|rem|vw|vh|vmin|vmaxc|m|mm|in|pt|pc|fr|cv))[-]?(n|none|s|solid|r|ridge|o|outset|i|inset|h|hidden|g|groove|db|double|dt|dotted|ds|dashed)[-]([\w]*)/,
+        /^(b|border|brt|border-right|bl|border-left|bt|border-top|border-bottom|bb|ol|outline|cr|column-rule)([-]?[0-9]+[d]?[0-9]*(px|em|p|ex|ch|rem|vw|vh|vmin|vmaxc|m|mm|in|pt|pc|fr|cv))[-]?(n|none|s|solid|r|ridge|o|outset|i|inset|h|hidden|g|groove|db|double|dt|dotted|ds|dashed)[-]([\w]*)/,
       call: (data, custom) => border(data[2], data[4], data[5], custom.color),
     },
     gradient: {
@@ -125,6 +126,11 @@ export let matcher = {
           .replace(/--/g, ", ")
           .replace(/(\w{4})/g, '"$1" ')
           .replace("-", " "),
+    },
+    clipPath:{
+       match: /(cp|clip-path)[-]([\w-_]+)/,
+      call:(date)=>clipPath(data[2])
+    
     },
     grid: {
       // match:'/yzx(grid-template-column|grid-template-row|gtr|gtc|\

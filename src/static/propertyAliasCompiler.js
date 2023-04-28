@@ -6,6 +6,7 @@ export let propertyAliasCompiler = {
   "background-color": ["color"],
   "accent-color":["color"],
   "caret-color":["color"],
+  "column-rule-color":["color"],
 
   "border-color": ["color"],
 
@@ -236,6 +237,7 @@ export let propertyAliasCompiler = {
   "border-bottom": ["border"],
 
   outline: ["border"],
+  "column-rule": ["border"],
 
   //Miscelineous
 
@@ -283,4 +285,8 @@ export let propertyAliasCompiler = {
   "grid-template-areas": ["grid"],
 
   "grid-area": ["grid", "number"],
+
+  "aspect-ratio":["grid","number"],
+
+  "clip-path":["clipPath"],
 };

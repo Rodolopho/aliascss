@@ -2,8 +2,10 @@ export let propertyAlias = {
   //color
   color: "color",
   c: "color",
-  "caret-color": "color",
-  cc: "color",
+  "column-rule-color":'column-rule-color',
+  "crc":'column-rule-color',
+  "caret-color": "caret-color",
+  cac: "caret-color",//column-count
   "accent-color":'accent-color',
   "ac":'accent-color',
   "background-color": "background-color",
@@ -236,8 +238,8 @@ export let propertyAlias = {
   "border-bottom": "border-bottom",
   ol: "outline",
   outline: "outline",
-  cr: "counter-reset",
-  "counter-reset": "counter-reset",
+  cr: "column-rule",
+  "column-rule": "column-rule",
   //gradient and url
   bgi: "background-image",
   "background-image": "background-image",
@@ -280,8 +282,15 @@ export let propertyAlias = {
   "animation-name": "animation-name",
   an: "animation-name",
 
+  "aspect-ratio":"aspect-ratio",
+  "ar":"aspect-ratio",
+
   "counter-increment": "counter-increment",
   ci: "counter-increment",
+   "counter-reset": "counter-reset",
+  crs: "counter-crs",
+  "clip-path":"clip-path",
+  "cp":"clip-path",
   // kf:"@keyframes",
   // keyframes:"keyframes",
   // k:"@keyframes",

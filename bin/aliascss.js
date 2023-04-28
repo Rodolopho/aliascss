@@ -9,14 +9,18 @@ import  acssCompiler  from "../index.js";
 let argSupplied=process.argv;
 let watch=argSupplied.indexOf('--watch')==-1?false:true;
 let isConfigFile=argSupplied.indexOf('--config')==-1?false:true;
+let isModule=argSupplied.indexOf('--module')==-1?false:true;
+let configFileName='aliascss.config.js';
 
 if(!isConfigFile && argSupplied.length<4){
     console.error("Insufficient argument Provided; Required atleast [input] and [output] or --config flag");
     process.exit();
 } 
-
-if(isConfigFile && fs.existsSync(path.resolve('./aliascss.config.js'))){
-    let configFile=await import(path.resolve('./aliascss.config.js'));
+if(isModule){
+    configFileName='aliascss.config.mjs';
+}
+if(isConfigFile && fs.existsSync(path.resolve(configFileName))){
+    let configFile=await import(path.resolve(configFileName));
     //check if it has input and out file
     if(configFile.config.hasOwnProperty('output') && fs.existsSync(path.resolve(configFile.config.output))){
 
@@ -80,7 +84,7 @@ if(isConfigFile && fs.existsSync(path.resolve('./aliascss.config.js'))){
     process.exit();
 }else{
     let input=argSupplied[2];
-    console.log(argSupplied[2]);
+    // console.log(argSupplied[2]);
     let output=argSupplied[3];
     if(fs.existsSync(path.resolve(output)) && input){
 

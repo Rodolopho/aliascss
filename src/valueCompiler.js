@@ -14,6 +14,7 @@ import timingFunction from "./compilers/timingFunction.js";
 import grid from "./compilers/grid.js";
 import string from "./compilers/string.js";
 import content from "./compilers/content.js";
+import clipPath from "./compilers/clipPath.js";
 
 //TO get array of compiler based in property name
 // import { propertyAliasCompiler } from "./static/propertyAliasCompiler.js";
@@ -118,6 +119,11 @@ let compilers = {
   content: {
     match: /[-_]?(url|attr)?[-_]([\w-]+)/,
     call: content,
+  },
+  clipPath: {
+    match: /[-_]?(url|attr)?[-_]([\w-]+)/,
+    match: /[-_]?([\w-]+)/,
+    call: clipPath,
   },
 
   fontFeatureSettings: {

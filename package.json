@@ -1,6 +1,6 @@
 {
   "name": "aliascss",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Aliascss is css postprocessor, where we define clasname first then compile ",
   "main": "index.js",
   "type": "module",
@@ -10,6 +10,7 @@
     "build": "webpack",
     "watch": "webpack --watch",
     "acss-build": " node bin/aliascss --config",
+    "acss-build-module": " node bin/aliascss --config --module",
     "acss-watch": " node bin/aliascss --config --watch"
   },
   "keywords": [

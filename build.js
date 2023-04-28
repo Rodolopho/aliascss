@@ -7,6 +7,8 @@ let AliasCSS = {
   compile: function (classname) {
     return this.statementMaker.make(classname);
   },
+
+  print(){return this.classPrinter.compile()},
   //style="{AliasCSS.inline('fs10px br5px)}"
   inline:function(string){
     return this.statementMaker.groupForStyle(string);
