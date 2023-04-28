@@ -116,15 +116,93 @@ export let classPrinter = {
       }
     });
   }, //eomain
-  run: function (el,id) {
-    // const event = new Event('acss:init');
-    if(id){
-    let styleTag = document.createElement("style");
-    styleTag.id = id;
-    document.getElementsByTagName("head")[0].appendChild(styleTag);
-    this.styleTag = styleTag;
-    this.styleTagExists = true;
+  //returns css statemnt from current element
+  compileElement:function(el, clist){
+    clist=clist||[];
+    let statement=" ";
+     //initialize class or acss-class value conatiner
+    let attrValue = "";
+
+    //if class
+    if (el.getAttribute("class")) attrValue += " " + el.getAttribute("class");
+    //if acss-class
+    if (el.getAttribute("acss-class"))
+      attrValue += " " + el.getAttribute("acss-class");
+
+    //if has value to process
+    if (!attrValue.trim()) return;
+
+    //check for group
+    if (el.getAttribute("acss-group")) {
+      var result = statementMaker.group(
+        attrValue,
+        el.getAttribute("acss-group")
+      );
+      if (result) {
+        statement+=result + " ";
+        // this.appendToStyleTag(result);
+        // return true;
+      }
     }
+    //get class and trim out whitespaces
+    let tmpClassList = attrValue.trim().split(/\s+/);
+
+    //looping class
+    tmpClassList.forEach((eachClass) => {
+      //escape reppeated classname
+      if(clist.indexOf(eachClass) == -1){
+          clist.push(eachClass);
+        // var result=compiler.main(eachClass);
+        var result = statementMaker.make(eachClass);
+        // console.log(result);
+
+        if (result) {
+          statement+=result + " ";
+          // this.appendToStyleTag(result);
+        } else {
+          //not a valid ACSS clasNames
+          console.log('Not a valid Aliascss class name:'+eachClass);
+        }
+      }
+    });
+
+    return statement;
+
+  },
+  //returns css statement from given element and child
+  returnStatement:function($el){
+    let statement="";
+    let clist=[];
+
+      //<template> elment
+    Array.prototype.forEach.call(
+      $el.querySelectorAll("template"),
+      (template) => {
+        Array.prototype.forEach.call(
+          template.content.querySelectorAll("[class],[acss-class]"),
+          (e) => {
+            let result=this.compileElement(e,clist);
+        statement+=result?result:'';
+          }
+        );
+      }
+    );
+
+    //<html>
+
+    Array.prototype.forEach.call(
+      $el.querySelectorAll("[class],[acss-class]"),
+      (e) => {
+        let result=this.compileElement(e,clist);
+        statement+=result?result:'';
+      }
+    );
+    
+      return statement;
+  },
+  run: function (el) {
+    // const event = new Event('acss:init');
+    
     let $root = el || document;
 
     // $root.dispatchEvent(event);

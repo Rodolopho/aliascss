@@ -38,7 +38,7 @@ export default function gradient(datas, customColor) {
       }
 
       data = data.replace(/_([0-9]+)[d]([0-9])/g, " _$1.$2").replace(/_/g,' ').replace(/-/g, ",");
-      console.log(data);
+      // console.log(data);
       data = data.
 
       replace(/^[A-Za-z0-9]+/g, function (mch) {

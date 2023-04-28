@@ -20,6 +20,13 @@ let AliasCSS = {
     }
     
   },
+  compileEle:function(el){
+    if(typeof el == 'string' ) el=document.querySelector(el);
+    if(el && el.toString().includes('HTML')){
+     return AliasCSS.classPrinter.returnStatement(el);
+    }
+    
+  },
 
   toString: function () {
     return "AliasCSS Object";
