@@ -1,6 +1,6 @@
 {
   "name": "aliascss",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Aliascss is css postprocessor, where we define clasname first then compile ",
   "main": "index.js",
   "type": "module",

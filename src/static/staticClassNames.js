@@ -1136,30 +1136,30 @@ export let staticClassNames = {
   ffc: "flex-direction: column",
   fdc: "flex-direction: column",
 
-  "flex-flow-columnnowrap": "flex-flow: column nowrap",
+  "flex-flow-column-nowrap": "flex-flow: column nowrap",
   ffcn: "flex-flow: column nowrap",
 
   "flex-direction-column-reverse": "flex-direction: column-reverse",
   ffcr: "flex-direction: column-reverse",
   fdcr: "flex-direction: column-reverse",
 
-  "flex-flow-column-reversenowrap": "flex-flow: column-reverse nowrap",
+  "flex-flow-column-reverse-nowrap": "flex-flow: column-reverse nowrap",
   ffcrn: "flex-flow: column-reverse nowrap",
 
   "flex-flow-column-reversewrap-reverse":
     "flex-flow:column-reverse wrap-reverse",
   ffcrwr: "flex-flow:column-reverse wrap-reverse",
 
-  "flex-flow-column-reversewrap": "flex-flow: column-reverse wrap",
+  "flex-flow-column-reverse-wrap": "flex-flow: column-reverse wrap",
   ffcrw: "flex-flow: column-reverse wrap",
 
   "font-family-cursive": "font-family: cursive",
   ffcu: "font-family: cursive",
 
-  "flex-flow-columnwrap-reverse": "flex-flow: column wrap-reverse",
+  "flex-flow-column-wrap-reverse": "flex-flow: column wrap-reverse",
   ffcwr: "flex-flow: column wrap-reverse",
 
-  "flex-flow-columnwrap": "flex-flow:column wrap",
+  "flex-flow-column-wrap": "flex-flow:column wrap",
   ffcw: "flex-flow:column wrap",
 
   "font-family-fantasy": "font-family: fantasy",
@@ -1191,19 +1191,19 @@ export let staticClassNames = {
   ffrr: "flex-direction: row-reverse",
   fdrr: "flex-direction: row-reverse",
 
-  "flex-flow-row-reversenowrap": "flex-flow: row-reverse nowrap",
+  "flex-flow-row-reverse-nowrap": "flex-flow: row-reverse nowrap",
   ffrrn: "flex-flow: row-reverse nowrap",
 
-  "flex-flow-row-reversewrap-reverse": "flex-flow: row-reverse wrap-reverse",
+  "flex-flow-row-reverse-wrap-reverse": "flex-flow: row-reverse wrap-reverse",
   ffrrwr: "flex-flow: row-reverse wrap-reverse",
 
-  "flex-flow-row-reversewrap": "flex-flow:row-reverse wrap",
+  "flex-flow-row-reverse-wrap": "flex-flow:row-reverse wrap",
   ffrrw: "flex-flow:row-reverse wrap",
 
   "flex-flow-rowwrap-reverse": "flex-flow:row wrap-reverse",
   ffrwr: "flex-flow:row wrap-reverse",
 
-  "flex-flow-rowwrap": "flex-flow: row wrap",
+  "flex-flow-row-wrap": "flex-flow: row wrap",
   ffrw: "flex-flow: row wrap",
 
   "font-family-sans-serif": "font-family: sans-serif",
@@ -1542,22 +1542,22 @@ export let staticClassNames = {
   "hanging-punctuation-allow-end": "hanging-punctuation: allow-end",
   hpae: "hanging-punctuation: allow-end",
 
-  "hanging-punctuation-firstallow-end": "hanging-punctuation: first allow-end",
+  "hanging-punctuation-first-allow-end": "hanging-punctuation: first allow-end",
   hpfae: "hanging-punctuation: first allow-end",
 
   "hanging-punctuation-force-end": "hanging-punctuation: force-end",
   hpfe: "hanging-punctuation: force-end",
 
-  "hanging-punctuation-firstforce-end": "hanging-punctuation: first force-end",
+  "hanging-punctuation-first-force-end": "hanging-punctuation: first force-end",
   hpffe: "hanging-punctuation: first force-end",
 
   "hanging-punctuation-first": "hanging-punctuation: first",
   hpf: "hanging-punctuation: first",
 
-  "hanging-punctuation-lastallow-end": "hanging-punctuation: last allow-end",
+  "hanging-punctuation-last-allow-end": "hanging-punctuation: last allow-end",
   hplae: "hanging-punctuation: last allow-end",
 
-  "hanging-punctuation-lastforce-end": "hanging-punctuation: last force-end",
+  "hanging-punctuation-last-force-end": "hanging-punctuation: last force-end",
   hplfe: "hanging-punctuation: last force-end",
 
   "hanging-punctuation-last": "hanging-punctuation: last",
@@ -1957,13 +1957,13 @@ export let staticClassNames = {
   ooin: "outline-offset: inherit",
   ooi: "outline-offset: inherit",
 
-  "object-position-centercenter": "object-position: center center",
+  "object-position-center-center": "object-position: center center",
   opcc: "object-position: center center",
 
-  "object-position-lefttop": "object-position: left top",
+  "object-position-left-top": "object-position: left top",
   oplt: "object-position: left top",
 
-  "object-position-rightbottom": "object-position: right bottom",
+  "object-position-right-bottom": "object-position: right bottom",
   oprb: "object-position: right bottom",
 
   "order-inherit": "order:inherit",
@@ -2118,10 +2118,10 @@ export let staticClassNames = {
   "perspective-none": "perspective: none",
   pn: "perspective: none",
 
-  "perspective-origin-bottomleft": "perspective-origin: bottom left",
+  "perspective-origin-bottom-left": "perspective-origin: bottom left",
   pobl: "perspective-origin: bottom left",
 
-  "perspective-origin-bottomright": "perspective-origin: bottom right",
+  "perspective-origin-bottom-right": "perspective-origin: bottom right",
   pobr: "perspective-origin: bottom right",
 
   "perspective-origin-bottom": "perspective-origin: bottom",
@@ -2141,10 +2141,10 @@ export let staticClassNames = {
   "perspective-origin-right": "perspective-origin: right",
   por: "perspective-origin: right",
 
-  "perspective-origin-topleft": "perspective-origin: top left",
+  "perspective-origin-top-left": "perspective-origin: top left",
   potl: "perspective-origin: top left",
 
-  "perspective-origin-topright": "perspective-origin: top right",
+  "perspective-origin-top-right": "perspective-origin: top right",
   potr: "perspective-origin: top right",
 
   "perspective-origin-top": "perspective-origin: top",
@@ -2564,16 +2564,16 @@ export let staticClassNames = {
   tec_t: "text-emphasis-color:transparent ",
   tect: "text-emphasis-color:transparent ",
 
-  "text-emphasis-position-belowleft": "text-emphasis-position: below left",
+  "text-emphasis-position-belowl-eft": "text-emphasis-position: below left",
   tepbl: "text-emphasis-position: below left",
 
-  "text-emphasis-position-belowright": "text-emphasis-position: below right",
+  "text-emphasis-position-below-right": "text-emphasis-position: below right",
   tepbr: "text-emphasis-position: below right",
 
-  "text-emphasis-position-overleft": "text-emphasis-position: over left",
+  "text-emphasis-position-over-left": "text-emphasis-position: over left",
   tepol: "text-emphasis-position: over left",
 
-  "text-emphasis-position-overright": "text-emphasis-position: over right",
+  "text-emphasis-position-over-right": "text-emphasis-position: over right",
   tepor: "text-emphasis-position: over right",
 
   "text-emphasis-style-circle": "text-emphasis-style: circle",
@@ -2838,10 +2838,10 @@ export let staticClassNames = {
   "text-underline-position-right": "text-underline-position: right",
   tupr: "text-underline-position: right",
 
-  "text-underline-position-underleft": "text-underline-position: under left",
+  "text-underline-position-under-left": "text-underline-position: under left",
   tupul: "text-underline-position: under left",
 
-  "text-underline-position-underright": "text-underline-position: under right",
+  "text-underline-position-under-right": "text-underline-position: under right",
   tupur: "text-underline-position: under right",
 
   "text-underline-position-under": "text-underline-position: under",
