@@ -1146,7 +1146,7 @@ export let staticClassNames = {
   "flex-flow-column-reverse-nowrap": "flex-flow: column-reverse nowrap",
   ffcrn: "flex-flow: column-reverse nowrap",
 
-  "flex-flow-column-reversewrap-reverse":
+  "flex-flow-column-reverse-wrap-reverse":
     "flex-flow:column-reverse wrap-reverse",
   ffcrwr: "flex-flow:column-reverse wrap-reverse",
 
@@ -1184,7 +1184,7 @@ export let staticClassNames = {
   ffr: "flex-direction: row",
   fdr: "flex-direction: row",
 
-  "flex-flow-rownowrap": "flex-flow:row nowrap",
+  "flex-flow-row-nowrap": "flex-flow:row nowrap",
   ffrn: "flex-flow:row nowrap",
 
   "flex-direction-row-reverse": "flex-direction: row-reverse",
@@ -1200,7 +1200,7 @@ export let staticClassNames = {
   "flex-flow-row-reverse-wrap": "flex-flow:row-reverse wrap",
   ffrrw: "flex-flow:row-reverse wrap",
 
-  "flex-flow-rowwrap-reverse": "flex-flow:row wrap-reverse",
+  "flex-flow-row-wrap-reverse": "flex-flow:row wrap-reverse",
   ffrwr: "flex-flow:row wrap-reverse",
 
   "flex-flow-row-wrap": "flex-flow: row wrap",
@@ -1460,30 +1460,39 @@ export let staticClassNames = {
   fvu: "font-variant: unicase",
 
   "font-weight-100": "font-weight: 100",
+  "font-weight100": "font-weight: 100",
   fw1: "font-weight: 100",
 
   "font-weight-200": "font-weight: 200",
+  "font-weight200": "font-weight: 200",
   fw2: "font-weight: 200",
 
   "font-weight-300": "font-weight: 300",
+  "font-weight300": "font-weight: 300",
   fw3: "font-weight: 300",
 
   "font-weight-400": "font-weight: 400",
+  "font-weight400": "font-weight: 400",
   fw4: "font-weight: 400",
 
   "font-weight-500": "font-weight: 500",
+  "font-weight500": "font-weight: 500",
   fw5: "font-weight: 500",
 
   "font-weight-600": "font-weight: 600",
+  "font-weight600": "font-weight: 600",
   fw6: "font-weight: 600",
 
   "font-weight-700": "font-weight: 700",
+  "font-weight700": "font-weight: 700",
   fw7: "font-weight: 700",
 
   "font-weight-800": "font-weight: 800",
+  "font-weight800": "font-weight: 800",
   fw8: "font-weight: 800",
 
   "font-weight-900": "font-weight: 900",
+  "font-weight900": "font-weight: 900",
   fw9: "font-weight: 900",
 
   "font-weight-bold": "font-weight: bold",
