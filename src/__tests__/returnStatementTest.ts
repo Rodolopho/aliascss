@@ -19,6 +19,15 @@ statement.extend(config.extend);
 
 
 describe("Test Return statement",()=>{
+     // ---------new Test &-----------
+     test("Return statement &",()=>{
+         expect(statement.make('--hover&-bgc-primary600')).toBe(':hover .--hover\\&-bgc-primary600{background-color:var(--primary600,#7F56D9)}')
+     })
+
+     test("Return statement &",()=>{
+         expect(statement.make('--is(_html[class~=dark])&-bgc-red')).toBe(':is( html[class~=\"dark\"]) .--is\\(_html\\[class\\~\\=dark\\]\\)\\&-bgc-red{background-color:red}')
+     })
+     //----------------
     test("Return statement",()=>{
          expect(statement.make('bgc-primary600')).toBe('.bgc-primary600{background-color:var(--primary600,#7F56D9)}')
     })

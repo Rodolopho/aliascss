@@ -48,27 +48,41 @@ export const compiler:{
     // className as another-name, bool->only return property and value
     make(className:string,as?:string, bool?:boolean){
         let unPrefixedClassName=className;
+        let beforeClassNameSelector='';
         if(this.prefix && !className.match(new RegExp('^'+this.prefix+"[-]"))){
             return null;
             
         }else if(this.prefix){
             unPrefixedClassName=className.replace(new RegExp('^'+this.prefix+"[-]"),'');
         } 
-      
+
         if(!this.mediaTest) this.mediaTest=createRegexForMedia(this.mediaSelector);
 
         // 1. check and extract Media prefix and return className with prefix treatment,
         let[ media,workingClassName]:[string,string]=extractMediaPrefix(unPrefixedClassName,this.mediaSelector,this.mediaTest);
         media=media;
+
+        // 2. search for '&' which tells us to use selector before or after className
+        if(workingClassName.match(/[&]/)){
+           const[before,after]=workingClassName.split('&');
+           beforeClassNameSelector=extractPrefix(before+"-display-none")[0]+" ";
+           if(!beforeClassNameSelector.trim()){
+                console.error('Not a valid AliasCSS className:'+className,'Make sure to provide valid css aliascss selector before "&" identifier');
+                return null;
+           }
+           workingClassName=workingClassName.replace(before,'').replace('&','');
+           
+        }
+
         let [elementAndPseudo, important]=['','']
         // workingClassName=workingClassName.replace(/[_][\.]([a-zA-Z])/g,(s,e)=>"_"+'ACSS').replace(/[.]/g,"d").replace(/[%]/g,'p')
 
-        // 2.  Process --important flag
+        // 3.  Process --important flag
         if(/(-i|--important)$/.test(className)){
             important=' !important';
             workingClassName=workingClassName.replace(/(-i|--important)$/,'');
         }
-        // 3.  process Pseudo State
+        // 4.  process Pseudo State
         const prefixPseudoElementAttribute=extractPrefix(workingClassName);
         workingClassName=prefixPseudoElementAttribute[1];
         elementAndPseudo=prefixPseudoElementAttribute[0];
@@ -98,15 +112,15 @@ export const compiler:{
             
         }
         if(result){
-            className=className.replace(/([$.%=\]\[@~:*#+\(\)\/^])/g,'\\$1');
+            className=className.replace(/([$.&%=\]\[@~:*#+\(\)\/^])/g,'\\$1');
             if(bool===true) return result;
             this.cache.propertyAndValue[pnv]=result;
             if(media){
-                return `${media}{.${
-                       (as?as:className)+ elementAndPseudo
+                return `${media}{${
+                       beforeClassNameSelector+'.'+(as?as:className)+ elementAndPseudo
                      }{${result}${important}}}`;
             }else{
-                return `.${(as?as:className)}${elementAndPseudo}{${result}${important}}`;
+                return `${beforeClassNameSelector}.${(as?as:className)}${elementAndPseudo}{${result}${important}}`;
             }
 
         }else{
