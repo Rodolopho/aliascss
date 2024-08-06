@@ -1,4 +1,5 @@
 public
-test
-node_modules
-typescript
+src
+experiments
+demo
+browser

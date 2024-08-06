@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "nodenext",
+    "declaration": true,
+    "outDir": "./lib",
+    "esModuleInterop": true,
+    "strict": true
+  },
+  "include": ["src", "test.js", "bin"],
+  "exclude": ["node_modules", "**/__tests__/*"],
+ "esModuleInterop" : true
+}
+

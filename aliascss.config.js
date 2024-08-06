@@ -1,61 +1,201 @@
-export let config= {
-    //input files in glob pattern to get compiled
+
+const config={
+    input:['demo/**/*.html'],
+    output:{
+        location:'demo/acss.css',
+        "--file":true
+    },
+    '--module':true,
+    prefix:'',
+    importModuleAs:'x',
+    // minify:true,
+    extractorFunction:"x|@",
+    //reg:new RegExp('x' + "(`|\\(["+`"'])`+ "(.+)" + "(`|" + `["']` + "\\))") ,
+    media:{
+        prefix:{
+            xs:'@media (max-width : 24px)'
+        }
+    },
+    extend:{
+        'txt-shadow':{
+            property:'--webkit-text-shadow',
+            compiler:(value)=>value
+        },
+        'solor':{
+            property:'color',
+            extend:'color',
+            // compiler:(value)=>this.compiler(value)
+        },
+        $color:{extend:'color'},
+        test:{
+            property:'color',
+            compiler:(value,custom)=>{
+                return config.extend.$color.compiler(value,custom);
+            },
+            values:['red:sex']
+        },
+        'font-size':{
+            alias:'fs',
+            values:["2rem:xl"],
+            compiler:(value)=>{
+                return value;
+            }
+        },
+        'shadows':{
+            property:'box-shadow',
+            //alias:'sdo',
+            compiler:(value)=>{
+                value=value.slice(1);
+                const values={
+                    '3xl': ' 0px 32px 64px -12px var(--shadow-color)',
+                    'xxxl': ' 0px 32px 64px -12px var(--shadow-color)',
+                    '2xl': ' 0px 24px 48px -12px var(--shadow-color)',
+                    'xxl': ' 0px 24px 48px -12px var(--shadow-color)',
+                    'xl': ' 0px 20px 24px -4px var(--shadow-color)',
+                    'lg': ' 0px 12px 16px -4px var(--shadow-color)',
+                    'md': ' 0px 4px 8px -2px var(--shadow-color)',
+                    'sm': ' 0px 1px 3px var(--shadow-color)',
+                    'xs': ' 0px 1px 2px var(--shadow-color)',
+                };
+                if(values.hasOwnProperty(value)) return values[value];
+            }
+         
+        }
+    },
+    //statement:``,
+    custom:{
+        colors:{
+            white:'#e3e3e3',
+            'whiter':'#f3f3f3',
+            whitest:'#ffffff',
+            primary700:'red'
+        }
+    },
+    prebuild:{
+        'bg-dark':'background:#0f0f0f',
+        'flex-center':'display:flex;align-items:center;justify-content:center',
+    }
+
+    
+}
+export  default config;
+
+const xconfig= {
+    // input glob pattern or array of glob pattern
     input:'public/*.html',
-
-    //Output css file , must exist or should be created manully if not exist
-    output:'./public/css/acss.css',
-
+ 
+    // Output css file , file must exist or should be created manully if file doesnot exist
+    output:{
+        // path to main/master css file which include every compiled css declaration for given input
+        location:'./public/css/acss.css',
+        "--file":true// output css file for each file
+    },
+ 
+    //---------------Below this are all optional -------------------------
+    // Customize media prefix selector
+    media:{
+        prefix:{
+            xs:'@media (max-width : 600px)'
+        }
+    },
+    // support for css Module
+    '--module':true,
+    
+    // import module as i.e import x form 'page.module.css'
+    importModuleAs:'x',
+ 
+    // uncomment minify is true if you want main css file to be minified by cssnano
+ 
+    // minify:true,
+ 
+    // name of extractorFunction
+    extractorFunction:"x",
+     
+     // prefix aliascss  ac-bgc-red ac--hover-color-red
+    // prefix:'ac',
+ 
     //Truncate the css file , you should let it true unless you know what your are doing
     truncate:true,
-    	//input glob patterns, can be array of folder or files or both,
-
-    //    
+    	
+     //ADD Custom color Value
 	custom:{
-		color:{
+		colors:{
+            //custom name for color value  must not have  "-" or "_" to work perfectly.
 			'main':"rgb(12,23,45)",// now you can use bgc-main
 			'theme':'#c6c6c6'
-
-		},
-		length:{
-			'1cv':'25%'
+ 
 		}
-
+ 
 	},
-    // predine classname and
-	extend:{
-		//in browser-mode you can simply group class="c-blue" acss-group="color-primary"
-		'outline-color':'color: blue',
-		//now you can use it with device or seduo --hover-outline-color
-	},
-    //if you want to add some css statement 
+    // Create your own compiler 
+     extend:{
+        'font-size':{
+            alias:'fs',
+            values:["2rem:xl"],
+            compiler:(value)=>{
+                return value;
+            }
+        },
+        'txt-color':{
+            proerty:'color',  
+            extend:'color' // now you can use txt-color in place color 
+        },
+ 
+        // Now you can use shadow as className property e.g shadow-xs 
+        'shadow':{
+            property:'box-shadow',
+            compiler:(value)=>{
+                value=value.slice(1);
+                const values={
+                    '3xl': ' 0px 32px 64px -12px var(--shadow-color)',
+                    'xxxl': ' 0px 32px 64px -12px var(--shadow-color)',
+                    '2xl': ' 0px 24px 48px -12px var(--shadow-color)',
+                    'xxl': ' 0px 24px 48px -12px var(--shadow-color)',
+                    'xl': ' 0px 20px 24px -4px var(--shadow-color)',
+                    'lg': ' 0px 12px 16px -4px var(--shadow-color)',
+                    'md': ' 0px 4px 8px -2px var(--shadow-color)',
+                    'sm': ' 0px 1px 3px var(--shadow-color)',
+                    'xs': ' 0px 1px 2px var(--shadow-color)',
+                };
+                if(values.hasOwnProperty(value)) return values[value];
+            }
+         
+        }
+    },
+    // predefine className 
+	prebuild:{
+ 
+        'text-xl': 'font-size:20px;line-height:30px',
+        'text-lg': 'font-size:18px;line-height:28px',
+        'text-md': 'font-size:16px;line-height:24px',
+        'text-sm': 'font-size:14px;line-height:20px',
+        'text-xs': 'font-size:12px;line-height:18px',
+ 
+        'radius-xs':'border-radius:4px',
+ 
+        'flex-center':'display:flex;align-items:center;justify-content:center',
+    },
+    //Add some css statement in every compiled css file
 	statement:`
         :root{
-            --bg-color: teal;
+            --bg-dark-color:rgba(111,111,111,1) ;
+            --bg-light-color:rgba(21,21,21,1) ;
             --outline-color:blue;
-            --col-1:8.33%
-            --col-2:calc(var(--col-1)*2)
-            --col-3:calc(var(--col-1)*3)
-            --col-4:calc(var(--col-1)*4)
-            --col-5:calc(var(--col-1)*5)
-            --col-6:50%
-            --col-8:calc(var(--col-1)*8)
-            --col-12:100*
+    
         }
-
+ 
         body{
-            font:BlinkMacSystemFont , -apple-system , "Segoe UI" , Roboto , Oxygen , Ubuntu , Cantarell , "Fira Sans" , "Droid Sans" , "Helvetica Neue" , Helvetica , Arial , sans-serif , "Apple Color Emoji" , "Segoe UI Emoji" , "Segoe UI Symbol" , "Noto Color Emoji";
+            font-family:BlinkMacSystemFont , -apple-system , "Segoe UI"  ;
         }
-
+ 
 	`,
-
-	// group classname in single classname
+ 
+	// pre group valid Aliascss classNames in single className
 	group:{
-		'container':'p15px border1px-solid-light',
-		'row':'--hover-filter-blur1px '
+		'container':' df fdc bsbb aic flex-shrink-1 flex-grow-1 ',
+		'section':'flex-shrink0 bsbb'
 	},
-    //if some of the classname collide with other CSS framework like bootstrap and tailwindcss
-    //You wanna ignore tell aliasccss to ignore it...
-	ignore:['fs12px', 'c-red'],
-
-
+    // if some of the className collide with other CSS framework like bootstrap and tailwindcss
+    // You wanna  tell aliascss to ignore it...
+	ignore:['fs12px', 'c-red'],// these classnames will be ignored
 }

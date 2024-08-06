@@ -5,13 +5,13 @@
 AliasCSS or in short acss, is a post css processor/compiler means it lets you first define classnames in your html element then get processed to corresponig css declaration. 
 
 ## What it is?
-With aliascss you can  style your webpages using class attribute with  post-define classname, for example
+With aliascss you can  style you webpages using class attribute with  post-define classname, for example
 ```html
-<h1 class="color-red font-size12px display-inline-block"> Hello world</h1>
+<h1 class="color-red font-size-12px display-inline-block"> Hello world</h1>
 ```
 OR, using shorthand
 ```html
-<h1 class="c-red fs12px dib"> Hello world</h1>
+<h1 class="c-red fs-12px dib"> Hello world</h1>
 ```
 Here we have defined the color, font size, display properties of h1 element first,  then aliascss will compiles and defines the classname with the corresponing property and value/s  in the styles tag or stylesheets. Generally every aliascss classname hold single propery  and value for it.
 
@@ -25,10 +25,8 @@ npm install aliascss
 ```
 
 ### CDN
-```html
-<script defer src="https://cdn.jsdelivr.net/npm/aliascss/build/aliascss.js"></script>
 
-```
+[https://cdn.jsdelivr.net/npm/aliascss@latest/dist/aliascss.js](https://cdn.jsdelivr.net/npm/aliascss@latest/dist/aliascss.js)
 
 # Documentation
  If you know CSS then your know already Aliascss. Aliascss let you to apply css directly in the html with the help of post define classname. Let's assume we need to style our h1 element
@@ -46,28 +44,28 @@ npm install aliascss
 Now , if we want same result using aliascss, then
 
 ```
-<h1 class="c-gray fs18px">Hello World!</h1>
+<h1 class="c-gray fs-18px">Hello World!</h1>
     
 ```
-Or by using full semantic classname
+Or by using full semantic classnames
 
 ```
 <h1 class="color-gray font-size18px">Hello World!</h1>
     
 ```
-> Here if you look carefully the classname is doing dual responsibilty. one is defining classname and second is also defining css declaration for itself. In AliasCSS ecosystem we first use classname, then the compiler will define classname and corresponding property and value in the stylesheet/style tag.  you dont have to use aliascss compiler  in production. 
+> Here if you look carefully the classnames is doing dual responsibility. one is defining classnames and second is also defining css declaration for itself. In AliasCSS ecosystem we first use classnames, then the compiler will define classnames and corresponding property and value in the stylesheet/style tag.  you don't have to use aliascss compiler  in production. 
 
 ### Here are few other examples of post define classnames:-
 |Aliascss classnames|Short-hand |Corresponding style aplied|
 |------------------|-------------|--------------------------:|
 |`display-flex`|`df`|`display:flex`|
 |`list-style-none`|`lsn`|`list-style:none`|
-|`margin-left20px`|`ml20px`|`margin-left:20px`|
+|`margin-left-20px`|`ml20px`|`margin-left:20px`|
 |`margin-top-20px`|`mt-20px`|`margin-top:-20px`|
 |`border1px-solid-ccc`|`b1px-s-ccc`|`border:1px solid #ccc`|
 |`backgound-color-10p20p30p`|`bgc-10p20p30p`|`background-color:rgb(10%, 20%, 30%)`|
-|`opacity1`|`o1`|`opacity:1`|
-|`opacity0d5`|`o0d5`|`opacity:0.5`|
+|`opacity-1`|`o-1`|`opacity:1`|
+|`opacity-0d5`|`o-0d5`|`opacity:0.5`|
 
 
 
@@ -184,18 +182,18 @@ or using semantic classname
 #### Device Guide Table
 |AliasCSS Device Prefix| CSS Selector|
 |--|--|
+|mob|@media (max-width : 768px) |
+|mobile|@media (max-width : 768px) |
+|tab|@media  (min-width : 768px)|
+|lab|@media  (min-width : 992px) |
+|desk|@media  (min-width : 1200px) |
+|hd|@media  (min-width : 1408px) |
 |print|@media print|
 |xs|@media (max-width : 576px) |
 |sm|@media  (min-width : 576px) |
 |md|@media  (min-width : 768px) |
 |lg|@media  (min-width : 992px) |
 |xl|@media  (min-width : 1200px)|
-|hd|@media  (min-width : 1408px) |
-|_sm|@media  (max-width : 576px) |
-|_md|@media  (max-width : 768px) |
-|_lg|@media  (max-width : 992px) |
-|_xl|@media  (max-width : 1200px)|
-|_hd|@media  (max-width : 1408px) |
 
 >Any of the above prefix can be used, these prefix must be the at the begining of the classnames.
 Few examples:-
@@ -464,9 +462,9 @@ export let config= {
 
     //Truncate the css file , you should let it true unless you know what your are doing
     truncate:true,
-    	
+    	//input glob patterns, can be array of folder or files or both,
 
-      
+    //    
 	custom:{
 		color:{
 			'main':"rgb(12,23,45)",// now you can use bgc-main
@@ -480,6 +478,7 @@ export let config= {
 	},
     // predine classname and
 	extend:{
+		//in browser-mode you can simply group class="c-blue" acss-group="color-primary"
 		'outline-color':'color: blue',
 		//now you can use it with device or seduo --hover-outline-color
 	},
@@ -488,18 +487,18 @@ export let config= {
         :root{
             --bg-color: teal;
             --outline-color:blue;
-            --col-1:8.33%;
-            --col-2:calc(var(--col-1)*2);
-            --col-3:calc(var(--col-1)*3);
-            --col-4:calc(var(--col-1)*4);
-            --col-5:calc(var(--col-1)*5);
+            --col-1:8.33%
+            --col-2:calc(var(--col-1)*2)
+            --col-3:calc(var(--col-1)*3)
+            --col-4:calc(var(--col-1)*4)
+            --col-5:calc(var(--col-1)*5)
             --col-6:50%
-            --col-8:calc(var(--col-1)*8);
-            --col-12:100%
+            --col-8:calc(var(--col-1)*8)
+            --col-12:100*
         }
 
         body{
-            font-family:BlinkMacSystemFont , -apple-system , "Segoe UI" , Roboto , Oxygen , Ubuntu , Cantarell , "Fira Sans" , "Droid Sans" , "Helvetica Neue" , Helvetica , Arial , sans-serif , "Apple Color Emoji" , "Segoe UI Emoji" , "Segoe UI Symbol" , "Noto Color Emoji";
+            font:BlinkMacSystemFont , -apple-system , "Segoe UI" , Roboto , Oxygen , Ubuntu , Cantarell , "Fira Sans" , "Droid Sans" , "Helvetica Neue" , Helvetica , Arial , sans-serif , "Apple Color Emoji" , "Segoe UI Emoji" , "Segoe UI Symbol" , "Noto Color Emoji";
         }
 
 	`,
@@ -536,4 +535,10 @@ Now you can do,
   ...
   
   ```
+
+
+
+
+
+
 

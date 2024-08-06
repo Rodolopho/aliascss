@@ -1,0 +1,11 @@
+cssProps={
+
+    propertyName/Alias={
+            alias[optional]:alias for that property if ,
+            property[optional]:name of property if alias is used 
+            type[optional]:'s'=>dynamic or static 
+            compiler[optional]:()=>(),=> compiler for dynamic type
+            values[optional]:[auto:a],// static value if it has any
+    }
+
+}

@@ -1,3 +1,6 @@
-public
 node_modules
-typescript
+demo
+public
+/lib
+.npmignore
+experiments
