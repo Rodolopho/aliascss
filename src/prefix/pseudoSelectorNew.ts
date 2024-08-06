@@ -8,8 +8,8 @@ export default function PseudoEleStateNew(data:string){
     const matchAndFunc=[
         {
             match:/^-([-]?(not|has|is|where|n|hs|w))\((.+)\)/,
-            func:function (value:string){
-                let matched=value.match(this.match);
+            func(value:string){
+                const matched=value.match(this.match);
                 const newData=matched?.[3];
                 if(newData){
                     const[result,className]= extractPrefix(newData+'-display-none');
@@ -22,8 +22,8 @@ export default function PseudoEleStateNew(data:string){
         },
         {
             match:/^-([-]?n(th(-child|-last-child|-last-of-type|-of-type)|c|lc|lot|ot))\((.+)\)/,
-            func:function (value:string){
-                let matched=value.match(this.match);
+            func(value:string){
+                const matched=value.match(this.match);
                 return[value.replace(matched?.[0]?matched[0]:'',''),`${prefix['-'+matched?.[1]]}(${matched?.[4]})`]
             }
         },
