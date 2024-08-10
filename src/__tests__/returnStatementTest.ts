@@ -19,6 +19,11 @@ statement.extend(config.extend);
 
 
 describe("Test Return statement",()=>{
+
+     //StatementMaker.methods
+     test('statement from obj',()=>{
+         expect(statement.groupForJs('c-red').toString()).toBe({"color": "red"}.toString());
+     })
      // ---------new Test &-----------
      test("Return statement &",()=>{
          expect(statement.make('--hover&-bgc-primary600')).toBe(':hover .--hover\\&-bgc-primary600{background-color:var(--primary600,#7F56D9)}')

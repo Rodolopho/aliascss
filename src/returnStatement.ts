@@ -179,7 +179,7 @@ export const compiler:{
 
         return jsStyle;
   },
-  // for config
+  // obj:{'container':'p20px m-12pxx, 'section':'mt16px'}
   groupObj(obj: { [key: string]: string }) {
     if (typeof obj !== 'object') return false;
     let statement = '';
@@ -206,7 +206,28 @@ addCustom(name: string, obj: { [key: string]: string }) {
   },
 addMedia(obj:{[key:string]:string}){
     this.mediaSelector={...this.mediaSelector,...obj}
-}
+},
+// styleToAliascss(value:string,bool:boolean){
+//     let classValue='';
+//     let styleValue='';
+//     value.split(/\s*;\s*/).forEach((each)=>{
+//         const [property,value]=each.match(/:/)?each.split(':'):['',''];
+//         if(property && value){
+//             if(cssProps.hasOwnProperty(property.trim())){
+//                 classValue+=`${(bool===true && cssProps[property.trim()].alias)?cssProps[property.trim()].alias:property}-${
+//                 value.trim().replace(/['"]/g, '').replace(/#/g, '').replace(/\((^\()\)/g, (m,s)=>'-'+s.replace(/[\s]*,[\s]*/g,'-'))
+//                  .replace(/\s/g, '-').replace(/^var---/g,'-').replace(/-var-/g,'')
+//                 }`
+//             }else{
+//                 styleValue+=each+'; ';
+//             }
+
+//         }else {
+//              styleValue+=each+'; ';
+//         }
+       
+//     })
+// }
 };
 
 // ----------------------------------Extras

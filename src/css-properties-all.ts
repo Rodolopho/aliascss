@@ -1913,13 +1913,13 @@ const cssProps:{
     alias:'p',
     type:'d',
     compiler:length,
-    values:[''],
+    values:['none:n'],
 },
 'padding-block':{
     alias:'',
     type:'s',
     compiler:length,
-    values:[''],
+    values:['none:n'],
 },
 'padding-block-end':{
     alias:'pbe',

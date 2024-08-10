@@ -1,4 +1,4 @@
-
+import {getCompiler} from './lib/index.js'
 const config={
     input:['demo/**/*.html'],
     output:{
@@ -40,6 +40,12 @@ const config={
             compiler:(value)=>{
                 return value;
             }
+        },
+        $padding:{extend:'padding'},
+        'padding':{
+           alias:'p',
+            compiler:getCompiler('padding').compiler,
+            values:[...getCompiler('padding').values,'var(--padding-xs,4px):xs','8px:sm','12px:md','14px:lg','16px:xl','20px:xxl']
         },
         'shadows':{
             property:'box-shadow',

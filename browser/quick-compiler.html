@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css"> -->
 
     <title>AliasCSS: CSS Post Processor </title>
+    
 
     <style>
         [x-cloak] {
@@ -136,6 +137,16 @@
      <script src="../dist/aliascss.js"></script>
     
     <script src="./quick-compiler.js"></script>
+    <script>
+        let custom = {
+            colors: {
+                'test': 'rest'
+            }
+        }
+        //window.addEventListener("acss:init",(e)=>{
+        AliasCSS.addCustom(custom);
+        // })
+    </script>
 </body>
 
 </html>

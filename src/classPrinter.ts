@@ -55,6 +55,7 @@ export let classPrinter: ClassPrinter = {
     // new Update
     [...el.attributes].map((each)=>{
       // ------------
+      // class-group
       if( testRegExp.test(each.name)){
             let value=each.value;
             let group=each.name.replace(testRegExp,'');
