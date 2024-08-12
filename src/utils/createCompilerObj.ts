@@ -5,6 +5,7 @@ type Property = {
     property?: string,
     type?:string,
     values?:string[],
+    groups?:{[key:string]:string}
     compiler?:(a:string, b:{ [key: string]: { [key: string]: string}})=>any,
 
 }
@@ -43,6 +44,7 @@ export function staticValueCompiler(property:string,alias:string|boolean=false,v
 }
 
 export function extractProperty(className:string, data:{[key:string]:Property}){
+
             // we just need parts before '--' or __ as they can't be in property  is any;
             const splittedClassName=className.split('--')[0];
             const extractPossiblePropertyPortion = splittedClassName.match(/^[a-z-]+/);
@@ -58,7 +60,9 @@ export function extractProperty(className:string, data:{[key:string]:Property}){
 
             //  try to match whole portion with property alias
             //   From higher to lower i.e border-right-color.......border-right.....border
+            
             if (data.hasOwnProperty(propertyPortion)) {
+                
                 propertyHolder = data[propertyPortion];
             //   console.log(className,0);
             } else {
@@ -71,6 +75,7 @@ export function extractProperty(className:string, data:{[key:string]:Property}){
                     }
                 }
             }
+            
             return [propertyHolder,propertyPortion];
         };
 
@@ -89,9 +94,15 @@ export function extractProperty(className:string, data:{[key:string]:Property}){
             return staticClassNames;
         };
         // takes compiler as arguments and return compiler obj with alias and staticClassNames with Alias
-   export function createCompilerObj(obj:{[key:string]:Property},globalValue:string[]=[]):[{[key:string]:string},{[key:string]:Property}]{           
+   export function createCompilerObj(obj:{[key:string]:Property},globalValue:string[]=[]):[{[key:string]:string},{[key:string]:Property}]{    
+                   
                 const [staticClassNames,compilerObj]:[{[key:string]:string},{[key:string]:Property}]=[{},{}]
                 Object.keys(obj).map((key)=>{
+                    // check compiler for type=group
+                    if(obj[key].type==='group'){
+                        compilerObj[key]=obj[key];
+                        return
+                    }
                     // createStaticClassNames  from Obj
                     const [property, alias,values]=[(obj[key].property||key),(obj[key].property?key:(obj[key].alias||false)),[...(obj[key].values||[]),...globalValue]
                         ]
@@ -110,7 +121,7 @@ export function extractProperty(className:string, data:{[key:string]:Property}){
                         }  
                     }     
                 })          
-
+                
                 return [staticClassNames,compilerObj];
     }    
 

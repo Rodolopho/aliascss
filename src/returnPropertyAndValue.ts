@@ -4,6 +4,7 @@ type Property = {
     type:string,
     property?:string
     values:[],
+    groups?:{[key:string]:string}
     compiler:(...args: any[]) => any,
     [key:string]:any
 
@@ -19,15 +20,27 @@ export  default function getPropertyAndValue(
       custom:{[key:string]:{[key:string]:string}},
       extractProperty:any, // (a:string,b:{[key:string]:Property})=>[Property,string],
       bool:boolean=false
-      ): string[]|null|{}{
+      ): string[]|null|{} {
 
     // Case 1 StaticClassNames
     if(staticClassNames.hasOwnProperty(className)){
         return staticClassNames[className];
     }
-
+     
     const [property, propertyKey]=extractProperty(className,cssPropertiesWithAlias);
+    // console.log(propertyKey,'ttt',property)
     if(property){
+        
+        // check for type='group'
+        if(property.hasOwnProperty('type') && property.type==="group"){
+            const valuePortion=className.replace(propertyKey,'');
+            if(property.hasOwnProperty('groups') && property.groups.hasOwnProperty(valuePortion.replace(/^-/,''))){
+                return property.groups[valuePortion.replace(/^-/,'')];
+            }
+            return property.compiler(valuePortion)|| '';
+        }
+
+        // --End of Group type
         const prop=property.property?property.property:propertyKey;
 
             // Case 2: CSS Variables

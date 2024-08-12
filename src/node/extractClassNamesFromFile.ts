@@ -107,6 +107,7 @@ export default function extractClassNamesFromFile(file:string,config:config):[st
                     let classExtracted=each[2];
                     const match=group.match(/\[(.)+\]/);
                     if(match){
+                        // console.log(match);
                         group=group.replace(match[0],'');
                         classExtracted=classExtracted.trim().split(/\s+/).map(e=>match[0].replace(/^\[/,'').replace(/\]$/,'')+(/^[_-]/.test(e)?'':'-')+e).join(" "); 
                     }

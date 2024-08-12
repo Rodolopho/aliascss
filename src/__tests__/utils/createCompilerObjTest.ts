@@ -13,9 +13,39 @@
     'shadows':{
             property:'box-shadow',
             compiler:(value:string)=>value
-        }
+        },
+     'texty':{
+            type:'group',
+            compiler:(value:string)=>{
+                let result='';
+                const match=/-[-]?([\w\.]+)/;
+                const property=['font-size','line-height','letter-spacing','font-weight'];
+                value.match(new RegExp(match,'g'))?.forEach((e,i)=>{
+                    if(i<property.length){
+                        result+=`${property[i]}:${e.replace(match,'$1').replace(/(\d)d(\d)/,'$1.$2').replace(/([\d])p([\s]|$)/,'$1$2')};`;
+                    }
+                    
+                })
+                
+            },
+            groups:{xs:'font-size:12px;line-height:18px;letter-spacing:0.0025em'},
+            
+            
+        },  
  }
  
+//  test('CreateCompilerObjectCustom GroupType',()=>{
+//     expect(JSON.stringify(Creator('texty', compiler['texty']))).toEqual(JSON.stringify([
+//         {
+//          'texty':{
+//             compiler:(value:string)=>value
+//         }
+//         },
+//         {}
+//     ]))
+//     }
+//  )
+
  test('CreateCompilerObjectCustom',()=>{
     expect(JSON.stringify(Creator('shadows', compiler['shadows']))).toEqual(JSON.stringify([
         {
@@ -88,6 +118,15 @@ describe("Test generateStaticClassNames ",()=>{
 })
 describe("Test createCompileObj ",()=>{
     test('generateStaticClassNames',()=>{
+         expect(JSON.stringify(createCompilerObj(compiler,config.globalValues)).toString())
+         .toContain('background-origin-revert')
+    })
+})
+
+describe("Test createCompileObj ",()=>{
+    test('generateStaticClassNames',()=>{
+        console.log(createCompilerObj(compiler,config.globalValues));
+
          expect(JSON.stringify(createCompilerObj(compiler,config.globalValues)).toString())
          .toContain('background-origin-revert')
     })
