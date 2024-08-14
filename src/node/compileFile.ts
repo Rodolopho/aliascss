@@ -6,7 +6,6 @@ import fg from "fast-glob";
 import path from 'path';
 import postcss from 'postcss';
 import postcssDiscardDuplicates from 'postcss-discard-duplicates';
-// import postcssSort from 'postcss-sort-media-queries';
 import cssnano from 'cssnano';
 import chokidar from 'chokidar';
 
@@ -25,7 +24,6 @@ const init={
     globPattern:'',// Use this to check valid new created file to add to watch during watch.on
 
 }
-
 
 export default function main(config:{['input']:string|string[],[key:string]:any}){
     // initialize 

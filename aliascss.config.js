@@ -82,9 +82,9 @@ const config={
     prebuild:{
         'bg-dark':'background:#0f0f0f',
         'flex-center':'display:flex;align-items:center;justify-content:center',
-    }
+    },
 
-    
+   ignore:['bgc-red'] 
 }
 export  default config;
 
@@ -205,5 +205,5 @@ const xconfig= {
 	},
     // if some of the className collide with other CSS framework like bootstrap and tailwindcss
     // You wanna  tell aliascss to ignore it...
-	ignore:['fs12px', 'c-red'],// these classnames will be ignored
+	ignore:['fs12px', 'c-red','bgc-red'],// these classnames will be ignored
 }

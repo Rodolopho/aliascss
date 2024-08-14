@@ -1,6 +1,6 @@
 {
   "name": "aliascss",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "AliasCSS  is a CSS post processor.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -56,10 +56,7 @@
     "cssnano": "^7.0.4",
     "fast-glob": "^3.3.1",
     "postcss": "^8.4.39",
-    "postcss-discard-duplicates": "^7.0.0",
-    "postcss-sort-media-queries": "^5.2.0",
-    "postcss-sorting": "^8.0.2",
-    "safe-eval": "^0.4.1"
+    "postcss-discard-duplicates": "^7.0.0"
   },
   "homepage": "https://github.com/Rodolopho/acss-lite#readme"
 }
