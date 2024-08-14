@@ -28,7 +28,7 @@ export  default function getPropertyAndValue(
     }
      
     const [property, propertyKey]=extractProperty(className,cssPropertiesWithAlias);
-    // console.log(propertyKey,'ttt',property)
+    //  console.log(propertyKey,'ttt',property,className)
     if(property){
         
         // check for type='group'
@@ -37,7 +37,7 @@ export  default function getPropertyAndValue(
             if(property.hasOwnProperty('groups') && property.groups.hasOwnProperty(valuePortion.replace(/^-/,''))){
                 return property.groups[valuePortion.replace(/^-/,'')];
             }
-            return property.compiler(valuePortion)|| '';
+            return property.compiler(valuePortion,custom)|| '';
         }
 
         // --End of Group type
@@ -52,13 +52,16 @@ export  default function getPropertyAndValue(
             } 
             // case 3: CSS variable without --var keyword
             const valuePortion=className.replace(propertyKey,'');
-            if(/^--[a-z]/.test(valuePortion)){
+           
+            if(/^--[a-zA-Z]/.test(valuePortion)){
                 return  bool?[prop,"var("+valuePortion + ')']:prop+": var("+valuePortion + ')';
             }
             if(property.hasOwnProperty('compiler') && typeof property.compiler === 'function'){
              
                 // const value=property.compiler(valuePortion.replace(/^-/,'') ,custom);
                 const value=property.compiler(valuePortion ,custom);
+                // console.log(value,valuePortion,property)
+               
                 
                 if(value && value !== '-'){
                     const val=value.replace(/([-]?)([\d]|10|11|12)col/g,(m:string,p1:string,p2:string)=>`${p1}${parseFloat(((100/12)*parseFloat(p2)).toFixed(6))}%`);

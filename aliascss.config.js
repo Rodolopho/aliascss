@@ -1,4 +1,5 @@
-import {getCompiler} from './lib/index.js'
+import {getCompiler,main} from './lib/index.js'
+import { compilers } from './custom-compilers.js';
 const config={
     input:['demo/**/*.html'],
     output:{
@@ -17,25 +18,8 @@ const config={
         }
     },
     extend:{
-        'texty':{
-            type:'group',
-            compiler:(value)=>{
-                let result='';
-                const match=/-[-]?([\w\.]+)/;
-                const property=['font-size','line-height','letter-spacing','font-weight'];
-                value.match(new RegExp(match,'g')).forEach((e,i)=>{
-                    if(i<property.length){
-                        result+=`${property[i]}:${e.replace(match,'$1').replace(/(\d)d(\d)/,'$1.$2').replace(/([\d])p([\s]|$)/,'$1$2')};`;
-                    }
-                    
-                })
-                return result;
-                
-            },
-            groups:{xs:'font-size:12px;line-height:18px;letter-spacing:0.0025em'},
-            
-            
-        },
+        // Note property cannot include uppercase/number character but first character uppercase allowed
+        ...compilers,
         'txt-shadow':{
             property:'--webkit-text-shadow',
             compiler:(value)=>value
@@ -93,7 +77,6 @@ const config={
             white:'#e3e3e3',
             'whiter':'#f3f3f3',
             whitest:'#ffffff',
-            primary700:'red'
         }
     },
     prebuild:{
