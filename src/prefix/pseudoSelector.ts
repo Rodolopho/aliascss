@@ -20,9 +20,7 @@ export default function PseudoEleState(data:string){
         const cont=mch?.[3];
         return [cn,`${alias}(${cont})`]
     }else if(/(^-(-not-|-has-|-is-|-where-|n-|hs-|w-|is-)([a-z0-9\.]+)(?=[-|_]))/.test(data)){
-        console.log("matched")
         const mch=data.match(/(^-(-not-|-has-|-is-|-where-|n-|hs-|w-|is-)([a-z0-9\.]+)(?=[-|_]))/);
-        console.log(mch)
         const cn=mch?.[1]?data.replace(mch[1],''):'';
         const alias=mch?.[2]?prefix['-'+mch[2].replace(/-$/,'')]:'';
         const cont=mch?.[3];

@@ -13,7 +13,7 @@ export default function PseudoEleStateNew(data:string){
                 const newData=matched?.[3];
                 if(newData){
                     const[result,className]= extractPrefix(newData+'-display-none');
-                    console.log(newData,result,className)
+                    
                     return [value.replace(matched[0],''),`${prefix['-'+matched[1]]}(${result})`];
                 }
                     return [value.replace(matched?.[0]?matched[0]:'',''),'']
@@ -55,9 +55,9 @@ export default function PseudoEleStateNew(data:string){
         const cont=mch?.[3];
         return [cn,`${alias}(${cont})`]
     }else if(/(^-(-not-|-has-|-is-|-where-|n-|hs-|w-|is-)([a-z0-9\.]+)(?=[-|_]))/.test(data)){
-        console.log("matched")
+        
         const mch=data.match(/(^-(-not-|-has-|-is-|-where-|n-|hs-|w-|is-)([a-z0-9\.]+)(?=[-|_]))/);
-        console.log(mch)
+       
         const cn=mch?.[1]?data.replace(mch[1],''):'';
         const alias=mch?.[2]?prefix['-'+mch[2].replace(/-$/,'')]:'';
         const cont=mch?.[3];

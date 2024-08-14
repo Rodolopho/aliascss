@@ -1,6 +1,7 @@
 // custom.color will be provided {primary:'#2d3f3e....}
 export default function color(color: string, custom: { [key: string]: { [key: string]: string } }): string | undefined {
-  if(color.match(/^--[a-zA-z]/)) return `var(${color})`
+  
+  if(color.match(/^--[a-zA-Z]/)) return `var(${color})`
     color = color.replace(/^[-]/, '');
   if (custom.hasOwnProperty('colors') && typeof custom.colors === 'object') {
     if (custom.colors.hasOwnProperty(color)) return custom.colors[color];

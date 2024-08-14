@@ -391,7 +391,7 @@ watcher
          const files=fg.sync(init.globPattern,{absolute:true});
          if(files.indexOf(path)!==-1){
             watcher.add(path);
-            console.log(path,123123);
+            // console.log(path,123123);
          }
       }else{
         watcher.add(path);
