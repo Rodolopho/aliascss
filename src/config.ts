@@ -20,7 +20,7 @@ const config:{
     prefix:null,
     useColon:false,
     ignore:[],
-    useExtractorFunction:false,
+    useExtractorFunction:false, // (?<=x(`|\(['"]))([\s\w-\(\)]+)[^`"']
     matchExtractorFunction:new RegExp('(?:'+'x|@'+')' + "[\\s*]?(`|\\(["+`"'])`+ "([^)`]+)" + "(`|" + `["']` + "\\))"),
 
     useCSSModule:false,
@@ -33,7 +33,7 @@ const config:{
     matchRegExpKeyFrame:/[\s](?:(keyframes[-_][\w-]+))=[\s*]?(?:["']\W+\s*(?:\w+)\()?["']([^'"]+)['"]/,
     matchRegExpWithColonKeyFrame:/[\s](?:(keyframes[-_:][\w-]+))=[\s*]?(?:["']\W+\s*(?:\w+)\()?["']([^'"]+)['"]/,
     
-    createExtractorRegex:(fname:string)=>new RegExp('(?:'+fname+')' + "[\\s*]?(`|\\(["+`"'])`+ "([^)`]+)" + "(`|" + `["']` + "\\))"),
+    createExtractorRegex:(fname:string)=>new RegExp('(?:'+fname+')' + "[\\s*]?(`|\\(["+`"'])`+ "([^'`"+'"]+)' + "(`|" + `["']` + "\\))"),
     createCSSModuleRegex:(fname:string)=>new RegExp("(?:"+fname+")\\[[`'"+'"]([^`"'+"']+)(?:[`'"+'"]\\])'),
 
     globalValues:['initial:ini','inherit:in','unset:un', 'revert:re','revert-layer:rl'],

@@ -1,7 +1,7 @@
 import prefix,{createRegexForPseudo} from './PseudoPrefix.js';
 import extractPrefix from './extractPrefix.js';
 
-export default function PseudoEleStateNew(data:string){
+export default function PseudoEleStateNew(data:string):string[]|null{
     const match=createRegexForPseudo(prefix);
     if(!match.test(data)) return null;
 
@@ -54,14 +54,16 @@ export default function PseudoEleStateNew(data:string){
         const alias=mch?.[1]?prefix[mch[1].replace(/-$/,'')]:'';
         const cont=mch?.[3];
         return [cn,`${alias}(${cont})`]
-    }else if(/(^-(-not-|-has-|-is-|-where-|n-|hs-|w-|is-)([a-z0-9\.]+)(?=[-|_]))/.test(data)){
+    }else if(/(^-(-not|-has|-is|-where|n|hs|w|is)[-_])/.test(data)){
         
-        const mch=data.match(/(^-(-not-|-has-|-is-|-where-|n-|hs-|w-|is-)([a-z0-9\.]+)(?=[-|_]))/);
+        const mch=data.match(/(^-(-not|-has|-is|-where|n|hs|w|is)([_-]+[a-zA-Z0-9\.]+)(?=[-|_]))/);
        
         const cn=mch?.[1]?data.replace(mch[1],''):'';
         const alias=mch?.[2]?prefix['-'+mch[2].replace(/-$/,'')]:'';
-        const cont=mch?.[3];
-        return [cn,`${alias}(${cont})`]
+        const cont:string|undefined=PseudoEleStateNew(mch?.[3]+'-dn')?.[1];
+        const[result,className]= extractPrefix(mch?.[3]+'-display-none');
+        // console.log('PseudoMatch',result,cont)
+        return [cn,`${alias}(${result})`]
     }else if(/(^--lang-([a-z]+)(?=[-|_]))/.test(data)){
         const mch=data.match(/(^--lang-([a-z0-9]+)(?=[-|_]))/);
         const cn=mch?.[1]?data.replace(mch[1],''):'';
