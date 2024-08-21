@@ -2659,7 +2659,19 @@ const cssProps:{
     alias:'',
     type:'d',
     compiler:color,
+    values:['none:n','context-fill:cf','context-stroke:cs'],
+},
+'fill-opacity':{
+    alias:'fo',
+    type:'d',
+    compiler:(value:string)=>value.replace(/^-/,'').replace(/(\d)d(\d)/,'$1.$2').replace(/([\d])p$/,'$1%'),
     values:[],
+},
+'fill-rule':{
+    alias:'fr',
+    type:'d',
+    // compiler:'',
+    values:['nonzero:nz','evenodd:eo'],
 },
 
 

@@ -1,4 +1,4 @@
-import prefix,{createRegexForPseudo} from './PseudoPrefix.js';
+import prefix,{createRegexForPseudo} from './PseudoPrefixNew.js';
 import extractPrefix from './extractPrefix.js';
 
 export default function PseudoEleStateNew(data:string):string[]|null{
@@ -48,15 +48,16 @@ export default function PseudoEleStateNew(data:string):string[]|null{
       const cont=mch?.[3];
       return [cn,`${alias}(${cont})`]
         // return pseudoHandlerNthChild(data,/(^--nth(-child-|-last-child-|-last-of-type|-of-type-))([0-9]+[n]?)(?=[-|_])/)
-    }else if(/^(-(nc|nlc|nlot|not)-)([a-z0-9]+)(?=[-|_])/.test(data)){
-        const mch=data.match(/^(-(n|nc|nlc|nlot|not)-)([a-z0-9]+)(?=[-|_])/);
+    }else if(/^(--(nc|nlc|nlot|nthot)-)([a-z0-9]+)(?=[-|_])/.test(data)){
+        const mch=data.match(/^(--(n|nc|nlc|nlot|not)-)([a-z0-9]+)(?=[-|_])/);
         const cn=mch?.[0]?data.replace(mch[0],''):'';
         const alias=mch?.[1]?prefix[mch[1].replace(/-$/,'')]:'';
         const cont=mch?.[3];
+        console.log(data,cn,alias,mch)
         return [cn,`${alias}(${cont})`]
-    }else if(/(^-(-not|-has|-is|-where|n|hs|w|is)[-_])/.test(data)){
+    }else if(/(^-(-not|-has|-is|-where|-n|-hs|-w|-is)[-_])/.test(data)){
         
-        const mch=data.match(/(^-(-not|-has|-is|-where|n|hs|w|is)([_-]+[a-zA-Z0-9\.]+)(?=[-|_]))/);
+        const mch=data.match(/(^-(-not|-has|-is|-where|-n|-hs|-w|-is)([_-]+[a-zA-Z0-9\.]+)(?=[-|_]))/);
        
         const cn=mch?.[1]?data.replace(mch[1],''):'';
         const alias=mch?.[2]?prefix['-'+mch[2].replace(/-$/,'')]:'';

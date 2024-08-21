@@ -9,17 +9,17 @@ describe('Pseudo Selector',()=>{
          expect(JSON.stringify(pseudoE('--not(--hover)-bgc-red'))).toBe(JSON.stringify(['-bgc-red', ':not(:hover)']));
     })
     test('css func()',()=>{
-         expect(JSON.stringify(pseudoE('--is-ho-bgc-red'))).toBe(JSON.stringify(['-bgc-red', ':is(:hover)']));
+         expect(JSON.stringify(pseudoE('--is--ho-bgc-red'))).toBe(JSON.stringify(['-bgc-red', ':is(:hover)']));
     })
      test('css func( func())',()=>{
-         expect(JSON.stringify(pseudoE('-n(--not(_div))-bgc-red'))).toBe(JSON.stringify(['-bgc-red', ':not(:not( div))']));
+         expect(JSON.stringify(pseudoE('--n(--not(_div))-bgc-red'))).toBe(JSON.stringify(['-bgc-red', ':not(:not( div))']));
     })
      test('css func( func())',()=>{
-         expect(JSON.stringify(pseudoE('-n(_section--not(_div))-bgc-red'))).toBe(JSON.stringify(['-bgc-red', ':not( section:not( div))']));
+         expect(JSON.stringify(pseudoE('--n(_section--not(_div))-bgc-red'))).toBe(JSON.stringify(['-bgc-red', ':not( section:not( div))']));
     })
   
      test('css func( func())',()=>{
-         expect(JSON.stringify(pseudoE('-nc(2n-1)-bgc-red'))).toBe(JSON.stringify(['-bgc-red', ':nth-child(2n-1)']));
+         expect(JSON.stringify(pseudoE('--nc(2n-1)-bgc-red'))).toBe(JSON.stringify(['-bgc-red', ':nth-child(2n-1)']));
     })
 
 
@@ -34,7 +34,7 @@ describe('Pseudo Selector',()=>{
          expect(JSON.stringify(pseudoE('--nth-child-2n-bgc-red'))).toBe(JSON.stringify(['-bgc-red', ':nth-child(2n)']));
     })
     test('nc',()=>{
-         expect(JSON.stringify(pseudoE('-nc-2n-bgc-red'))).toBe(JSON.stringify(['-bgc-red', ':nth-child(2n)']));
+         expect(JSON.stringify(pseudoE('--nc-2n-bgc-red'))).toBe(JSON.stringify(['-bgc-red', ':nth-child(2n)']));
     })
 
     test('lang',()=>{
@@ -54,19 +54,19 @@ describe('Pseudo Selector',()=>{
     })
     
     test('n',()=>{
-         expect(JSON.stringify(pseudoE('-n_div-bgc-red'))).toBe(JSON.stringify(['-bgc-red', ':not( div)']));
+         expect(JSON.stringify(pseudoE('--n_div-bgc-red'))).toBe(JSON.stringify(['-bgc-red', ':not( div)']));
     })
      test('w',()=>{
-         expect(JSON.stringify(pseudoE('-w_div-bgc-red'))).toBe(JSON.stringify(['-bgc-red', ':where( div)']));
+         expect(JSON.stringify(pseudoE('--w_div-bgc-red'))).toBe(JSON.stringify(['-bgc-red', ':where( div)']));
     })
      test('-is',()=>{
-         expect(JSON.stringify(pseudoE('-is_div-bgc-red'))).toBe(JSON.stringify(['-bgc-red', ':is( div)']));
+         expect(JSON.stringify(pseudoE('--is_div-bgc-red'))).toBe(JSON.stringify(['-bgc-red', ':is( div)']));
     })
      test('hs',()=>{
-         expect(JSON.stringify(pseudoE('-hs_div-bgc-red'))).toBe(JSON.stringify(['-bgc-red', ':has( div)']));
+         expect(JSON.stringify(pseudoE('--hs_div-bgc-red'))).toBe(JSON.stringify(['-bgc-red', ':has( div)']));
     })
     test('pseudo test -afh',()=>{
-         expect(JSON.stringify(pseudoE('-afh-bgc-red'))).toBe(JSON.stringify(['-bgc-red', '::after:hover']));
+         expect(JSON.stringify(pseudoE('--afh-bgc-red'))).toBe(JSON.stringify(['-bgc-red', '::after:hover']));
     })
     test('pseudo test -afh',()=>{
          expect(JSON.stringify(pseudoE('--after-hover-bgc-red'))).toBe(JSON.stringify(['-bgc-red', '::after:hover']));

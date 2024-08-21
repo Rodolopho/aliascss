@@ -43,7 +43,7 @@ describe("Test Return statement",()=>{
          expect(statement.make('xs-bgc-red')).toBe('@media (max-width : 576px){.xs-bgc-red{background-color:red}}')
     })
     test("Return statement hover",()=>{
-         expect(statement.make('-h-bgc-red')).toBe('.-h-bgc-red:hover{background-color:red}')
+         expect(statement.make('--h-bgc-red')).toBe('.--h-bgc-red:hover{background-color:red}')
     })
     test("Return statement custom config media",()=>{
          expect(statement.make('hd-bgc-red')).toBe('@media(max-width:4000px){.hd-bgc-red{background-color:red}}')
