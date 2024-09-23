@@ -79,8 +79,20 @@ export  function globalCSSCompiler(){
 
 }
 
-export function compileFile(file:string,config:any,statementMaker:{['make']:(a:string)=>string,group:(a:string,b:string)=>string},globalClassList:string[],){
+export function compileFile(file:string,config:any,statementMaker:
+  {['make']:(a:string)=>string,group:(a:string,b:string)=>string,['rawCSS']?:string,['customGroupStatement']?:string},
+  globalClassList:string[],){
     let [globalStatement,compiledStatement,moduleStatement]=['','',''];
+
+    //  inject config.group and config.statement
+    if(statementMaker.rawCSS){
+        compiledStatement+=`/* From:aliacss.config.statement */\n${statementMaker.rawCSS}\n/* -----End:aliacss.config.statement----- */\n\n`;
+        moduleStatement+=`/* From:aliacss.config.statement */\n${statementMaker.rawCSS}\n/* ------End:aliacss.config.statement----- */\n\n`;
+    }
+    if(statementMaker.customGroupStatement){
+      compiledStatement+=`/* From:aliacss.config.group  */\n${statementMaker.customGroupStatement}\n/* -----End:aliacss.config.group----- */\n\n`;
+        moduleStatement+=`/* From:aliacss.config.group  */\n${statementMaker.customGroupStatement}\n/* -----End:aliacss.config.group----- */\n\n`;
+    }
     const [classList,groups,keyframe]= extractClassNamesFromFile(file,config)
     
 
@@ -232,15 +244,15 @@ export function postify(file:string,plugin:any[],minify:boolean=false){
 
 
 
-export function writeStatementToFile(file:string,content:string){
+export function writeStatementToFile(file:string,content:string,from?:string){
       // Check for Global
       if(init.output){
         try {
         fs.writeFileSync(
             init.output,
 
-            `\n/* Start :-----------ACSS:From aliasCSSConfig.statement------------------------*/\n${content}
-            \n/* End :-----------ACSS aliasCSSConfig.statement----------------------------*/\n
+            `\n/* Start :-----------ACSS:From aliasCSSConfig.${from}------------------------*/\n${content}
+            \n/* End :-----------ACSS aliasCSSConfig.${from}----------------------------*/\n
             `,
             {flag:'a+'}
             );
@@ -327,12 +339,14 @@ export function initialize(configFile: { [key: string]: any }) {
     // Custom CSS statement
     if (configFile.hasOwnProperty('statement')) {
       init.rawCSS = configFile.statement;
-      writeStatementToFile(init.output,configFile.statement);
+      init.statementMaker.rawCSS=configFile.statement;
+      writeStatementToFile(init.output,configFile.statement,'config.statement');
     }
     // Custom Groups bundling acss classnames in single class name
     if (configFile.hasOwnProperty('group')) {
       init.customGroupStatement = init.statementMaker.groupObj(configFile.group);
-      if (init.customGroupStatement) writeStatementToFile(init.output,init.customGroupStatement);
+      init.statementMaker.customGroupStatement = init.statementMaker.groupObj(configFile.group);
+      if (init.customGroupStatement) writeStatementToFile(init.output,init.customGroupStatement,'config.group');
     }
     // Adding Custom color, length etc
     if (configFile.hasOwnProperty('custom') && typeof configFile.custom === 'object') {

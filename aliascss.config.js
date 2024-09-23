@@ -83,12 +83,21 @@ const config={
         'bg-dark':'background:#0f0f0f',
         'flex-center':'display:flex;align-items:center;justify-content:center',
     },
-
+    group:{
+        'responsive':'xs-w-100p sm-w-540px md-w-720px lg-w-960px xl-w-1140px xxl-w-1320px',
+        'responsive-sm':'xs-w-100p sm-w-540px md-w-720px lg-w-960px xl-w-1140px xxl-w-1320px',
+        'responsive-md':'xs-w-100p sm-w-100p md-w-720px lg-w-960px xl-w-1140px xxl-w-1320px',
+        'responsive-lg':'xs-w-100p sm-w-100p md-w-100p lg-w-960px xl-w-1140px xxl-w-1320px',
+        'responsive-xl':'xs-w-100p sm-w-100p md-w-100p lg-w-100p xl-w-1140px xxl-w-1320px',
+        'responsive-xll':'xs-w-100p sm-w-100p md-w-100p lg-w-100p xl-w-100p xxl-w-1320px',
+        'responsive-fluid':'xs-w-100p sm-w-100p md-w-100p lg-w-100p xl-100p xxl-100p',
+    },
+    statement:`.color{color:red}`,
    ignore:['bgc-red'] 
 }
 export  default config;
 
-const xconfig= {
+/* const xconfig= {
     // input glob pattern or array of glob pattern
     input:'public/*.html',
  
@@ -172,6 +181,12 @@ const xconfig= {
     },
     // predefine className 
 	prebuild:{
+        //section
+        'text-xl': 'font-size:20px;line-height:30px',
+        'text-lg': 'font-size:18px;line-height:28px',
+        'text-md': 'font-size:16px;line-height:24px',
+        'text-sm': 'font-size:14px;line-height:20px',
+        'text-xs': 'font-size:12px;line-height:18px',
  
         'text-xl': 'font-size:20px;line-height:30px',
         'text-lg': 'font-size:18px;line-height:28px',
@@ -201,9 +216,11 @@ const xconfig= {
 	// pre group valid Aliascss classNames in single className
 	group:{
 		'container':' df fdc bsbb aic flex-shrink-1 flex-grow-1 ',
-		'section':'flex-shrink0 bsbb'
+		'section':'flex-shrink0 bsbb',
+        
 	},
     // if some of the className collide with other CSS framework like bootstrap and tailwindcss
     // You wanna  tell aliascss to ignore it...
 	ignore:['fs12px', 'c-red','bgc-red'],// these classnames will be ignored
 }
+*/

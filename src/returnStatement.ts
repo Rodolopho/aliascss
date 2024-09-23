@@ -25,6 +25,8 @@ export const compiler:{
     staticClassNames:{...staticClassNamesAlias,...staticClassNamesWithAlias},
     cssProps:{...cssPropsWithAlias},
     prefix:null,
+    rawCSS:null,
+    customGroupStatement:null,
 
     extend(data:{[key:string]:Property}){
         Object.keys(data).forEach((key)=>{

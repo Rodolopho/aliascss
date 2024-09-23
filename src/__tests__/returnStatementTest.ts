@@ -11,7 +11,11 @@ const config={
             shadow:{
                 property:'box-shadow',
             }
-    }
+    },
+    groups:{
+     container:'xs-w333px'
+    },
+
 }
 statement.mediaSelector={...config.media.prefix,...statement.mediaSelector}
 const [s,c]=createCompilerObj(config.extend)
@@ -21,6 +25,7 @@ statement.extend(config.extend);
 describe("Test Return statement",()=>{
 
      //StatementMaker.methods
+     console.log(statement.make('container'))
      test('statement from obj',()=>{
          expect(statement.groupForJs('c-red').toString()).toBe({"color": "red"}.toString());
      })
