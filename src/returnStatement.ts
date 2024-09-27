@@ -8,6 +8,7 @@ import {createCompilerObj, extractProperty} from "./utils/createCompilerObj.js";
 import config from "./config.js";
 import cssProps from "./css-properties-all.js";
 import { staticClassNamesAlias } from "./static/staticClassNamesAlias.js";
+import postcss from "postcss";
 
 const [staticClassNamesWithAlias, cssPropsWithAlias]=createCompilerObj(cssProps,config.globalValues);
 
@@ -113,16 +114,39 @@ export const compiler:{
             }
             
         }
+        // if(result){
+        //     className=className.replace(/([$.&%=\]\[@~:*#+\(\)\/^])/g,'\\$1');
+        //     if(bool===true) return result;
+        //     this.cache.propertyAndValue[pnv]=result;
+        //     if(media){
+        //         return `${media}{${
+        //                beforeClassNameSelector+'.'+(as?as:className)+ elementAndPseudo
+        //              }{${result}${important}}}`;
+        //     }else{
+        //         return `${beforeClassNameSelector}.${(as?as:className)}${elementAndPseudo}{${result}${important}}`;
+        //     }
+
+        // }else{
+        //     console.log(`Unable to process ${className} [media:${media},pseudoSelector:${elementAndPseudo},imp:${important}]`)
+        // }
+        // ------------PostCSSParse
         if(result){
+            let stm='';
             className=className.replace(/([$.&%=\]\[@~:*#+\(\)\/^])/g,'\\$1');
             if(bool===true) return result;
             this.cache.propertyAndValue[pnv]=result;
             if(media){
-                return `${media}{${
+                stm=`${media}{${
                        beforeClassNameSelector+'.'+(as?as:className)+ elementAndPseudo
                      }{${result}${important}}}`;
             }else{
-                return `${beforeClassNameSelector}.${(as?as:className)}${elementAndPseudo}{${result}${important}}`;
+                stm= `${beforeClassNameSelector}.${(as?as:className)}${elementAndPseudo}{${result}${important}}`;
+            }
+            try {
+                postcss.parse(stm);
+                return stm;
+            } catch (error) {
+                console.log('Not a Valid CSS Statement, PostCSS Parse:',stm);
             }
 
         }else{
