@@ -3,13 +3,13 @@ import { compilers } from './custom-compilers.js';
 const config={
     input:['demo/**/*.html'],
     output:{
-        location:'demo/acss.css',
+        location:'demo/css/css/style/acss.css',
         "--file":true
     },
     '--module':true,
     prefix:'',
     importModuleAs:'x',
-    // minify:true,
+    minify:true,
     extractorFunction:"x|@",
     //reg:new RegExp('x' + "(`|\\(["+`"'])`+ "(.+)" + "(`|" + `["']` + "\\))") ,
     media:{
@@ -50,6 +50,14 @@ const config={
             compiler:getCompiler('padding').compiler,
             values:[...getCompiler('padding').values,'var(--padding-xs,4px):xs','8px:sm','12px:md','14px:lg','16px:xl','20px:xxl']
         },
+        'px':{
+            type:'group',
+            compiler:(value)=>{
+                // const value=
+
+            }
+        },
+        'py':{},
         'shadows':{
             property:'box-shadow',
             //alias:'sdo',
@@ -80,7 +88,8 @@ const config={
         }
     },
     prebuild:{
-        'bg-dark':'background:#0f0f0f',
+        'colorize-dark':'background:#0f0f0f;color:#e3e3e3',
+        'colorize-light':'background:#e3e3e3;color:rgba(0,0,0,0.8)',
         'flex-center':'display:flex;align-items:center;justify-content:center',
     },
     group:{

@@ -1,7 +1,7 @@
 export const customStaticClassNames: { [key: string]: string } = {
   // ----------------------Border-Radius
   "radius-none":'border-radius:var(--radius-none,0px)',
-  "radius-xxs":'border-radius:var(--radius-xxs,2ppx)',
+  "radius-xxs":'border-radius:var(--radius-xxs,2px)',
   "radius-xs":'border-radius:var(--radius-xs,4px)',
   "radius-sm":'border-radius:var(--radius-sm,6px)',
   "radius-md":'border-radius:var(--radius-md,8px)',

@@ -2545,23 +2545,28 @@ const cssProps:{
 
 },
 'view-timeline':{
+    alias:'vt',
     compiler:(value:string)=>"-"+value.replace(/-(block|inline|x|y)/,' $1'),
     values:['none block:none-block','none inline:none-inline','none x:none-x','none y:none-y']
 },
 'view-timeline-name':{
+    alias:'vtn',
     compiler:(value:string)=>"-"+value,
     'values':['none:n']
 },
 
 'view-timeline-axis':{
+    alias:'vta',
     // compiler:'',
     values:['block:b','inline:i','y','x']
 },
 'view-timeline-inset':{
+    alias:'vti',
     compiler:length,
     values:['auto:a']
 },
 'view-transition-name':{
+    'alias':'vtn2',
     compiler:(value:string)=>value.replace(/^-/,''),
     'values':['none:n']
 },
@@ -2575,10 +2580,11 @@ const cssProps:{
     values:['normal:nl','nowrap:nw','pre:p','pre-line:pl','pre-wrap:pw','break-spaces:bs'],
 },
 'white-space-collapse':{
+    alias:'wsc',
     values:['collapse:c','preserve:p','preserve-breaks:pb','preserve-spaces:ps','break-spaces:bs']
 },
 'widows':{
-    alias:'win',
+    alias:'wid',
     type:'d',
     compiler:length,
     values:[''],

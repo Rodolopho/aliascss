@@ -2,14 +2,14 @@
 import path from 'path';
 import fs from 'fs'
 import  main,{watch} from "../lib/node/compileFile.js";
-import pkg from '../package.json' assert { type: "json" };
+// import pkg from '../package.json' assert { type: "json" };
 
 
 const argSupplied=process.argv;
 
 //Version
 if(argSupplied.indexOf('--version')!=-1){
-    console.log( 'version' ,pkg.version);
+    console.log( 'version' ,'@1.x.x');
      process.exit();
 }
 //Initialize args
@@ -37,17 +37,17 @@ if(isModule){
 
 if(isConfigFile && fs.existsSync(path.resolve(configFileName))){
     let configFile=await import(path.resolve(configFileName));
-    //check if it has input and out file
+    // check if it has input and out file
+
+    // create output file if not exist 
     if(configFile.default.hasOwnProperty('output') && configFile.default.output.location ){
+        const output=configFile.default.output.location;
+            if(!fs.existsSync(path.resolve(output))){
+                fs.mkdirSync(path.dirname(output),{recursive:true});
+                fs.closeSync(fs.openSync(output,'w'));
+            }
     
-    //     fs.closeSync(fs.openSync(configFile.default.output.location, 'w'));
-
-    //    if(!fs.existsSync(path.resolve(configFile.default.output.location))){
-    //         console.error('Please check  if output property in aliascss.config.js  has location to the output file');
-    //         process.exit();
-    //    }
-
-        //check for input in config file
+        // check for input in config file
         if(!configFile.default.input){
             console.error('No Input to Process : Provide input (glob-pattern) in input property of aliascss.config.js');
             process.exit();
@@ -59,7 +59,7 @@ if(isConfigFile && fs.existsSync(path.resolve(configFileName))){
         }
 
  }else{
-    console.error('Please check  if there is output property in aliascss.config.js and it has valid path to the output file');
+    console.error('Please check input/output property in aliascss.config.js ');
     process.exit();
 }
 
@@ -70,6 +70,12 @@ if(isConfigFile && fs.existsSync(path.resolve(configFileName))){
     let input=argSupplied[2];
     // console.log(argSupplied[2]);
     let output=argSupplied[3];
+
+    if(!fs.existsSync(path.resolve(output))){
+        fs.mkdirSync(path.dirname(output),{recursive:true});
+        fs.openSync(output,'w');
+    }
+
     if(fs.existsSync(path.resolve(output)) && input){
 
         let config={

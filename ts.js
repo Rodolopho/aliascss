@@ -3,23 +3,22 @@ import postcss from 'postcss';
 
 import path from 'path'
 import safeParse from 'postcss-safe-parser';
+import * as fs from 'fs';
 let config=await import(path.resolve('aliascss.config.js'))
-console.log(config.default.input);
+console.log(path.dirname('button/hello/hello.txt'));
 // watch({input:['./demo/**/*.html'],output:{location:'./demo/acss.css','--file':true}});
-//const safe = require('postcss-safe-parser')
+// fs.openSync('button/hello/hello.txt','w');
 
-const badCss = 'a {'
+// fs.mkdirSync('button/hello',{recursive:true})
 
-// postcss().process('.border{color:::red', { parser: safeParse }).then(result => {
-// postcss().process('.border::hover{##transform:srrrr}', { }).then(result => {
-//   //result.css //= 'a {}'
-//   console.log(result.css);
-// }).catch((e)=>{
-//     console.log('Error')
-// })
+let cpath="button/hello/hell0/s.js";
+let dir=path.dirname(cpath);
+if(fs.existsSync(dir)){
+    console.log('Already exists')
 
-console.log(postcss.parse(`@media (max-width : 576px){
-    .xs-bgc-red{background-color:red}
-}`));
-console.log(postcss.parse('.button{color:red}'));
-console.log(postcss([]).process('.button{color:::red').css);
+}else{
+    fs.mkdirSync(dir,{recursive:true});
+   
+    console.log('Dir Created')
+}
+fs.openSync(cpath,'w');
