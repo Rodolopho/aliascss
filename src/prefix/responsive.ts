@@ -23,6 +23,8 @@ const  media :{
         '-xl': '@media (max-width : 1200px)',
         '-xxl': '@media (max-width : 1408px)',
         '-2xl': '@media (max-width : 1408px)',
+        'dark':'@media (prefers-color-scheme: dark)',
+        'light':'@media (prefers-color-scheme: light)'
     },
 
 }

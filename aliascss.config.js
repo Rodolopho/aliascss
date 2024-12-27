@@ -91,6 +91,8 @@ const config={
         'colorize-dark':'background:#0f0f0f;color:#e3e3e3',
         'colorize-light':'background:#e3e3e3;color:rgba(0,0,0,0.8)',
         'flex-center':'display:flex;align-items:center;justify-content:center',
+        'absolute-center':'position:absolute;top:0;right:0;left:0;bottom:0:margin:auto',
+        'sr-only':'position:absolute;overflow:hidden;clip:rect(0 0 0 0);height:1px;width:1px;margin:-1px;padding:0;border:0',
     },
     group:{
         'responsive':'xs-w-100p sm-w-540px md-w-720px lg-w-960px xl-w-1140px xxl-w-1320px',

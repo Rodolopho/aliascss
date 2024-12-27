@@ -986,7 +986,7 @@ const cssProps:{
     values:['content:c','fixed:f'],
 },
 'filter':{
-    alias:'',
+    alias:'fl',
     type:'d',
     compiler:filter,
     values:['none:n','invert():invert:i','sepia():sepia:se','grayscale():grayscale:gs'],
@@ -2717,7 +2717,21 @@ const cssProps:{
     // compiler:'',
     values:['arcs','bevel','iter','miter-clip','round'],
 },
-
+// -------------webkit---
+'webkit-line-cramp':{
+    alias:'',
+    property:'-webkit-line-clamp',
+    type:'d',
+    compiler:(value:string)=>value.replace(/^-/,''),
+    values:['none:n'],
+},
+'webkit-box-orient':{  // deprecated
+    alias:'',
+    property:'-webkit-box-orient',
+    type:'s',
+    // compiler:(value:string)=>value.replace(/^-/,''),
+    values:['horizontal:h','vertical:v','inline-axis:ia','block-axis:ba'],
+}
 
 }
 

@@ -26,6 +26,19 @@ export  default function getPropertyAndValue(
     if(staticClassNames.hasOwnProperty(className)){
         return staticClassNames[className];
     }
+    // case CSS define var
+
+    if(className.startsWith('--') && className.includes(':')){
+        const value=className.slice(className.indexOf(':')).replace(':','');
+        const property=className.replace(value,'').replace(':','');
+        if(/^--[a-zA-Z]/.test(value)){
+                return  bool?[property,"var("+value + ')']:property+": var("+value+ ')';
+        }else{
+            return bool?[property,value.replace(/[-]([-]?[\w])/g,' $1').replace(/([\d])d([\d])/g,'$1.$2').replace(/([\d])p[\s]/g,"$1% ").replace(/([\d])p$/,"$1%").replace(/[\s]by[\s]/g,' / ').replace(/auto flow/g,'auto-flow')]
+            :
+            property+":"+value.replace(/[-]([-]?[\w])/g,' $1').replace(/([\d])d([\d])/g,'$1.$2').replace(/([\d])p[\s]/g,"$1% ").replace(/([\d])p$/,"$1%").replace(/[\s]by[\s]/g,' / ').replace(/auto flow/g,'auto-flow'); 
+        }
+    }
      
     const [property, propertyKey]=extractProperty(className,cssPropertiesWithAlias);
     //  console.log(propertyKey,'ttt',property,className)

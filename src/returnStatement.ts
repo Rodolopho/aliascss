@@ -91,7 +91,8 @@ export const compiler:{
         elementAndPseudo=prefixPseudoElementAttribute[0];
         // ---------------------------------------------------------------------
         
-        const pnv=workingClassName.replace(/^-/,'');
+        const pnv=workingClassName.replace(/^-([a-zA-Z])/,'$1');
+        
         let result :any ='';
         // x-class
         
@@ -130,6 +131,7 @@ export const compiler:{
         //     console.log(`Unable to process ${className} [media:${media},pseudoSelector:${elementAndPseudo},imp:${important}]`)
         // }
         // ------------PostCSSParse
+
         if(result){
             let stm='';
             className=className.replace(/([$.&%=\]\[@~:*#+\(\)\/^])/g,'\\$1');

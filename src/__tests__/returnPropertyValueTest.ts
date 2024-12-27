@@ -10,6 +10,12 @@ describe('Return property and value test',()=>{
     test('getProperty and Value Test',()=>{
         expect(getPropertyAndValue('bgc-grayDark400',compilerObj,staticClassNames,{colors:customColors},extractProperty)).toBe('background-color:var(--grayDark400,#94969C)')
     })
+    test('define CSS Var token',()=>{
+        expect(getPropertyAndValue('--bgc-gray:200p',compilerObj,staticClassNames,{colors:customColors},extractProperty)).toBe('--bgc-gray:200%')
+    })
+    test('define CSS Var token with css-vars',()=>{
+        expect(getPropertyAndValue('--bgc-gray:--gray-200px',compilerObj,staticClassNames,{colors:customColors},extractProperty)).toBe('--bgc-gray: var(--gray-200px)')
+    })
     test('getProperty and Value Test',()=>{
         expect(getPropertyAndValue('bgc-gray400',compilerObj,staticClassNames,{colors:customColors},extractProperty)).toBe('background-color:var(--gray400,#98A2B3)')
     })
