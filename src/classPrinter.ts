@@ -81,11 +81,12 @@ export let classPrinter: ClassPrinter = {
            if( testRegExpKF.test(each.name)){
             const key=each.name.replace(testRegExpKF,'');
               let kfStatement='@keyframes '+ key +"{\n";
+              const returnPnV=(e:string[])=>e.map((i)=>statementMaker.make(i,undefined,true)).join(";");
               const split=each.value.trim().split(/\s+/);
               split.forEach((each:string) => {
                 try {
-                  const[at,pNv]=each.replace("-","=").split("=");
-                  const result=statementMaker.make(pNv,undefined,true);
+                  const[at,pNv]=each.replace(/\]\[/,']-[').replace("-","=").split("=");
+                  const result=returnPnV(pNv.replace(/^\[|\]$/g,'').split(','));
                   kfStatement+=` ${at.replace('@','').replace(/:/g,',').replace(/,/g,"%,").replace(/[\[|\]]/g,'')}% {${result?result:''}}`
                 } catch (error) {
                   console.log('invalid Entry for AliasCSS keyframes processor : '+each,error);

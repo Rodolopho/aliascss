@@ -53,7 +53,7 @@ export default function PseudoEleStateNew(data:string):string[]|null{
         const cn=mch?.[0]?data.replace(mch[0],''):'';
         const alias=mch?.[1]?prefix[mch[1].replace(/-$/,'')]:'';
         const cont=mch?.[3];
-        console.log(data,cn,alias,mch)
+        // console.log(data,cn,alias,mch)
         return [cn,`${alias}(${cont})`]
     }else if(/(^-(-not|-has|-is|-where|-n|-hs|-w|-is)[-_])/.test(data)){
         

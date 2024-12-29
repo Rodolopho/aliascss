@@ -155,11 +155,13 @@ export function groupStatement(name:string,classNames:string,statementMaker:{['g
 
 export function keyframesStatement(name:string,timeLine:string,statementMaker:{['make']:(a:string,b?:string|null,c?:boolean)=>string}){
         let kfStatement='@keyframes '+ name +"{\n";
+        const returnPnV=(e:string[])=>e.map((i)=>statementMaker.make(i,null,true)).join(";");
         const split=timeLine.split(/\s+/);
         split.forEach((each:string) => {
           try {
-            const[at,pNv]=each.replace("-","=").split("=");
-            kfStatement+=` ${at.replace('@','').replace(/:/g,',').replace(/,/g,"%,").replace(/[\[|\]]/g,'')}% {${statementMaker.make(pNv,null,true)}}`    
+            const[at,pNv]=each.replace(/\]\[/,']-[').replace("-","=").split("=");
+
+            kfStatement+=` ${at.replace('@','').replace(/:/g,',').replace(/,/g,"%,").replace(/[\[|\]]/g,'')}% {${returnPnV(pNv.replace(/^\[|\]$/g,'').split(','))}}`    
           } catch (error) {
             console.error('Not a valid entry for AliasCSS keyframes processor : '+each, error)
           }

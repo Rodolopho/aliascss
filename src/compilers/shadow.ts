@@ -30,7 +30,7 @@ data.split(/__/).forEach((e)=>{
     
       // search for length /()/
 })
-return compileValue.replace(/[,]$/,'').trim();
+return compileValue.replace(/[,]$/,'').replace(/%x/g,'%').trim();
 }
 
 const ref =`/* Keyword values */

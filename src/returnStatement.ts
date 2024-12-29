@@ -51,6 +51,16 @@ export const compiler:{
     // className as another-name, bool->only return property and value
     make(className:string,as?:string, bool?:boolean){
         let unPrefixedClassName=className;
+        // check for [group-acss,]
+        const matchGroupCSS=className.match(/\[([^[]*)\]$/);
+        if(matchGroupCSS){
+            
+            const asString=matchGroupCSS[1]
+            .split(',')
+            .map(e=>(className.replace(matchGroupCSS[0],'')+"-").replace(/--$/,'-')+e)
+            .join(' ');
+            return this.group(asString,className);
+        }
         let beforeClassNameSelector='';
         if(this.prefix && !className.match(new RegExp('^'+this.prefix+"[-]"))){
             return null;
@@ -72,8 +82,11 @@ export const compiler:{
            if(!beforeClassNameSelector.trim()){
                 console.error('Not a valid AliasCSS className:'+className,'Make sure to provide valid css aliascss selector before "&" identifier');
                 return null;
+           }else{
+            beforeClassNameSelector=beforeClassNameSelector.replace(/^([\s]?[+~>])(.*)/,"$2$1 ");
            }
            workingClassName=workingClassName.replace(before,'').replace('&','');
+           
            
         }
 
@@ -134,15 +147,15 @@ export const compiler:{
 
         if(result){
             let stm='';
-            className=className.replace(/([$.&%=\]\[@~:*#+\(\)\/^])/g,'\\$1');
+            className=(as?as:className).replace(/([$.&%=\]\[@~,:*#+\(\)\/^])/g,'\\$1');
             if(bool===true) return result;
             this.cache.propertyAndValue[pnv]=result;
             if(media){
                 stm=`${media}{${
-                       beforeClassNameSelector+'.'+(as?as:className)+ elementAndPseudo
+                       beforeClassNameSelector+'.'+className+ elementAndPseudo
                      }{${result}${important}}}`;
             }else{
-                stm= `${beforeClassNameSelector}.${(as?as:className)}${elementAndPseudo}{${result}${important}}`;
+                stm= `${beforeClassNameSelector}.${className}${elementAndPseudo}{${result}${important}}`;
             }
             try {
                 postcss.parse(stm);

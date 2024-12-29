@@ -29,6 +29,11 @@ describe("Test Return statement",()=>{
      test('statement from obj',()=>{
          expect(statement.groupForJs('c-red').toString()).toBe({"color": "red"}.toString());
      })
+     test('statement from group inline-group [acss,acss]',()=>{
+         expect(statement.make('--h-[data-hello=sello][bgc-red,df]')).toBe(`.--h-\\[data-hello\\=sello\\]\\[bgc-red\\,df\\]:hover[data-hello="sello"]{background-color:red} 
+.--h-\\[data-hello\\=sello\\]\\[bgc-red\\,df\\]:hover[data-hello="sello"]{display: flex} 
+`);
+     })
      test('statement from obj',()=>{
          expect(statement.groupForJs('--c:red').toString()).toBe({"--cu": "red"}.toString());
      })
@@ -39,6 +44,9 @@ describe("Test Return statement",()=>{
 
      test("Return statement &",()=>{
          expect(statement.make('--is(_html[class~=dark])&-bgc-red')).toBe(':is( html[class~=\"dark\"]) .--is\\(_html\\[class\\~\\=dark\\]\\)\\&-bgc-red{background-color:red}')
+     })
+     test("Return statement &",()=>{
+         expect(statement.make('__.error&-bgc-red')).toBe(' .error  > .__\\.error\\&-bgc-red{background-color:red}')
      })
      //----------------
     test("Return statement",()=>{

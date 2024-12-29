@@ -1,7 +1,7 @@
 import {getCompiler,main} from './lib/index.js'
 import { compilers } from './custom-compilers.js';
 const config={
-    input:['demo/**/*.html'],
+    input:['experiments/**/*.html'],
     output:{
         location:'demo/css/css/style/acss.css',
         "--file":true
