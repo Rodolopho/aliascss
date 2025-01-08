@@ -1,21 +1,38 @@
 
-type Property = {
-    alias:string,
-    type:string,
+type EProperty = {
+    alias?:string,
+    type?:string,
     property?:string
-    values:[],
+    values?:string[],
     groups?:{[key:string]:string}
     compiler:(...args: any[]) => any,
-    [key:string]:any
+
+}
+type Property = {
+    alias?:string,
+    property?: string,
+    type?:string,
+    values?:string[],
+    groups?:{[key:string]:string}
+    // compiler?:(a:string, b:{ [key: string]: { [key: string]: string}})=>any,
+    compiler?:(...args: any[]) => any,
+
+}
+type xProperty = {
+    alias?:string,
+    property?: string,
+    test?:RegExp,
+    type?:string,
+    values?:string[],
+    compiler?:(a:string, b:{ [key: string]: { [key: string]: string}})=>any,
 
 }
 
 
 
-
 export  default function getPropertyAndValue(
     className:string,
-     cssPropertiesWithAlias:{},
+     cssPropertiesWithAlias:{[key:string]:Property},
       staticClassNames:{[key:string]:string},
       custom:{[key:string]:{[key:string]:string}},
       extractProperty:any, // (a:string,b:{[key:string]:Property})=>[Property,string],
@@ -34,6 +51,15 @@ export  default function getPropertyAndValue(
         if(/^--[a-zA-Z]/.test(value)){
                 return  bool?[property,"var("+value + ')']:property+": var("+value+ ')';
         }else{
+            // check for string and color
+            if(/color$/.test(property)){
+                console.log(cssPropertiesWithAlias.color)
+                const v=cssPropertiesWithAlias.color.compiler?cssPropertiesWithAlias.color.compiler(value,custom):value;
+                 return  bool?[property,v]:property+":"+ v;
+            }else if(/text$/.test(property)){
+                const v='"'+value.replace(/([_]?)[_]/g,'$1 ').replace(/_[\s]/g,'_')+'"';
+                 return  bool?[property,v]:property+":"+ v;
+            }
             return bool?[property,value.replace(/[-]([-]?[\w])/g,' $1').replace(/([\d])d([\d])/g,'$1.$2').replace(/([\d])p[\s]/g,"$1% ").replace(/([\d])p$/,"$1%").replace(/[\s]by[\s]/g,' / ').replace(/auto flow/g,'auto-flow')]
             :
             property+":"+value.replace(/[-]([-]?[\w])/g,' $1').replace(/([\d])d([\d])/g,'$1.$2').replace(/([\d])p[\s]/g,"$1% ").replace(/([\d])p$/,"$1%").replace(/[\s]by[\s]/g,' / ').replace(/auto flow/g,'auto-flow'); 
