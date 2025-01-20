@@ -69,14 +69,26 @@ export const customStaticClassNames: { [key: string]: string } = {
   "width-5xl":'width:var(--width-5xl,1600px)',
   "width-6xl":'width:var(--width-6xl,1920px)',
 
-  "max-width-desktop":'width:var(--max-width-desktop,1280px)',
-  "container-max-width-desktop":'width:var(--max-width-desktop,1280px)',
-  "paragraph-max-width":'width:var(--max-width-desktop,720px)',
+  "max-width-desktop":'max-width:var(--max-width-desktop,1280px)',
+  "desktop-width-desktop":'width:var(--width-desktop,1280px)',
+  "width-tablet":'width:var(--width-tablet,768px)',
+  "max-width-tablet":'max-width:var(--max-width-tablet,768px)',
+  "width-mobile":'width:var(--width-mobile,375px)',
+  "max-width-mobile":'max-width:var(--max-width-mobile,375px)',
+  "container-max-width-desktop":'max-width:var(--container-max-width-desktop,1280px)',
+  "paragraph-max-width":'max-width:var(--paragraph-max-width,720px)',
 
 
   // ---old
 
   'flex-center': 'display:flex; justify-content:center;align-items:center',
+  'inline-flex-center': 'display:inline-flex; justify-content:center;align-items:center',
+  'grid-center': 'display:grid; justify-content:center;align-content:center',
+  'inline-grid-center': 'display:inline-grid; justify-content:center;align-content:center',
+  'absolute-center':"position:absolute;margin:auto;top:0;left:0;right:0;bottom:0;",
+  'fixed-center':"position:fixed;margin:auto;top:0;left:0;right:0;bottom:0;",
+  'sr-only':'position:absolute;overflow:hidden;clip-path:rect(0 0 0 0);height:1px;width:1px;margin:-1px;padding:0;border:0',
+
 
 
   'display-2xl': 'font-size:72px ; line-height:90px ; letter-spacing:-0.02em',

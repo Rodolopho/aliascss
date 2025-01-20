@@ -28,6 +28,7 @@ type Property = {
     test?:RegExp,
     type?:string,
     values?:string[],
+    groups?:{[key:string]:string},
     compiler?:(a:string, b:{ [key: string]: { [key: string]: string}})=>any,
 
 }
@@ -2734,7 +2735,181 @@ const cssProps:{
     type:'s',
     // compiler:(value:string)=>value.replace(/^-/,''),
     values:['horizontal:h','vertical:v','inline-axis:ia','block-axis:ba'],
+},
+'webkit-tap-highlight-color':{  // deprecated
+    alias:'',
+    property:'-webkit-tap-highlight-color',
+    type:'s',
+     compiler:color,
+    values:['transparent:t'],
+},
+// Custom
+
+// padding, margin
+'padding-x':{
+    type:'group',
+    compiler:(y)=>{
+        if(/^--[a-z]/.test(y)){
+            return `padding-left:var(${y});padding-right:var(${y})`;
+        }
+        const value=y.split('-');
+        if(value.length===3){
+            return `padding-left:${value[1]};padding-right:${value[2]}`;
+        }else if(value.length===2){
+            return `padding-left:${value[1]};padding-right:${value[1]}`;
+        }
+        // else{
+        //     return `padding-left:${y};padding-right:${y}`;
+        // }
+        },
+    groups:{
+        0:"padding-left:0;padding-right:0",
+    },
+},
+'px':{
+    type:'group',
+    compiler:(y)=>{
+        if(/^--[a-z]/.test(y)){
+            return `padding-left:var(${y});padding-right:var(${y})`;
+        }
+        const value=y.split('-');
+        if(value.length===3){
+            return `padding-left:${value[1]};padding-right:${value[2]}`;
+        }else if(value.length===2){
+            return `padding-left:${value[1]};padding-right:${value[1]}`;
+        }
+        // else{
+        //     return `padding-left:${y};padding-right:${y}`;
+        // }
+        },
+    groups:{
+        0:"padding-left:0;padding-right:0",
+    },
+},
+
+'padding-y':{
+    type:'group',
+    compiler:(y)=>{
+        if(/^--[a-z]/.test(y)){
+            return `padding-top:var(${y});padding-bottom:var(${y})`;
+        }
+        const value=y.split('-');
+        if(value.length===3){
+            return `padding-top:${value[1]};padding-bottom:${value[2]}`;
+        }else if(value.length===2){
+            return `padding-top:${value[1]};padding-bottom:${value[1]}`;
+        }
+        // else{
+        //     return `padding-top:${y};padding-bottom:${y}`;
+        // }
+        },
+    groups:{
+        0:"padding-top:0;padding-bottom:0",
+    },
+},
+'py':{
+    type:'group',
+    compiler:(y)=>{
+        if(/^--[a-z]/.test(y)){
+            return `padding-top:var(${y});padding-bottom:var(${y})`;
+        }
+        const value=y.split('-');
+        if(value.length===3){
+            return `padding-top:${value[1]};padding-bottom:${value[2]}`;
+        }else if(value.length===2){
+            return `padding-top:${value[1]};padding-bottom:${value[1]}`;
+        }
+        // else{
+        //     return `padding-top:${y};padding-bottom:${y}`;
+        // }
+        },
+    groups:{
+        0:"padding-top:0;padding-bottom:0",
+    },
+},
+// Margin
+'margin-x':{
+    type:'group',
+    compiler:(y)=>{
+        if(/^--[a-z]/.test(y)){
+            return `margin-left:var(${y});margin-right:var(${y})`;
+        }
+        const value=y.replace(/--/g,'-M').split('-');
+        if(value.length===3){
+            return `margin-left:${value[1].replace("M",'-')};margin-right:${value[2].replace("M",'-')}`;
+        }else if(value.length===2){
+            return `margin-left:${value[1].replace("M",'-')};margin-right:${value[1].replace("M",'-')}`;
+        }
+        // else{
+        //     return `margin-left:${y};margin-right:${y}`;
+        // }
+        },
+    groups:{
+        0:"margin-left:0;margin-right:0",
+    },
+},
+'mx':{
+    type:'group',
+    compiler:(y)=>{
+        if(/^--[a-z]/.test(y)){
+            return `margin-left:var(${y});margin-right:var(${y})`;
+        }
+        const value=y.replace(/--/g,'-M').split('-');
+        if(value.length===3){
+            return `margin-left:${value[1].replace("M",'-')};margin-right:${value[2].replace("M",'-')}`;
+        }else if(value.length===2){
+            return `margin-left:${value[1].replace("M",'-')};margin-right:${value[1].replace("M",'-')}`;
+        }
+        // else{
+        //     return `margin-left:${y};margin-right:${y}`;
+        // }
+        },
+    groups:{
+        0:"margin-left:0;margin-right:0",
+    },
+},
+
+'margin-y':{
+    type:'group',
+    compiler:(y)=>{
+        if(/^--[a-z]/.test(y)){
+            return `margin-top:var(${y});margin-bottom:var(${y})`;
+        }
+        const value=y.replace(/--/g,'-M').split('-');
+        if(value.length===3){
+            return `margin-top:${value[1].replace("M",'-')};margin-bottom:${value[2].replace("M",'-')}`;
+        }else if(value.length===2){
+            return `margin-top:${value[1].replace("M",'-')};margin-bottom:${value[1].replace("M",'-')}`;
+        }
+        // else{
+        //     return `margin-top:${y};margin-bottom:${y}`;
+        // }
+        },
+    groups:{
+        0:"margin-top:0;margin-bottom:0",
+    },
+},
+'my':{
+    type:'group',
+    compiler:(y)=>{
+        if(/^--[a-z]/.test(y)){
+            return `margin-top:var(${y});margin-bottom:var(${y})`;
+        }
+        const value=y.replace(/--/g,'-M').split('-');
+        if(value.length===3){
+            return `margin-top:${value[1].replace("M",'-')};margin-bottom:${value[2].replace("M",'-')}`;
+        }else if(value.length===2){
+            return `margin-top:${value[1].replace("M",'-')};margin-bottom:${value[1].replace("M",'-')}`;
+        }
+        // else{
+        //     return `margin-top:${y};margin-bottom:${y}`;
+        // }
+        },
+    groups:{
+        0:"margin-top:0;margin-bottom:0",
+    },
 }
+
 
 }
 

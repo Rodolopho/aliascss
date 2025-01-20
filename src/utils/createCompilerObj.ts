@@ -101,7 +101,15 @@ export function extractProperty(className:string, data:{[key:string]:Property}){
                     // check compiler for type=group
                     if(obj[key].type==='group'){
                         compilerObj[key]=obj[key];
-                        return
+                        // if(obj[key].alias?.trim()) {
+                        // const alias=obj[key].alias?.trim()||null;
+                        // if(alias){
+                        //     compilerObj[alias]=obj[key];
+                        // } 
+                    
+                        return;
+
+                        
                     }
                     // createStaticClassNames  from Obj
                     const [property, alias,values]=[(obj[key].property||key),(obj[key].property?key:(obj[key].alias||false)),[...(obj[key].values||[]),...globalValue]

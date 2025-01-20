@@ -2,11 +2,16 @@ import {createCompilerObj, extractProperty} from "../utils/createCompilerObj";
 import cssProps from '../css-properties-all';
 import getPropertyAndValue from '../returnPropertyAndValue'
 import config from "../config";
-import {customColors} from '../static/customColors'
+import {customColors as customColors1} from '../static/customColors'
+import {customColors as customColors2} from '../static/customColors2'
 
 const [ staticClassNames, compilerObj]=createCompilerObj(cssProps,config.globalValues);
+const customColors={...customColors1,...customColors2}
 
 describe('Return property and value test',()=>{
+    test('getProperty and Value Test',()=>{
+        expect(getPropertyAndValue('bgc-grayDark-400',compilerObj,staticClassNames,{colors:customColors},extractProperty)).toBe('background-color:var(--grayDark-400,#94969C)')
+    })
     test('getProperty and Value Test',()=>{
         expect(getPropertyAndValue('bgc-grayDark400',compilerObj,staticClassNames,{colors:customColors},extractProperty)).toBe('background-color:var(--grayDark400,#94969C)')
     })
