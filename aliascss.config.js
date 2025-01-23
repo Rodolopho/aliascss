@@ -22,7 +22,10 @@ const config={
         ...compilers,
         'txt-shadow':{
             property:'--webkit-text-shadow',
-            compiler:(value)=>value
+            compiler:(value)=>{
+                console.log(value);
+                return value
+            },
         },
         'solor':{
             property:'color',

@@ -2499,7 +2499,7 @@ const cssProps:{
 'transition-property':{
     alias:'tp',
     type:'d',
-    compiler:(value:string)=>value.replace(/_[_]?/g, " , "),
+    compiler:(value:string)=>value.replace(/^-/,'').replace(/_[_]?/g, " , "),
     values:[''],
 },
 'transition-timing-function':{

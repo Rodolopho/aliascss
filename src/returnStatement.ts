@@ -58,7 +58,7 @@ export const compiler:{
             
             const asString=matchGroupCSS[1]
             .split(',')
-            .map(e=>(className.replace(matchGroupCSS[0],'')+"-").replace(/--$/,'-')+e)
+            .map(e=>(className.replace(matchGroupCSS[0],'')+"-").replace(/--$/,'-')+e.replace(/^--/,'-'))
             .join(' ');
             return this.group(asString,className);
         }
