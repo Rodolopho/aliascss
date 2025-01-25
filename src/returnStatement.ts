@@ -60,8 +60,9 @@ export const compiler:{
             .split(',')
             .map(e=>(className.replace(matchGroupCSS[0],'')+"-").replace(/--$/,'-')+e.replace(/^--/,'-'))
             .join(' ');
-            return this.group(asString,className);
+            return this.group(asString,as?as:className);
         }
+        //
         let beforeClassNameSelector='';
         if(this.prefix && !className.match(new RegExp('^'+this.prefix+"[-]"))){
             return null;

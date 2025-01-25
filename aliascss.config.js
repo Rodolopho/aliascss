@@ -1,7 +1,7 @@
 import {getCompiler,main} from './lib/index.js'
 import { compilers } from './custom-compilers.js';
 const config={
-    input:['experiments/**/*.html'],
+    input:['experiments/**/*.html','experiments/1.jsx'],
     output:{
         location:'demo/css/css/style/acss.css',
         "--file":true
@@ -88,6 +88,31 @@ const config={
             white:'#e3e3e3',
             'whiter':'#f3f3f3',
             whitest:'#ffffff',
+            "primary":"#4E60FF",
+        "primary-lightest":"#F8F9FF",
+        "primary-light":"#F3F4FF",
+        "primary-30":"#CACFFF",
+        "primary-hover":"#697BFF",
+        "primary-dark":"#3A4CEB",
+
+        "black":"#2B2B43",
+        "gray-dark":"#545563",
+        "gray":"#83859C",
+        "gray-light":"#C7C8D2",
+        "gray-lightest":"#EDEEF2",
+        "main-bg-color":"#F7F7F9",
+
+        "error":"#FF5C60",
+        "error-lightest":"#FFF6F6",
+        "error-light":"#FFEAEA",
+        "error-hover":"#FF6B6F",
+        "error-dark":"#E13E42",
+        "success":'#1ABF70',
+        "success-light":'#E8F9F1',
+        "secondary":"#FD6D22",
+        "secondary-light":"#FFF3ED",
+        "tertiary":"#8C3EEE",
+        "tertiary-light":"#F6F0FE",
         }
     },
     prebuild:{
@@ -98,6 +123,8 @@ const config={
         'sr-only':'position:absolute;overflow:hidden;clip:rect(0 0 0 0);height:1px;width:1px;margin:-1px;padding:0;border:0',
     },
     group:{
+        'card':"w-256px h-120px [class~=shadow]-bxs-0px-12px-24px-rgba-43-43-67-0d16 bgc-fff b-1px-s-gray-lightest br-16px --hover-bgc-primary-lightest --hover-b-1px-s-primary-hover --active[b-1px-s-primary,bgc-primary-light]",
+
         'responsive':'xs-w-100p sm-w-540px md-w-720px lg-w-960px xl-w-1140px xxl-w-1320px',
         'responsive-sm':'xs-w-100p sm-w-540px md-w-720px lg-w-960px xl-w-1140px xxl-w-1320px',
         'responsive-md':'xs-w-100p sm-w-100p md-w-720px lg-w-960px xl-w-1140px xxl-w-1320px',

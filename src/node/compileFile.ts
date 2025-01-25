@@ -292,6 +292,25 @@ export function initialize(configFile: { [key: string]: any }) {
       }
       
     }
+
+     // Adding Custom color, length etc
+    if (configFile.hasOwnProperty('custom') && typeof configFile.custom === 'object') {
+      Object.keys(configFile.custom).forEach((key) => {
+        init.statementMaker.addCustom(key, configFile.custom[key]);
+      });
+    }
+    // Extend custom class name define {'border-color-native":'border-color: skyBlue',}
+    if (configFile.hasOwnProperty('prebuild')) {
+      init.statementMaker.prebuild(configFile.prebuild);
+    }
+
+    // Ignore these class name
+    if (configFile.hasOwnProperty('ignore')) {
+      if (Array.isArray(configFile.ignore)) {
+        configFile.ignore.forEach((each: string) => init.config.ignore.push(each.trim()));
+      }
+    }
+
     // --module
     if (configFile.hasOwnProperty('--module') && configFile.hasOwnProperty('importModuleAs') ){
       init["--module"]=true; 
@@ -322,6 +341,8 @@ export function initialize(configFile: { [key: string]: any }) {
       init.statementMaker.extend(filteredObj);
       
     }
+
+
 // -----------------useColon----------------------------
     if(configFile.hasOwnProperty('useColon')){
         init.config.useColon=configFile.useColon;
@@ -344,28 +365,13 @@ export function initialize(configFile: { [key: string]: any }) {
       init.statementMaker.rawCSS=configFile.statement;
       writeStatementToFile(init.output,configFile.statement,'config.statement');
     }
-    // Custom Groups bundling acss classnames in single class name
+   
+   
+     // Custom Groups bundling acss classnames in single class name
     if (configFile.hasOwnProperty('group')) {
       init.customGroupStatement = init.statementMaker.groupObj(configFile.group);
       init.statementMaker.customGroupStatement = init.statementMaker.groupObj(configFile.group);
       if (init.customGroupStatement) writeStatementToFile(init.output,init.customGroupStatement,'config.group');
-    }
-    // Adding Custom color, length etc
-    if (configFile.hasOwnProperty('custom') && typeof configFile.custom === 'object') {
-      Object.keys(configFile.custom).forEach((key) => {
-        init.statementMaker.addCustom(key, configFile.custom[key]);
-      });
-    }
-    // Extend custom class name define {'border-color-native":'border-color: skyBlue',}
-    if (configFile.hasOwnProperty('prebuild')) {
-      init.statementMaker.prebuild(configFile.prebuild);
-    }
-
-    // Ignore these class name
-    if (configFile.hasOwnProperty('ignore')) {
-      if (Array.isArray(configFile.ignore)) {
-        configFile.ignore.forEach((each: string) => init.config.ignore.push(each.trim()));
-      }
     }
   }
 
