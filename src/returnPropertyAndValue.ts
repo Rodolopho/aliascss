@@ -53,16 +53,22 @@ export  default function getPropertyAndValue(
         }else{
             // check for string and color
             if(/color$/.test(property)){
-                console.log(cssPropertiesWithAlias.color)
+                // console.log(cssPropertiesWithAlias.color)
                 const v=cssPropertiesWithAlias.color.compiler?cssPropertiesWithAlias.color.compiler(value,custom):value;
-                 return  bool?[property,v]:property+":"+ v;
+                if(v) return  bool?[property,v]:property+":"+ v;
             }else if(/text$/.test(property)){
                 const v='"'+value.replace(/([_]?)[_]/g,'$1 ').replace(/_[\s]/g,'_')+'"';
                  return  bool?[property,v]:property+":"+ v;
             }
-            return bool?[property,value.replace(/[-]([-]?[\w])/g,' $1').replace(/([\d])d([\d])/g,'$1.$2').replace(/([\d])p[\s]/g,"$1% ").replace(/([\d])p$/,"$1%").replace(/[\s]by[\s]/g,' / ').replace(/auto flow/g,'auto-flow')]
+            return bool?[property,value.replace(/[-]([-]?[\w])/g,' $1').replace(/([\d])d([\d])/g,'$1.$2').replace(/([\d])p[\s]/g,"$1% ").replace(/([\d])p$/,"$1%").replace(/[\s]by[\s]/g,' / ')
+                .replace(/auto flow/g,'auto-flow').replace(/__/g," ")
+                .replace(/[\s](mix|cmyk|set|gradient|bezier|content|shadow|rotate|dark|conic|linear|radial)/g,'-$1')
+                ]
             :
-            property+":"+value.replace(/[-]([-]?[\w])/g,' $1').replace(/([\d])d([\d])/g,'$1.$2').replace(/([\d])p[\s]/g,"$1% ").replace(/([\d])p$/,"$1%").replace(/[\s]by[\s]/g,' / ').replace(/auto flow/g,'auto-flow'); 
+            property+":"+value.replace(/[-]([-]?[\w])/g,' $1').replace(/([\d])d([\d])/g,'$1.$2').replace(/([\d])p[\s]/g,"$1% ").replace(/([\d])p$/,"$1%").replace(/[\s]by[\s]/g,' / ')
+            .replace(/auto flow/g,'auto-flow')
+            .replace(/__/g," ")
+            .replace(/[\s](mix|cmyk|set|gradient|bezier|content|shadow|rotate|dark|conic|linear|radial)/g,'-$1'); 
         }
     }
      
