@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="_all[m-0,p-0,bsbb,ff-poppins]">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Sticky NavBar</title>
+    <script src="//unpkg.com/alpinejs" defer></script>
+
+         <!-- <link rel="stylesheet" href="./style.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+</head>
+
+<body class="mh-100vh">
+    <!-- Working Draft -->
+    <header x-data="{state:'open'}" class="nav-header bgc--header-bg:gray-200 padding--heading-padding:20px-64px df aic jcsb">
+        <div class="nav-brand">
+            X-APP
+        </div>
+        <div :data-state="state" class="nav-menu [data-state=open][l-0]
+         transition-duration-0d6s zi-9999 transition-property-left__right__top__bottom_color [pf,df,t-0,l--100p,mh-100vh,w-320px,bgc-gray-100]  fdc  lg-[df,l-initial,fdr,pr,mh-0,w-auto,bgc-transparent,jcsb,aic]  lg__all[class~=nav-item][m-0px-30px]
+        __all[class~=nav-item][m--nav-vertical-spacing:0px-30px]
+        _a--h-c-000 _a--h-bgc-ffffff">
+            <div x-on:click="state=state=='open'?'close':'open'" class="lg-dn m-25px df jcfe">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x-icon lucide-x">
+                    <path d="M18 6 6 18" />
+                    <path d="m6 6 12 12" />
+                </svg>
+            </div>
+            <a class="nav-item " href="#">Home</a>
+            <a class="nav-item " href="#">Services</a>
+            <a class="nav-item" href="#">About</a>
+            <a class="nav-item" href="#">Contact</a>
+            <a class="nav-item" href="#">FAQ</a>
+        </div>
+        <div class="nav-burger lg-dn cp" x-on:click="state=state=='open'?'close':'open'">
+            
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu-icon lucide-menu">
+                    <path d="M4 12h16" />
+                    <path d="M4 18h16" />
+                    <path d="M4 6h16" />
+                </svg>
+            
+        </div>
+    
+    </header>
+    <!-- Working Draft -->
+
+    <div class="mh-100vh">
+        <header x-data="{state:'close'}" class="dn-i nav-header pr [class~=sticky][bgc-c50e1a,p-20px-64px,pf,t-0,l-0,w-100p] df  bgc-gray jcsb  aic xbgc-ffffff p-20px-64px w-100p h-100px z-index-999 tn-all-0d6s
+                ">
+            <div class="nav-brand">
+                Brand
+            </div>
+            <div :data-state="state" class="nav-menu nav-as-sidebar mh-50vh df fdc pf t-0px  h-100vh w-320px   p-20px-0px m-0px-0px z-index-999 tn-all-0d6s
+            [class~=nav-transition-right][r--100p,l-initial]
+            --nav-active:--100p
+            [data-state=open]--nav-active:-0px
+            [class~=nav-open]--nav-active:-0px
+            [class~=nav-as-sidebar][position-relative,order--1,ml--64px,mt--20px,mh-100vh,asfs]
+            [class~=nav-as-sidebar][data-state=close]-[w0px] 
+
+            
+            [class~=nav-transition-top][t--nav-active,w-100vw,l-0,h-auto]
+            [class~=nav-transition-bottom][btm--nav-active,t-initial,l-0,w-100vw,h-auto]
+              xnav-transition-bottom l--nav-active bgc-gray-400">
+                <div x-on:click="state=state=='open'?'close':'open'">Close</div>
+                <a href="#">Menu1</a>
+                <a href="#">Menu2</a>
+                <a href="#">Menu3</a>
+                <a href="#">Menu4</a>
+                <a href="#">Menu-5</a>
+            </div>
+            <div class="nav-burger" x-on:click="state=state=='open'?'close':'open'" >
+                show
+            </div>
+            
+        </header>
+
+    </div>
+
+    <header class="dn-i pf t-0 l-0 w-100p df jcsb aic p-20px-100px z-index-999 tn-all-0d6s [class~=sticky][bgc-c50e1a,p-15px-100px]">
+        <a href="" class="brand fs-30px c-ffffff fw7 tt-uppercase tdn letter-spacing-2px">Branding</a>
+        <div class="menu pr df jcc aic _a[fs-16px,fw6,tdn,c-ffffff,m-0px-30px,p-5px-15px,tt-uppercase,br-15px,tn-all-0d3s,transition-property-color__background]
+        _a--h-c-000 _a--h-bgc-ffffff
+        -lg-[class~=active]-right-0px
+        -lg-[class~=btn]-db -lg-[class~=close-btn]-[pa,t-0px,l-0px,m-25px] -lg_a[db,fs-16px,m-20px,p-0px-15px]
+        -lg-[pf,bgc-a81b24,fdc,mw-400px,h-100vh,t0px,r--100p,transition-property-right,transition-duration-0d5s]
+        
+        ">
+            <div class="btn dn -lg-db">
+                <span class="close-btn c-ffffff fwb stroke-width-2px cp -lg-[pa,t-0px,l-0px,m-25px]">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x-icon lucide-x">
+                        <path d="M18 6 6 18" />
+                        <path d="m6 6 12 12" />
+                    </svg>
+                </span>
+                <!-- <i class="fas fa-times close-btn"></i> -->
+            </div>
+            <a href="#">Home</a>
+            <a href="#">Services</a>
+            <a href="#">Prices</a>
+            <a href="#">Booking</a>
+            <a href="#">Contact</a>
+        </div>
+        <div class="fs-25px cp c-ffffff  btn dn -lg-db">
+            <span class="menu-btn ">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu-icon lucide-menu">
+                    <path d="M4 12h16" />
+                    <path d="M4 18h16" />
+                    <path d="M4 6h16" />
+                </svg>
+            </span>
+            <!-- <i class="fas fa-bars menu-btn"></i> -->
+        </div>
+    </header>
+
+    <section class="section-main pr w-100p mh-100vh df aic jcc bgpc bgsc  bgi--bg-url bgrn --bg-url:url(../bg.jpg) p-20px-100px">
+        <h1 class="fs-60px fw8 tt-uppercase letter-spacing-2px color-2552552550d5 xs-fs-50px xs-lh-60px">Sticky Navigation Navbar</h1>
+    </section>
+
+    <section class="section-two bgc-222 p-20px-100px _h2-[fs-50px,fw7,tt-uppercase,m-30px-0px,c-2552552550d8] _p[fs-18px,m-30px-0px,c-2552552550d5]">
+        <h2 class="">Branding Elements</h2>
+        <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem beatae similique unde consectetur numquam
+            et, doloremque eius facere sit esse commodi obcaecati laborum incidunt fuga fugiat nostrum distinctio.
+            Repellendus, veniam eveniet, explicabo sapiente doloremque debitis saepe maiores sint sit esse quibusdam,
+            dolorem quo? Impedit, similique. Blanditiis similique illum consequatur debitis neque nisi reiciendis quis
+            earum quaerat at ducimus veniam incidunt, deserunt voluptatibus harum possimus. Dolores laborum dolorem
+            quibusdam cum unde tempore similique laboriosam enim corrupti. </p>
+        <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem beatae similique unde consectetur numquam
+            et, doloremque eius facere sit esse commodi obcaecati laborum incidunt fuga fugiat nostrum distinctio.
+            Repellendus, veniam eveniet, explicabo sapiente doloremque debitis saepe maiores sint sit esse quibusdam,
+            dolorem quo? Impedit, similique. Blanditiis similique illum consequatur debitis neque nisi reiciendis quis
+            earum quaerat at ducimus veniam incidunt, deserunt voluptatibus harum possimus. Dolores laborum dolorem
+            quibusdam cum unde tempore similique laboriosam enim corrupti. </p>
+        <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem beatae similique unde consectetur numquam
+            et, doloremque eius facere sit esse commodi obcaecati laborum incidunt fuga fugiat nostrum distinctio.
+            Repellendus, veniam eveniet, explicabo sapiente doloremque debitis saepe maiores sint sit esse quibusdam,
+            dolorem quo? Impedit, similique. Blanditiis similique illum consequatur debitis neque nisi reiciendis quis
+            earum quaerat at ducimus veniam incidunt, deserunt voluptatibus harum possimus. Dolores laborum dolorem
+            quibusdam cum unde tempore similique laboriosam enim corrupti. </p>
+        <h2>Typography</h2>
+        <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem beatae similique unde consectetur numquam
+            et, doloremque eius facere sit esse commodi obcaecati laborum incidunt fuga fugiat nostrum distinctio.
+            Repellendus, veniam eveniet, explicabo sapiente doloremque debitis saepe maiores sint sit esse quibusdam,
+            dolorem quo? Impedit, similique. Blanditiis similique illum consequatur debitis neque nisi reiciendis quis
+            earum quaerat at ducimus veniam incidunt, deserunt voluptatibus harum possimus. Dolores laborum dolorem
+            quibusdam cum unde tempore similique laboriosam enim corrupti. </p>
+        <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem beatae similique unde consectetur numquam
+            et, doloremque eius facere sit esse commodi obcaecati laborum incidunt fuga fugiat nostrum distinctio.
+            Repellendus, veniam eveniet, explicabo sapiente doloremque debitis saepe maiores sint sit esse quibusdam,
+            dolorem quo? Impedit, similique. Blanditiis similique illum consequatur debitis neque nisi reiciendis quis
+            earum quaerat at ducimus veniam incidunt, deserunt voluptatibus harum possimus. Dolores laborum dolorem
+            quibusdam cum unde tempore similique laboriosam enim corrupti. </p>
+    </section>
+
+    <script>
+        //Javascript for Navigation effect on scroll
+        window.addEventListener("scroll", function () {
+            var header = document.querySelector("header");
+            header.classList.toggle('sticky', window.scrollY > 0);
+        });
+
+        //Javascript for responsive navigation sidebar Nav
+        var menu = document.querySelector('.menu');
+        var menuBtn = document.querySelector('.menu-btn');
+        var closeBtn = document.querySelector('.close-btn');
+
+        menuBtn.addEventListener("click", () => {
+            menu.classList.add('active');
+        });
+
+        closeBtn.addEventListener("click", () => {
+            menu.classList.remove('active');
+        });
+    </script>
+
+</body>
+
+
+
+<script src="/js/aliascss.js"></script>
+
+</html>
+
+

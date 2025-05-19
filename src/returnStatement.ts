@@ -10,6 +10,7 @@ import config from "./config.js";
 import cssProps from "./css-properties-all.js";
 import { staticClassNamesAlias } from "./static/staticClassNamesAlias.js";
 import postcss from "postcss";
+import { splitByCommaOutsideParens } from "./utils/helper.js";
 
 const [staticClassNamesWithAlias, cssPropsWithAlias]=createCompilerObj(cssProps,config.globalValues);
 
@@ -56,8 +57,8 @@ export const compiler:{
         const matchGroupCSS=className.match(/\[([^[]*)\]$/);
         if(matchGroupCSS){
             
-            const asString=matchGroupCSS[1]
-            .split(',')
+            const asString=splitByCommaOutsideParens(matchGroupCSS[1])
+            // .split(',')
             .map(e=>(className.replace(matchGroupCSS[0],'')+"-").replace(/--$/,'-')+e.replace(/^--/,'-'))
             .join(' ');
             return this.group(asString,as?as:className);
@@ -288,3 +289,4 @@ type Property = {
 
 // compiler.staticClassNames={...helper().generateStaticClassNames(compiler.cssProps,config['css-global-values'])};
 // compiler.addCustom('color',customColors)
+

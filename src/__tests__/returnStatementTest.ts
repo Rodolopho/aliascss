@@ -53,7 +53,7 @@ describe("Test Return statement",()=>{
          expect(statement.make('bgc-primary600')).toBe('.bgc-primary600{background-color:var(--primary600,#7F56D9)}')
     })
     test("Return statement define cvars",()=>{
-         expect(statement.make('--bgc:primary600')).toBe('.--bgc\\:primary600{--bgc:primary600}')
+         expect(statement.make('--bgc:primary600')).toBe('.--bgc\\:primary600{--bgc:var(--primary600,#7F56D9)}')
     })
     test("Return statement",()=>{
          expect(statement.make('m-1.5rem-40%--20px')).toBe('.m-1\\.5rem-40\\%--20px{margin: 1.5rem 40% -20px}')

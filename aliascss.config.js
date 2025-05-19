@@ -1,5 +1,6 @@
 import {getCompiler,main} from './lib/index.js'
 import { compilers } from './custom-compilers.js';
+import prebuild from './lib/prebuild.js';
 const config={
     input:['experiments/**/*.html','experiments/1.jsx'],
     output:{
@@ -123,6 +124,7 @@ const config={
         'sr-only':'position:absolute;overflow:hidden;clip:rect(0 0 0 0);height:1px;width:1px;margin:-1px;padding:0;border:0',
     },
     group:{
+        ...prebuild,
         'card':"w-256px h-120px [class~=shadow]-bxs-0px-12px-24px-rgba-43-43-67-0d16 bgc-fff b-1px-s-gray-lightest br-16px --hover-bgc-primary-lightest --hover-b-1px-s-primary-hover --active[b-1px-s-primary,bgc-primary-light]",
 
         'responsive':'xs-w-100p sm-w-540px md-w-720px lg-w-960px xl-w-1140px xxl-w-1320px',

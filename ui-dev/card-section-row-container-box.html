@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern UI Components</title>
+    <style>
+        /* Global reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            padding: 20px;
+            background-color: #f5f5f5;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        
+
+        /* Utility for demo content */
+        h2,
+        h3,
+        p {
+            margin-bottom: 16px;
+        }
+
+        
+    </style>
+</head>
+
+<body class="[class~=demo-content]-fs-16px [class~=demo-content]-lh-1.6">
+    <!-- Card Component Demo -->
+    <section class="section" class-section="p--section-padding:40px bgc--section-bg:transparent [class~=section-spacious]--section-padding:80px [class~=section-colored]--section-bg:f0f4f8
+">
+        <h2>Card Component</h2>
+        'x-section':`p--section-padding:40px bgc--section-bg:transparent [class~=section-spacious]--section-padding:80px
+        [class~=section-colored]--section-bg:f0f4f8`,
+        'x-row':`df fww g-16px m--8px __all-margin-8px __all-flex-1 [class~=row-no-wrap]-fwn [class~=row-center]-jcc`,
+        'x-container':`width-100p xw--container-width:1200px margin-0-auto p--container-padding:16px
+        [class~=container-fluid][--container-width:100%]
+        [class~=container-narrow][--container-width:800px]`,
+        'x-box':`bgc--box-bg:ffffff p--box-padding:16px br--box-border-radius:8px border--box-border:1px-solid-e0e0e0
+        [class~=box-shadow]-bxs-0px-2px-8px-0000000000d1`,
+        'x-card':`bgc--card-bg:ffffff padding--card-padding:24px br--card-border-radius:12px bxs--card-shadow:0px-4px-12px-0000000000d1
+        --hover-transform-translateY--4px --hover-bxs-0-8px-24px-0000000000d15
+        transition-transform-0.3s-ease__box-shadow-0.3s-ease
+        [class~=card-dark][--card-bg:1a1a1a,--card-shadow:0px-4px-12px-0000000000d3,color--card-color:ffffff]`,
+        
+        <div class="row" class-row="df fww g-16px m--8px  __all-margin-8px __all-flex-1 [class~=row-no-wrap]-fwn [class~=row-center]-jcc">
+            <div  class="card" class-card="bgc--card-bg:ffffff padding--card-padding:24px br--card-border-radius:12px bxs--card-shadow:0px-4px-12px-0000000000d1
+         --hover-transform-translateY--4px --hover-bxs-0-8px-24px-0000000000d15 transition-transform-0.3s-ease__box-shadow-0.3s-ease
+         [class~=card-dark][--card-bg:1a1a1a,--card-shadow:0px-4px-12px-0000000000d3,color--card-color:ffffff]
+         
+         ">
+                <h3>Default Card</h3>
+                <p class="demo-content">This is a standard card with hover effects and shadow.</p>
+            </div>
+           
+            <div class="card card-dark">
+                <h3>Dark Card</h3>
+                <p class="demo-content">Dark theme with white text.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Container Component Demo -->
+    <section class="section section-colored">
+        <h2>Container Component</h2>
+        <div class="container"  class-container="width-100p xw--container-width:1200px margin-0-auto p--container-padding:16px [class~=container-fluid][--container-width:100%]
+            [class~=container-narrow][--container-width:800px]">
+            <div class="box" class-box="bgc--box-bg:ffffff p--box-padding:16px br--box-border-radius:8px border--box-border:1px-solid-e0e0e0 [class~=box-shadow]-bxs-0px-2px-8px-0000000000d1
+">
+                <h3>Default Container</h3>
+                <p class="demo-content">Centered container with a max-width of 1200px.</p>
+            </div>
+        </div>
+        <div class="container container-narrow">
+            <div class="box">
+                <h3>Narrow Container</h3>
+                <p class="demo-content">Narrow container with a max-width of 800px.</p>
+            </div>
+        </div>
+        <div class="container container-fluid">
+            <div class="box">
+                <h3>Fluid Container</h3>
+                <p class="demo-content">Full-width container with padding.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Row Component Demo -->
+    <section class="section">
+        <h2>Row Component</h2>
+        <div class="row">
+            <div class="box">Box 1</div>
+            <div class="box">Box 2</div>
+            <div class="box">Box 3</div>
+        </div>
+        <div class="row row-no-wrap">
+            <div class="box">No-Wrap Box 1</div>
+            <div class="box">No-Wrap Box 2</div>
+        </div>
+        <div class="row row-center">
+            <div class="box">Centered Box</div>
+        </div>
+    </section>
+
+    <!-- Box Component Demo -->
+    <section class="section section-spacious">
+        <h2>Box Component</h2>
+        <div class="row">
+            <div class="box">
+                <h3>Default Box</h3>
+                <p class="demo-content">Simple box with border.</p>
+            </div>
+            <div class="box box-shadow">
+                <h3>Shadow Box</h3>
+                <p class="demo-content">Box with a subtle shadow effect.</p>
+            </div>
+            <div class="box bn bgc-transparent">
+                <h3>Minimal Box</h3>
+                <p class="demo-content">No border or background.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Component Demo -->
+    <section class="section section-colored">
+        <h2>Section Component</h2>
+        <div class="section">
+            <h3>Default Section</h3>
+            <p class="demo-content">Standard section with padding.</p>
+        </div>
+        <div class="section section-spacious">
+            <h3>Spacious Section</h3>
+            <p class="demo-content">More padding for a spacious feel.</p>
+        </div>
+        <div class="section section-colored">
+            <h3>Colored Section</h3>
+            <p class="demo-content">Section with a light background color.</p>
+        </div>
+    </section>
+</body>
+<script src="/js/aliascss.js"></script>
+
+</html>

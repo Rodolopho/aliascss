@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern UI Components</title>
+    <style>
+   
+    </style>
+    </head>
+    <body class="df g-32px m30px">
+        
+        <div class="df g32px __div-flex-shrink-0  ff-inter fdc">
+            <div class="tooltip " class-tooltip=" df pr p-8px-12px bgc--tooltip-color b-1px-s-gray100 shadow-lg text-xs c-fff br-8px fw5 dif jcc aic --tooltip-color:gray600
+                      --bf-pa --bf-cont --bf-w-12px --bf-h-12px  --bf-bgc-inherit --bf-shadow-lg --bf-tf-r-45deg 
+                      --bf-l--4px 
+                      [class~=tooltip-up]--bf-t--4px 
+                      [class~=tooltip-up]--bf-l--calc-midpoint
+                      [class~=tooltip-left]--bf-r--4px 
+                      [class~=tooltip-left]--bf-l-initial
+                      [class~=tooltip-down]--bf-btm--4px
+                      [class~=tooltip-down]--bf-l--calc-midpoint --calc-midpoint:calc(50%-6px)">
+                This is tooltip
+            </div>
+            <div class="tooltip    ">
+                This is tooltip default . we need to add the main things in this workd and we can have the best 
+            </div>
+            <div class="tooltip  tooltip-up bgc-primary600">This is
+                tooltip up</div>
+            <div class="tooltip tooltip-down">
+                tooltip down</div>
+            <div class="tooltip tooltip-left">This is
+                tooltip-left</div>
+            <a href="john">hhhhh</a>
+        </div>
+</body>
+<script src="/js/aliascss.js"></script>
+
+</html>
+<!--<style>
+    .tooltip.tooltip-up{
+--clip-path:var(--up-clip-path)
+    }
+    .tooltip.tooltip-down{
+        --clip-path:var(--down-clip-path)
+    }
+    .tooltip.tooltip-left{
+        --clip-path:var(--left-clip-path)
+    }
+    .tooltip.tooltip-right{
+        --clip-path:var(--right-clip-path)
+    }
+
+.tooltip{
+    padding:var(--tooltip-padding,1rem);
+    xbackground:var(--c);
+    --c:var(--tooltip-bg,gray); /* color */
+    --h:var(--tail-height,1em); /* height */
+    --b:var(--tail-base,2em); /* base */
+    --p:var(--tail-position,50%); /* triangle position (0%:left 100%:right) */
+    --r:var(--tooltip-radius,1.2em); /* the radius */
+    xborder-image: fill 0 // var(--h) conic-gradient(var(--c) 0 0); 
+    border-image: conic-gradient(var(--c) 0 0) fill 0/
+    var(--r) calc(100% - var(--p) - var(--b) / 2) 0 calc(var(--p) - var(--b) / 2)/
+    0 0 var(--h) 0;
+    
+    
+    border-radius: var(--r) var(--r) min(var(--r),100% - var(--p) - var(--b)/2) min(var(--r),var(--p) -
+    var(--b)/2)/var(--r);
+    clip-path:var(--clip-path, polygon(0 100%,0 0,100% 0,100% 100%,
+    min(100%,var(--p) + var(--b)/2) 100%,
+    var(--p) calc(100% + var(--h)),
+    max(0% ,var(--p) - var(--b)/2) 100%));
+    /* the color up */
+    
+
+
+--up-clip-path:polygon(0 100%,0 0,100% 0,100% 100%,
+min(100%,var(--p) + var(--b)/2) 100%,
+var(--p) calc(100% + var(--h)),
+max(0% ,var(--p) - var(--b)/2) 100%);
+ /* the color up */
+--down-clip-path: polygon(0 0,0 100%,100% 100%,100% 0,
+min(100%,var(--p) + var(--b)/2) 0,
+var(--p) calc(-1*var(--h)),
+max(0% ,var(--p) - var(--b)/2) 0);
+ /* the color down */
+--left-clip-path: polygon(100% 100%,0 100%,0 0,100% 0,
+100% max(0% ,var(--p) - var(--b)/2),
+calc(100% + var(--h)) var(--p),
+100% min(100%,var(--p) + var(--b)/2));
+ /* the color */
+--right-clip-path: polygon(0 100%,100% 100%,100% 0,0 0,
+0 max(0% ,var(--p) - var(--b)/2),
+calc(-1*var(--h)) var(--p),
+0 min(100%,var(--p) + var(--b)/2));
+ /* the color */
+}
+
+.tooltip-radius {
+    border-radius: var(--r) var(--r) min(var(--r),100% - var(--p) - var(--b)/2) min(var(--r),var(--p) -
+    var(--b)/2)/var(--r);
+    clip-path: polygon(0 100%,0 0,100% 0,100% 100%,
+    min(100%,var(--p) + var(--b)/2) 100%,
+    var(--p) calc(100% + var(--h)),
+    max(0% ,var(--p) - var(--b)/2) 100%);
+    background: var(--c);
+    
+</style>
+!-->
+

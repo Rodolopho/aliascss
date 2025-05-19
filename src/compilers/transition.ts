@@ -5,7 +5,7 @@ export default function transition(data: string) {
     .replace(/^-/, '')
     .split(/__/)
     .forEach((e) => {
-      const m = e.match(/^([a-z-]+)([0-9]+[d]?[0-9]*[m]?[s])([\w-_]*)/);
+      const m = e.match(/^([a-z-]+)([0-9]+[d|/.]?[0-9]*[m]?[s])([\w-_]*)/);
       if (!m) return;
       const tf = m[3].replace(/^-/, '');
       if (tf && func[tf]) {

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="_all[m-0,p-0,bsbb,ff-poppins]">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Sticky NavBar</title>
+    <script src="//unpkg.com/alpinejs" defer></script>
+
+         <!-- <link rel="stylesheet" href="./style.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+</head>
+
+<body class="mh-100vh">
+    <div class="">
+        <header x-data="{state:'close'}" class="nav-header shadow-lg pr [class~=sticky][bgc-gray-200,p-20px-64px,pf,t-0,l-0,w-100p] df  bgc-gray jcsb  aic bgc-ffffff p-20px-64px w-100p h-100px z-index-999 tn-all-0d6s
+                ">
+            <div class="nav-brand w-100px h20px bgc-blue-600">
+                
+            </div>
+            <div :data-state="state" class="p-24px bgc-gray-100 lg-[pr-i,ml-auto-i,fdr-i,df,h-auto-i,mh-0-i,l-initial-i] _a-color- transparent _a-border-bottom-1px-s-blue-600 nav-menu xnav-as-sidebar mh-50vh df fdc pf t-0px  h-100vh w-320px  shadow-lg  p-20px-20px m-0px-0px z-index-999 tn-all-0d6s
+            [class~=nav-transition-right][r--100p,l-initial]
+            --nav-active:--100p
+            [data-state=open]--nav-active:-0px
+            [class~=nav-open]--nav-active:-0px
+            [class~=nav-as-sidebar][position-relative,order--1,ml--64px,mt--20px,mh-100vh,asfs]
+            [class~=nav-as-sidebar][data-state=close]-[w0px] 
+
+            
+            [class~=nav-transition-top][t--nav-active,w-100vw,l-0,h-auto]
+            [class~=nav-transition-bottom][btm--nav-active,t-initial,l-0,w-100vw,h-auto]
+              xnav-transition-bottom l--nav-active  df jcsb">
+                <div x-on:click="state=state=='open'?'close':'open'" class="w-20px lg-dn h20px bgc-error-600" ></div>
+                <a href="#">Menu1</a>
+                <a href="#">Menu2</a>
+                <a href="#">Menu3</a>
+                <a href="#">Menu4</a>
+                <a href="#">Menu-5</a>
+            </div>
+            <div class="nav-burger w-20px lg-dn h20px bgc-error-600" x-on:click="state=state=='open'?'close':'open'" >
+                
+            </div>
+            
+        </header>
+
+    </div>
+
+    
+
+    <section class="section-main pr w-100p mh-100vh df aic jcc bgpc bgsc   p-20px-100px">
+        <div class="bgc-ffffff w-100p h-100p df aic jcc">
+            <h1 class="fs-50px fw7 c-000000">Welcome to our Branding Page</h1>
+        </div>
+    </section>
+
+    <section class="section-two bgc-222 p-20px-100px _h2-[fs-50px,fw7,tt-uppercase,m-30px-0px,c-2552552550d8] _p[fs-18px,m-30px-0px,c-2552552550d5]">
+        <h2 class="">Branding Elements</h2>
+        <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem beatae similique unde consectetur numquam
+            et, doloremque eius facere sit esse commodi obcaecati laborum incidunt fuga fugiat nostrum distinctio.
+            Repellendus, veniam eveniet, explicabo sapiente doloremque debitis saepe maiores sint sit esse quibusdam,
+            dolorem quo? Impedit, similique. Blanditiis similique illum consequatur debitis neque nisi reiciendis quis
+            earum quaerat at ducimus veniam incidunt, deserunt voluptatibus harum possimus. Dolores laborum dolorem
+            quibusdam cum unde tempore similique laboriosam enim corrupti. </p>
+        <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem beatae similique unde consectetur numquam
+            et, doloremque eius facere sit esse commodi obcaecati laborum incidunt fuga fugiat nostrum distinctio.
+            Repellendus, veniam eveniet, explicabo sapiente doloremque debitis saepe maiores sint sit esse quibusdam,
+            dolorem quo? Impedit, similique. Blanditiis similique illum consequatur debitis neque nisi reiciendis quis
+            earum quaerat at ducimus veniam incidunt, deserunt voluptatibus harum possimus. Dolores laborum dolorem
+            quibusdam cum unde tempore similique laboriosam enim corrupti. </p>
+        <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem beatae similique unde consectetur numquam
+            et, doloremque eius facere sit esse commodi obcaecati laborum incidunt fuga fugiat nostrum distinctio.
+            Repellendus, veniam eveniet, explicabo sapiente doloremque debitis saepe maiores sint sit esse quibusdam,
+            dolorem quo? Impedit, similique. Blanditiis similique illum consequatur debitis neque nisi reiciendis quis
+            earum quaerat at ducimus veniam incidunt, deserunt voluptatibus harum possimus. Dolores laborum dolorem
+            quibusdam cum unde tempore similique laboriosam enim corrupti. </p>
+        <h2>Typography</h2>
+        <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem beatae similique unde consectetur numquam
+            et, doloremque eius facere sit esse commodi obcaecati laborum incidunt fuga fugiat nostrum distinctio.
+            Repellendus, veniam eveniet, explicabo sapiente doloremque debitis saepe maiores sint sit esse quibusdam,
+            dolorem quo? Impedit, similique. Blanditiis similique illum consequatur debitis neque nisi reiciendis quis
+            earum quaerat at ducimus veniam incidunt, deserunt voluptatibus harum possimus. Dolores laborum dolorem
+            quibusdam cum unde tempore similique laboriosam enim corrupti. </p>
+        <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem beatae similique unde consectetur numquam
+            et, doloremque eius facere sit esse commodi obcaecati laborum incidunt fuga fugiat nostrum distinctio.
+            Repellendus, veniam eveniet, explicabo sapiente doloremque debitis saepe maiores sint sit esse quibusdam,
+            dolorem quo? Impedit, similique. Blanditiis similique illum consequatur debitis neque nisi reiciendis quis
+            earum quaerat at ducimus veniam incidunt, deserunt voluptatibus harum possimus. Dolores laborum dolorem
+            quibusdam cum unde tempore similique laboriosam enim corrupti. </p>
+    </section>
+
+    <script>
+        //Javascript for Navigation effect on scroll
+        window.addEventListener("scroll", function () {
+            var header = document.querySelector("header");
+            header.classList.toggle('sticky', window.scrollY > 0);
+        });
+
+        //Javascript for responsive navigation sidebar Nav
+        var menu = document.querySelector('.menu');
+        var menuBtn = document.querySelector('.menu-btn');
+        var closeBtn = document.querySelector('.close-btn');
+
+        menuBtn.addEventListener("click", () => {
+            menu.classList.add('active');
+        });
+
+        closeBtn.addEventListener("click", () => {
+            menu.classList.remove('active');
+        });
+    </script>
+
+</body>
+
+
+
+<script src="/js/aliascss.js"></script>
+
+</html>
+
+

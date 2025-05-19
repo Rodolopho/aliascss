@@ -46,31 +46,69 @@ export  default function getPropertyAndValue(
     // case CSS define var
 
     if(className.startsWith('--') && className.includes(':')){
-        const value=className.slice(className.indexOf(':')).replace(':','');
+        let value=className.slice(className.indexOf(':')).replace(':','');
         const property=className.replace(value,'').replace(':','');
+        const possiblePropsName=property.slice(property.lastIndexOf('-')+1);
+        let compiler=null;
+        if(cssPropertiesWithAlias.hasOwnProperty(possiblePropsName) && cssPropertiesWithAlias[possiblePropsName].hasOwnProperty('compiler') && typeof cssPropertiesWithAlias[possiblePropsName].compiler === 'function'){
+            compiler =cssPropertiesWithAlias[possiblePropsName].compiler;
+        }
+        // case 1: CSS Variable inside css variable
+        if(/^calc/.test(value)){
+            return bool?[property,value.replace(/([-+/*])([\d]|var\(|calc\()/g,' $1 $2')]:property+":"+value.replace(/([-+/*])([\d]|var\(|calc\()/g,' $1 $2');
+        }
+
+        // case 2: CSS variable in side css variable
         if(/^--[a-zA-Z]/.test(value)){
-                return  bool?[property,"var("+value + ')']:property+": var("+value+ ')';
+            if(value.includes(':')){
+                let val=value.slice(value.indexOf(':')).replace(':','');
+                const cssVar=value.replace(val,'').replace(':','');
+                if(compiler && typeof compiler === 'function'){
+                    const v=compiler(val ,custom);
+                    val=v?v:val;
+                }
+                return  bool?[property,"var("+cssVar + ','+ val+')']:property+": var("+cssVar + ','+ val+ ')';
+            }
+            return  bool?[property,"var("+value + ')']:property+": var("+value+ ')';
+            
         }else{
-            // check for string and color
-            if(/color$/.test(property)){
-                // console.log(cssPropertiesWithAlias.color)
-                const v=cssPropertiesWithAlias.color.compiler?cssPropertiesWithAlias.color.compiler(value,custom):value;
-                if(v) return  bool?[property,v]:property+":"+ v;
-            }else if(/text$/.test(property)){
+            // If has text in end 
+            if(/text$/.test(property)){
                 const v='"'+value.replace(/([_]?)[_]/g,'$1 ').replace(/_[\s]/g,'_')+'"';
                  return  bool?[property,v]:property+":"+ v;
             }
-            return bool?[property,value.replace(/[-]([-]?[\w])/g,' $1').replace(/([\d])d([\d])/g,'$1.$2').replace(/([\d])p[\s]/g,"$1% ").replace(/([\d])p$/,"$1%").replace(/[\s]by[\s]/g,' / ')
-                .replace(/auto flow/g,'auto-flow').replace(/__/g," ")
-                .replace(/[\s](mix|cmyk|set|gradient|bezier|content|shadow|rotate|dark|conic|linear|radial)/g,'-$1')
-                ]
-            :
-            property+":"+value.replace(/[-]([-]?[\w])/g,' $1').replace(/([\d])d([\d])/g,'$1.$2').replace(/([\d])p[\s]/g,"$1% ").replace(/([\d])p$/,"$1%").replace(/[\s]by[\s]/g,' / ')
-            .replace(/auto flow/g,'auto-flow')
-            .replace(/__/g," ")
-            .replace(/[\s](mix|cmyk|set|gradient|bezier|content|shadow|rotate|dark|conic|linear|radial)/g,'-$1'); 
+            // Rest
+
+            if(compiler && typeof compiler === 'function'){
+                const v=compiler(value ,custom);
+                value=v?
+                v
+                :
+                value.replace(/[-]([-]?[\w])/g,' $1').replace(/([\d])d([\d])/g,'$1.$2').replace(/([\d])p[\s]/g,"$1% ").replace(/([\d])p$/,"$1%").replace(/[\s]by[\s]/g,' / ')
+                .replace(/auto flow/g,'auto-flow')
+                .replace(/__/g," ")
+                .replace(/[\s](mix|cmyk|set|gradient|bezier|content|shadow|rotate|dark|conic|linear|radial)/g,'-$1');
+            }else{
+                value=value.replace(/[-]([-]?[\w])/g,' $1').replace(/([\d])d([\d])/g,'$1.$2').replace(/([\d])p[\s]/g,"$1% ").replace(/([\d])p$/,"$1%").replace(/[\s]by[\s]/g,' / ')
+                .replace(/auto flow/g,'auto-flow')
+                .replace(/__/g," ")
+                .replace(/[\s](mix|cmyk|set|gradient|bezier|content|shadow|rotate|dark|conic|linear|radial)/g,'-$1');
+            }
+            
+            return bool?[property,value]:property+":"+value;
+            
+            // return bool?[property,value.replace(/[-]([-]?[\w])/g,' $1').replace(/([\d])d([\d])/g,'$1.$2').replace(/([\d])p[\s]/g,"$1% ").replace(/([\d])p$/,"$1%").replace(/[\s]by[\s]/g,' / ')
+            //     .replace(/auto flow/g,'auto-flow').replace(/__/g," ")
+            //     .replace(/[\s](mix|cmyk|set|gradient|bezier|content|shadow|rotate|dark|conic|linear|radial)/g,'-$1')
+            //     ]
+            // :
+            // property+":"+value.replace(/[-]([-]?[\w])/g,' $1').replace(/([\d])d([\d])/g,'$1.$2').replace(/([\d])p[\s]/g,"$1% ").replace(/([\d])p$/,"$1%").replace(/[\s]by[\s]/g,' / ')
+            // .replace(/auto flow/g,'auto-flow')
+            // .replace(/__/g," ")
+            // .replace(/[\s](mix|cmyk|set|gradient|bezier|content|shadow|rotate|dark|conic|linear|radial)/g,'-$1'); 
         }
     }
+
      
     const [property, propertyKey]=extractProperty(className,cssPropertiesWithAlias);
     //  console.log(propertyKey,'ttt',property,className)
@@ -92,13 +130,50 @@ export  default function getPropertyAndValue(
             if (/--var--/.test(className)) {
                 const splits: string[] = className.split(/--var--/);
                 if(cssPropertiesWithAlias.hasOwnProperty(splits[0])){
+                    if(splits[1].includes(':')){
+                        let value=splits[1].slice(splits[1].indexOf(':')).replace(':','');
+                        const cssVar=splits[1].replace(value,'').replace(':','');
+                        if(/^calc\(/.test(value)){
+                            return  bool?[prop,"var(--"+cssVar + ','+ value.replace(/([-+/*])([\d]|var\(|calc\()/g,' $1 $2')+')']: prop+": var(--"+cssVar + ','+ value.replace(/([-+/*])([\d]|var\(|calc\()/g,' $1 $2')+ ')';
+                        }
+                        if(property.hasOwnProperty('compiler') && typeof property.compiler === 'function'){
+                            const val=property.compiler(value ,custom);
+                           value=val?val:value; 
+                        }
+                        return  bool?[prop,"var(--"+cssVar + ','+ value+')']: prop+": var(--"+cssVar + ','+ value+ ')';
+
+
+                    }
                     return  bool?[prop,"var(--"+splits[1] + ')']: prop+": var(--"+splits[1] + ')';
                 }
             } 
-            // case 3: CSS variable without --var keyword
+
             const valuePortion=className.replace(propertyKey,'');
+
+            // case 3: calc function
+            if (/^--calc\(/.test(valuePortion)) {
+                 return bool?[prop,valuePortion.replace(/^--/,'').replace(/([-+/*])([\d]|var\(|calc\()/g,' $1 $2')]:prop+":"+valuePortion.replace(/^--/,'').replace(/([-+/*])([\d]|var\(|calc\()/g,' $1 $2');
+            }
+ 
+            // case 4: CSS variable without --var keyword
+            
            
             if(/^--[a-zA-Z]/.test(valuePortion)){
+                if(valuePortion.includes(':')){
+                    let value=valuePortion.slice(valuePortion.indexOf(':')).replace(':','');
+                    const cssVar=valuePortion.replace(value,'').replace(':','');
+                    if(/^calc\(/.test(value)){
+                        return  bool?[prop,"var("+cssVar + ','+ value.replace(/([-+/*])([\d]|var\(|calc\()/g,' $1 $2')+')']: prop+": var("+cssVar + ','+ value.replace(/([-+/*])([\d]|var\(|calc\()/g,' $1 $2')+ ')';
+
+                    }
+                    
+                    if(property.hasOwnProperty('compiler') && typeof property.compiler === 'function'){
+                         const val=property.compiler(value ,custom);
+                        value=val?val:value; 
+                     }
+                    return  bool?[prop,"var("+cssVar + ','+ value+')']: prop+": var("+cssVar + ','+ value+ ')';
+                }
+                
                 return  bool?[prop,"var("+valuePortion + ')']:prop+": var("+valuePortion + ')';
             }
             if(property.hasOwnProperty('compiler') && typeof property.compiler === 'function'){
@@ -112,14 +187,16 @@ export  default function getPropertyAndValue(
                     const val=value.replace(/([-]?)([\d]|10|11|12)col/g,(m:string,p1:string,p2:string)=>`${p1}${parseFloat(((100/12)*parseFloat(p2)).toFixed(6))}%`);
                     return bool?[prop,val]:prop+":"+val;
                 }else{
-                    console.log(`${className}: '${propertyKey}' unable to compile value:${className.replace(propertyKey,'')}`)
-                    return bool?[null,null]:null;
+                    console.log(`${className}: '${propertyKey}' unable to compile value:${className.replace(propertyKey,'')} returning value as it is`)
+                    return bool?[prop,valuePortion.replace(/^-/,'')+`  /* ***Warning:Might not be Valid value *** */`]:prop+":"+valuePortion.replace(/^-/,'')+`  /* ***Warning:Might not be Valid value *** */`;
                 }
             }else{
-                console.log("No Compiler found for:" + className);
+                console.log("No Compiler found for:" + className+" invalidating static className definition, add compiler function to get as it is value.");
+                // Saving Static Value 
+                // return bool?[prop,valuePortion.replace(/^-/,'')+`  /* ***Warning:Might not be Valid value *** */`]:prop+":"+valuePortion.replace(/^-/,'')+`  /* ***Warning:Might not be Valid value *** */`;
             }
         }else{
-            console.log(`${className}: is not valid AliasCSS class name`);
+            console.log(`${className}: is not valid AliasCSS class name, property definition not found`);
         }
     
     return bool?[null,null]:null;
