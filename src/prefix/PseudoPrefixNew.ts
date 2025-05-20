@@ -70,15 +70,15 @@ export function createRegexForPseudo(prefix:{[key:string]:string
   '--first-of-type': ':first-of-type', // -fot
   '--fot': ':first-of-type',
 
-  '--focus': ':focus', // -fo
-  '--fo': ':focus', // -fo
-  '--f': ':focus', // -fo
-
-   '--focus-within': ':focus-within', // -fo
+  '--focus-within': ':focus-within', // -fo
   '--fw': ':focus-within', // -fo
 
    '--focus-visible': ':focus-visible', // -fo
   '--fv': ':focus-visible', // -fo
+
+  '--focus': ':focus', // -fo
+  '--fo': ':focus', // -fo
+  '--f': ':focus', // -fo
 
   '--fullscreen':':fullscreen',
   '--fs':':fullscreen',
