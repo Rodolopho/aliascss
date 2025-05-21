@@ -52,6 +52,15 @@ export const compiler:{
     },
     // className as another-name, bool->only return property and value
     make(className:string,as?:string, bool?:boolean){
+        if(/--as-[a-zA-Z0-9-_]+$/.test(className)){
+            const asMatch=className.match(/--as-([a-zA-Z0-9-_]+)$/)??[null,null];
+            if(asMatch[0] && asMatch[1]){
+                return this.group(className.replace(asMatch[0],''),asMatch[1]);
+            }
+                
+            }
+
+        
         let unPrefixedClassName=className;
         // check for [group-acss,]
         const matchGroupCSS=className.match(/\[([^[]*)\]$/);

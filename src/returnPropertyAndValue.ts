@@ -1,13 +1,5 @@
 
-type EProperty = {
-    alias?:string,
-    type?:string,
-    property?:string
-    values?:string[],
-    groups?:{[key:string]:string}
-    compiler:(...args: any[]) => any,
 
-}
 type Property = {
     alias?:string,
     property?: string,
@@ -18,20 +10,20 @@ type Property = {
     compiler?:(...args: any[]) => any,
 
 }
-type xProperty = {
-    alias?:string,
-    property?: string,
-    test?:RegExp,
-    type?:string,
-    values?:string[],
-    compiler?:(a:string, b:{ [key: string]: { [key: string]: string}})=>any,
-
-}
 
 
 
+/**
+ * @param className : string
+ * @param cssPropertiesWithAlias: Compiler Object 
+ * @param staticClassNames : StaticClassNames
+ * @param custom : custom values for color, font, etc
+ * @param extractProperty :extractProperty(className:string,cssPropertiesWithAlias:{[key:string]:Property})=>[Property,string] 
+ * @param bool : return[property,value] or property:value
+ * @returns {string[]|null|{}}
+ */
 export  default function getPropertyAndValue(
-    className:string,
+    className:string, 
      cssPropertiesWithAlias:{[key:string]:Property},
       staticClassNames:{[key:string]:string},
       custom:{[key:string]:{[key:string]:string}},
