@@ -3,7 +3,7 @@ const  element :{
     process: (...args: any[]) => any
 }
     =  {
-    test:/^_[_]?[A-Za-z0-9_\.]+(?=[_[-])/,
+    test:/^_[_]?[A-Za-z0-9_\.,]+(?=[_[-])/,
     process(className :string){
         const match=className.match(this.test);
         if(match){

@@ -51,7 +51,7 @@ export let classPrinter: ClassPrinter = {
     // if class
     if (el.getAttribute('class')) attrValue += ' ' + el.getAttribute('class');
     // if acss-class
-    if (el.getAttribute('acss-class')) attrValue += ' ' + el.getAttribute('acss-class');
+    // if (el.getAttribute('acss-class')) attrValue += ' ' + el.getAttribute('acss-class');
     // new Update
     [...el.attributes].map((each)=>{
       // ------------
@@ -102,7 +102,7 @@ export let classPrinter: ClassPrinter = {
     if (!attrValue.trim()) return;
 
     // has-test-group(for live update only)
-    if (el.getAttribute('acss-group-test')) {
+    /* if (el.getAttribute('acss-group-test')) {
       const result = statementMaker.group(attrValue, el.getAttribute('acss-group-test')||'');
       const styleTag = document.querySelector('style#' + el.getAttribute('acss-group-test'));
       if (result) {
@@ -119,7 +119,7 @@ export let classPrinter: ClassPrinter = {
           styleTag.appendChild(createNewGroup);
         }
       }
-    }
+    } */
     // -----------------------end of for live update
 
     // get class and trim out white spaces
@@ -179,7 +179,7 @@ export let classPrinter: ClassPrinter = {
              
         })
     // if acss-class
-    if (el.getAttribute('acss-class')) attrValue += ' ' + el.getAttribute('acss-class');
+    // if (el.getAttribute('acss-class')) attrValue += ' ' + el.getAttribute('acss-class');
 
     // if has value to process
     if (!attrValue.trim()) return;
@@ -217,7 +217,8 @@ export let classPrinter: ClassPrinter = {
 
     // <template> element
     Array.prototype.forEach.call($el.querySelectorAll('template'), (template) => {
-      Array.prototype.forEach.call(template.content.querySelectorAll('[class],[acss-class]'), (e) => {
+      // Array.prototype.forEach.call(template.content.querySelectorAll('[class],[acss-class]'), (e) => {
+      Array.prototype.forEach.call(template.content.querySelectorAll('[class]'), (e) => {
         const result = this.compileElement(e, classList);
         statement += result ? result : '';
       });
@@ -225,7 +226,8 @@ export let classPrinter: ClassPrinter = {
 
     // <html>
 
-    Array.prototype.forEach.call($el.querySelectorAll('[class],[acss-class]'), (e) => {
+    // Array.prototype.forEach.call($el.querySelectorAll('[class],[acss-class]'), (e) => {
+    Array.prototype.forEach.call($el.querySelectorAll('[class]'), (e) => {
       const result = this.compileElement(e, classList);
       statement += result ? result : '';
     });
@@ -242,14 +244,16 @@ export let classPrinter: ClassPrinter = {
 
     // <template> element
     Array.prototype.forEach.call($root.querySelectorAll('template'), (template) => {
-      Array.prototype.forEach.call(template.content.querySelectorAll('[class],[acss-class]'), (e) => {
+      // Array.prototype.forEach.call(template.content.querySelectorAll('[class],[acss-class]'), (e) => {
+      Array.prototype.forEach.call(template.content.querySelectorAll('[class]'), (e) => {
         this.print(e);
       });
     });
 
     // <html>
 
-    Array.prototype.forEach.call($root.querySelectorAll('[class],[acss-class]'), (e) => {
+    // Array.prototype.forEach.call($root.querySelectorAll('[class],[acss-class]'), (e) => {
+    Array.prototype.forEach.call($root.querySelectorAll('[class]'), (e) => {
       this.print(e);
     });
   },

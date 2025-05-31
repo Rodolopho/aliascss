@@ -3,7 +3,7 @@ describe('Pseudo Selector',()=>{
 
     
       test('css func()',()=>{
-         expect(JSON.stringify(pseudoE('--not(_div)-bgc-red'))).toBe(JSON.stringify(['-bgc-red', ':not( div)']));
+         expect(JSON.stringify(pseudoE('--not(_div,_div)-bgc-red'))).toBe(JSON.stringify(['-bgc-red', ':not( div, div)']));
     })
      test('css func()',()=>{
          expect(JSON.stringify(pseudoE('--not(--hover)-bgc-red'))).toBe(JSON.stringify(['-bgc-red', ':not(:hover)']));

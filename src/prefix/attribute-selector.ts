@@ -3,7 +3,7 @@ const  attribute :{
     process: (...args: any[]) => any
 }
     =  {
-    test:/^[-]?[\[][a-zA-Z0-9-_:]+([~*$^]?[=][a-zA-Z0-9-_:/.]+)?[\]]/,
+    test:/^[-,]?[\[][a-zA-Z0-9-_:]+([~*$^]?[=][a-zA-Z0-9-_:/.]+)?[\]]/,
     process(className :string){
         const match=className.match(this.test);
         if(match){

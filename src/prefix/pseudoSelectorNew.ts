@@ -2,6 +2,7 @@ import prefix,{createRegexForPseudo} from './PseudoPrefixNew.js';
 import extractPrefix from './extractPrefix.js';
 
 export default function PseudoEleStateNew(data:string):string[]|null{
+    // const match=createRegexForPseudo({...prefix,'--KKK':','});
     const match=createRegexForPseudo(prefix);
     if(!match.test(data)) return null;
 
@@ -57,7 +58,7 @@ export default function PseudoEleStateNew(data:string):string[]|null{
         return [cn,`${alias}(${cont})`]
     }else if(/(^-(-not|-has|-is|-where|-n|-hs|-w|-is)[-_])/.test(data)){
         
-        const mch=data.match(/(^-(-not|-has|-is|-where|-n|-hs|-w|-is)([_-]+[a-zA-Z0-9\.]+)(?=[-|_]))/);
+        const mch=data.match(/(^-(-not|-has|-is|-where|-n|-hs|-w|-is)([_-]+[a-zA-Z0-9\.,]+)(?=[-|_]))/);
        
         const cn=mch?.[1]?data.replace(mch[1],''):'';
         const alias=mch?.[2]?prefix['-'+mch[2].replace(/-$/,'')]:'';
