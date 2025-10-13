@@ -68,19 +68,19 @@ describe("Test Return statement",()=>{
          expect(statement.make('hd-bgc-red')).toBe('@media(max-width:4000px){.hd-bgc-red{background-color:red}}')
     })
     test("Return statement  custom compiler extend",()=>{
-         expect(statement.make('shadow--shadow-xs')).toBe('.shadow--shadow-xs{box-shadow: var(--shadow-xs)}');
+         expect(statement.make('box-shadow--shadow-xs')).toBe('.box-shadow--shadow-xs{box-shadow: var(--shadow-xs)}');
     })
     test("Return statement custom className",()=>{
-         expect(statement.make('shadow-xs')).toBe('.shadow-xs{box-shadow:var(--shadow-xs, 0px 1px 2px rgba(16, 24, 40, 0.05))}');
+         expect(statement.make('x-shadow-xs')).toBe('.x-shadow-xs{box-shadow:var(--x-shadow-xs, 0px 1px 2px rgba(16, 24, 40, 0.05))}');
     })
     test("Return statement custom className",()=>{
-         expect(statement.make('shadow-xs','small-shadow')).toBe('.small-shadow{box-shadow:var(--shadow-xs, 0px 1px 2px rgba(16, 24, 40, 0.05))}');
+         expect(statement.make('x-shadow-xs','small-shadow')).toBe('.small-shadow{box-shadow:var(--x-shadow-xs, 0px 1px 2px rgba(16, 24, 40, 0.05))}');
     })
     test("Return statement custom className",()=>{
-         expect(statement.make('shadow-xs','small-shadow',true)).toBe('box-shadow:var(--shadow-xs, 0px 1px 2px rgba(16, 24, 40, 0.05))');
+         expect(statement.make('x-shadow-xs','small-shadow',true)).toBe('box-shadow:var(--x-shadow-xs, 0px 1px 2px rgba(16, 24, 40, 0.05))');
     })
 
     test("Return statement custom className",()=>{
-         expect(statement.make('shadow-xs',undefined,true)).toBe('box-shadow:var(--shadow-xs, 0px 1px 2px rgba(16, 24, 40, 0.05))');
+         expect(statement.make('x-shadow-xs',undefined,true)).toBe('box-shadow:var(--x-shadow-xs, 0px 1px 2px rgba(16, 24, 40, 0.05))');
     })
 })

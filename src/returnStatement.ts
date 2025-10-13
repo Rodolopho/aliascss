@@ -11,6 +11,8 @@ import cssProps from "./css-properties-all.js";
 import { staticClassNamesAlias } from "./static/staticClassNamesAlias.js";
 import postcss from "postcss";
 import { splitByCommaOutsideParens } from "./utils/helper.js";
+import cssCustomCompilers from "./custom-css-compilers.js";
+// import customGroups from './prebuild.js';
 
 const [staticClassNamesWithAlias, cssPropsWithAlias]=createCompilerObj(cssProps,config.globalValues);
 
@@ -26,7 +28,7 @@ export const compiler:{
     mediaSelector:{...media.target},
     mediaTest:null,
     staticClassNames:{...staticClassNamesAlias,...staticClassNamesWithAlias},
-    cssProps:{...cssPropsWithAlias},
+    cssProps:{...cssPropsWithAlias,...cssCustomCompilers},
     prefix:null,
     rawCSS:null,
     customGroupStatement:null,
@@ -121,16 +123,17 @@ export const compiler:{
         let result :any ='';
         // x-class
         
-         if(/^(x-width|x-height)/.test(pnv)){
-            const extract=getPropertyAndValue(pnv.replace('x-',''), this.cssProps, this.staticClassNames, this.custom,extractProperty);
-            if(typeof extract === 'string'){
-                const [p,v]=extract.split(':');
-                if(p && v){
-                    result=`${p}:calc(${v} + var(--${p}-grow) - var(--${p}-shrink));--${p}:${v};--${p}-grow:0px;--${p}-shrink:0px`
-                }
-            }
+        //  if(/^(x-width|x-height)/.test(pnv)){
+        //     const extract=getPropertyAndValue(pnv.replace('x-',''), this.cssProps, this.staticClassNames, this.custom,extractProperty);
+        //     if(typeof extract === 'string'){
+        //         const [p,v]=extract.split(':');
+        //         if(p && v){
+        //             result=`${p}:calc(${v} + var(--x-${p}-grow,0px) - var(--x-${p}-shrink,0px));`
+        //         }
+        //     }
          
-        }else if(this.cache.propertyAndValue.hasOwnProperty(pnv)){
+        // }else 
+        if(this.cache.propertyAndValue.hasOwnProperty(pnv)){
             result=this.cache.propertyAndValue[pnv];
         }else{
             try {

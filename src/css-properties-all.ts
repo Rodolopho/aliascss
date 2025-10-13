@@ -2644,7 +2644,7 @@ const cssProps:{
     values:['reset:re','normal:nl']
 },
 
-// ----------------SVG---
+// ----------------SVG-----------------------------
 //  'alignment-baseline':{
 //      alias:'',
 //      type:'',
@@ -2743,8 +2743,8 @@ const cssProps:{
      compiler:color,
     values:['transparent:t'],
 },
-// Custom
 
+//---------------------------------CUSTOM
 // padding, margin
 'padding-x':{
     type:'group',

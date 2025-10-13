@@ -2,7 +2,7 @@ import {getCompiler,main} from './lib/index.js'
 import { compilers } from './custom-compilers.js';
 import prebuild from './lib/prebuild.js';
 const config={
-    input:['experiments/**/*.html','experiments/1.jsx'],
+    input:['ui-dev/**/*.html','experiments/**/*.html'],
     output:{
         location:'demo/css/css/style/acss.css',
         "--file":true
@@ -118,6 +118,11 @@ const config={
     },
     prebuild:{
         'colorize-dark':'background:#0f0f0f;color:#e3e3e3',
+        'x-clip-menu':'clip-path: polygon(0% 10%,100% 10%,100% 20%,0% 20%,0% 45%,100% 45%,100% 55%,0% 55%,0% 80%,100% 80%,100% 90%,0% 90%);',
+        'x-clip-message':'clip-path: polygon(0% 0%,100% 0%,100% 80%,60% 80%,50% 100%,40% 80%,0% 80%);',
+        'x-clip-star':'clip-path: polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);',
+        'x-clip-close': 'clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%)',
+        'x-clip-plus': 'clip-path: polygon(40% 0%,60% 0%,60% 40%,100% 40%,100% 60%,60% 60%,60% 100%,40% 100%,40% 60%,0% 60%,0% 40%,40% 40%);',
         'colorize-light':'background:#e3e3e3;color:rgba(0,0,0,0.8)',
         'flex-center':'display:flex;align-items:center;justify-content:center',
         'absolute-center':'position:absolute;top:0;right:0;left:0;bottom:0:margin:auto',
@@ -125,145 +130,17 @@ const config={
     },
     group:{
         ...prebuild,
-        'card':"w-256px h-120px [class~=shadow]-bxs-0px-12px-24px-rgba-43-43-67-0d16 bgc-fff b-1px-s-gray-lightest br-16px --hover-bgc-primary-lightest --hover-b-1px-s-primary-hover --active[b-1px-s-primary,bgc-primary-light]",
-
-        'responsive':'xs-w-100p sm-w-540px md-w-720px lg-w-960px xl-w-1140px xxl-w-1320px',
-        'responsive-sm':'xs-w-100p sm-w-540px md-w-720px lg-w-960px xl-w-1140px xxl-w-1320px',
-        'responsive-md':'xs-w-100p sm-w-100p md-w-720px lg-w-960px xl-w-1140px xxl-w-1320px',
-        'responsive-lg':'xs-w-100p sm-w-100p md-w-100p lg-w-960px xl-w-1140px xxl-w-1320px',
-        'responsive-xl':'xs-w-100p sm-w-100p md-w-100p lg-w-100p xl-w-1140px xxl-w-1320px',
-        'responsive-xll':'xs-w-100p sm-w-100p md-w-100p lg-w-100p xl-w-100p xxl-w-1320px',
-        'responsive-fluid':'xs-w-100p sm-w-100p md-w-100p lg-w-100p xl-100p xxl-100p',
+        'x-card':"w-256px h-120px [class~=shadow]-bxs-0px-12px-24px-rgba-43-43-67-0d16 bgc-fff b-1px-s-gray-lightest br-16px --hover-bgc-primary-lightest --hover-b-1px-s-primary-hover --active[b-1px-s-primary,bgc-primary-light]",
+        'x-responsive':'xs-w-100p sm-w-540px md-w-720px lg-w-960px xl-w-1140px xxl-w-1320px',
+        'x-responsive-sm':'xs-w-100p sm-w-540px md-w-720px lg-w-960px xl-w-1140px xxl-w-1320px',
+        'x-responsive-md':'xs-w-100p sm-w-100p md-w-720px lg-w-960px xl-w-1140px xxl-w-1320px',
+        'x-responsive-lg':'xs-w-100p sm-w-100p md-w-100p lg-w-960px xl-w-1140px xxl-w-1320px',
+        'x-responsive-xl':'xs-w-100p sm-w-100p md-w-100p lg-w-100p xl-w-1140px xxl-w-1320px',
+        'x-responsive-xll':'xs-w-100p sm-w-100p md-w-100p lg-w-100p xl-w-100p xxl-w-1320px',
+        'x-responsive-fluid':'xs-w-100p sm-w-100p md-w-100p lg-w-100p xl-100p xxl-100p',
     },
     statement:`.color{color:red}`,
    ignore:['bgc-red'] 
 }
 export  default config;
 
-/* const xconfig= {
-    // input glob pattern or array of glob pattern
-    input:'public/*.html',
- 
-    // Output css file , file must exist or should be created manully if file doesnot exist
-    output:{
-        // path to main/master css file which include every compiled css declaration for given input
-        location:'./public/css/acss.css',
-        "--file":true// output css file for each file
-    },
- 
-    //---------------Below this are all optional -------------------------
-    // Customize media prefix selector
-    media:{
-        prefix:{
-            xs:'@media (max-width : 600px)'
-        }
-    },
-    // support for css Module
-    '--module':true,
-    
-    // import module as i.e import x form 'page.module.css'
-    importModuleAs:'x',
- 
-    // uncomment minify is true if you want main css file to be minified by cssnano
- 
-    // minify:true,
- 
-    // name of extractorFunction
-    extractorFunction:"x",
-     
-     // prefix aliascss  ac-bgc-red ac--hover-color-red
-    // prefix:'ac',
- 
-    //Truncate the css file , you should let it true unless you know what your are doing
-    truncate:true,
-    	
-     //ADD Custom color Value
-	custom:{
-		colors:{
-            //custom name for color value  must not have  "-" or "_" to work perfectly.
-			'main':"rgb(12,23,45)",// now you can use bgc-main
-			'theme':'#c6c6c6'
- 
-		}
- 
-	},
-    // Create your own compiler 
-     extend:{
-        'font-size':{
-            alias:'fs',
-            values:["2rem:xl"],
-            compiler:(value)=>{
-                return value;
-            }
-        },
-        'txt-color':{
-            proerty:'color',  
-            extend:'color' // now you can use txt-color in place color 
-        },
- 
-        // Now you can use shadow as className property e.g shadow-xs 
-        'shadow':{
-            property:'box-shadow',
-            compiler:(value)=>{
-                value=value.slice(1);
-                const values={
-                    '3xl': ' 0px 32px 64px -12px var(--shadow-color)',
-                    'xxxl': ' 0px 32px 64px -12px var(--shadow-color)',
-                    '2xl': ' 0px 24px 48px -12px var(--shadow-color)',
-                    'xxl': ' 0px 24px 48px -12px var(--shadow-color)',
-                    'xl': ' 0px 20px 24px -4px var(--shadow-color)',
-                    'lg': ' 0px 12px 16px -4px var(--shadow-color)',
-                    'md': ' 0px 4px 8px -2px var(--shadow-color)',
-                    'sm': ' 0px 1px 3px var(--shadow-color)',
-                    'xs': ' 0px 1px 2px var(--shadow-color)',
-                };
-                if(values.hasOwnProperty(value)) return values[value];
-            }
-         
-        }
-    },
-    // predefine className 
-	prebuild:{
-        //section
-        'text-xl': 'font-size:20px;line-height:30px',
-        'text-lg': 'font-size:18px;line-height:28px',
-        'text-md': 'font-size:16px;line-height:24px',
-        'text-sm': 'font-size:14px;line-height:20px',
-        'text-xs': 'font-size:12px;line-height:18px',
- 
-        'text-xl': 'font-size:20px;line-height:30px',
-        'text-lg': 'font-size:18px;line-height:28px',
-        'text-md': 'font-size:16px;line-height:24px',
-        'text-sm': 'font-size:14px;line-height:20px',
-        'text-xs': 'font-size:12px;line-height:18px',
- 
-        'radius-xs':'border-radius:4px',
- 
-        'flex-center':'display:flex;align-items:center;justify-content:center',
-    },
-    //Add some css statement in every compiled css file
-	statement:`
-        :root{
-            --bg-dark-color:rgba(111,111,111,1) ;
-            --bg-light-color:rgba(21,21,21,1) ;
-            --outline-color:blue;
-    
-        }
- 
-        body{
-            font-family:BlinkMacSystemFont , -apple-system , "Segoe UI"  ;
-        }
- 
-	`,
- 
-	// pre group valid Aliascss classNames in single className
-	group:{
-		'container':' df fdc bsbb aic flex-shrink-1 flex-grow-1 ',
-		'section':'flex-shrink0 bsbb',
-        
-	},
-    // if some of the className collide with other CSS framework like bootstrap and tailwindcss
-    // You wanna  tell aliascss to ignore it...
-	ignore:['fs12px', 'c-red','bgc-red'],// these classnames will be ignored
-}
-*/

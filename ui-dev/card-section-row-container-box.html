@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modern UI Components</title>
+    <link rel="stylesheet" href="/card-section-row-container-box.html.css">
     <style>
         /* Global reset and base styles */
         * {
@@ -35,26 +36,22 @@
     </style>
 </head>
 
-<body class="[class~=demo-content]-fs-16px [class~=demo-content]-lh-1.6">
+<body class="[class~=demo-content]-fs-16px [class~=demo-content]-lh-1.6 p0px">
+    <section class="x-section m0px x-section-full bgc-primary400 [class~=x-section-full]-[w-100dvw,h-100dvh]">
+        <div class="x-row fww md--has([class~=x-col-6])-fdr md--has([class~=x-col-3])-fdr" class-row="df fww g-8px p--row-padding:8px">
+           <div class="x-col fb-12col md-fb-6col lg-fb-4col h-200px bgc-gray "></div>
+           <div class="x-col fb-12col md-fb-6col lg-fb-4col h-200px bgc-success400"></div>
+           <div class="x-col fb-12col md-fb-6col lg-fb-1col h-200px bgc-success700"></div>
+
+        </div>
+    </section>
     <!-- Card Component Demo -->
-    <section class="section" class-section="p--section-padding:40px bgc--section-bg:transparent [class~=section-spacious]--section-padding:80px [class~=section-colored]--section-bg:f0f4f8
+    <section class="x-section" class-section="p--section-padding:40px bgc--section-bg:transparent [class~=section-spacious]--section-padding:80px [class~=section-colored]--section-bg:f0f4f8
 ">
         <h2>Card Component</h2>
-        'x-section':`p--section-padding:40px bgc--section-bg:transparent [class~=section-spacious]--section-padding:80px
-        [class~=section-colored]--section-bg:f0f4f8`,
-        'x-row':`df fww g-16px m--8px __all-margin-8px __all-flex-1 [class~=row-no-wrap]-fwn [class~=row-center]-jcc`,
-        'x-container':`width-100p xw--container-width:1200px margin-0-auto p--container-padding:16px
-        [class~=container-fluid][--container-width:100%]
-        [class~=container-narrow][--container-width:800px]`,
-        'x-box':`bgc--box-bg:ffffff p--box-padding:16px br--box-border-radius:8px border--box-border:1px-solid-e0e0e0
-        [class~=box-shadow]-bxs-0px-2px-8px-0000000000d1`,
-        'x-card':`bgc--card-bg:ffffff padding--card-padding:24px br--card-border-radius:12px bxs--card-shadow:0px-4px-12px-0000000000d1
-        --hover-transform-translateY--4px --hover-bxs-0-8px-24px-0000000000d15
-        transition-transform-0.3s-ease__box-shadow-0.3s-ease
-        [class~=card-dark][--card-bg:1a1a1a,--card-shadow:0px-4px-12px-0000000000d3,color--card-color:ffffff]`,
         
-        <div class="row" class-row="df fww g-16px m--8px  __all-margin-8px __all-flex-1 [class~=row-no-wrap]-fwn [class~=row-center]-jcc">
-            <div  class="card" class-card="bgc--card-bg:ffffff padding--card-padding:24px br--card-border-radius:12px bxs--card-shadow:0px-4px-12px-0000000000d1
+        <div class="x-row xs-fdc" class-row="df fww g-16px m--8px  __all-margin-8px __all-flex-1 [class~=row-no-wrap]-fwn [class~=row-center]-jcc">
+            <div  class="x-card" class-card="bgc--card-bg:ffffff padding--card-padding:24px br--card-border-radius:12px bxs--card-shadow:0px-4px-12px-0000000000d1
          --hover-transform-translateY--4px --hover-bxs-0-8px-24px-0000000000d15 transition-transform-0.3s-ease__box-shadow-0.3s-ease
          [class~=card-dark][--card-bg:1a1a1a,--card-shadow:0px-4px-12px-0000000000d3,color--card-color:ffffff]
          
@@ -63,7 +60,7 @@
                 <p class="demo-content">This is a standard card with hover effects and shadow.</p>
             </div>
            
-            <div class="card card-dark">
+            <div class="x-card card-dark">
                 <h3>Dark Card</h3>
                 <p class="demo-content">Dark theme with white text.</p>
             </div>
@@ -71,24 +68,24 @@
     </section>
 
     <!-- Container Component Demo -->
-    <section class="section section-colored">
+    <section class="x-section section-colored bgc-primary100">
         <h2>Container Component</h2>
-        <div class="container"  class-container="width-100p xw--container-width:1200px margin-0-auto p--container-padding:16px [class~=container-fluid][--container-width:100%]
+        <div class="x-container bgc-primary700"  class-container="width-100p xw--container-width:1200px margin-0-auto p--container-padding:16px [class~=container-fluid][--container-width:100%]
             [class~=container-narrow][--container-width:800px]">
-            <div class="box" class-box="bgc--box-bg:ffffff p--box-padding:16px br--box-border-radius:8px border--box-border:1px-solid-e0e0e0 [class~=box-shadow]-bxs-0px-2px-8px-0000000000d1
+            <div class="x-box" class-box="bgc--box-bg:ffffff p--box-padding:16px br--box-border-radius:8px border--box-border:1px-solid-e0e0e0 [class~=box-shadow]-bxs-0px-2px-8px-0000000000d1
 ">
                 <h3>Default Container</h3>
                 <p class="demo-content">Centered container with a max-width of 1200px.</p>
             </div>
         </div>
-        <div class="container container-narrow">
-            <div class="box">
+        <div class="x-container container-narrow bgc-primary200">
+            <div class="x-box">
                 <h3>Narrow Container</h3>
                 <p class="demo-content">Narrow container with a max-width of 800px.</p>
             </div>
         </div>
-        <div class="container container-fluid">
-            <div class="box">
+        <div class="x-container container-fluid bgc-primary300">
+            <div class="x-box">
                 <h3>Fluid Container</h3>
                 <p class="demo-content">Full-width container with padding.</p>
             </div>
@@ -96,35 +93,35 @@
     </section>
 
     <!-- Row Component Demo -->
-    <section class="section">
+    <section class="x-section">
         <h2>Row Component</h2>
-        <div class="row">
-            <div class="box">Box 1</div>
-            <div class="box">Box 2</div>
-            <div class="box">Box 3</div>
+        <div class="x-row xs-fdc">
+            <div class="x-box">Box 1</div>
+            <div class="x-box">Box 2</div>
+            <div class="x-box">Box 3</div>
         </div>
-        <div class="row row-no-wrap">
-            <div class="box">No-Wrap Box 1</div>
-            <div class="box">No-Wrap Box 2</div>
+        <div class="x-row xs-fdc x-row-no-wrap">
+            <div class="x-box">No-Wrap Box 1</div>
+            <div class="x-box">No-Wrap Box 2</div>
         </div>
-        <div class="row row-center">
-            <div class="box">Centered Box</div>
+        <div class="x-row xs-fdc x-row-center">
+            <div class="x-box">Centered Box</div>
         </div>
     </section>
 
     <!-- Box Component Demo -->
-    <section class="section section-spacious">
+    <section class="x-section section-spacious">
         <h2>Box Component</h2>
-        <div class="row">
-            <div class="box">
+        <div class="x-row">
+            <div class="x-box">
                 <h3>Default Box</h3>
                 <p class="demo-content">Simple box with border.</p>
             </div>
-            <div class="box box-shadow">
+            <div class="x-box box-shadow">
                 <h3>Shadow Box</h3>
                 <p class="demo-content">Box with a subtle shadow effect.</p>
             </div>
-            <div class="box bn bgc-transparent">
+            <div class="x-box bn bgc-transparent">
                 <h3>Minimal Box</h3>
                 <p class="demo-content">No border or background.</p>
             </div>
@@ -132,17 +129,17 @@
     </section>
 
     <!-- Section Component Demo -->
-    <section class="section section-colored">
+    <section class="x-section section-colored">
         <h2>Section Component</h2>
-        <div class="section">
+        <div class="x-section">
             <h3>Default Section</h3>
             <p class="demo-content">Standard section with padding.</p>
         </div>
-        <div class="section section-spacious">
+        <div class="x-section section-spacious">
             <h3>Spacious Section</h3>
             <p class="demo-content">More padding for a spacious feel.</p>
         </div>
-        <div class="section section-colored">
+        <div class="x-section section-colored">
             <h3>Colored Section</h3>
             <p class="demo-content">Section with a light background color.</p>
         </div>

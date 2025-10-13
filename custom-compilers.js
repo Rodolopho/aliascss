@@ -1,6 +1,20 @@
 import {getCompiler} from './lib/index.js'
 export const compilers={
-   Box:{ 
+    'x-square':{
+    type:'group',
+    compiler:(value)=>{
+        const v=value.replace(/-([\d])/g,'$1');
+        return `width:calc(${v} + var(--x-square-grow,0px) - var(--x-square-shrink,0px)); flex-basis:calc(${v} + var(--x-square-grow,0px) - var(--x-square-shrink,0px)); flex-shrink:0;flex-grow:0;height:calc(${v} + var(--x-square-grow,0px) - var(--x-square-shrink,0px))`;
+    },
+   },
+   'x-circle':{
+    type:'group',
+    compiler:(value)=>{
+         const v=value.replace(/-([\d])/g,'$1');
+        return `width:calc(${v} + var(--x-circle-grow,0px) - var(--x-circle-shrink,0px)); height:calc(${v} + var(--x-circle-grow,0px) - var(--x-circle-shrink,0px)); border-radius:50%;`;
+    },
+   },
+   'x-box':{
     type:'group',
     compiler:(value)=>{
         const property=['width','height','padding','margin'];
