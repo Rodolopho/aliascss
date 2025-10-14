@@ -28,7 +28,7 @@ describe('Return property and value test',()=>{
         expect(getPropertyAndValue('c-grayDark400',compilerObj,staticClassNames,{colors:customColors},extractProperty)).toBe('color:var(--grayDark400,#94969C)')
     })
     test('getProperty and Value Test with "."',()=>{
-        expect(getPropertyAndValue('margin-1.5rem',compilerObj,staticClassNames,{},extractProperty)).toBe('margin: 1.5rem')
+        expect(getPropertyAndValue('margin-1.5rem',compilerObj,staticClassNames,{},extractProperty)).toBe('margin:1.5rem')
     })
     test('getProperty and Value Test with "."',()=>{
         expect(getPropertyAndValue('margin-10%-10px--20%--30p',compilerObj,staticClassNames,{},extractProperty)).toBe('margin: 10% 10px -20% -30%')

@@ -14,6 +14,8 @@ const config:{
     matchCSSModuleFunction:RegExp,
     globalValues:string[]
     styles:string[]
+    remUnits:string[]
+    remUnitsNegative:string[]
     widths:string[]
     modes:string[]
 }={ 
@@ -43,6 +45,28 @@ const config:{
 
 
     widths:['medium:m','thin:t','thick:th:t2'],
+
+    remUnits:[`${1/4}rem:1`,
+        `${2/4}rem:2`,
+        `${3/4}rem:3`,
+        `${4/4}rem:4`,
+        `${5/4}rem:5`,
+        `${6/4}rem:6`,
+        `${7/4}rem:7`,
+        `${8/4}rem:8`,
+        `${9/4}rem:9`,
+        `${10/4}rem:10`],
+
+       remUnitsNegative:[`-${1/4}rem:-1`,
+        `-${2/4}rem:-2`,
+        `-${3/4}rem:-3`,
+        `-${4/4}rem:-4`,
+        `-${5/4}rem:-5`,
+        `-${6/4}rem:-6`,
+        `-${7/4}rem:-7`,
+        `-${8/4}rem:-8`,
+        `-${9/4}rem:-9`,
+        `-${10/4}rem:-10`],
 
 
     modes:['normal:nl','multiply:m','screen:s','overlay:o','darken:d','lighten:l','color-dodge:cd','color-burn:cb','hard-light:hl',

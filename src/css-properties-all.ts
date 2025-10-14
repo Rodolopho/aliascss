@@ -17,7 +17,8 @@ import { repeat } from './utils/cssFunc.js';
 const style=config.styles; // ['dotted:d','dashed:da:d2','solid:s','double:db:d3','groove:g','ridge:ri:r','inset:i','outset:o','none:n','hidden:h']; 
 const width=config.widths; // ['medium:m','thin:t','thick:th:t2'];
 const mode=config.modes; // ['normal:ml','multiply:m','screen:s','overlay:o','darken:d','lighten:l','color-dodge:cd','color-burn:cb','hard-light:hl','soft-light:sl','difference:di:d2','exclusion:e','hue:h','saturation:sa:s2','color:c','luminosity:lu:l2'];
-
+const remUnits=config.remUnits; // [`${1/4}rem:1`,`${2/4}rem:2`,`${3/4}rem:3`,`${4/4}rem:4`,`${5/4}rem:5`,`${6/4}rem:6`,`${7/4}rem:7`,`${8/4}rem:8`,`${9/4}rem:9`,`${10/4}rem:10`,];
+const remUnitsNegative=config.remUnitsNegative; // [`-${1/4}rem:-1`, `-${2/4}rem:-2`, `-${3/4}rem:-3`, `-${4/4}rem:-4`, `-${5/4}rem:-5`, `-${6/4}rem:-6`, `-${7/4}rem:-7`, `-${8/4}rem:-8`, `-${9/4}rem:-9`, `-${10/4}rem:-10`];
 
 
 
@@ -1538,67 +1539,67 @@ const cssProps:{
     alias:'m',
     type:'d',
     compiler:length,
-    values:[],
+    values:[...remUnits,...remUnitsNegative],
 },
 'margin-block':{
     alias:'',
     type:'d',
     compiler:length,
-    values:['auto:a'],
+    values:['auto:a',...remUnits,...remUnitsNegative],
 },
 'margin-block-end':{
     alias:'mbe',
     type:'d',
     compiler:length,
-    values:['auto:a'],
+    values:['auto:a',...remUnits,...remUnitsNegative],
 },
 'margin-block-start':{
     alias:'mbs',
     type:'d',
     compiler:length,
-    values:['auto:a'],
+    values:['auto:a',...remUnits,...remUnitsNegative],
 },
 'margin-bottom':{
     alias:'mb',
     type:'d',
     compiler:length,
-    values:['auto:a'],
+    values:['auto:a',...remUnits,...remUnitsNegative],
 },
 'margin-inline':{
     alias:'mi',
     type:'d',
     compiler:length,
-    values:['auto:a'],
+    values:['auto:a',...remUnits,...remUnitsNegative],
 },
 'margin-inline-end':{
     alias:'mie',
     type:'d',
     compiler:length,
-    values:['auto:a'],
+    values:['auto:a',...remUnits,...remUnitsNegative],
 },
 'margin-inline-start':{
     alias:'mis',
     type:'d',
     compiler:length,
-    values:['auto:a'],
+    values:['auto:a',...remUnits,...remUnitsNegative],
 },
 'margin-left':{
     alias:'ml',
     type:'d',
     compiler:length,
-    values:['auto:a'],
+    values:['auto:a',...remUnits,...remUnitsNegative],
 },
 'margin-right':{
     alias:'mr',
     type:'d',
     compiler:length,
-    values:['auto:a'],
+    values:['auto:a',...remUnits,...remUnitsNegative],
 },
 'margin-top':{
     alias:'mt',
     type:'d',
     compiler:length,
-    values:['auto:a'],
+    values:['auto:a',...remUnits,...remUnitsNegative],
 },
 'mask':{
     alias:'',// --
@@ -1917,67 +1918,67 @@ const cssProps:{
     alias:'p',
     type:'d',
     compiler:length,
-    values:['none:n'],
+    values:['none:n',...remUnits],
 },
 'padding-block':{
     alias:'',
     type:'s',
     compiler:length,
-    values:['none:n'],
+    values:['none:n',...remUnits],
 },
 'padding-block-end':{
     alias:'pbe',
     type:'d',
     compiler:length,
-    values:[''],
+    values:['',...remUnits],
 },
 'padding-block-start':{
     alias:'pbs',
     type:'d',
     compiler:length,
-    values:[''],
+    values:['',],
 },
 'padding-bottom':{
     alias:'pb',
     type:'d',
     compiler:length,
-    values:[''],
+    values:['',...remUnits],
 },
 'padding-inline':{
     alias:'pi',
     type:'d',
     compiler:length,
-    values:[''],
+    values:['',...remUnits],
 },
 'padding-inline-end':{
     alias:'pie',
     type:'d',
     compiler:length,
-    values:[''],
+    values:['',...remUnits],
 },
 'padding-inline-start':{
     alias:'pis',
     type:'d',
     compiler:length,
-    values:[''],
+    values:['',...remUnits],
 },
 'padding-left':{
     alias:'pl',
     type:'d',
     compiler:length,
-    values:[''],
+    values:['',...remUnits],
 },
 'padding-right':{
     alias:'pr',
     type:'d',
     compiler:length,
-    values:[''],
+    values:['',],
 },
 'padding-top':{
     alias:'pt',
     type:'d',
     compiler:length,
-    values:[''],
+    values:['',],
 },
 'page':{
     alias:'pg',
@@ -2744,7 +2745,8 @@ const cssProps:{
     values:['transparent:t'],
 },
 
-//---------------------------------CUSTOM
+/*
+// ---------------------------------CUSTOM
 // padding, margin
 'padding-x':{
     type:'group',
@@ -2891,7 +2893,7 @@ const cssProps:{
 },
 'my':{
     type:'group',
-    compiler:(y)=>{
+    compiler:(y)=>{ return "fuck";
         if(/^--[a-z]/.test(y)){
             return `margin-top:var(${y});margin-bottom:var(${y})`;
         }
@@ -2907,8 +2909,11 @@ const cssProps:{
         },
     groups:{
         0:"margin-top:0;margin-bottom:0",
+        1:`margin-top:${1/4}rem;margin-bottom:${1/4}rem`,
+        '-1ss':`margin-top:-${1/4}rem;margin-bottom:-${1/4}rem`,
     },
 }
+    */
 
 
 }

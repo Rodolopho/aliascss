@@ -37,6 +37,16 @@ const cssCustomCompilers:{
         },
     groups:{
         0:"padding-left:0;padding-right:0",
+    1:`padding-left:${1/4}rem;padding-right:${1/4}rem`,
+    2:`padding-left:${2/4}rem;padding-right:${2/4}rem`,
+    3:`padding-left:${3/4}rem;padding-right:${3/4}rem`,
+    4:`padding-left:${4/4}rem;padding-right:${4/4}rem`,
+    5:`padding-left:${5/4}rem;padding-right:${5/4}rem`,
+    6:`padding-left:${6/4}rem;padding-right:${6/4}rem`,
+    7:`padding-left:${7/4}rem;padding-right:${7/4}rem`,
+    8:`padding-left:${8/4}rem;padding-right:${8/4}rem`,
+    9:`padding-left:${9/4}rem;padding-right:${9/4}rem`,
+    10:`padding-left:${10/4}rem;padding-right:${10/4}rem`,
     },
 },
 'px':{
@@ -57,6 +67,16 @@ const cssCustomCompilers:{
         },
     groups:{
         0:"padding-left:0;padding-right:0",
+    1:`padding-left:${1/4}rem;padding-right:${1/4}rem`,
+    2:`padding-left:${2/4}rem;padding-right:${2/4}rem`,
+    3:`padding-left:${3/4}rem;padding-right:${3/4}rem`,
+    4:`padding-left:${4/4}rem;padding-right:${4/4}rem`,
+    5:`padding-left:${5/4}rem;padding-right:${5/4}rem`,
+    6:`padding-left:${6/4}rem;padding-right:${6/4}rem`,
+    7:`padding-left:${7/4}rem;padding-right:${7/4}rem`,
+    8:`padding-left:${8/4}rem;padding-right:${8/4}rem`,
+    9:`padding-left:${9/4}rem;padding-right:${9/4}rem`,
+    10:`padding-left:${10/4}rem;padding-right:${10/4}rem`,
     },
 },
 
@@ -78,6 +98,16 @@ const cssCustomCompilers:{
         },
     groups:{
         0:"padding-top:0;padding-bottom:0",
+        1:`padding-top:${1/4}rem;padding-bottom:${1/4}rem`,
+        2:`padding-top:${2/4}rem;padding-bottom:${2/4}rem`,
+        3:`padding-top:${3/4}rem;padding-bottom:${3/4}rem`,
+        4:`padding-top:${4/4}rem;padding-bottom:${4/4}rem`,
+        5:`padding-top:${5/4}rem;padding-bottom:${5/4}rem`,
+        6:`padding-top:${6/4}rem;padding-bottom:${6/4}rem`,
+        7:`padding-top:${7/4}rem;padding-bottom:${7/4}rem`,
+        8:`padding-top:${8/4}rem;padding-bottom:${8/4}rem`,
+        9:`padding-top:${9/4}rem;padding-bottom:${9/4}rem`,
+        10:`padding-top:${10/4}rem;padding-bottom:${10/4}rem`,
     },
 },
 'py':{
@@ -98,6 +128,16 @@ const cssCustomCompilers:{
         },
     groups:{
         0:"padding-top:0;padding-bottom:0",
+        1:`padding-top:${1/4}rem;padding-bottom:${1/4}rem`,
+        2:`padding-top:${2/4}rem;padding-bottom:${2/4}rem`,
+        3:`padding-top:${3/4}rem;padding-bottom:${3/4}rem`,
+        4:`padding-top:${4/4}rem;padding-bottom:${4/4}rem`,
+        5:`padding-top:${5/4}rem;padding-bottom:${5/4}rem`,
+        6:`padding-top:${6/4}rem;padding-bottom:${6/4}rem`,
+        7:`padding-top:${7/4}rem;padding-bottom:${7/4}rem`,
+        8:`padding-top:${8/4}rem;padding-bottom:${8/4}rem`,
+        9:`padding-top:${9/4}rem;padding-bottom:${9/4}rem`,
+        10:`padding-top:${10/4}rem;padding-bottom:${10/4}rem`,
     },
 },
 // Margin
@@ -118,7 +158,27 @@ const cssCustomCompilers:{
         // }
         },
     groups:{
-        0:"margin-left:0;margin-right:0",
+        0:"margin-right:0;margin-left:0",
+        1:`margin-right:${1/4}rem;margin-left:${1/4}rem`,
+        '-1':`margin-right:-${1/4}rem;margin-left:-${1/4}rem`,
+        2:`margin-right:${2/4}rem;margin-left:${2/4}rem`,
+        '-2':`margin-right:-${2/4}rem;margin-left:-${2/4}rem`,
+        3:`margin-right:${3/4}rem;margin-left:${3/4}rem`,
+        '-3':`margin-right:-${3/4}rem;margin-left:-${3/4}rem`,
+        4:`margin-right:${4/4}rem;margin-left:${4/4}rem`,
+        '-4':`margin-right:-${4/4}rem;margin-left:-${4/4}rem`,
+        5:`margin-right:${5/4}rem;margin-left:${5/4}rem`,
+        '-5':`margin-right:-${5/4}rem;margin-left:-${5/4}rem`,
+        6:`margin-right:${6/4}rem;margin-left:${6/4}rem`,
+        '-6':`margin-right:-${6/4}rem;margin-left:-${6/4}rem`,
+        7:`margin-right:${7/4}rem;margin-left:${7/4}rem`,
+        '-7':`margin-right:-${7/4}rem;margin-left:-${7/4}rem`,
+        8:`margin-right:${8/4}rem;margin-left:${8/4}rem`,
+        '-8':`margin-right:-${8/4}rem;margin-left:-${8/4}rem`,
+        9:`margin-right:${9/4}rem;margin-left:${9/4}rem`,
+        '-9':`margin-right:-${9/4}rem;margin-left:-${9/4}rem`,
+        10:`margin-right:${10/4}rem;margin-left:${10/4}rem`,
+        '-10':`margin-right:-${10/4}rem;margin-left:-${10/4}rem`,
     },
 },
 'mx':{
@@ -139,6 +199,26 @@ const cssCustomCompilers:{
         },
     groups:{
         0:"margin-left:0;margin-right:0",
+        1:`margin-right:${1/4}rem;margin-left:${1/4}rem`,
+        '-1':`margin-right:-${1/4}rem;margin-left:-${1/4}rem`,
+        2:`margin-right:${2/4}rem;margin-left:${2/4}rem`,
+        '-2':`margin-right:-${2/4}rem;margin-left:-${2/4}rem`,
+        3:`margin-right:${3/4}rem;margin-left:${3/4}rem`,
+        '-3':`margin-right:-${3/4}rem;margin-left:-${3/4}rem`,
+        4:`margin-right:${4/4}rem;margin-left:${4/4}rem`,
+        '-4':`margin-right:-${4/4}rem;margin-left:-${4/4}rem`,
+        5:`margin-right:${5/4}rem;margin-left:${5/4}rem`,
+        '-5':`margin-right:-${5/4}rem;margin-left:-${5/4}rem`,
+        6:`margin-right:${6/4}rem;margin-left:${6/4}rem`,
+        '-6':`margin-right:-${6/4}rem;margin-left:-${6/4}rem`,
+        7:`margin-right:${7/4}rem;margin-left:${7/4}rem`,
+        '-7':`margin-right:-${7/4}rem;margin-left:-${7/4}rem`,
+        8:`margin-right:${8/4}rem;margin-left:${8/4}rem`,
+        '-8':`margin-right:-${8/4}rem;margin-left:-${8/4}rem`,
+        9:`margin-right:${9/4}rem;margin-left:${9/4}rem`,
+        '-9':`margin-right:-${9/4}rem;margin-left:-${9/4}rem`,
+        10:`margin-right:${10/4}rem;margin-left:${10/4}rem`,
+        '-10':`margin-right:-${10/4}rem;margin-left:-${10/4}rem`,
     },
 },
 
@@ -160,6 +240,26 @@ const cssCustomCompilers:{
         },
     groups:{
         0:"margin-top:0;margin-bottom:0",
+        1:`margin-top:${1/4}rem;margin-bottom:${1/4}rem`,
+        '-1':`margin-top:-${1/4}rem;margin-bottom:-${1/4}rem`,
+        2:`margin-top:${2/4}rem;margin-bottom:${2/4}rem`,
+        '-2':`margin-top:-${2/4}rem;margin-bottom:-${2/4}rem`,
+        3:`margin-top:${3/4}rem;margin-bottom:${3/4}rem`,
+        '-3':`margin-top:-${3/4}rem;margin-bottom:-${3/4}rem`,
+        4:`margin-top:${4/4}rem;margin-bottom:${4/4}rem`,
+        '-4':`margin-top:-${4/4}rem;margin-bottom:-${4/4}rem`,
+        5:`margin-top:${5/4}rem;margin-bottom:${5/4}rem`,
+        '-5':`margin-top:-${5/4}rem;margin-bottom:-${5/4}rem`,
+        6:`margin-top:${6/4}rem;margin-bottom:${6/4}rem`,
+        '-6':`margin-top:-${6/4}rem;margin-bottom:-${6/4}rem`,
+        7:`margin-top:${7/4}rem;margin-bottom:${7/4}rem`,
+        '-7':`margin-top:-${7/4}rem;margin-bottom:-${7/4}rem`,
+        8:`margin-top:${8/4}rem;margin-bottom:${8/4}rem`,
+        '-8':`margin-top:-${8/4}rem;margin-bottom:-${8/4}rem`,
+        9:`margin-top:${9/4}rem;margin-bottom:${9/4}rem`,
+        '-9':`margin-top:-${9/4}rem;margin-bottom:-${9/4}rem`,
+        10:`margin-top:${10/4}rem;margin-bottom:${10/4}rem`,
+        '-10':`margin-top:-${10/4}rem;margin-bottom:-${10/4}rem`,
     },
 },
 'my':{
@@ -180,10 +280,31 @@ const cssCustomCompilers:{
         },
     groups:{
         0:"margin-top:0;margin-bottom:0",
+        1:`margin-top:${1/4}rem;margin-bottom:${1/4}rem`,
+        '-1':`margin-top:-${1/4}rem;margin-bottom:-${1/4}rem`,
+        2:`margin-top:${2/4}rem;margin-bottom:${2/4}rem`,
+        '-2':`margin-top:-${2/4}rem;margin-bottom:-${2/4}rem`,
+        3:`margin-top:${3/4}rem;margin-bottom:${3/4}rem`,
+        '-3':`margin-top:-${3/4}rem;margin-bottom:-${3/4}rem`,
+        4:`margin-top:${4/4}rem;margin-bottom:${4/4}rem`,
+        '-4':`margin-top:-${4/4}rem;margin-bottom:-${4/4}rem`,
+        5:`margin-top:${5/4}rem;margin-bottom:${5/4}rem`,
+        '-5':`margin-top:-${5/4}rem;margin-bottom:-${5/4}rem`,
+        6:`margin-top:${6/4}rem;margin-bottom:${6/4}rem`,
+        '-6':`margin-top:-${6/4}rem;margin-bottom:-${6/4}rem`,
+        7:`margin-top:${7/4}rem;margin-bottom:${7/4}rem`,
+        '-7':`margin-top:-${7/4}rem;margin-bottom:-${7/4}rem`,
+        8:`margin-top:${8/4}rem;margin-bottom:${8/4}rem`,
+        '-8':`margin-top:-${8/4}rem;margin-bottom:-${8/4}rem`,
+        9:`margin-top:${9/4}rem;margin-bottom:${9/4}rem`,
+        '-9':`margin-top:-${9/4}rem;margin-bottom:-${9/4}rem`,
+        10:`margin-top:${10/4}rem;margin-bottom:${10/4}rem`,
+        '-10':`margin-top:-${10/4}rem;margin-bottom:-${10/4}rem`,
+      
     },
 },
 
-//---------------------x-custom-compiler
+// ---------------------x-custom-compiler
 'x-square':{
     type:'group',
     compiler:(value)=>{
@@ -203,7 +324,7 @@ const cssCustomCompilers:{
     compiler:(value)=>{
         if(/^--[a-zA-Z]/.test(value)){
             if(value.includes(':')){
-            let val=value.slice(value.indexOf(':')).replace(':','');
+            const val=value.slice(value.indexOf(':')).replace(':','');
                 const cssVar=value.replace(val,'').replace(':','');
                 return `calc(var(${cssVar},${val}) + var(--x-width-grow,0px) - var(--x-width-shrink,0px))`
             }
@@ -218,7 +339,7 @@ const cssCustomCompilers:{
     compiler:(value)=>{
         if(/^--[a-zA-Z]/.test(value)){
             if(value.includes(':')){
-            let val=value.slice(value.indexOf(':')).replace(':','');
+            const val=value.slice(value.indexOf(':')).replace(':','');
                 const cssVar=value.replace(val,'').replace(':','');
                 return `calc(var(${cssVar},${val}) + var(--x-height-grow,0px) - var(--x-height-shrink,0px))`
             }
@@ -228,7 +349,7 @@ const cssCustomCompilers:{
         return `calc(${value.replace(/^-([-]?[\d])/g,'$1')} + var(--x-height-grow,0px) - var(--x-height-shrink,0px))`;
     },
    },
-   
+
 
 }
 

@@ -120,11 +120,11 @@ export const customStaticClassNames: { [key: string]: string } = {
   'x-text-sm': 'font-size:14px;line-height:20px',
   'x-text-xs': 'font-size:12px;line-height:18px',
 
-  't-xl': 'font-size:20px;line-height:30px',
-  't-lg': 'font-size:18px;line-height:28px',
-  't-md': 'font-size:16px;line-height:24px',
-  't-sm': 'font-size:14px;line-height:20px',
-  't-xs': 'font-size:12px;line-height:18px',
+  'x-t-xl': 'font-size:20px;line-height:30px',
+  'x-t-lg': 'font-size:18px;line-height:28px',
+  'x-t-md': 'font-size:16px;line-height:24px',
+  'x-t-sm': 'font-size:14px;line-height:20px',
+  'x-t-xs': 'font-size:12px;line-height:18px',
 
    'x-button-xxl':
     'display:inline-flex;justify-content:center;align-items:center;gap:8px;padding:16px 28px;border-radius:8px;box-sizing:border-box',

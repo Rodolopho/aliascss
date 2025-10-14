@@ -66,7 +66,7 @@ export default {
 
             'x-arrow':`[bss,bc--x-arrow-color:black,bw-0px-3px-3px-0,dib,p-3px] [class~=x-arrow-left]-tf-r-135deg [class~=x-arrow-up]-tf-r--135deg [class~=x-arrow-right]-tf-r--45deg [class~=x-arrow-down]-tf-r-45deg`,
 
-            //CSS entities
+            // CSS entities
             'x-dollar' : '-—af-cont_0024',
             'x-cent' : '-—af-cont_00A2',
             'x-pound' : '-—af-cont_00A3',
