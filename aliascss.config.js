@@ -117,20 +117,13 @@ const config={
         }
     },
     prebuild:{
-        'colorize-dark':'background:#0f0f0f;color:#e3e3e3',
-        'x-clip-menu':'clip-path: polygon(0% 10%,100% 10%,100% 20%,0% 20%,0% 45%,100% 45%,100% 55%,0% 55%,0% 80%,100% 80%,100% 90%,0% 90%);',
-        'x-clip-message':'clip-path: polygon(0% 0%,100% 0%,100% 80%,60% 80%,50% 100%,40% 80%,0% 80%);',
-        'x-clip-star':'clip-path: polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);',
-        'x-clip-close': 'clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%)',
-        'x-clip-plus': 'clip-path: polygon(40% 0%,60% 0%,60% 40%,100% 40%,100% 60%,60% 60%,60% 100%,40% 100%,40% 60%,0% 60%,0% 40%,40% 40%);',
-        'colorize-light':'background:#e3e3e3;color:rgba(0,0,0,0.8)',
-        'flex-center':'display:flex;align-items:center;justify-content:center',
-        'absolute-center':'position:absolute;top:0;right:0;left:0;bottom:0:margin:auto',
-        'sr-only':'position:absolute;overflow:hidden;clip:rect(0 0 0 0);height:1px;width:1px;margin:-1px;padding:0;border:0',
+        //'colorize-dark':'background:#0f0f0f;color:#e3e3e3',
+        //'x-clip-menu':'clip-path: polygon(0% 10%,100% 10%,100% 20%,0% 20%,0% 45%,100% 45%,100% 55%,0% 55%,0% 80%,100% 80%,100% 90%,0% 90%);',
+        
     },
     group:{
-        ...prebuild,
-        'x-card':"w-256px h-120px [class~=shadow]-bxs-0px-12px-24px-rgba-43-43-67-0d16 bgc-fff b-1px-s-gray-lightest br-16px --hover-bgc-primary-lightest --hover-b-1px-s-primary-hover --active[b-1px-s-primary,bgc-primary-light]",
+        //...prebuild,
+        //'x-card':"w-256px h-120px [class~=shadow]-bxs-0px-12px-24px-rgba-43-43-67-0d16 bgc-fff b-1px-s-gray-lightest br-16px --hover-bgc-primary-lightest --hover-b-1px-s-primary-hover --active[b-1px-s-primary,bgc-primary-light]",
         'x-responsive':'xs-w-100p sm-w-540px md-w-720px lg-w-960px xl-w-1140px xxl-w-1320px',
         'x-responsive-sm':'xs-w-100p sm-w-540px md-w-720px lg-w-960px xl-w-1140px xxl-w-1320px',
         'x-responsive-md':'xs-w-100p sm-w-100p md-w-720px lg-w-960px xl-w-1140px xxl-w-1320px',

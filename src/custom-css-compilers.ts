@@ -1,4 +1,4 @@
-
+import prebuild from "./prebuild.js";
 
 type Property = {
     alias?:string,
@@ -7,6 +7,7 @@ type Property = {
     type?:string,
     values?:string[],
     groups?:{[key:string]:string},
+    statement?:string,
     compiler?:(a:string, b:{ [key: string]: { [key: string]: string}})=>any,
 
 }
@@ -15,7 +16,8 @@ type Property = {
 
 const cssCustomCompilers:{
     [key:string]:Property
-}={ 
+}={
+    ...prebuild,
 
 
 // padding, margin
@@ -305,6 +307,7 @@ const cssCustomCompilers:{
 },
 
 // ---------------------x-custom-compiler
+
 'x-square':{
     type:'group',
     compiler:(value)=>{

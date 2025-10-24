@@ -16,6 +16,7 @@
     
 
     <style>
+        @layer theme,base;
         [x-cloak] {
             display: none !important;
             color:red
@@ -66,7 +67,7 @@
             <div class="w100p">
                 <!-- <div class="df g-16px fdc xw-720px w-100p  md-w-700px"> -->
                 <div class="df g-16px fdc w100p">
-                    <h1  class-demo[___form]="c-red-i tf-r1deg " class="[class~=demo]-[c-red,tf-r-4deg,bgc-white,dif] demo x-display-md an-animate-top c-gray700 p0px m-24px-0px hello aici adu5s  ">
+                    <h1  class-demo[___form]="c-red-i " class=" x-display-md an-animate-top c-gray700 p0px m-24px-0px hello aici adu5s  ">
                         Quick Classname Compiler</h1>
 
                     <form id="acss-form" action="#">
@@ -82,7 +83,7 @@
                                 </div>
 
                             </div>
-                            <button class="x-button-sm x-text-sm   b-1px-s-blue200 bgc-blue100 c-gray700 cp --h-bgc-blue300"
+                            <button class="x-button-sm x-text-sm @base-bgc-red  b-1px-s-blue200 bgc-blue100 c-gray700 cp --h-bgc-blue300"
                                 id="acss-button" type="submit">
                                 <svg
                                     class="w18px  h18px stroke-gray700 stroke-width1px stroke-linecap-round stroke-linejoin-round fill-none">
@@ -105,7 +106,7 @@
                         </div>
                     </form>
                     <div class=" p-4px-10px-4px-4px br16px bgc-blue50 text-xs fw5 c-gray500 dif wxc aic g12px">
-                        <span class="bgc-fff p2px-10px br16px df aic g4px">Note
+                        <span class="bgc-fff p2px-10px br16px df aic g4px @base-c-red @theme-c-blue">Note
                             <svg
                                 class="w16px h16px stroke-currentColor stroke-width2px stroke-linecap-round stroke-linejoin-round fill-none">
                                 <!-- <use href="http://aliascss.com/icons/feather-sprite.svg#arrow-right" /> -->
@@ -117,10 +118,11 @@
                     </div>
 
 
+
                     <div id="acss-box"
                         class="h-27rem b-1px-s-ccc br-5px pl20px bl-15px-s-blueLight600 ff-courier x-text-sm oa w100p">
                         <br>
-                        <h1 id="" class="fw5 x-text-md lh2rem">[Here you can view Compiled ACSS className]</h1>
+                        <h1 id="" class="fw5 x-text-md lh2rem ">[Here you can view Compiled ACSS className]</h1>
                     </div>
                 </div>
             </div>

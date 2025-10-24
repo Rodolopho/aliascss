@@ -54,6 +54,15 @@ export const compiler:{
     },
     // className as another-name, bool->only return property and value
     make(className:string,as?:string, bool?:boolean){
+        // --Group Statement  
+        if(this.cssProps.hasOwnProperty(className)){
+            if(this.cssProps[className].hasOwnProperty('type') && (this.cssProps[className].type==='statement') ){
+                return this.group(this.cssProps[className].statement,className);
+            }
+            if(this.cssProps[className].hasOwnProperty('type') && (this.cssProps[className].type==='raw') ){
+                return this.cssProps[className].statement;
+            }
+        }
         if(/--as-[a-zA-Z0-9-_]+$/.test(className)){
             const asMatch=className.match(/--as-([a-zA-Z0-9-_]+)$/)??[null,null];
             if(asMatch[0] && asMatch[1]){

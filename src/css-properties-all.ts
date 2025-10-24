@@ -13,6 +13,7 @@ import transform from './compilers/transform.js';
 import transition from './compilers/transition.js';
 import font from './compilers/font.js';
 import { repeat } from './utils/cssFunc.js';
+import { compiler } from './returnStatement.js';
 
 const style=config.styles; // ['dotted:d','dashed:da:d2','solid:s','double:db:d3','groove:g','ridge:ri:r','inset:i','outset:o','none:n','hidden:h']; 
 const width=config.widths; // ['medium:m','thin:t','thick:th:t2'];
@@ -93,6 +94,14 @@ const cssProps:{
     type:'s',
      compiler:(value:string)=>value.replace(/^-/,'').replace(/-(safe|unsafe|first|last|baseline)/g,' $1'),
     values:['auto:a','anchor-center:ac','stretch:s','center:c','flex-start:fs','flex-end:fe','baseline:b'],
+},
+'alignment-baseline':{
+    alias:'ab',
+    type:'s',
+    // compiler:'',
+    values:['auto','baseline','before-edge','text-before-edge',
+    'middle','central','after-edge','text-after-edge','ideographic','alphabetic',
+    'hanging','mathematical','top','center','bottom']
 },
 'all':{// checked // comes under global static definition applied to all property like [unset, initial]
     alias:'',
@@ -821,7 +830,7 @@ const cssProps:{
     alias:'cg',
     type:'d',
     compiler:length,
-    values:['normal:n'],
+    values:['normal:n',...remUnits],
 },
 'column-rule':{
     alias:'cr',
@@ -1161,13 +1170,19 @@ const cssProps:{
     // compiler:'',
     values:['bolder:b2:blr','lighter:l:ltr','100:1','200:2','300:3','400:4:normal:nl','500:5','600:6','700:7:bold:b','800:8','900:9'],
 },
+'forced-color-adjust':{
+    alias:'fca',
+    type:'s',
+    // compiler:'',
+    values:['auto:a','none:n','preserve-parent-color:ppc'],
+},
 
 // ----------G--------
 'gap':{
     alias:'g',
     type:'d',
     compiler:length,
-    values:[''],
+    values:['none:n',...remUnits],
 },
 'grid':{// ---need work
     alias:'gd',
@@ -1251,7 +1266,7 @@ const cssProps:{
     alias:'gcg',
     type:'d',
     compiler:length,
-    values:[],
+    values:['none:n',...remUnits],
 },
 'grid-column-start':{
     alias:'gcs',
@@ -1266,7 +1281,7 @@ const cssProps:{
     alias:'gg',
     type:'d',
     compiler:lenByNumPer,
-    values:[],
+    values:['none:n',...remUnits],
 },
 'grid-row':{
     alias:'gr',
@@ -1288,7 +1303,7 @@ const cssProps:{
     alias:'grg',
     type:'d',
     compiler:length,
-    values:[],
+    values:['none:n',...remUnits],
 },
 'grid-row-start':{
     alias:'grs',
@@ -1480,6 +1495,12 @@ const cssProps:{
     type:'d',
     compiler:length,
     values:['normal:nl'],
+},
+'lighting-color':{
+    alias:'lc',
+    type:'d',
+    compiler:color,
+    values:['none:n'],
 },
 'line-break':{
     alias:'lb',
@@ -1930,19 +1951,19 @@ const cssProps:{
     alias:'pbe',
     type:'d',
     compiler:length,
-    values:['',...remUnits],
+    values:['none:n',...remUnits],
 },
 'padding-block-start':{
     alias:'pbs',
     type:'d',
     compiler:length,
-    values:['',],
+    values:['none:n',...remUnits],
 },
 'padding-bottom':{
     alias:'pb',
     type:'d',
     compiler:length,
-    values:['',...remUnits],
+    values:['none:n',...remUnits],
 },
 'padding-inline':{
     alias:'pi',
@@ -1954,31 +1975,31 @@ const cssProps:{
     alias:'pie',
     type:'d',
     compiler:length,
-    values:['',...remUnits],
+    values:['none:n',...remUnits],
 },
 'padding-inline-start':{
     alias:'pis',
     type:'d',
     compiler:length,
-    values:['',...remUnits],
+    values:['none:n',...remUnits],
 },
 'padding-left':{
     alias:'pl',
     type:'d',
     compiler:length,
-    values:['',...remUnits],
+   values:['none:n',...remUnits],
 },
 'padding-right':{
     alias:'pr',
     type:'d',
     compiler:length,
-    values:['',],
+   values:['none:n',...remUnits],
 },
 'padding-top':{
     alias:'pt',
     type:'d',
     compiler:length,
-    values:['',],
+    values:['none:n',...remUnits],
 },
 'page':{
     alias:'pg',
@@ -2107,7 +2128,7 @@ const cssProps:{
     alias:'rg',
     type:'d',
     compiler:length,
-    values:[''],
+    values:['none:n',...remUnits],
 },
 
 // ----------S--------
@@ -2193,67 +2214,67 @@ const cssProps:{
     alias:'sp',
     type:'d',
     compiler:length,
-    values:[''],
+    values:['none:n',...remUnits],
 },
 'scroll-padding-block':{
     alias:'',
     type:'d',
     compiler:length,
-    values:[''],
+   values:['none:n',...remUnits],
 },
 'scroll-padding-block-end':{
     alias:'spbe',
     type:'d',
     compiler:length,
-    values:[''],
+   values:['none:n',...remUnits],
 },
 'scroll-padding-block-start':{
     alias:'spbs',
     type:'d',
     compiler:length,
-    values:[''],
+   values:['none:n',...remUnits],
 },
 'scroll-padding-bottom':{
     alias:'spb',
     type:'d',
     compiler:length,
-    values:[''],
+   values:['none:n',...remUnits],
 },
 'scroll-padding-inline':{
     alias:'spi',
     type:'d',
     compiler:length,
-    values:[''],
+   values:['none:n',...remUnits],
 },
 'scroll-padding-inline-end':{
     alias:'spie',
     type:'d',
     compiler:length,
-    values:[''],
+   values:['none:n',...remUnits],
 },
 'scroll-padding-inline-start':{
     alias:'spis',
     type:'d',
     compiler:length,
-    values:[''],
+   values:['none:n',...remUnits],
 },
 'scroll-padding-left':{
     alias:'spl',
     type:'d',
     compiler:length,
-    values:[''],
+   values:['none:n',...remUnits],
 },
 'scroll-padding-right':{
     alias:'spr',
     type:'d',
     compiler:length,
-    values:[''],
+   values:['none:n',...remUnits],
 },
 'scroll-padding-top':{
     alias:'spt',
     type:'d',
     compiler:length,
-    values:[''],
+   values:['none:n',...remUnits],
 },
 'scroll-snap-align':{
     alias:'ssa',
@@ -2329,6 +2350,18 @@ const cssProps:{
     compiler:clipPath,
     values:['none:n','margin-box:mb','border-box:bb','padding-box:pb','content-box:cb'],
 },
+'stop-color':{
+    alias:'',
+    type:'d',
+    compiler:color,
+    values:[''],
+},
+'stop-opacity':{
+    alias:'',
+    type:'d',
+    compiler:lenByNumPer,
+    values:[''],
+},
 
 // ----------T--------
 'tab-size':{
@@ -2354,6 +2387,12 @@ const cssProps:{
     type:'s',
     // compiler:'',
     values:['auto:a','left:l','right:r','center:c','justify:j','end:e','start:s'],
+},
+'text-anchor':{
+    alias:'',
+    type:'s',
+    // compiler:'',
+    values:['start:s','middle:m','end:e'],
 },
 'text-combine-upright':{
     alias:'',
@@ -2397,6 +2436,12 @@ const cssProps:{
     // compiler:'',
     values:['none:n','open:o','filled:f','dot:d','circle:c','double-circle:dc','triangle:t','sesame'],
 },
+'text-emphasis-color':{
+    alias:'tec',
+    type:'s',
+     compiler:color,
+    values:[''],
+},
 'text-indent':{
     alias:'ti',
     type:'d',
@@ -2421,6 +2466,12 @@ const cssProps:{
     // compiler:'',
     values:['clip:c','ellipsis:e',''],
 },
+'text-rendering':{
+    alias:'',
+    type:'s',
+    // compiler:'',
+    values:['auto:a','optimizeSpeed:os','optimizeLegibility:ol','geometricPrecision:gp'],
+},
 'text-shadow':{
     alias:'txs',
     type:'d',
@@ -2438,17 +2489,46 @@ const cssProps:{
     compiler:(value:string)=>'-'+value,
     values:['none:n']
 },
+'text-underline-offset':{
+    alias:'tup',
+    type:'d',
+     compiler:length,
+    values:['auto:a'],
+},
 'text-underline-position':{
     alias:'tup',
     type:'s',
     // compiler:'',
     values:['auto:a','under:u','left:l','right:r'],
 },
+'text-wrap':{
+    alias:'tw',
+    type:'s',
+    // compiler:'',
+    values:['wrap:w','nowrap:n:nw','balance:b','pretty:p','stable:s'],
+},
+'text-wrap-mode':{
+    alias:'twm',
+    type:'s',
+    // compiler:'',
+    values:['wrap:w','nowrap:n:nw'],
+},
+'text-wrap-style':{
+    alias:'tws',
+    type:'s',
+    // compiler:'',
+    values:['auto:a','balance:b','pretty:p','stable:s'],
+},
+
 'top':{
     alias:'t',
     type:'d',
     compiler:length,
     values:['auto:a'],
+},
+'touch-action':{
+    alias:'toa',
+    values:['auto:a','none:n','pan-x:px','pan-left:pl','pan-right:pr','pan-y:py','pan-up:pu','pan-down:pd','pinch-zoom:pz','manipulation:m']
 },
 'transform':{
     alias:'tf',
@@ -2515,10 +2595,7 @@ const cssProps:{
     compiler:length,
     values:['none:n'],
 },
-'touch-action':{
-    alias:'toa',
-    values:['auto:a','none:n','pan-x:px','pan-left:pl','pan-right:pr','pan-y:py','pan-up:pu','pan-down:pd','pinch-zoom:pz','manipulation:m']
-},
+
 
 // ----------U--------
 'unicode-bidi':{
@@ -2536,6 +2613,12 @@ const cssProps:{
 },
 
 // ----------V--------
+'vector-effect':{
+    alias:'ve',
+    type:'s',
+   // compiler:length,
+    values:['none:n','non-scaling-stroke:nss'],
+},
 'vertical-align':{
     alias:'va',
     type:'d',
@@ -2630,6 +2713,18 @@ const cssProps:{
     // compiler:'',
     values:['horizontal-tb:ht','vertical-rl:vrl','vertical-lr:vlr'],
 },
+'x':{
+    alias:'x',
+    type:'d',
+    compiler:length,
+    values:[''],
+},
+'y':{
+    alias:'y',
+    type:'d',
+    compiler:length,
+    values:[''],
+},
 
 // ----------Z--------
 'z-index':{
@@ -2652,14 +2747,7 @@ const cssProps:{
 //      // compiler:'',
 //      value:['']
 //  },
-'alignment-baseline':{
-    alias:'ab',
-    type:'s',
-    // compiler:'',
-    values:['auto','baseline','before-edge','text-before-edge',
-    'middle','central','after-edge','text-after-edge','ideographic','alphabetic',
-    'hanging','mathematical','top','center','bottom']
-},
+
 'stroke':{
     alias:'str',
     type:'d',
