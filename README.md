@@ -442,6 +442,8 @@ Alpha can be represent by either decimal or percentage value, 'd' should be used
 |`color--var--name`|`c--var--name`|`color: var(--name)`|
 |`color--name`|`c--name`|`color: var(--name)`|
 |`width--side-bar-width`|`w--side-bar-width`| `width: var(--side-bar-width)`||
+|`--side-bar-width:200px`|`--side-bar-width:200px`| `--side-bar-width:200px`|`Defining css variables`|
+|`width--side-bar-width:400px`|`w--side-bar-width:400px`| `width: var(--side-bar-width,400px)`| `with default value`|
 
 
 # NPM Guide
@@ -615,17 +617,17 @@ Now you can do,
 @package.json
 
 ```JSON
-....
+
  "scripts": {
-    ...
+    
     "aliascss-build": "aliascss --config'",
     "aliascss-watch": "aliascss --config --watch"
   }
-  ...
+
   
   ```
 
-Visit for more..[https:aliascss.com](Offical Documentation site)
+Visit for more..[https:aliascss.com](www.aliascss.com) Offical Documentation site
 
 
 

@@ -1168,7 +1168,7 @@ const cssProps:{
     alias:'fw',
     type:'s',
     // compiler:'',
-    values:['bolder:b2:blr','lighter:l:ltr','100:1','200:2','300:3','400:4:normal:nl','500:5','600:6','700:7:bold:b','800:8','900:9'],
+    values:['bolder:b2:blr','lighter:l:ltr','100:1:thin','200:2:extra-light','300:3:light','400:4:normal:nl:regular','500:5:medium','600:6:semi-bold','700:7:bold','800:8:extra-bold','900:9:black'],
 },
 'forced-color-adjust':{
     alias:'fca',

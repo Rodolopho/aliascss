@@ -4,4 +4,4 @@ public
 /lib
 .npmignore
 experiments
-ui-dev
+/ui-dev

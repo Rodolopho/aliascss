@@ -224,7 +224,7 @@ export function postify(file:string,plugin:any[],minify:boolean=false){
     const data = fs.readFileSync(file, 'utf-8');
     if(fs.existsSync(file)){
         if(minify===true) plugin.push(cssnano)
-        postcss(plugin).process(data).then(
+        postcss(plugin).process(data,{ from: undefined }).then(
             result=>{
                 fs.truncateSync(file);
                 fs.writeFileSync(file,result.css);

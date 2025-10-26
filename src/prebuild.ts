@@ -202,9 +202,9 @@ export default {
     },
     'x-container':{
         type:'statement',
-        statement:`width-100p xw--x-container-width:1200px margin-0-auto p--x-container-padding:16px
-        [class~=x-container-fluid][--x-container-width:100%]
-        [class~=x-container-narrow][--x-container-width:800px]`,   
+        statement:`width-100p  mla mra pl--x-container-padding:15px pl--x-container-padding:15px bsbb xw--x-container-width:initial 
+        [class~=x-container-fluid][--x-container-width:100%,m-0-auto]
+        [class~=x-container-narrow][--x-container-width:800px]`,    
     },
     'x-row':{
         type:'statement',
@@ -370,5 +370,95 @@ export default {
                     --af-tn-all-0d5s --bf-tn-all-0d5s
                     [class~=x-menu-open][--af-tf-r-45deg,--af-t-50p,--bf-tf-r--45deg,--bf-t50p,--af-tn-all-0d5s,--bf-tn-all-0d5s]
                     [x-menu-open][--af-tf-r-45deg,--af-t-50p,--bf-tf-r--45deg,--bf-t50p,--af-tn-all-0d5s,--bf-tn-all-0d5s]`
+                },
+
+                'x-acss-utils':{
+                    type:'statement',
+                    statement:`
+                    [c-gray-900,dark-c-grayDark-50]--as-text-primary
+                    [c-white,dark-c-grayDark-50]--as-text-primary-on-brand
+                    [c-gray-700,--hover-c-gray-800,dark-c-grayDark-300,dark--hover-c-grayDark-200]--as-text-secondary
+                    [c-brand-200,dark-c-grayDark-300]--as-text-secondary-on-brand
+                    [c-gray-600,--h-c-gray-700,dark-c-grayDark-400,dark--h-c-grayDark-300]--as-text-tertiary
+                    [c-brand-200,dark-c-grayDark-300]--as-text-tertiary-on-brand
+                    [c-gray-500,dark-c-grayDark-400]--as-text-quaternary
+                    [c-brand-300,dark-c-grayDark-400]--as-text-quaternary-on-brand
+                    [c-white]--as-text-white
+                    c-gray-500--as-text-disabled
+                    [c-gray-500,dark-c-grayDark-400]--as-text-placeholder
+                    [c-gray-300,dark-c-grayDark-700]--as-text-placeholder-subtle
+                    [c-brand-900,dark-c-grayDark-50]--as-text-brand-primary
+                    [c-brand-700,dark-c-grayDark-300]--as-text-brand-secondary
+                    [c-brand-600,dark-c-grayDark-400]--as-text-brand-tertiary
+                    [c-brand-600,dark-c-grayDark-50]--as-text-brand-tertiary-alt
+                    [c-error-600,dark-c-error-400]--as-text-error-primary
+                    [c-warning-600,dark-c-warning-400]--as-text-warning-primary
+                    [c-success-600,dark-c-success-400]--as-text-success-primary
+                    [border-color-gray-300,dark-border-color-grayDark-700]--as-border-primary
+                    [border-color-gray-200,dark-border-color-grayDark-800]--as-border-secondary
+                    [border-color-gray-100,dark-border-color-grayDark-800]--as-border-tertiary
+                    [border-color-gray-300,dark-border-color-grayDark-700]--as-border-disabled
+                    [border-color-gray-200,dark-border-color-grayDark-800]--as-border-disabled-subtle
+                    [border-color-brand-500,dark-border-color-brand-400]--as-border-brand
+                    [border-color-brand-600,dark-border-color-grayDark-700]--as-border-brand-alt
+                    [border-color-error-500,dark-border-color-error-400]--as-border-error
+                    [border-color-error-300,dark-border-color-error-400]--as-border-error-subtle
+                    [background-color-gray-900,dark-background-color-white]--as-fg-primary
+                    [background-color-gray-700,--h-bgc-gray-800,dark-background-color-grayDark-300,dark--h-bgc-grayDark-200]--as-fg-secondary
+                    [background-color-gray-600,--h-bgc-gray-700,dark-background-color-grayDark-400,dark--h-bgc-grayDark-300]--as-fg-tertiary
+                    [background-color-gray-500,--h-bgc-gray-400,dark-background-color-grayDark-600,dark--h-bgc-grayDark-300]--as-fg-quaternary
+                    [background-color-gray-400,--h-bgc-gray-500,dark-background-color-grayDark-500,dark--h-bgc-grayDark-400]--as-fg-quinary
+                    [background-color-gray-300,dark-background-color-grayDark-600]--as-fg-senary
+                    [background-color-gray-400,dark-background-color-grayDark-500]--as-fg-disabled
+                    [background-color-gray-300,dark-background-color-grayDark-600]--as-fg-disabled-subtle
+                    [background-color-brand-600,dark-background-color-brand-500]--as-fg-brand-primary
+                    [background-color-brand-600,dark-background-grayDark-300]--as-fg-brand-primary-alt
+                    [background-color-brand-500,dark-background-color-brand-500]--as-fg-brand-secondary
+                    [background-color-error-600,dark-background-color-error-500]--as-fg-error-primary
+                    [background-color-error-500,dark-background-color-error-400]--as-fg-error-secondary
+                    [background-color-warning-600,dark-background-color-warning-500]--as-fg-warning-primary
+                    [background-color-warning-500,dark-background-color-warning-400]--as-fg-warning-secondary
+                    [background-color-success-600,dark-background-color-success-500]--as-fg-success-primary
+                    [background-color-success-500,dark-background-color-success-400]--as-fg-success-secondary
+
+                    [background-color-white,--h-bgc-gray-50,dark-background-color-grayDark-950,dark--h-bgc-grayDark-800]--as-bg-primary
+                    [background-color-white,dark-background-color-grayDark-900]--as-bg-primary-alt
+                    [background-color-gray-950,dark-background-color-grayDark-900]--as-bg-primary-solid
+                    [background-color-gray-50,--h-bgc-gray-100,dark-background-color-grayDark-900,dark--h-bgc-grayDark-800]--as-bg-secondary
+                    [background-color-gray-50,dark-background-color-grayDark-950]--as-bg-secondary-alt
+                    [background-color-gray-25,dark-background-color-grayDark-900]--as-bg-secondary-subtle
+                    [background-color-gray-600,dark-background-color-grayDark-600]--as-bg-secondary-solid
+                    [background-color-gray-100,dark-background-color-grayDark-800]--as-bg-tertiary
+                    [background-color-gray-200,dark-background-color-grayDark-700]--as-bg-quaternary
+                    [background-color-gray-50,dark-background-color-grayDark-800]--as-bg-active
+                    [background-color-gray-100,dark-background-color-grayDark-800]--as-bg-disabled
+                    [background-color-gray-950,dark-background-color-grayDark-800]--as-bg-overlay
+                    [background-color-brand-50,dark-background-color-brand-500]--as-bg-brand-primary
+                    [background-color-brand-50,dark-background-color-grayDark-800]--as-bg-brand-primary-alt
+                    [background-color-brand-100,dark-background-color-brand-600]--as-bg-brand-secondary
+                    [background-color-brand-600,--h-bgc-brand-700,dark-background-color-brand-600,dark--h-bgc-brand-500]--as-bg-brand-solid
+                    [background-color-brand-800,dark-background-color-grayDark-800]--as-bg-section
+                    [background-color-brand-700,dark-background-color-grayDark-950]--as-bg-section-subtle
+                    [background-color-error-50,dark-background-color-error-500]--as-bg-error-primary
+                    [background-color-warning-50,dark-background-color-warning-500]--as-bg-warning-primary
+                    [background-color-warning-100,dark-background-color-warning-600]--as-bg-warning-secondary
+                    [background-color-warning-600,dark-background-color-warning-600]--as-bg-warning-solid
+                    [background-color-success-100,dark-background-color-success-600]--as-bg-success-primary
+                    [background-color-success-600,dark-background-color-success-600]--as-bg-success-solid
+
+
+                            
+
+
+
+                    `,
+                },
+                'x-acss-vars-dark':{
+                    type:'statement',
+                    statement:`
+                    --text-primary:--gray-50
+                    --text-secondary:--gray-200
+                    --text-disabled:--gray-400
+                    `,
                 },
 }
