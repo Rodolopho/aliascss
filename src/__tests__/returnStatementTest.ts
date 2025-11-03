@@ -83,4 +83,10 @@ describe("Test Return statement",()=>{
     test("Return statement custom className",()=>{
          expect(statement.make('x-shadow-xs',undefined,true)).toBe('box-shadow:var(--x-shadow-xs, 0px 1px 2px rgba(16, 24, 40, 0.05))');
     })
+    test("Return statement ring className",()=>{
+         expect(statement.make('ring--red',undefined,true)).toBe('box-shadow:0 0 0 var(--ring-width,2px) var(--red)');
+    })
+    test("Return statement lightDark className",()=>{
+         expect(statement.make('theme(color,red,blue)',undefined,true)).toBe('color:light-dark(red,blue)');
+    })
 })

@@ -11,4 +11,7 @@ describe('Main Index Test',()=>{
     test('Index Test',()=>{
          expect(sc.dib).toBe('display: inline-block')
     })
+    test('Index Test',()=>{
+         expect(main.make('ring--red').toString()).toBe('.ring--red{box-shadow:0 0 0 var(--ring-width,2px) var(--red)}')
+    })
 })

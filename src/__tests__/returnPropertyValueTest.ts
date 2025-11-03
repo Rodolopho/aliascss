@@ -1,11 +1,12 @@
 import {createCompilerObj, extractProperty} from "../utils/createCompilerObj";
 import cssProps from '../css-properties-all';
+import cssCustomCompilers from "../custom-css-compilers";
 import getPropertyAndValue from '../returnPropertyAndValue'
 import config from "../config";
 import {customColors as customColors1} from '../static/customColors'
 import {customColors as customColors2} from '../static/customColors2'
 
-const [ staticClassNames, compilerObj]=createCompilerObj(cssProps,config.globalValues);
+const [ staticClassNames, compilerObj]=createCompilerObj({...cssCustomCompilers,...cssProps},config.globalValues);
 const customColors={...customColors1,...customColors2}
 
 describe('Return property and value test',()=>{
@@ -42,4 +43,7 @@ describe('Return property and value test',()=>{
     test('getProperty and Value  css-var Test return array when true is passed',()=>{
         expect(getPropertyAndValue('bgc--red',compilerObj,staticClassNames,{},extractProperty,true)?.toString()).toBe(['background-color','var(--red)'].toString())
     })
+    // test('getProperty and Value  css-var Test return array when true is passed',()=>{
+    //     expect(getPropertyAndValue('ring--red',compilerObj,staticClassNames,{},extractProperty,true)?.toString()).toBe(['background-color','var(--red)'].toString())
+    // })
 })

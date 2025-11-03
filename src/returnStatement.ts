@@ -3,6 +3,7 @@ import { customStaticClassNames } from "./static/customStaticClassNames.js";
 import media,{createRegexForMedia} from "./prefix/responsive.js";
 import {customColors} from './static/customColors.js'
 import {customColors as customColors2} from './static/customColors2.js'
+import {getColorScale,customColorsRadix} from './static/customColorsRadix.js'
 import extractPrefix from './prefix/extractPrefix.js';
 import extractMediaPrefix from './prefix/extractMediaPrefix.js';
 import {createCompilerObj, extractProperty} from "./utils/createCompilerObj.js";
@@ -24,7 +25,7 @@ export const compiler:{
 }={
     // cache will cache propertyAndValue
     cache:{propertyAndValue:{...customStaticClassNames}},
-    custom:{...{colors:{...customColors,...customColors2}}},
+    custom:{...{colors:{...customColors,...customColors2,...customColorsRadix}}},
     mediaSelector:{...media.target},
     mediaTest:null,
     staticClassNames:{...staticClassNamesAlias,...staticClassNamesWithAlias},

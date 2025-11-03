@@ -11,6 +11,7 @@ data.split(/__/).forEach((e)=>{
         eachValue += 'inset ';
         e=e.replace(/^[-]?(inset|i)/,'');
       }
+      if(!e.startsWith('-')) e="-"+e;
       // fix Zero
       e=e.replace(/(?<=-)0(?=-)/g,'0px').replace(/([-][0-9pd]{6,})/,(a)=>a.replace(/p/g,'xer'));
       const match=e.match(/([-]?[-]?[0-9]{1,3}[d/.]?[0-9]*(px|em|p|fr|ex|ch|rem|vw|vh|vmin|vmax|cm|mm|in|pt|pc))+/);

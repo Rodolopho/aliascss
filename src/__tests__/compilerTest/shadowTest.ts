@@ -3,6 +3,12 @@ describe("Shadow Test",()=>{
     test('Shadow color first',()=>{
          expect(shadow('inset-red-10px-0-10px-10px',{colors:{}})).toBe('inset 10px 0px 10px 10px red')
     })
+    test('Shadow color ring ',()=>{
+         expect(shadow('0-0-0-2px-red__0-0-0-10px--red',{colors:{}})).toBe('0px 0px 0px 2px red , 0px 0px 0px 10px var(--red)')
+    })
+     test('Shadow color ring ',()=>{
+         expect(shadow('inset-red-0-0-0-2px',{colors:{}})).toBe('inset 0px 0px 0px 2px red')
+    })
     test('Shadow color last',()=>{
          expect(shadow('inset-10px--20px-10px-10px-red',{colors:{}})).toBe('inset 10px -20px 10px 10px red')
     })

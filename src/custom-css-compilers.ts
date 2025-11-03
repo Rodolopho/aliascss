@@ -1,4 +1,6 @@
 import prebuild from "./prebuild.js";
+import { cssVarWithDefault } from "./utils/helper.js";
+import color from './compilers/color.js';
 
 type Property = {
     alias?:string,
@@ -18,6 +20,45 @@ const cssCustomCompilers:{
     [key:string]:Property
 }={
     ...prebuild,
+
+'Color':{
+    type:'group',
+    compiler:(value,custom)=>{
+        let stm='';
+        const order=['color','background-color','border-color'];
+        const values=value.replace(/^\(|\)$/g,'').split(',');
+        values.forEach((e,i)=>{
+            if(i<order.length){
+                stm+=`${order[i]}:${color(e,custom)};`
+            }
+        });
+        return stm; 
+    }
+},
+'theme':{
+    type:'group',
+    compiler:(value,custom)=>{
+        const values=value.replace(/^\(|\)$/g,'').split(',');
+        if(values.length===3){
+            return `${values[0]}:light-dark(${color(values[1],custom)||values[1]},${color(values[2],custom)||values[2]})`
+        }else{
+            return '';
+        }
+        
+    }},    
+
+
+'ring':{
+    type:'group',
+    compiler:(value,custom)=>{
+        if(/^--[a-zA-Z]/.test(value)){
+
+          return `box-shadow:0 0 0 var(--ring-width,2px) ${cssVarWithDefault(value,color,custom)}`;  
+        }
+        return `box-shadow:0 0 0 var(--ring-width,2px) ${color(value,custom)}`;
+        
+    }
+},
 
 // padding, margin
 'padding-x':{
@@ -324,21 +365,21 @@ const cssCustomCompilers:{
 'x-col':{
     type:'group',
     compiler:(value)=>{
-        return `--x-col-width:${value.replace(/^-(\d)/,'$1')};padding-left:calc(var(--x-row-gap,16px) * 0.5);padding-right:calc(var(--x-row-gap,16px) * 0.5) box-sizing:border-box;flex:0 0 var(--x-col-width,${value.replace(/^-(\d)/,'$1')});max-width:var(--x-col-width,${value.replace(/^-(\d)/,'$1')});`;
+        return `--x-col-width:${value.replace(/^-(\d)/,'$1')};padding-left:calc(var(--x-row-gap,16px) * 0.5);padding-right:calc(var(--x-row-gap,16px) * 0.5);box-sizing:border-box;flex:0 0 var(--x-col-width,${value.replace(/^-(\d)/,'$1')});max-width:var(--x-col-width,${value.replace(/^-(\d)/,'$1')});`;
     },
     groups:{
-        1:`padding-left:calc(var(--x-row-gap,16px) * 0.5);padding-right:calc(var(--x-row-gap,16px) * 0.5) box-sizing:border-box;flex:0 0 100%;max-width:100%;`,
-        2:`padding-left:calc(var(--x-row-gap,16px) * 0.5);padding-right:calc(var(--x-row-gap,16px) * 0.5) box-sizing:border-box;flex:0 0 50%;max-width:50%;`,
-        3:`padding-left:calc(var(--x-row-gap,16px) * 0.5);padding-right:calc(var(--x-row-gap,16px) * 0.5) box-sizing:border-box;flex:0 0 33.3333%;max-width:33.3333%;`,
-        4:`padding-left:calc(var(--x-row-gap,16px) * 0.5);padding-right:calc(var(--x-row-gap,16px) * 0.5) box-sizing:border-box;flex:0 0 25%;max-width:25%;`,
-        5:`padding-left:calc(var(--x-row-gap,16px) * 0.5);padding-right:calc(var(--x-row-gap,16px) * 0.5) box-sizing:border-box;flex:0 0 20%;max-width:20%;`,
-        6:`padding-left:calc(var(--x-row-gap,16px) * 0.5);padding-right:calc(var(--x-row-gap,16px) * 0.5) box-sizing:border-box;flex:0 0 16.6667%;max-width:16.6667%;`,
-        7:`padding-left:calc(var(--x-row-gap,16px) * 0.5);padding-right:calc(var(--x-row-gap,16px) * 0.5) box-sizing:border-box;flex:0 0 14.2857%;max-width:14.2857%;`,
-        8:`padding-left:calc(var(--x-row-gap,16px) * 0.5);padding-right:calc(var(--x-row-gap,16px) * 0.5) box-sizing:border-box;flex:0 0 12.5%;max-width:12.5%;`,
-        9:`padding-left:calc(var(--x-row-gap,16px) * 0.5);padding-right:calc(var(--x-row-gap,16px) * 0.5) box-sizing:border-box;flex:0 0 11.1111%;max-width:11.1111%;`,
-        10:`padding-left:calc(var(--x-row-gap,16px) * 0.5);padding-right:calc(var(--x-row-gap,16px) * 0.5) box-sizing:border-box;flex:0 0 10%;max-width:10%;`,
-        11:`padding-left:calc(var(--x-row-gap,16px) * 0.5);padding-right:calc(var(--x-row-gap,16px) * 0.5) box-sizing:border-box;flex:0 0 9.0909%;max-width:9.0909%;`,
-        12:`padding-left:calc(var(--x-row-gap,16px) * 0.5);padding-right:calc(var(--x-row-gap,16px) * 0.5) box-sizing:border-box;flex:0 0 8.3333%;max-width:8.3333%;`,
+        '1':`padding-left:calc(var(--x-row-gap,16px) * 0.5);padding-right:calc(var(--x-row-gap,16px) * 0.5); box-sizing:border-box;flex:0 0 100%;max-width:100%;`,
+       '2':`padding-left:calc(var(--x-row-gap,16px) * 0.5);padding-right:calc(var(--x-row-gap,16px) * 0.5); box-sizing:border-box;flex:0 0 50%;max-width:50%;`,
+       '3':`padding-left:calc(var(--x-row-gap,16px) * 0.5);padding-right:calc(var(--x-row-gap,16px) * 0.5); box-sizing:border-box;flex:0 0 33.3333%;max-width:33.3333%;`,
+       '4':`padding-left:calc(var(--x-row-gap,16px) * 0.5);padding-right:calc(var(--x-row-gap,16px) * 0.5); box-sizing:border-box;flex:0 0 25%;max-width:25%;`,
+       '5':`padding-left:calc(var(--x-row-gap,16px) * 0.5);padding-right:calc(var(--x-row-gap,16px) * 0.5); box-sizing:border-box;flex:0 0 20%;max-width:20%;`,
+       '6':`padding-left:calc(var(--x-row-gap,16px) * 0.5);padding-right:calc(var(--x-row-gap,16px) * 0.5); box-sizing:border-box;flex:0 0 16.6667%;max-width:16.6667%;`,
+       '7':`padding-left:calc(var(--x-row-gap,16px) * 0.5);padding-right:calc(var(--x-row-gap,16px) * 0.5); box-sizing:border-box;flex:0 0 14.2857%;max-width:14.2857%;`,
+       '8':`padding-left:calc(var(--x-row-gap,16px) * 0.5);padding-right:calc(var(--x-row-gap,16px) * 0.5); box-sizing:border-box;flex:0 0 12.5%;max-width:12.5%;`,
+       '9':`padding-left:calc(var(--x-row-gap,16px) * 0.5);padding-right:calc(var(--x-row-gap,16px) * 0.5); box-sizing:border-box;flex:0 0 11.1111%;max-width:11.1111%;`,
+        '10':`padding-left:calc(var(--x-row-gap,16px) * 0.5);padding-right:calc(var(--x-row-gap,16px) * 0.5); box-sizing:border-box;flex:0 0 10%;max-width:10%;`,
+        '11':`padding-left:calc(var(--x-row-gap,16px) * 0.5);padding-right:calc(var(--x-row-gap,16px) * 0.5); box-sizing:border-box;flex:0 0 9.0909%;max-width:9.0909%;`,
+        '12':`padding-left:calc(var(--x-row-gap,16px) * 0.5);padding-right:calc(var(--x-row-gap,16px) * 0.5); box-sizing:border-box;flex:0 0 8.3333%;max-width:8.3333%;`,
     },
 
 },
@@ -350,45 +391,78 @@ const cssCustomCompilers:{
 'x-square':{
     type:'group',
     compiler:(value)=>{
-        const v=value.replace(/^-([-]?[\d])/g,'$1');
-        return `width:calc(${v} + var(--x-square-grow,0px) - var(--x-square-shrink,0px)); flex-basis:calc(${v} + var(--x-square-grow,0px) - var(--x-square-shrink,0px)); flex-shrink:0;flex-grow:0;height:calc(${v} + var(--x-square-grow,0px) - var(--x-square-shrink,0px))`;
+        // case i : --var:value;
+        let v='';
+        
+       if(/^--[a-zA-Z]/.test(value)){
+        v=cssVarWithDefault(value)||'';
+       }else{
+        v=value.replace(/^-([-]?[\d])/g,'$1').replace(/([/d])p$/,'$1%');    
+       }
+        const val=`calc(${v} - var(--x-square-shrink, 0px) + var(--x-square-grow, 0px))`
+        return `width:${val};height:${val};flex: 0 0 ${val}`
+        
     },
-   },
-   'x-circle':{
-    type:'group',
-    compiler:(value)=>{
-         const v=value.replace(/^-([-]?[\d])/g,'$1');
-        return `width:calc(${v} + var(--x-circle-grow,0px) - var(--x-circle-shrink,0px)); height:calc(${v} + var(--x-circle-grow,0px) - var(--x-circle-shrink,0px)); border-radius:50%;`;
-    },
-   },
+    groups:{
+        '0':'width:0px;height:0px;flex: 0 0 0px',
+        '1':'width:1px;height:1px;flex: 0 0 1px',
+        'xs':'width:4px;height:4px;flex: 0 0 4px',
+        'sm':'width:8px;height:8px;flex: 0 0 8px',
+        'md':'width:16px;height:16px;flex: 0 0 16px',
+        'lg':'width:24px;height:1px;flex: 0 0 24px',
+        'xl':'width:32px;height:1px;flex: 0 0 32px',
+        'xxl':'width:64px;height:1px;flex: 0 0 64px',
+    }
+},
+
+//    'x-circle':{
+//     type:'group',
+//     compiler:(value)=>{
+        
+//          let v=value;
+//         if(/^--[a-zA-Z]/.test(value)){
+//             if(value.includes(':')){
+//             const val=value.slice(value.indexOf(':')).replace(':','');
+//                 const cssVar=value.replace(val,'').replace(':','');
+//                 v=`var(${cssVar},${val.replace(/([/d])p$/,'$1%')}`;
+//             }else{
+//                 v=`var(${value})`;
+//             }
+//         }else{
+//             v=value.replace(/^-([-]?[\d])/g,'$1').replace(/([/d])p$/,'$1%');    
+//         }
+
+//         return `width:calc(${v} + var(--x-circle-grow,0px) - var(--x-circle-shrink,0px)); height:calc(${v} + var(--x-circle-grow,0px) - var(--x-circle-shrink,0px)); border-radius:99999px;`;
+//     },
+//    },
    'x-width':{
-    property:'width',
+    type:'group',
     compiler:(value)=>{
         if(/^--[a-zA-Z]/.test(value)){
             if(value.includes(':')){
             const val=value.slice(value.indexOf(':')).replace(':','');
                 const cssVar=value.replace(val,'').replace(':','');
-                return `calc(var(${cssVar},${val}) + var(--x-width-grow,0px) - var(--x-width-shrink,0px))`
+                return `width:calc(var(${cssVar},${val}) + var(--x-width-grow,0px) - var(--x-width-shrink,0px))`
             }
-            return `calc(var(${value}) + var(--x-width-grow,0px) - var(--x-width-shrink,0px))`
+            return `width:calc(var(${value}) + var(--x-width-grow,0px) - var(--x-width-shrink,0px))`
             
         }
-        return `calc(${value.replace(/^-([-]?[\d])/g,'$1')} + var(--x-width-grow,0px) - var(--x-width-shrink,0px))`
+        return `width:calc(${value.replace(/^-([-]?[\d])/g,'$1')} + var(--x-width-grow,0px) - var(--x-width-shrink,0px))`
     },
    },
    'x-height':{
-    property:'height',
+    type:'group',
     compiler:(value)=>{
         if(/^--[a-zA-Z]/.test(value)){
             if(value.includes(':')){
             const val=value.slice(value.indexOf(':')).replace(':','');
                 const cssVar=value.replace(val,'').replace(':','');
-                return `calc(var(${cssVar},${val}) + var(--x-height-grow,0px) - var(--x-height-shrink,0px))`
+                return `height:calc(var(${cssVar},${val}) + var(--x-height-grow,0px) - var(--x-height-shrink,0px))`
             }
-            return `calc(var(${value}) + var(--x-height-grow,0px) - var(--x-height-shrink,0px))`
+            return `height:calc(var(${value}) + var(--x-height-grow,0px) - var(--x-height-shrink,0px))`
             
         }
-        return `calc(${value.replace(/^-([-]?[\d])/g,'$1')} + var(--x-height-grow,0px) - var(--x-height-shrink,0px))`;
+        return `height:calc(${value.replace(/^-([-]?[\d])/g,'$1')} + var(--x-height-grow,0px) - var(--x-height-shrink,0px))`;
     },
    },
 

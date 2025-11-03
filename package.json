@@ -1,6 +1,6 @@
 {
   "name": "aliascss",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "description": "AliasCSS  is a CSS post processor.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -62,5 +62,5 @@
     "postcss-discard-duplicates": "^7.0.0",
     "postcss-safe-parser": "^7.0.0"
   },
-  "homepage": "https://github.com/Rodolopho/aliascss#readme"
+  "homepage": "https://aliascss.com"
 }

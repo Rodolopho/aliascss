@@ -1,8 +1,11 @@
 import color from '../../compilers/color'
+import { customColors } from '../../static/customColors';
+import { customColors as c2 } from '../../static/customColors2';
+import { customColorsRadix  as c3} from '../../static/customColorsRadix';
 
 describe('Color Compiler Test',()=>{
     test('Color by name',()=>{
-         expect(color('-red',{})).toBe('red');
+         expect(color('-gray12',{colors:{...customColors,...c2,...c3}})).toBe('#202020');
     })
     test('Color by hex',()=>{
          expect(color('-efefef',{})).toBe('#efefef');

@@ -42,34 +42,34 @@ const cssProps:{
 }={ 
     //  type:s=static,d=dynamic
    //  -----------------xc----------------
-'width-grow':{
-    alias:'',
-    property:'--width-grow',
-    type:'d',
-    compiler:length,
-    values:[],
-}, 
-'width-shrink':{
-    alias:'',
-    property:'--width-shrink',
-    type:'d',
-    compiler:length,
-    values:[],
-}, 
-'height-grow':{
-    alias:'',
-    property:'--height-grow',
-    type:'d',
-    compiler:length,
-    values:[],
-}, 
-'height-shrink':{
-    alias:'',
-    property:'--height-shrink',
-    type:'d',
-    compiler:length,
-    values:[],
-}, 
+// 'width-grow':{
+//     alias:'',
+//     property:'--width-grow',
+//     type:'d',
+//     compiler:length,
+//     values:[],
+// }, 
+// 'width-shrink':{
+//     alias:'',
+//     property:'--width-shrink',
+//     type:'d',
+//     compiler:length,
+//     values:[],
+// }, 
+// 'height-grow':{
+//     alias:'',
+//     property:'--height-grow',
+//     type:'d',
+//     compiler:length,
+//     values:[],
+// }, 
+// 'height-shrink':{
+//     alias:'',
+//     property:'--height-shrink',
+//     type:'d',
+//     compiler:length,
+//     values:[],
+// }, 
 //  ----------xc-end
 'accent-color':{// no alias, checked
     alias:'accent',

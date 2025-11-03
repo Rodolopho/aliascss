@@ -8,6 +8,7 @@ export let classPrinter: ClassPrinter = {
   styleTagExists: false,
   customCheck: false,
   useColon:true,
+  kfNames:{},
 
   styleTag: null,
   createStyleTag() {
@@ -50,6 +51,7 @@ export let classPrinter: ClassPrinter = {
 
     // if class
     if (el.getAttribute('class')) attrValue += ' ' + el.getAttribute('class');
+    
     // if acss-class
     // if (el.getAttribute('acss-class')) attrValue += ' ' + el.getAttribute('acss-class');
     // new Update
@@ -80,7 +82,7 @@ export let classPrinter: ClassPrinter = {
           //  }  
            if( testRegExpKF.test(each.name)){
             const key=each.name.replace(testRegExpKF,'');
-              let kfStatement='@keyframes '+ key +"{\n";
+              let kfStatement='@keyframes '+ this.kfNames[key] +"{\n";
               const returnPnV=(e:string[])=>e.map((i)=>statementMaker.make(i,undefined,true)).join(";");
               const split=each.value.trim().split(/\s+/);
               split.forEach((each:string) => {
@@ -241,6 +243,14 @@ export let classPrinter: ClassPrinter = {
 
     //  $root.dispatchEvent(event);
     $root.dispatchEvent(new CustomEvent('acss:init', { bubbles: true , detail:{aliascss:this}}));
+
+    // create a keyframes object to fix case-sensitive issue
+     (el||document.body).outerHTML.match(/keyframes-[a-z0-9_-]+(?==)/gi)?.forEach((each)=>{
+      this.kfNames[each.replace('keyframes-','').toLowerCase()]=each.replace('keyframes-','');
+
+     })
+     
+
 
     // <template> element
     Array.prototype.forEach.call($root.querySelectorAll('template'), (template) => {

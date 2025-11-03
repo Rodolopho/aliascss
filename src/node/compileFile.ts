@@ -57,14 +57,14 @@ export  function globalCSSCompiler(){
         fs.writeFileSync(
             init.output,
 
-            `\n/* Start :-----------ACSS ${path.basename(file)}------------------------*/\n${
+            `\n/* Start :-----------ACSS ${path.relative('.',file)}------------------------*/\n${
             gbContent
             }
-            \n/* End :-----------ACSS ${path.basename(file)}----------------------------*/\n
+            \n/* End :-----------ACSS ${path.relative('.',file)}----------------------------*/\n
             `,
             {flag:'a+'}
             );
-        console.log('AliasCSS compiled', path.basename(file), 'to main css file :'+init.output);
+        console.log('AliasCSS compiled', path.relative('.',file), 'to main css file :'+init.output);
       } catch (error) {
         console.log('\x1b[31m', "Couldn't able to append/create to main css file :"+init.output);
         console.log(error);
@@ -181,7 +181,7 @@ export function createCSSFileByFile(file:string,bool:boolean=false){
         try {
                 fs.writeFileSync(file+'.module.css',module);
                 // console.log(content);
-                console.log('AliasCSS compiled', path.basename(file), 'module Locally ');
+                console.log('AliasCSS compiled', path.relative('.',file), 'module Locally ');
             } catch (error) {
                 console.log('\x1b[31m', "Couldn't able to append/create locally from " + file);
                 console.log(error);
@@ -191,7 +191,7 @@ export function createCSSFileByFile(file:string,bool:boolean=false){
         try {
                 fs.writeFileSync(file+'.css',content);
                 // console.log(content);
-                console.log('AliasCSS compiled', path.basename(file), 'Locally');
+                console.log('AliasCSS compiled', path.relative('.',file), 'Locally');
             } catch (error) {
                 console.log('\x1b[31m', "Couldn't able to append/create locally from " + file);
                 console.log(error);
@@ -204,14 +204,14 @@ export function createCSSFileByFile(file:string,bool:boolean=false){
         fs.writeFileSync(
             init.output,
 
-            `\n/* Start :-----------ACSS ${path.basename(file)}------------------------*/\n${
+            `\n/* Start :-----------ACSS ${path.relative('.',file)}------------------------*/\n${
             postcss([postcssDiscardDuplicates]).process(gbContent)
             }
-            \n/* End :-----------ACSS ${path.basename(file)}----------------------------*/\n
+            \n/* End :-----------ACSS ${path.relative('.',file)}----------------------------*/\n
             `,
             {flag:'a+'}
             );
-        console.log('AliasCSS compiled', path.basename(file), 'to main css file :'+init.output);
+        console.log('AliasCSS compiled', path.relative('.',file), 'to main css file :'+init.output);
       } catch (error) {
         console.log('\x1b[31m', "Couldn't able to append/create to main css file :"+init.output);
         console.log(error);

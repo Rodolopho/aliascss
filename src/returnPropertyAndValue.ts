@@ -35,6 +35,7 @@ export  default function getPropertyAndValue(
     if(staticClassNames.hasOwnProperty(className)){
         return staticClassNames[className];
     }
+
     // case CSS define var
 
     if(className.startsWith('--') && className.includes(':')){
@@ -143,8 +144,8 @@ export  default function getPropertyAndValue(
             const valuePortion=className.replace(propertyKey,'');
 
             // case 3: calc function
-            if (/^--calc\(/.test(valuePortion)) {
-                 return bool?[prop,valuePortion.replace(/^--/,'').replace(/([-+/*])([\d]|var\(|calc\()/g,' $1 $2')]:prop+":"+valuePortion.replace(/^--/,'').replace(/([-+/*])([\d]|var\(|calc\()/g,' $1 $2');
+            if (/^-calc\(/.test(valuePortion)) {
+                 return bool?[prop,valuePortion.replace(/^-/,'').replace(/([-+/*])([\d]|var\(|calc\()/g,' $1 $2')]:prop+":"+valuePortion.replace(/^-/,'').replace(/([-+/*])([\d]|var\(|calc\()/g,' $1 $2');
             }
  
             // case 4: CSS variable without --var keyword

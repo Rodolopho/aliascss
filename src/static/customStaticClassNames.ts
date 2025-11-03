@@ -96,7 +96,7 @@ export const customStaticClassNames: { [key: string]: string } = {
 
 
   'x-display-2xl': 'font-size:72px ; line-height:90px ; letter-spacing:-0.02em',
-  'x-display-xxl': 'font-size:72px ; line-height:90px ; letter-spacing:-0.02em',
+  // 'x-display-xxl': 'font-size:72px ; line-height:90px ; letter-spacing:-0.02em',
   'x-display-xl': 'font-size: 60px; line-height: 72px; letter-spacing:-0.02em',
   'x-display-lg': 'font-size:48px ; line-height: 60px; letter-spacing:-0.02em',
   'x-display-md': 'font-size: 36px; line-height: 44px; letter-spacing:-0.02em',
@@ -104,7 +104,7 @@ export const customStaticClassNames: { [key: string]: string } = {
   'x-display-xs': 'font-size: 24px; line-height: 32px',
 
   'x-heading-2xl': 'font-size:72px ; line-height:90px ; letter-spacing:-0.02em',
-  'x-heading-xxl': 'font-size:72px ; line-height:90px ; letter-spacing:-0.02em',
+  // 'x-heading-xxl': 'font-size:72px ; line-height:90px ; letter-spacing:-0.02em',
   'x-heading-xl': 'font-size: 60px; line-height: 72px; letter-spacing:-0.02em',
   'x-heading-lg': 'font-size:48px ; line-height: 60px; letter-spacing:-0.02em',
   'x-heading-md': 'font-size: 36px; line-height: 44px; letter-spacing:-0.02em',
@@ -131,25 +131,25 @@ export const customStaticClassNames: { [key: string]: string } = {
   'x-t-sm': 'font-size:14px;line-height:20px',
   'x-t-xs': 'font-size:12px;line-height:18px',
 
-   'x-button-xxl':
-    'display:inline-flex;justify-content:center;align-items:center;gap:8px;padding:16px 28px;border-radius:8px;box-sizing:border-box',
-  'x-button-2xl':
-    'display:inline-flex;justify-content:center;align-items:center;gap:8px;padding:16px 28px;border-radius:8px;box-sizing:border-box',
-  'x-button-xl':
-    'display:inline-flex;justify-content:center;align-items:center;gap:8px;padding:12px 20px;border-radius:8px;box-sizing:border-box',
-  'x-button-lg':
-    'display:inline-flex;justify-content:center;align-items:center;gap:8px;padding:10px 18px;border-radius:8px;box-sizing:border-box',
-  'x-button-md':
-    'display:inline-flex;justify-content:center;align-items:center;gap:8px;padding:10px 16px;border-radius:8px;box-sizing:border-box',
-  'x-button-sm':
-    'display:inline-flex;justify-content:center;align-items:center;gap:8px;padding:8px 14px;border-radius:8px;box-sizing:border-box',
-  'x-button-xs':
-    'display:inline-flex;justify-content:center;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;box-sizing:border-box',
+  //  'x-button-xxl':
+    // 'display:inline-flex;justify-content:center;align-items:center;gap:8px;padding:16px 28px;border-radius:8px;box-sizing:border-box',
+  // 'x-button-2xl':
+  //   'display:inline-flex;justify-content:center;align-items:center;gap:8px;padding:16px 28px;border-radius:8px;box-sizing:border-box',
+  // 'x-button-xl':
+  //   'display:inline-flex;justify-content:center;align-items:center;gap:8px;padding:12px 20px;border-radius:8px;box-sizing:border-box',
+  // 'x-button-lg':
+  //   'display:inline-flex;justify-content:center;align-items:center;gap:8px;padding:10px 18px;border-radius:8px;box-sizing:border-box',
+  // 'x-button-md':
+  //   'display:inline-flex;justify-content:center;align-items:center;gap:8px;padding:10px 16px;border-radius:8px;box-sizing:border-box',
+  // 'x-button-sm':
+  //   'display:inline-flex;justify-content:center;align-items:center;gap:8px;padding:8px 14px;border-radius:8px;box-sizing:border-box',
+  // 'x-button-xs':
+  //   'display:inline-flex;justify-content:center;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;box-sizing:border-box',
 
   'x-shadow-3xl': 'box-shadow:var(--x-shadow-3xl, 0px 32px 64px -12px rgba(16, 24, 40, 0.14))',
-  'x-shadow-xxxl': 'box-shadow:var(--x-shadow-xxxl, 0px 32px 64px -12px rgba(16, 24, 40, 0.14))',
+  // 'x-shadow-xxxl': 'box-shadow:var(--x-shadow-xxxl, 0px 32px 64px -12px rgba(16, 24, 40, 0.14))',
   'x-shadow-2xl': 'box-shadow:var(--x-shadow-2xl, 0px 24px 48px -12px rgba(16, 24, 40, 0.18))',
-  'x-shadow-xxl': 'box-shadow:var(--x-shadow-xxl, 0px 24px 48px -12px rgba(16, 24, 40, 0.18))',
+  // 'x-shadow-xxl': 'box-shadow:var(--x-shadow-xxl, 0px 24px 48px -12px rgba(16, 24, 40, 0.18))',
   'x-shadow-xl': 'box-shadow:var(--x-shadow-xl, 0px 20px 24px -4px rgba(16, 24, 40, 0.08), 0px 8px 8px -4px rgba(16, 24, 40, 0.03))',
   'x-shadow-lg': 'box-shadow:var(--x-shadow-lg, 0px 12px 16px -4px rgba(16, 24, 40, 0.08), 0px 4px 6px -2px rgba(16, 24, 40, 0.03))',
   'x-shadow-md': 'box-shadow:var(--x-shadow-md, 0px 4px 8px -2px rgba(16, 24, 40, 0.1), 0px 2px 4px -2px rgba(16, 24, 40, 0.06))',
@@ -174,13 +174,16 @@ export const customStaticClassNames: { [key: string]: string } = {
   'x-blur-xl':'backdrop-filter: var(--x-blur-xl,blur(20px))',
    
   'x-colorize-dark':'background:#0f0f0f;color:#e3e3e3',
+  'x-colorize-light':'background:#e3e3e3;color:rgba(0,0,0,0.8)',
+
   'x-clip-menu':'clip-path: polygon(0% 10%,100% 10%,100% 20%,0% 20%,0% 45%,100% 45%,100% 55%,0% 55%,0% 80%,100% 80%,100% 90%,0% 90%);',
   'x-clip-message':'clip-path: polygon(0% 0%,100% 0%,100% 80%,60% 80%,50% 100%,40% 80%,0% 80%);',
   'x-clip-star':'clip-path: polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);',
   'x-clip-close': 'clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%)',
   'x-clip-plus': 'clip-path: polygon(40% 0%,60% 0%,60% 40%,100% 40%,100% 60%,60% 60%,60% 100%,40% 100%,40% 60%,0% 60%,0% 40%,40% 40%);',
-  'x-colorize-light':'background:#e3e3e3;color:rgba(0,0,0,0.8)',
+  
   'flex-center':'display:flex;align-items:center;justify-content:center',
+  'inline-flex-center':'display:inline-flex;align-items:center;justify-content:center',
   'absolute-center':'position:absolute;top:0;right:0;left:0;bottom:0:margin:auto',
   'sr-only':'position:absolute;overflow:hidden;clip:rect(0 0 0 0);height:1px;width:1px;margin:-1px;padding:0;border:0',
   'hidden':'display:none',
@@ -219,8 +222,7 @@ export const customStaticClassNames: { [key: string]: string } = {
   'x-relative':'position:relative',
   'x-jusitfy-between':'justify-content: space-between',
   'x-flex':'display:flex',
+  'x-flex-between':'display:flex;align-items:center;justify-content:space-between',
+  'flex-between':'display:flex;align-items:center;justify-content:space-between',
   'x-items-center':'align-items: center'
-
-
-
 };

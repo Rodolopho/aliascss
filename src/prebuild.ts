@@ -196,39 +196,39 @@ export default {
 
 
     // Box-and-button
-    'x-section':{
-        type:'statement',
-        statement:`w--x-section-width:100p p--x-section-padding:20px [class~=x-section-spacious]--x-section-padding:80px height--x-section-height:auto`,
-    },
-    'x-container':{
-        type:'statement',
-        statement:`width-100p  mla mra pl--x-container-padding:15px pl--x-container-padding:15px bsbb xw--x-container-width:initial 
-        [class~=x-container-fluid][--x-container-width:100%,m-0-auto]
-        [class~=x-container-narrow][--x-container-width:800px]`,    
-    },
-    'x-row':{
-        type:'statement',
-        statement:`df fww g-16px m--8px __all-margin-8px i__all-flex-1 [class~=x-row-no-wrap]-fwn [class~=x-row-center]-jcc`,
-    },
-    'x-col':{
-        type:'statement',
-        statement:`df fww g-16px m--8px __all-margin-8px i__all-flex-1 [class~=x-col-no-wrap]-fwn [class~=x-col-center]-jcc    
-        [class~=x-col-full][flex-grow:1]`,
-    },
-    'x-box':{
-        type:'statement',
-        statement:`bgc--x-box-bg:ffffff p--x-box-padding:16px br--x-box-border-radius:8px border--x-box-border:1px-solid-e0e0e0
-        [class~=x-box-shadow]-bxs-0px-2px-8px-0000000000d1`,
+//     'x-section':{
+//         type:'statement',
+//         statement:`w--x-section-width:100p p--x-section-padding:20px [class~=x-section-spacious]--x-section-padding:80px height--x-section-height:auto`,
+//     },
+//     'x-container':{
+//         type:'statement',
+//         statement:`width-100p  mla mra pl--x-container-padding:15px pl--x-container-padding:15px bsbb xw--x-container-width:initial 
+//         [class~=x-container-fluid][--x-container-width:100%,m-0-auto]
+//         [class~=x-container-narrow][--x-container-width:800px]`,    
+//     },
+//     'x-row':{
+//         type:'statement',
+//         statement:`df fww g-16px m--8px __all-margin-8px i__all-flex-1 [class~=x-row-no-wrap]-fwn [class~=x-row-center]-jcc`,
+//     },
+//     'x-col':{
+//         type:'statement',
+//         statement:`df fww g-16px m--8px __all-margin-8px i__all-flex-1 [class~=x-col-no-wrap]-fwn [class~=x-col-center]-jcc    
+//         [class~=x-col-full][flex-grow:1]`,
+//     },
+//     'x-box':{
+//         type:'statement',
+//         statement:`bgc--x-box-bg:ffffff p--x-box-padding:16px br--x-box-border-radius:8px border--x-box-border:1px-solid-e0e0e0
+//         [class~=x-box-shadow]-bxs-0px-2px-8px-0000000000d1`,
 
-    },
-    'x-card':{
-        type:'statement',
-        statement:`bgc--x-card-bg:ffffff padding--x-card-padding:24px br--x-card-border-radius:12px bxs--x-card-shadow:0px-4px-12px-0000000000d1
-[class~=x-card-interactive][--hover-transform-translateY--4px,--hover-bxs-0-8px-24px-0000000000d15]
-    transition-transform-0.3s-ease__box-shadow-0.3s-ease
-    [class~=x-card-dark][--x-card-bg:1a1a1a,--x-card-shadow:0px-4px-12px-0000000000d3,color--x-card-color:ffffff]`,
+//     },
+//     'x-card':{
+//         type:'statement',
+//         statement:`bgc--x-card-bg:ffffff padding--x-card-padding:24px br--x-card-border-radius:12px bxs--x-card-shadow:0px-4px-12px-0000000000d1
+// [class~=x-card-interactive][--hover-transform-translateY--4px,--hover-bxs-0-8px-24px-0000000000d15]
+//     transition-transform-0.3s-ease__box-shadow-0.3s-ease
+//     [class~=x-card-dark][--x-card-bg:1a1a1a,--x-card-shadow:0px-4px-12px-0000000000d3,color--x-card-color:ffffff]`,
         
-    },
+//     },
     'x-divider-text':{
         type:'statement',
         statement:`[df,aic,g12px]
@@ -245,38 +245,52 @@ export default {
     },
     'x-button':{
         type:'statement',
-        statement:`dib aic jcc cp tdn tn-all-0d3s 
-            c--x-button-color:ffffff 
-            p--x-button-padding:8px-16px 
-            fs--x-button-font-size:16px 
-            br--x-button-border-radius:4px 
-            b--x-button-border:2px-solid--border-color
-            --x-button-border-color:transparent
-            bg--x-button-bg:gray-600
-            --hover-opacity-0d9 
-            --hover-transform-translateY--1px 
-            --active-transform-translateY-0px
+        statement:`@base-all-unset @base[-bsbb,usn,dif,aic,jcc,fw5,--ring-width:2px,tac,flex-shrink-0]
+                                @base-[class~=x-button-size-xs][br-4px,p-0px-8px,fs-12px,h-24px,lh-16px,g-4px] 
+                                @base-[class~=x-button-size-sm][br-4px,p-0px-12px,fs-14px,h-32px,lh-20px,g-8px]
+                                @base-[br-4px,p-0px-15px,fs-15px,lh-1,fw5,h-35px] 
+                                @base-[class~=x-button-size-md][br-4px,p-0px-15px,fs-15px,lh-1,fw5,h-35px] 
+                                @base-[class~=x-button-size-lg][br-6px,p-0px-16px,fs-16px,h-40px,lh-24px,g-12px]   
+                                @base-[class~=x-button-size-xl][br-6px,p-0px-24px,fs-18px,h-48px,lh-26px,g-14px]   
+                                [disabled][pen,bgc-gray-300,c-gray-400]
+                                @base-[bgc-gray-600,c-gray-50,--ho-bgc-gray-700,--fo-ring-gray-300] 
+                                @base-[class~=x-button-success][bgc-success-600,c-success-100,--ho-bgc-success-700,--fo-ring-success-300] 
+                                @base-[class~=x-button-error][bgc-error-600,c-error-100,--ho-bgc-error-700,--fo-ring-error-300] 
+                                @base-[class~=x-button-warning][bgc-warning-600,c-warning-100,--ho-bgc-warning-700,--fo-ring-warning-300] 
+                                @base-[class~=x-button-primary][bgc-primary-600,c-primary-100,--ho-bgc-primary-700,--fo-ring-primary-300] 
+                                 `
+    },
+    'x-input':{
+        type:'statement',
+        statement:`@base-all-unset @base-[bsbb,w-100p,df,aic,jcfs,fw4,--ring-width:1px,flex-1-0-auto]
+                                @base-[br-6px,p-0px-14px,fs-16px,h-40px,lh-24px,g-12px] 
+                                @base-[class~=x-input-size-sm][br-4px,p-0px-10px,fs-15px,h-35px,lh-1,g-8px] 
+                                @base-[class~=x-input-size-xs][br-4px,p-0px-8px,fs-12px,h-26px,lh-1,g-4px] 
+                                @base-[class~=x-input-size-md][br-6px,p-0px-14px,fs-16px,h-40px,lh-24px,g-12px]   
+                                @base-[class~=x-input-size-lg][br-6px,p-0px-18px,fs-18px,h-48px,lh-26px,g-14px]   
+                                [disabled][pen,bgc-gray-300,c-gray-400,bn]
+                                @base-[b-1px-s-gray-400,c-gray-600,--ho-c-gray-700,--fo-ring-gray-200]
+                                @base-[class~=x-input-size-md][b-1px-s-gray-400,c-gray-600,--ho-c-gray-700,--fo-ring-gray-200]
+                                
+                                @base-[class~=x-input-success][b-1px-s-success-600,--fo-ring-success-200] 
+                                @base-[class~=x-input-error][b-1px-s-error-600,--fo-ring-error-200] 
+                                @base-[class~=x-input-warning][b-1px-s-warning-600,--fo-ring-warning-200] 
+                                @base-[class~=x-input-primary][b-1px-s-primary-600,--fo-ring-primary-200] `
+    },
 
-            [class~=x-button-primary][--x-button-bg:primary600,--x-button-soft-bg:primary100,--x-button-color:ffffff]
-            [class~=x-button-success][--x-button-bg:success600,--x-button-soft-bg:success100,--x-button-color:ffffff]
-            [class~=x-button-error][--x-button-bg:error600,--x-button-soft-bg:error100,--x-button-color:ffffff]
-            [class~=x-button-warning][--x-button-bg:warning600,--x-button-soft-bg:warning100,--x-button-color:ffffff]
+            
 
-            [disabled]-bg-cccccc
-            [disabled]-color-666666
-            [disabled]-opacity-0.7
-            [disabled]-cursor-not-allowed
 
-            [class~=x-button-sm][--x-button-padding:6px-12px,--x-button-font-size:14px]
-            [class~=x-button-lg][--x-button-padding:12px-24px,--x-button-font-size:18px]
-            [class~=x-button-outline][bg-transparent,--x-button-color:--x-button-bg:gray-600,--border-color:--x-button-color,--hover-bg--x-button-color:gray-600,--hover-color-ffffff]
-            [class~=x-button-text][bgc-transparent,--x-button-border:none,--hover-bg--x-button-soft-bg:gray100,--x-button-color:--x-button-bg:gray600,--x-button-padding:4px-8px]`,  
 
-            },
+
+
+
+
+
             'x-arrow':{
                 type:'statement',
                 statement:
-    `[bss,bc--x-arrow-color:black,bw-0px-3px-3px-0,dib,p-3px] [class~=x-arrow-left]-tf-r-135deg [class~=x-arrow-up]-tf-r--135deg [class~=x-arrow-right]-tf-r--45deg [class~=x-arrow-down]-tf-r-45deg`,
+    `[bss,bc--x-arrow-color:black,brw--x-arrow-width:3px,bbw--x-arrow-width:3px,dib,p-3px] [class~=x-arrow-left]-tf-r-135deg [class~=x-arrow-up]-tf-r--135deg [class~=x-arrow-right]-tf-r--45deg [class~=x-arrow-down]-tf-r-45deg`,
             },
 
             // CSS entities
@@ -291,57 +305,12 @@ export default {
             },
             'x-currency-yen' :{type:'statement',statement:'--bf-cont_00A5'
             },
-            'x-currency-latin-f' :{type:'statement',statement:'--bf-cont_0192' /* Florin */
-            },
-            'x-currency-armenian-dram' :{type:'statement',statement:'--bf-cont_058F'
-            },
-            'x-currency-afghani' :{type:'statement',statement:'--bf-cont_060B'
-            },
-            'x-currency-bengali-mark' :{type:'statement',statement:'--bf-cont_09F2'
-            },
-            'x-currency-bengali-sign' :{type:'statement',statement:'--bf-cont_09F3'
-            },
-            'x-currency-gujarati-sign' :{type:'statement',statement:'--bf-cont_0AF1'
-            },
-            'x-currency-tamil-sign' :{type:'statement',statement:'--bf-cont_0BF9'
-            },
-            'x-currency-thai-baht' :{type:'statement',statement:'--bf-cont_0E3F'
-            },
-            'x-currency-khmer-riel' :{type:'statement',statement:'--bf-cont_17DB',
-            },
-            'x-currency-rial' :{type:'statement',statement:'--bf-cont_FDFC'
-            },
-            'x-currency-wancho-ngun' :{type:'statement',statement:'--bf-cont_1E2FF',
-            },
             'x-currency-euro-currency' :{type:'statement',statement:'--bf-cont_20A0', /* Historical ECU */
             },
             'x-currency-euro' :{type:'statement',statement:'--bf-cont_20AC',
             },
-            'x-currency-franc' :{type:'statement',statement:'--bf-cont_20A3',
-            },
-            'x-currency-lira' :{type:'statement',statement:'--bf-cont_20A4',
-            },
-            'x-currency-naira' :{type:'statement',statement:'--bf-cont_20A6',
-            },
-            'x-currency-rupee' :{type:'statement',statement:'--bf-cont_20B9',
-            },
-            'x-currency-peso' :{type:'statement',statement:'--bf-cont_20B1',
-            },
-            'x-currency-shekel' :{type:'statement',statement:'--bf-cont_20AA',
-            },
-            'x-currency-won' :{type:'statement',statement:'--bf-cont_20A9',
-            },
-            'x-currency-tugrik' :{type:'statement',statement:'--bf-cont_20AE',
-            },
-            'x-currency-drachma' :{type:'statement',statement:'--bf-cont_20AF',
-            },
-            'x-currency-kip' :{type:'statement',statement:'--bf-cont_20AD',
-            },
-            'x-currency-guarani' :{type:'statement',statement:'--bf-cont_20B2',
-            },
-            'x-currency-hryvnia' :{type:'statement',statement:'--bf-cont_20B4',
-            },
-            'x-currency-cedi' :{type:'statement',statement:'--bf-cont_20B5',},
+
+            'x-currency-rupee' :{type:'statement',statement:'--bf-cont_20B9',},
             'x-symbol-copy-right' :{type:'statement',statement:'--bf-cont_00A9',},
             'x-symbol-registered' :{type:'statement',statement:'--bf-cont_00AE',},
             'x-symbol-divide' :{type:'statement',statement:'--bf-cont_00Ff7',},
@@ -359,8 +328,8 @@ export default {
             'x-menu':{
                 type:'statement',
                 statement:
-    `pr x-menu-rounded cp   
-    w-35px h-30px bg-lg-transparent_0px_12d5px-currentColor_12d5px_17d5px-transparent_17d5px_35px
+                    `pr x-menu-rounded cp   
+                     w-35px h-30px bg-lg-transparent_0px_12d5px-currentColor_12d5px_17d5px-transparent_17d5px_35px
                     tn-all-0d5s [class~=x-menu-open]-bg-none 
                     [x-menu-open]-bg-none 
                     --af[pa,t0,h-5px,w-35px,bgc-currentColor,cont]
@@ -445,20 +414,14 @@ export default {
                     [background-color-warning-600,dark-background-color-warning-600]--as-bg-warning-solid
                     [background-color-success-100,dark-background-color-success-600]--as-bg-success-primary
                     [background-color-success-600,dark-background-color-success-600]--as-bg-success-solid
-
-
-                            
-
-
-
                     `,
-                },
-                'x-acss-vars-dark':{
-                    type:'statement',
-                    statement:`
-                    --text-primary:--gray-50
-                    --text-secondary:--gray-200
-                    --text-disabled:--gray-400
-                    `,
-                },
+                    },
+                    'x-acss-vars-dark':{
+                        type:'statement',
+                        statement:`
+                        --text-primary:--gray-50
+                        --text-secondary:--gray-200
+                        --text-disabled:--gray-400
+                        `,
+                    },
 }
