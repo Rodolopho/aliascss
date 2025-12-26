@@ -59,13 +59,19 @@ describe("Test Return statement",()=>{
          expect(statement.make('m-1.5rem-40%--20px')).toBe('.m-1\\.5rem-40\\%--20px{margin: 1.5rem 40% -20px}')
     })
     test("Return statement media",()=>{
-         expect(statement.make('xs-bgc-red')).toBe('@media (max-width : 576px){.xs-bgc-red{background-color:red}}')
+         expect(statement.make('xs-bgc-red')).toBe('@media (max-width : 576px){ .xs-bgc-red{background-color:red}}')
+    })
+    test("Return statement media nested single",()=>{
+         expect(statement.make('@[xs]-bgc-red')).toBe('@media (max-width : 576px){ .\\@\\[xs\\]-bgc-red{background-color:red}}')
+    })
+    test("Return statement Nested media",()=>{
+         expect(statement.make('@[base,xs]-bgc-red')).toBe('@layer base{ @media (max-width : 576px){ .\\@\\[base\\,xs\\]-bgc-red{background-color:red}}}')
     })
     test("Return statement hover",()=>{
          expect(statement.make('--h-bgc-red')).toBe('.--h-bgc-red:hover{background-color:red}')
     })
     test("Return statement custom config media",()=>{
-         expect(statement.make('hd-bgc-red')).toBe('@media(max-width:4000px){.hd-bgc-red{background-color:red}}')
+         expect(statement.make('hd-bgc-red')).toBe('@media(max-width:4000px){ .hd-bgc-red{background-color:red}}')
     })
     test("Return statement  custom compiler extend",()=>{
          expect(statement.make('box-shadow--shadow-xs')).toBe('.box-shadow--shadow-xs{box-shadow: var(--shadow-xs)}');

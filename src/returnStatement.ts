@@ -96,8 +96,10 @@ export const compiler:{
         if(!this.mediaTest) this.mediaTest=createRegexForMedia(this.mediaSelector);
 
         // 1. check and extract Media prefix and return className with prefix treatment,
-        let[ media,workingClassName]:[string,string]=extractMediaPrefix(unPrefixedClassName,this.mediaSelector,this.mediaTest);
-        media=media;
+        let [ extractedMedia,workingClassName]:[string[],string]=extractMediaPrefix(unPrefixedClassName,this.mediaSelector,this.mediaTest);
+        const mediaEX=extractedMedia;
+        // lint escape for const
+         extractedMedia=extractedMedia
 
         // 2. search for '&' which tells us to use selector before or after className
         if(workingClassName.match(/[&]/)){
@@ -175,10 +177,15 @@ export const compiler:{
             className=(as?as:className).replace(/([$.&%=\]\[@~,:*#+\(\)\/^])/g,'\\$1');
             if(bool===true) return result;
             this.cache.propertyAndValue[pnv]=result;
-            if(media){
-                stm=`${media}{${
+            if(mediaEX.length){
+                let [bf,af]=['',''];
+                mediaEX.map((e)=>{
+                    bf=bf+e+"{ ";
+                    af=af+"}";
+                })
+                stm=`${bf}${
                        beforeClassNameSelector+'.'+className+ elementAndPseudo
-                     }{${result}${important}}}`;
+                     }{${result}${important}}${af}`;
             }else{
                 stm= `${beforeClassNameSelector}.${className}${elementAndPseudo}{${result}${important}}`;
             }
@@ -190,7 +197,7 @@ export const compiler:{
             }
 
         }else{
-            console.log(`Unable to process ${className} [media:${media},pseudoSelector:${elementAndPseudo},imp:${important}]`)
+            console.log(`Unable to process ${className} [media:${mediaEX},pseudoSelector:${elementAndPseudo},imp:${important}]`)
         }
 
     },

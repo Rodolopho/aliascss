@@ -1,11 +1,14 @@
+
 import config from './config.js';
 import length , {lenByNumPer} from './compilers/length.js';
 import color from './compilers/color.js';
 import timingFunction from './compilers/timingFunction.js';
+
 import content, { string } from './compilers/stringAndContent.js';
 import border from './compilers/border.js';
 import gradient from './compilers/gradient.js';
 import url from './compilers/url.js';
+
 import clipPath from './compilers/clipPath.js';
 import shadow from './compilers/shadow.js';
 import filter from './compilers/filter.js';
@@ -71,6 +74,7 @@ const cssProps:{
 //     values:[],
 // }, 
 //  ----------xc-end
+
 'accent-color':{// no alias, checked
     alias:'accent',
     type:'d',
@@ -489,7 +493,7 @@ const cssProps:{
     values:[''],
 },
 'border-image':{ // -- need work 
-    alias:'',// taken by border-inline
+    alias:'',   // taken by border-inline
     type:'',
     compiler:(value:string,custom:{})=>{
         if(value.match(/^[-]?url/)){

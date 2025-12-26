@@ -142,6 +142,17 @@ export  default function getPropertyAndValue(
             } 
 
             const valuePortion=className.replace(propertyKey,'');
+            // New Update function value
+            if(/^\(.*\)[_]?$/.test(valuePortion)){
+                if(valuePortion.match(/_$/)){
+                    const val=valuePortion.replace(/[(_)]/g,'').replace(/,/g,' ');
+                    return bool?[prop,val]:prop+":"+ val;
+                }else{
+                    const val=valuePortion.replace(/[(_)]/g,'').replace(/,/g,', ');
+                    return bool?[prop,val]:prop+":"+ val;
+                }
+
+            }
 
             // case 3: calc function
             if (/^-calc\(/.test(valuePortion)) {

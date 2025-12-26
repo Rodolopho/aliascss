@@ -12,6 +12,13 @@
 </head>
 
 <body class="mh-100vh">
+    <div class="x-screen-root w-200px h-500px bgc-gray11" x-data="{show:false}">
+        <div class="x-screen x-screen-main flex-center">
+            <button @click="show=!show">Open</button>
+        </div>
+        <div class="x-screen x-screen-down bgc-blue --x-screen-height:50p flex-center x-screen-push x-screen-push-up" :class="show ? 'x-screen-is-active' : ''"><button @click="show=!show">Open</button></div>
+        
+    </div>
     <!-- Working Draft -->
     <header x-data="{state:'open'}" class="nav-header bgc--header-bg:gray-200 padding--heading-padding:20px-64px df aic jcsb">
         <div class="nav-brand">
@@ -79,7 +86,7 @@
             
         </header>
         
-
+        
     </div>
 
     <header class="dn-i pf t-0 l-0 w-100p df jcsb aic p-20px-100px z-index-999 tn-all-0d6s [class~=sticky][bgc-c50e1a,p-15px-100px]">

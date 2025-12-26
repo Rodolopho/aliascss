@@ -57,6 +57,8 @@ const  media :{
         '@comps':'@layer components',
         '@utils':'@layer utilities',
         '@utilities':'@layer utilities',
+        '@starting-style':'@starting-style',
+        '@ss':'@starting-style',
     },
 
 }
