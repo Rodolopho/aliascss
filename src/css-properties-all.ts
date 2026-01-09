@@ -810,7 +810,13 @@ const cssProps:{
     alias:'',
     type:'s',
     // compiler:'',
-    values:['auto:a','sRGB','linerRGB']
+    values:['auto:a','sRGB','linearRGB']
+},
+'color-interpolation-filters':{
+    alias:'',
+    type:'s',
+    // compiler:'',
+    values:['auto:a','sRGB','linearRGB']
 },
 'color-scheme':{
     alias:'',

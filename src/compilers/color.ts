@@ -48,15 +48,29 @@ export default function color(color: string, custom: { [key: string]: { [key: st
       );
 
     
-  }else if(/^(rgb|hsl|hsla|rgba)-/.test(color)){
-    const match=color.match(/^(rgb|hsl|hsla|rgba)-/);
+  }else if(/^(rgb|hsl|hsla|rgba|hwb|hwba|lab|oklab|lch|oklch)-/.test(color)){
+    const match=color.match(/^(rgb|hsl|hsla|rgba|hwb|hwba|lab|oklab|lch|oklch)-/);
     const colorFunc=match?match[1]:'';
     if(color.replace(colorFunc,'').match(/^--/)) return `${colorFunc}(var(${color.replace(colorFunc,'')}))`
-    return `${colorFunc}(${color.replace(colorFunc,'').replace(/^-/,'').replace(/-/g,',').replace('d', '.')
-          .replace(/p/g, '%')})`
+    return replaceLast(`${colorFunc}(${color.replace(colorFunc,'').replace(/^-/,'').replace(/-/g,' ').replace(/([0-9])d([0-9])/g, '$1.$2')
+          .replace(/p/g, '%')})`, 3," "," / ");
 
 
+  }else if(/^p3-/.test(color)){
+    if(color.replace(/p3/,'').match(/^--/)) return `color(display-p3 (var(${color.replace(/p3/,'')}))`
+    return replaceLast(`color(display-p3 ${color.replace(/p3/,'').replace(/^-/,'').replace(/-/g,' ').replace('d', '.')
+          .replace(/([0-9])p/g, '$1%')})`, 4," "," / ");
   } else {
     return;
+  }
+}
+
+function replaceLast(str:string, occurs:number, target:string, replacement:string) {
+  if(str.match(new RegExp(target,'g'))?.length===occurs){
+    const lastIndex = str.lastIndexOf(target);
+  if (lastIndex === -1) return str;
+  return str.slice(0, lastIndex) + replacement + str.slice(lastIndex + target.length);
+  }else{
+    return str;
   }
 }

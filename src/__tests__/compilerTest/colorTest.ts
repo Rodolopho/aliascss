@@ -27,8 +27,8 @@ describe('Color Compiler Test',()=>{
     })
 
     test('Color by func and r-g-b values',()=>{
-         expect(color('-rgb-30-49-50',{})).toBe('rgb(30,49,50)');
-         expect(color('-rgba-30-60-70-50',{})).toBe('rgba(30,60,70,50)');
+         expect(color('-rgb-30-49-50',{})).toBe('rgb(30 49 50)');
+         expect(color('-rgba-30-60-70-50p',{})).toBe('rgba(30 60 70 / 50%)');
          expect(color('-23560p70p',{})).toBe('hsl(235,60%,70%)');
     })
     

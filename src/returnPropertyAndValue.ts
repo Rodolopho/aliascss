@@ -191,8 +191,9 @@ export  default function getPropertyAndValue(
                     const val=value.replace(/([-]?)([\d]|10|11|12)col/g,(m:string,p1:string,p2:string)=>`${p1}${parseFloat(((100/12)*parseFloat(p2)).toFixed(6))}%`);
                     return bool?[prop,val]:prop+":"+val;
                 }else{
+                    
                     console.log(`${className}: '${propertyKey}' unable to compile value:${className.replace(propertyKey,'')} returning value as it is`)
-                    return bool?[prop,valuePortion.replace(/^-/,'')+`  /* ***Warning:Might not be Valid value *** */`]:prop+":"+valuePortion.replace(/^-/,'')+`  /* ***Warning:Might not be Valid value *** */`;
+                    return bool?[prop,(valuePortion.replace(/^-/,''))?valuePortion.replace(/^-/,''):'initial'+`  /* ***Warning:Might not be Valid value *** */`]:prop+":"+(valuePortion.replace(/^-/,''))?valuePortion.replace(/^-/,''):'initial'+`  /* ***Warning:Might not be Valid value *** */`;
                 }
             }else{
                 console.log("No Compiler found for:" + className+" invalidating static className definition, add compiler function to get as it is value.");

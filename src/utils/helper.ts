@@ -1,4 +1,7 @@
 
+// splitByCommaOutsideParens("(someValue,(nested,value),someValue)");
+
+// Output: ["someValue", "(nested,value)", "someValue"]
 
 export function splitByCommaOutsideParens(str:string) {
     const result = [];
@@ -28,7 +31,13 @@ export function splitByCommaOutsideParens(str:string) {
   
     return result;
   }
+
+  // -----------------------------
   
+
+  // "--primary-color"=> "var(--primary-color)"
+  // "--primary-color:ff0000"=>"var(--primary-color, #ff0000)" 
+  // "--gap:calc(1rem+var(--spacing))"=>"var(--gap, calc(1rem + var(--spacing)))"
   export function cssVarWithDefault(valuePortion:string,compiler?:(a:string, b:{ [key: string]: { [key: string]: string}})=>any,custom={}){
       if(/^--[a-zA-Z]/.test(valuePortion)){
                 if(valuePortion.includes(':')){
@@ -47,3 +56,43 @@ export function splitByCommaOutsideParens(str:string) {
                 return  `var(${valuePortion})`
             }
   }
+
+  // ----------------------
+
+// console.log(stringToArray("(apple, banana , cherry)"));
+// Output: ["apple", "banana", "cherry"]
+  export function stringToArray(str:string) {
+  return str
+    .trim()
+    .slice(1, -1)  // Remove outer parentheses
+    .split(',')
+    .map(item => item.trim());  // Split by comma and trim whitespace
+}
+
+// ---------------------------
+
+// console.log(objectToCSS({'margin': '10px', 'padding': '5px'}));
+// Output: "{margin:10px; padding:5px}"
+export function objectToCSS(obj:{[key:string]:string}, prefix:string='') {
+  return prefix+'{' + 
+    Object.entries(obj)
+      .map(([key, value]) => 
+        `${key}:${value}`
+      )
+      .join('; ') + 
+    '}';
+}
+
+// ----------------------------
+
+// console.log(stylesToCSS({'padding': '20px', 'background': 'blue'}, 'body'));
+// Output: "body{padding:20px} body{background:blue}"
+export function stylesToCSS(stylesObj:{[key:string]:string}, selector:string) {
+  const cssRules = Object.entries(stylesObj)
+    .map(([property, value]) => 
+      `${selector}{${property}:${value}}`
+    )
+    .join(' ');
+  
+  return cssRules;
+}
