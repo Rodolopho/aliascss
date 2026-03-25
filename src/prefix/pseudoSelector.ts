@@ -1,4 +1,4 @@
-import prefix,{createRegexForPseudo} from './PseudoPrefix.js';
+import prefix,{createRegexForPseudo} from './PseudoPrefixNew.js';
 
 export default function PseudoEleState(data:string){
     const match=createRegexForPseudo(prefix);

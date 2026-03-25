@@ -280,6 +280,9 @@ addCustom(name: string, obj: { [key: string]: string }) {
 addMedia(obj:{[key:string]:string}){
     this.mediaSelector={...this.mediaSelector,...obj}
 },
+addPseudo(obj:{[key:string]:string}){
+    // this.mediaSelector={...this.mediaSelector,...obj}
+},
 // styleToAliascss(value:string,bool:boolean){
 //     let classValue='';
 //     let styleValue='';

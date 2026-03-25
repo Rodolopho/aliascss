@@ -3793,7 +3793,7 @@ export function getColorScale(colors: { [key: string]: { [key: string]: string }
       const colorSet = colors[colorSetKey];
           for (const key in colorSet) {
              if(colorSet.hasOwnProperty(key)){
-                colorScale[colorSetKey + key.replace('A', '')] = colorSet[key];
+                colorScale[colorSetKey + key.replace('A', '')] = `var(--${colorSetKey + key.replace('A', '')},${colorSet[key]})`;
              }
             
           }

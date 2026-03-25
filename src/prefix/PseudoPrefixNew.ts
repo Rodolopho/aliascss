@@ -83,8 +83,13 @@ export function createRegexForPseudo(prefix:{[key:string]:string
   '--fullscreen':':fullscreen',
   '--fs':':fullscreen',
 
+  '--grammar-error':'::grammar-error',
+  '--ge':'::grammar-error',
+
    '--has': ':has', // --has
   '--hs': ':has', // -hs
+
+  
 
   '--hover-after': ':hover::after', // -haf
   '--haf': ':hover::after', // -haf
@@ -195,6 +200,9 @@ export function createRegexForPseudo(prefix:{[key:string]:string
 
   '--target': ':target', // -tg
   '--tg': ':target', // -tg
+
+  '--target-text': '::target-text', // -tg
+  '--tt': '::target-text', // -tg
 
   '--user-invalid':':user-invalid',
   '--ui':':user-invalid',
