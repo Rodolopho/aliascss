@@ -44,10 +44,10 @@ describe('Return property and value test',()=>{
         expect(getPropertyAndValue('bgc--red',compilerObj,staticClassNames,{},extractProperty,true)?.toString()).toBe(['background-color','var(--red)'].toString())
     })
     test('getProperty and Value  Function value ',()=>{
-        expect(getPropertyAndValue('m(10px,10px,10px)',compilerObj,staticClassNames,{},extractProperty,true)?.toString()).toBe(['margin','10px, 10px, 10px'].toString())
+        expect(getPropertyAndValue('m(10px,10px,10px)',compilerObj,staticClassNames,{},extractProperty,true)?.toString()).toBe(['margin','10px 10px 10px'].toString())
     })
     test('getProperty and Value  Function value ',()=>{
-        expect(getPropertyAndValue('m(10px,10px,10px)_',compilerObj,staticClassNames,{},extractProperty,true)?.toString()).toBe(['margin','10px 10px 10px'].toString())
+        expect(getPropertyAndValue('m(10px,10px,10px)_',compilerObj,staticClassNames,{},extractProperty,true)?.toString()).toBe(['margin','10px, 10px, 10px'].toString())
     })
     // test('getProperty and Value  css-var Test return array when true is passed',()=>{
     //     expect(getPropertyAndValue('ring--red',compilerObj,staticClassNames,{},extractProperty,true)?.toString()).toBe(['background-color','var(--red)'].toString())

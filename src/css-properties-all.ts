@@ -1019,7 +1019,7 @@ const cssProps:{
     alias:'',
     type:'d',
     compiler:length,
-    values:[''],
+    values:['none:n'],
 },
 'flex-basis':{
     alias:'fb',

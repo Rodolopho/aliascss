@@ -1,12 +1,21 @@
 // custom.color will be provided {primary:'#2d3f3e....}
 export default function color(color: string, custom: { [key: string]: { [key: string]: string } }): string | undefined {
   
+  // ----check for css variables
   if(color.match(/^--[a-zA-Z]/)) return `var(${color})`
+
+  // remove - before the color
     color = color.replace(/^[-]/, '');
+
+  // custom-color  
   if (custom.hasOwnProperty('colors') && typeof custom.colors === 'object') {
     if (custom.colors.hasOwnProperty(color)) return custom.colors[color];
-  }
 
+    // custom-color try replacing - 
+
+    if (custom.colors.hasOwnProperty(color.replace(/-/g,''))) return custom.colors[color.replace(/-/g,'')];
+  }
+ 
   // hexadecimal =+ alpha 00-ff
   if (/^[0-9a-fA-F]{3,8}$/.test(color)) {
     return `#${color}`;

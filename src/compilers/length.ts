@@ -1,8 +1,13 @@
 export default function length(data:string){
+    if(data.match(/^-clamp\(/)){
+        return data.replace(/^-/,'')
+        .replace(/([,+-/*])/g,'$1 ')
+        .replace(/([+-/*])/g,' $1')
+    }else{
     return data.replace(/[-]?fit-content-([-]?\w+)/g,' fit-content( $1 )')
     .replace(/[-]([-]?[0-9])/g,' $1').replace(/([\d])d([\d])/g,'$1.$2').replace(/-auto/g,' auto')
     .replace(/([\d])p[\s]/g,"$1% ").replace(/([\d])p$/,"$1%").replace(/-(f|m)/g,'$1')
-    
+    }
 }
 export const lenByNumPer=(value:string)=>value.replace(/[-]([-]?[\w])/g,' $1').replace(/([\d])d([\d])/g,'$1.$2').replace(/([\d])p[\s]/g,"$1% ").replace(/([\d])p$/,"$1%").replace(/[\s]by[\s]/g,' / ').replace(/auto flow/g,'auto-flow');
 

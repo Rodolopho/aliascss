@@ -85,51 +85,23 @@ export const customStaticClassNames: { [key: string]: string } = {
 
   // ---old
 
-  'x-flex-center': 'display:flex; justify-content:center;align-items:center',
-  'x-inline-flex-center': 'display:inline-flex; justify-content:center;align-items:center',
-  'x-grid-center': 'display:grid; justify-content:center;align-content:center',
-  'x-inline-grid-center': 'display:inline-grid; justify-content:center;align-content:center',
-  'x-absolute-center':"position:absolute;margin:auto;top:0;left:0;right:0;bottom:0;",
-  'x-fixed-center':"position:fixed;margin:auto;top:0;left:0;right:0;bottom:0;",
-  'x-sr-only':'position:absolute;overflow:hidden;clip-path:rect(0 0 0 0);height:1px;width:1px;margin:-1px;padding:0;border:0',
+  
+'x-display-2xl': 'font-size: 4.5rem; line-height: 5.625rem; letter-spacing: -0.02em',
+// 'x-display-xxl': 'font-size: 4.5rem; line-height: 5.625rem; letter-spacing: -0.02em',
+'x-display-xl':  'font-size: 3.75rem; line-height: 4.5rem; letter-spacing: -0.02em',
+'x-display-lg':  'font-size: 3rem; line-height: 3.75rem; letter-spacing: -0.02em',
+'x-display-md':  'font-size: 2.25rem; line-height: 2.75rem; letter-spacing: -0.02em',
+'x-display-sm':  'font-size: 1.875rem; line-height: 2.375rem',
+'x-display-xs':  'font-size: 1.5rem; line-height: 2rem',
 
 
+'x-text-xl': 'font-size: 1.25rem; line-height: 1.875rem',
+'x-text-lg': 'font-size: 1.125rem; line-height: 1.75rem',
+'x-text-md': 'font-size: 1rem; line-height: 1.5rem',
+'x-text-sm': 'font-size: 0.875rem; line-height: 1.25rem',
+'x-text-xs': 'font-size: 0.75rem; line-height: 1.125rem',
 
-  'x-display-2xl': 'font-size:72px ; line-height:90px ; letter-spacing:-0.02em',
-  // 'x-display-xxl': 'font-size:72px ; line-height:90px ; letter-spacing:-0.02em',
-  'x-display-xl': 'font-size: 60px; line-height: 72px; letter-spacing:-0.02em',
-  'x-display-lg': 'font-size:48px ; line-height: 60px; letter-spacing:-0.02em',
-  'x-display-md': 'font-size: 36px; line-height: 44px; letter-spacing:-0.02em',
-  'x-display-sm': 'font-size: 30px; line-height: 38px',
-  'x-display-xs': 'font-size: 24px; line-height: 32px',
 
-  'x-heading-2xl': 'font-size:72px ; line-height:90px ; letter-spacing:-0.02em',
-  // 'x-heading-xxl': 'font-size:72px ; line-height:90px ; letter-spacing:-0.02em',
-  'x-heading-xl': 'font-size: 60px; line-height: 72px; letter-spacing:-0.02em',
-  'x-heading-lg': 'font-size:48px ; line-height: 60px; letter-spacing:-0.02em',
-  'x-heading-md': 'font-size: 36px; line-height: 44px; letter-spacing:-0.02em',
-  'x-heading-sm': 'font-size: 30px; line-height: 38px',
-  'x-heading-xs': 'font-size: 24px; line-height: 32px',
-
-  'x-h-2xl': 'font-size:72px ; line-height:90px ; letter-spacing:-0.02em',
-  'x-h-xxl': 'font-size:72px ; line-height:90px ; letter-spacing:-0.02em',
-  'x-h-xl': 'font-size: 60px; line-height: 72px; letter-spacing:-0.02em',
-  'x-h-lg': 'font-size:48px ; line-height: 60px; letter-spacing:-0.02em',
-  'x-h-md': 'font-size: 36px; line-height: 44px; letter-spacing:-0.02em',
-  'x-h-sm': 'font-size: 30px; line-height: 38px',
-  'x-h-xs': 'font-size: 24px; line-height: 32px',
-
-  'x-text-xl': 'font-size:20px;line-height:30px',
-  'x-text-lg': 'font-size:18px;line-height:28px',
-  'x-text-md': 'font-size:16px;line-height:24px',
-  'x-text-sm': 'font-size:14px;line-height:20px',
-  'x-text-xs': 'font-size:12px;line-height:18px',
-
-  'x-t-xl': 'font-size:20px;line-height:30px',
-  'x-t-lg': 'font-size:18px;line-height:28px',
-  'x-t-md': 'font-size:16px;line-height:24px',
-  'x-t-sm': 'font-size:14px;line-height:20px',
-  'x-t-xs': 'font-size:12px;line-height:18px',
 
   //  'x-button-xxl':
     // 'display:inline-flex;justify-content:center;align-items:center;gap:8px;padding:16px 28px;border-radius:8px;box-sizing:border-box',
@@ -182,6 +154,23 @@ export const customStaticClassNames: { [key: string]: string } = {
   'x-clip-close': 'clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%)',
   'x-clip-plus': 'clip-path: polygon(40% 0%,60% 0%,60% 40%,100% 40%,100% 60%,60% 60%,60% 100%,40% 100%,40% 60%,0% 60%,0% 40%,40% 40%);',
   
+  
+  // ---------------------------------------General------------
+  'x-flex-center': 'display:flex; justify-content:center;align-items:center',
+  'x-inline-flex-center': 'display:inline-flex; justify-content:center;align-items:center',
+  'x-grid-center': 'display:grid; justify-content:center;align-content:center',
+  'x-inline-grid-center': 'display:inline-grid; justify-content:center;align-content:center',
+  'x-absolute-center':"position:absolute;margin:auto;top:0;left:0;right:0;bottom:0;",
+  'x-absolute-inset':"position:absolute;inset:0",
+  'x-absolute-content-inset':'position:absolute;inset:0,content:" "',
+  'x-absolute-inset-y':"position:absolute;margin:auto;top:0;bottom:0;",
+  'x-absolute-inset-x':"position:absolute;left:0;right:0;",
+  'x-fixed-center':"position:fixed;margin:auto;top:0;left:0;right:0;bottom:0;",
+  'x-sr-only':'position:absolute;overflow:hidden;clip-path:rect(0 0 0 0);height:1px;width:1px;margin:-1px;padding:0;border:0',
+
+
+  // 'x-jusitfy-between':'justify-content: space-between',
+  // 'x-flex':'display:flex',
   'flex-center':'display:flex;align-items:center;justify-content:center',
   'inline-flex-center':'display:inline-flex;align-items:center;justify-content:center',
   'absolute-center':'position:absolute;top:0;right:0;left:0;bottom:0:margin:auto',
@@ -220,9 +209,40 @@ export const customStaticClassNames: { [key: string]: string } = {
   'x-absolute':'position:absolute',
   'relative':'position:relative',
   'x-relative':'position:relative',
-  'x-jusitfy-between':'justify-content: space-between',
-  'x-flex':'display:flex',
   'x-flex-between':'display:flex;align-items:center;justify-content:space-between',
   'flex-between':'display:flex;align-items:center;justify-content:space-between',
-  'x-items-center':'align-items: center'
+
+  // ------new Added
+'min-h-screen':'min-height: 100vh',
+'max-w-sm':'max-width: 24rem', 
+'max-w-md':'max-width: 28rem', 
+'max-w-lg':'max-width: 32rem', 
+'max-w-xl':'max-width: 36rem', 
+'max-w-2xl':'max-width: 42rem', 
+'max-w-full':'max-width: 100%',
+'x-min-h-screen':'min-height: 100vh',
+'x-max-w-sm':'max-width: 24rem', 
+'x-max-w-md':'max-width: 28rem', 
+'x-max-w-lg':'max-width: 32rem', 
+'x-max-w-xl':'max-width: 36rem', 
+'x-max-w-2xl':'max-width: 42rem', 
+'x-max-w-full':'max-width: 100%',
+
+'mh-screen':'min-height: 100vh',
+'xw-sm':'max-width: 24rem', 
+'xw-md':'max-width: 28rem', 
+'xw-lg':'max-width: 32rem', 
+'xw-xl':'max-width: 36rem', 
+'xw-2xl':'max-width: 42rem', 
+'xw-full':'max-width: 100%',
+'x-mh-screen':'min-height: 100vh',
+'x-xw-sm':'max-width: 24rem', 
+'x-xw-md':'max-width: 28rem', 
+'x-xw-lg':'max-width: 32rem', 
+'x-xw-xl':'max-width: 36rem', 
+'x-xw-2xl':'max-width: 42rem', 
+'x-xw-full':'max-width: 100%',
+
+'truncate':'overflow: hidden; text-overflow: ellipsis; white-space: nowrap',
+  
 };

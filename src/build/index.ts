@@ -19,12 +19,7 @@ const AliasCSS = {
       AliasCSS.classPrinter.run(el);
     }
   },
-  // compileEle(el: any) {
-  //   if (typeof el === 'string') el = document.querySelector(el) || '';
-  //   if (el && el.toString().includes('HTML')) {
-  //     return AliasCSS.classPrinter.returnStatement(el);
-  //   }
- // },
+ 
 
   toString() {
     return 'AliasCSS Object';
@@ -36,17 +31,7 @@ const AliasCSS = {
   extend(a: any, b: any, c: any) {
     this.statementMaker.prebuild(a, b, c);
   },
-  // Live editor
-  // liveEditor: openAcssRibbionBar,
-  // close live editor in browser
-  // closeEditor() {
-  //   const ele: any = document.getElementById('quickChangeBox');
-  //   if (ele) ele.parentNode.removeChild(ele);
-  // },
-  // // string can be passed with psedu and selector, group is optional
-  // appendCSS(str: string, group: string) {
-  //   this.classPrinter.appendToStyleTag(this.statementMaker.fromString(str, group));
-  // },
+  
   addCustom(custom: { [key: string]: any }) {
     Object.keys(custom).forEach((key) => {
       this.statementMaker.addCustom(key, custom[key]);
@@ -61,7 +46,35 @@ if (!window.AliasCSS) {
   window.AliasCSS = AliasCSS;
 }
 
-window.addEventListener('load', () => {
-  AliasCSS.classPrinter.run();
-  console.log(' AliasCSS is running');
-});
+
+(() => {
+  const runScript = () => {
+    AliasCSS.classPrinter.run();
+  };
+
+  // 1. Run after initial DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', runScript);
+  } else {
+    runScript(); // DOM already parsed, run immediately
+  }
+
+  // 2. Re-run on every DOM change and attribute change
+  const observer = new MutationObserver(() => {
+    observer.disconnect();       // pause to avoid infinite loop
+    runScript();
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      attributeOldValue: true,
+    });
+  });
+
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true,
+    attributes: true,
+    attributeOldValue: true,
+  });
+})();

@@ -25,7 +25,8 @@ export const compiler:{
 }={
     // cache will cache propertyAndValue
     cache:{propertyAndValue:{...customStaticClassNames}},
-    custom:{...{colors:{...customColors,...customColors2,...customColorsRadix}}},
+    // custom:{...{colors:{...customColors,...customColors2,...customColorsRadix}}},
+    custom:{...{colors:{...customColors,...customColorsRadix}}},
     mediaSelector:{...media.target},
     mediaTest:null,
     staticClassNames:{...staticClassNamesAlias,...staticClassNamesWithAlias},

@@ -46,6 +46,26 @@ export  default function getPropertyAndValue(
         if(cssPropertiesWithAlias.hasOwnProperty(possiblePropsName) && cssPropertiesWithAlias[possiblePropsName].hasOwnProperty('compiler') && typeof cssPropertiesWithAlias[possiblePropsName].compiler === 'function'){
             compiler =cssPropertiesWithAlias[possiblePropsName].compiler;
         }
+        // New Case :()
+        // check if has :()
+
+                    if(/^\(.+\)[_]?$/.test(value)){
+                        if(value.match(/_$/)){
+                            const val=value.replace(/(--[\w-]+)/g,'var($1)')
+                            .replace(/^[(]/,'').replace(/_$/,'').replace(/[)]$/,'')
+                            .replace(/,/g,', ');
+                            value=val;
+                        }else{
+                            
+                            const val=value.replace(/(--[\w-]+)/g,'var($1)')
+                            .replace(/^[(]/,'').replace(/[)]$/,'')
+                            .replace(/,/g,' ');
+                            value=val;
+                        }
+                        return bool?[property, value]: property+":"+ value;
+                    }
+
+                    //
         // case 1: CSS Variable inside css variable
         if(/^calc/.test(value)){
             return bool?[property,value.replace(/([-+/*])([\d]|var\(|calc\()/g,' $1 $2')]:property+":"+value.replace(/([-+/*])([\d]|var\(|calc\()/g,' $1 $2');
@@ -143,12 +163,18 @@ export  default function getPropertyAndValue(
 
             const valuePortion=className.replace(propertyKey,'');
             // New Update function value
-            if(/^\(.*\)[_]?$/.test(valuePortion)){
+            if(/^\(.+\)[_]?$/.test(valuePortion)){
+        
                 if(valuePortion.match(/_$/)){
-                    const val=valuePortion.replace(/[(_)]/g,'').replace(/,/g,' ');
+                    const val=valuePortion.replace(/(--[\w-]+)/g,'var($1)')
+                    .replace(/^[(]/,'').replace(/_$/,'').replace(/[)]$/,'')
+                    .replace(/,/g,', ');
                     return bool?[prop,val]:prop+":"+ val;
                 }else{
-                    const val=valuePortion.replace(/[(_)]/g,'').replace(/,/g,', ');
+                    
+                    const val=valuePortion.replace(/(--[\w-]+)/g,'var($1)')
+                    .replace(/^[(]/,'').replace(/[)]$/,'')
+                    .replace(/,/g,' ');
                     return bool?[prop,val]:prop+":"+ val;
                 }
 
@@ -164,8 +190,28 @@ export  default function getPropertyAndValue(
            
             if(/^--[a-zA-Z]/.test(valuePortion)){
                 if(valuePortion.includes(':')){
+                    
                     let value=valuePortion.slice(valuePortion.indexOf(':')).replace(':','');
                     const cssVar=valuePortion.replace(value,'').replace(':','');
+                    // check if has :()
+
+                    if(/^\(.+\)[_]?$/.test(value)){
+                        if(value.match(/_$/)){
+                            const val=value.replace(/(--[\w-]+)/g,'var($1)')
+                            .replace(/^[(]/,'').replace(/_$/,'').replace(/[)]$/,'')
+                            .replace(/,/g,', ');
+                            value=val;
+                        }else{
+                            
+                            const val=value.replace(/(--[\w-]+)/g,'var($1)')
+                            .replace(/^[(]/,'').replace(/[)]$/,'')
+                            .replace(/,/g,' ');
+                            value=val;
+                        }
+                        return bool?[prop,"var("+cssVar + ','+ value+')']: prop+": var("+cssVar + ','+ value+ ')';
+                    }
+
+                    //
                     if(/^calc\(/.test(value)){
                         return  bool?[prop,"var("+cssVar + ','+ value.replace(/([-+/*])([\d]|var\(|calc\()/g,' $1 $2')+')']: prop+": var("+cssVar + ','+ value.replace(/([-+/*])([\d]|var\(|calc\()/g,' $1 $2')+ ')';
 
