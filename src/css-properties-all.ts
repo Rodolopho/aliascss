@@ -822,7 +822,7 @@ const cssProps:{
     alias:'',
     type:'s',
     // compiler:'',
-    values:['normal:n','dark:d','light dark:light-dark:ld','only light:only-light:ol']
+    values:['normal:n','dark:d','only dark:only-dark:od:o-d','light dark:light-dark:l-d:ld','only light:only-light:o-l:ol','light:l']
 },
 'column-count':{
     alias:'cc',
@@ -2556,7 +2556,7 @@ const cssProps:{
     alias:'tfo',
     type:'d',
     compiler:length,
-    values:[''],
+    values:['left:l','right:r','top:t','bottom:b','center:c'],
 },
 'transform-style':{
     alias:'tfs',

@@ -87,7 +87,6 @@ export const customStaticClassNames: { [key: string]: string } = {
 
   
 'x-display-2xl': 'font-size: 4.5rem; line-height: 5.625rem; letter-spacing: -0.02em',
-// 'x-display-xxl': 'font-size: 4.5rem; line-height: 5.625rem; letter-spacing: -0.02em',
 'x-display-xl':  'font-size: 3.75rem; line-height: 4.5rem; letter-spacing: -0.02em',
 'x-display-lg':  'font-size: 3rem; line-height: 3.75rem; letter-spacing: -0.02em',
 'x-display-md':  'font-size: 2.25rem; line-height: 2.75rem; letter-spacing: -0.02em',
@@ -244,5 +243,6 @@ export const customStaticClassNames: { [key: string]: string } = {
 'x-xw-full':'max-width: 100%',
 
 'truncate':'overflow: hidden; text-overflow: ellipsis; white-space: nowrap',
+'x-truncate':'overflow: hidden; text-overflow: ellipsis; white-space: nowrap',
   
 };

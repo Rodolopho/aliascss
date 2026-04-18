@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>20 CSS Backgrounds Demo</title>
+   <link rel="stylesheet" href="./index.html.css">
+    
     <style>
         *,
         *::before,
@@ -646,7 +648,9 @@
      20. Cyberpunk Grid
   ───────────────────────────────────────── */
         .bg20 {
-            background: #00001a;
+            --x-bg-cyberpunk-grid-color:#00001a;
+            --x-bg-cyberpunk-grid-line-color:0 255 200;
+            background: var(--x-bg-cyberpunk-grid-color);
             perspective: 400px;
         }
 
@@ -658,8 +662,8 @@
             top: 0;
             left: -50%;
             background-image:
-                linear-gradient(rgba(0, 255, 200, 0.3) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 255, 200, 0.3) 1px, transparent 1px);
+                linear-gradient(rgba(var(--x-bg-cyberpunk-grid-line-color) / 0.3) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(var(--x-bg-cyberpunk-grid-line-color) / 0.3) 1px, transparent 1px);
             background-size: 30px 30px;
             transform: rotateX(55deg);
             transform-origin: 50% 0%;
@@ -670,8 +674,8 @@
             position: absolute;
             inset: 0;
             background:
-                linear-gradient(180deg, #00001a 0%, transparent 40%, #00001a 100%),
-                radial-gradient(ellipse at 50% 0%, rgba(0, 255, 200, 0.25) 0%, transparent 60%);
+                linear-gradient(180deg, var(--x-bg-cyberpunk-grid-color) 0%, transparent 40%, var(--x-bg-cyberpunk-grid-color) 100%),
+                radial-gradient(ellipse at 50% 0%, rgba(var(--x-bg-cyberpunk-grid-line-color) / 0.25) 0%, transparent 60%);
         }
     </style>
 </head>
@@ -692,7 +696,7 @@
         </div>
 
         <div class="card">
-            <div class="bg-box bg2"></div>
+            <div class="bg-box bg2 flex-center"><button class="x-btn ">Help</button></div>
             <div class="card-info">
                 <h3>2. Diagonal Stripes</h3>
                 <p>Crosshatched 45° & -45° repeating gradient lines</p>
