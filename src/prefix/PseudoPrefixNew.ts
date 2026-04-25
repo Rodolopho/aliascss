@@ -88,6 +88,8 @@ export function createRegexForPseudo(prefix:{[key:string]:string
 
    '--has': ':has', // --has
   '--hs': ':has', // -hs
+   '--Has': ' :has', // --has
+  
 
   
 
@@ -115,7 +117,8 @@ export function createRegexForPseudo(prefix:{[key:string]:string
 
   '--invalid': ':invalid', // -in
   '--inv': ':invalid', // -in
-  '--is':':is',
+  '--is':' :is',
+  '--Is':':is',
   // '--is':':is',
 
   '--lang': ':lang', // -ln
@@ -213,8 +216,10 @@ export function createRegexForPseudo(prefix:{[key:string]:string
   '--visited': ':visited', // -vi
   '--vi': ':visited', // -vi
   '--v': ':visited', // -vi
-  '--where':':where',
-  '--w':':where'
+  '--where':' :where',
+  '--w':' :where',
+  '--Where':':where',
+  '--W':':where'
     
 
 }

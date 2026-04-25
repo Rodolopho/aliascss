@@ -12,12 +12,13 @@ const config:{
     useExtractorFunction:boolean,
     useCSSModule:boolean,
     matchCSSModuleFunction:RegExp,
-    globalValues:string[]
-    styles:string[]
-    remUnits:string[]
-    remUnitsNegative:string[]
-    widths:string[]
-    modes:string[]
+    globalValues:string[],
+    styles:string[],
+    remUnits:string[],
+    remUnitsNegative:string[],
+    widths:string[],
+    modes:string[],
+    makeStaticGlobalValues?:(a:string,b:string)=>string[],
 }={ 
     prefix:null,
     useColon:false,
@@ -39,6 +40,10 @@ const config:{
     createCSSModuleRegex:(fname:string)=>new RegExp("(?:"+fname+")\\[[`'"+'"]([^`"'+"']+)(?:[`'"+'"]\\])'),
 
     globalValues:['initial:ini','inherit:in','unset:un', 'revert:re','revert-layer:rl'],
+
+    // makeStaticGlobalValues:(property:string,alias?:string)=>{
+        
+    // },
 
 
     styles:['dotted:d','dashed:da','solid:s','double:db','groove:g','ridge:ri','inset:i','outset:o','none:n','hidden:h'],

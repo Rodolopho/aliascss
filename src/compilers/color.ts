@@ -1,26 +1,52 @@
 // custom.color will be provided {primary:'#2d3f3e....}
 export default function color(color: string, custom: { [key: string]: { [key: string]: string } }): string | undefined {
   
+  // check for alpha 
+  let alpha=null;
+
+    if(color.match(/\/[1-9]$/)){
+      alpha="0."+color.slice(-1);
+      color=color.replace(/\/[1-9]$/,'');
+    }
+
   // ----check for css variables
-  if(color.match(/^--[a-zA-Z]/)) return `var(${color})`
+
+  if(color.match(/^--[a-zA-Z]/)){
+        if(alpha!==null) return `oklch(from var(${color}) l c h/${alpha} )`
+
+    return `var(${color})`
+  } 
 
   // remove - before the color
     color = color.replace(/^[-]/, '');
+    
 
   // custom-color  
   if (custom.hasOwnProperty('colors') && typeof custom.colors === 'object') {
-    if (custom.colors.hasOwnProperty(color)) return custom.colors[color];
+    
+    if (custom.colors.hasOwnProperty(color)){
+        if(alpha!==null) return `oklch(from ${custom.colors[color]} l c h/${alpha} )`
+        return custom.colors[color];
+    } 
 
     // custom-color try replacing - 
 
-    if (custom.colors.hasOwnProperty(color.replace(/-/g,''))) return custom.colors[color.replace(/-/g,'')];
+    if (custom.colors.hasOwnProperty(color.replace(/-/g,''))){
+        if(alpha!==null) return `oklch(from ${color.replace(/-/g,'')} l c h/${alpha} )`
+
+      return custom.colors[color.replace(/-/g,'')];
+
+    } 
   }
  
   // hexadecimal =+ alpha 00-ff
   if (/^[0-9a-fA-F]{3,8}$/.test(color)) {
+        if(alpha!==null) return `oklch(from #${color} l c h/${alpha} )`  
     return `#${color}`;
     // Name
   } else if (/^[a-zA-Z]+$/.test(color)) {
+      if(alpha!==null) return `oklch(from ${color} l c h/${alpha} )`
+
     return color;
     // rgb/a in number
   } else if (/^[0-9]{9}/.test(color)) {

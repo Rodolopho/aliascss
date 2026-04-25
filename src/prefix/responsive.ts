@@ -19,6 +19,23 @@ const  media :{
         '@container-lg': '@container (min-width : 992px)',
         '@container-xl': '@container (min-width : 1200px)',
         '@container-2xl': '@container (min-width : 1408px)',
+
+        '@forced-color-active':'@media (forced-colors: active)',
+        '@fca':'@media (forced-colors: active)',
+        '@standalone':'@media (display-mode: standalone)',
+        '@browser':'@media (display-mode: browser)',
+        '@short-height':'@media (max-height: 600px)',
+        '@xsh':'@media (max-height: 600px)',
+        '@p3':'@media (color-gamut: p3)',
+        '@motion-reduce':'@media (prefers-reduced-motion: reduce)',
+        '@mouse':'@media (hover: hover) and (pointer: fine)',
+        '@touch':'@media (hover: none) and (pointer: coarse)',
+        '@resolution-lg':'@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)',
+        '@resolution-xl':'@media (-webkit-min-device-pixel-ratio: 3), (min-resolution: 288dpi)',
+        '@contrast-more':'@media (prefers-contrast: more)',
+        '@data-reduce':'@media (prefers-reduced-data: reduce)',
+       
+
       
         xs: '@media (max-width : 576px)',
         '@xs': '@media (max-width : 576px)',

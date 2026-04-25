@@ -238,6 +238,141 @@ export default {
 //             statement:`:root{--yellow-25:#FEFDF0;--yellow-50:#FEFBE8;--yellow-100:#FEF7C3;--yellow-200:#FEEE95;--yellow-300:#FDE272;--yellow-400:#FAC515;--yellow-500:#EAAA08;--yellow-600:#CA8504;--yellow-700:#A15C07;--yellow-800:#854A0E;--yellow-900:#713B12;--yellow-950:#542C0D;}`
 //         },
 
+    'x-import-tokens':{
+        type:'raw',
+        statement:`
+        :root {
+
+            /* Fluid Display Scale */
+            --display-xs:  clamp(1.125rem, calc(1rem + 0.625vw), 1.5rem);      /* Scales from 18px to 24px */
+            --display-sm:  clamp(1.25rem,  calc(1.0417rem + 1.0417vw), 1.875rem); /* Scales from 20px to 30px */
+            --display-md:  clamp(1.5rem,   calc(1.25rem + 1.25vw), 2.25rem);    /* Scales from 24px to 36px */
+            --display-lg:  clamp(1.875rem, calc(1.5rem + 1.875vw), 3rem);       /* Scales from 30px to 48px */
+            --display-xl:  clamp(2.25rem,  calc(1.75rem + 2.5vw), 3.75rem);     /* Scales from 36px to 60px */
+            --display-2xl: clamp(2.5rem,   calc(1.8333rem + 3.3333vw), 4.5rem); /* Scales from 40px to 72px */
+               
+            
+            /* Typography scale — fluid */
+    
+            
+            --text-xs:   clamp(0.75rem,  calc(0.7rem + 0.25vw),  0.875rem);
+            --text-sm:   clamp(0.875rem, calc(0.8rem + 0.35vw),  1rem);
+            --text-base: clamp(1rem,     calc(0.95rem + 0.25vw), 1.125rem);
+            --text-lg:   clamp(1.125rem, calc(1rem + 0.75vw),    1.5rem);
+            --text-xl:   clamp(1.5rem,   calc(1.2rem + 1.25vw),  2.25rem);
+            --text-2xl:  clamp(2rem,     calc(1.2rem + 2.5vw),   3.5rem);
+            --text-3xl:  clamp(2.5rem,   calc(1rem + 4vw),       5rem);
+            --text-hero: clamp(3rem,     calc(0.5rem + 7vw),     8rem);
+            
+            /* Base spacing unit */
+
+            --space: var(--space-base,0.25rem); 
+
+            /* Spacing scale */
+            --space-1:  calc(var(--space) * 1);
+            --space-2:  calc(var(--space) * 2);
+            --space-3:  calc(var(--space) * 3);
+            --space-4:  calc(var(--space) * 4);
+            --space-5:  calc(var(--space) * 5);
+            --space-6:  calc(var(--space) * 6);
+            --space-8:  calc(var(--space) * 8);
+            --space-10: calc(var(--space) * 10);
+            --space-12: calc(var(--space) * 12);
+            --space-16: calc(var(--space) * 16);
+            --space-20: calc(var(--space) * 20);
+            --space-24: calc(var(--space) * 24);
+            --space-32: calc(var(--space) * 32);
+
+             /* Border radius */
+            --radius-sm:   0.375rem;
+            --radius-md:   0.5rem;
+            --radius-base:   0.5rem;
+            --radius-lg:   0.75rem;
+            --radius-xl:   1rem;
+            --radius-2xl:  1.5rem;
+            --radius-full: 9999px;
+
+            /* Colors — Light */
+            --color-bg:               #f5f6fa;
+            --color-surface:          #ffffff;
+            --color-surface-2:        #f8f9fc;
+            --color-surface-offset:   #eef0f6;
+            --color-surface-offset-2: #e4e7f0;
+            --color-surface-dynamic:  #d9dde8;
+            --color-divider:          #d0d4e0;
+            --color-border:           #c4c9d8;
+
+            --color-text:         #111827;
+            --color-text-muted:   #4b5563;
+            --color-text-faint:   #9ca3af;
+            --color-text-inverse: #f9fafb;
+
+            --color-primary:           #0a4f6b;
+            /* --color-primary:           red; */
+            --color-primary-hover:     #063a52;
+            --color-primary-active:    #04283a;
+            --color-primary-highlight: #cce3ed;
+            --color-primary-light:     #e8f4f8;
+
+            --color-accent:       #d97706;
+            --color-accent-hover: #b45309;
+            --color-accent-light: #fef3c7;
+
+            --color-success:           #166534;
+            --color-success-bg:        #dcfce7;
+            --color-success-highlight: #dcfce7;
+
+            --color-error:    #991b1b;
+            --color-error-bg: #fee2e2;
+
+            --color-gold:    #d19900;
+            --color-gold-bg: #fef9e7;
+
+           
+
+            /* Base shadow color (Lightness Chroma Hue) */
+
+            --shadow-color: 0.2 0.03 245;
+
+            /* Shadows */
+
+            --shadow-sm: 0 1px 3px   oklch(var(--shadow-color) / 0.08);
+            --shadow-md: 0 4px 14px  oklch(var(--shadow-color) / 0.10);
+            --shadow-lg: 0 12px 40px oklch(var(--shadow-color) / 0.14);
+            --shadow-xl: 0 24px 60px oklch(var(--shadow-color) / 0.18);
+
+                    /* subtle: Subtle contact + slight lift (Great for buttons and cards) */
+            --shadow-subtle: 
+                0 1px 2px oklch(var(--shadow-color) / 0.06), 
+                0 1px 4px oklch(var(--shadow-color) / 0.08);
+
+            /* light: Defined contact + medium spread (Great for dropdowns) */
+            --shadow-light: 
+                0 2px 4px oklch(var(--shadow-color) / 0.04), 
+                0 6px 16px oklch(var(--shadow-color) / 0.10);
+
+            /* soft: Soft contact + ambient mid + wide directional (Great for modals) */
+            --shadow-soft: 
+                0 4px 8px oklch(var(--shadow-color) / 0.03), 
+                0 12px 24px oklch(var(--shadow-color) / 0.06),
+                0 20px 48px oklch(var(--shadow-color) / 0.12);
+
+            /* hard: Deep contact + soft ambient + massive spread (Great for floating palettes) */
+            --shadow-hard: 
+                0 6px 12px oklch(var(--shadow-color) / 0.03), 
+                0 16px 32px oklch(var(--shadow-color) / 0.06),
+                0 32px 80px oklch(var(--shadow-color) / 0.14);
+
+
+
+
+            /* Layout */
+            --content-narrow:  640px;
+            --content-default: 960px;
+            --content-wide:    1200px;
+    }
+        `
+    },
     'x-screen-root':{
     type:'statement',
     statement:`pr oh

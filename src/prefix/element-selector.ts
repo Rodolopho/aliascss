@@ -8,6 +8,7 @@ const  element :{
         const match=className.match(this.test);
         if(match){
             const alias = match[0];
+            if(match)
             if (alias) {
                 const result = alias
                     .replace('next',' + ')
@@ -16,13 +17,14 @@ const  element :{
                     .replace(/____/g, ' ~ ')
                     .replace(/___/g, ' + ')
                     .replace(/__/g, ' > ')
-                    .replace(/_/g, '  ')
+                    .replace(/_/g, ' ')
                     .replace(/[\s]all/, ' * ')
                      .replace(/[\s](dot)/g, (e, a) => { return ' .' + a.toLowerCase();})
                     // .replace(/[\s]([A-Z])/g, (e, a) => { return ' .' + a.toLowerCase();})
                     .replace(/[\s]+/g," ").trim();
+                    
 
-                return [className.replace(alias, ''), ' ' + result];
+                return [className.replace(alias, (/[^_][_]$/.test(alias)?'_':'')), ' ' + result];
             }
         }     
     }      

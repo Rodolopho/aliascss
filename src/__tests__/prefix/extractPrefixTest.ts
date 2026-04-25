@@ -12,6 +12,9 @@ describe("Extract Prefix Test",()=>{
     test("Extract Prefix __div[attribute]",()=>{
          expect(JSON.stringify(extractPrefix('__div[data-state=open]--hover-bg-red'))).toEqual(JSON.stringify([' > div[data-state="open"]:hover','-bg-red']));
     })
+    test("Extract Prefix multi , __div[attribute]",()=>{
+         expect(JSON.stringify(extractPrefix('__div[data-state=open]--hover-bg-red'))).toEqual(JSON.stringify([' > div[data-state="open"]:hover','-bg-red']));
+    })
     test("Extract Prefix div:hover",()=>{
          expect(JSON.stringify(extractPrefix('__div__[data-state=open]--hover-bg-red'))).toEqual(JSON.stringify([' > div >[data-state="open"]:hover','-bg-red']));
     })
@@ -19,6 +22,7 @@ describe("Extract Prefix Test",()=>{
          expect(JSON.stringify(extractPrefix('__.div__[data-state=open]--hover-bg-red'))).toEqual(JSON.stringify([' > .div >[data-state="open"]:hover','-bg-red']));
     })
     test("Extract Prefix class",()=>{
-         expect(JSON.stringify(extractPrefix('__.div_.class_[data-state=open]--hover-bg-red'))).toEqual(JSON.stringify([' > .div .class[data-state="open"]:hover','-bg-red']));
+         expect(JSON.stringify(extractPrefix('__.div_.class_[data-state=open]--hover-bg-red'))).toEqual(JSON.stringify([' > .div .class [data-state="open"]:hover','-bg-red']));
+         expect(JSON.stringify(extractPrefix('__.div_.class[data-state=open]--hover-bg-red'))).toEqual(JSON.stringify([' > .div .class[data-state="open"]:hover','-bg-red']));
     })
 })

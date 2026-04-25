@@ -79,7 +79,7 @@ const cssProps:{
     alias:'accent',
     type:'d',
     compiler:color,
-    values:[],
+    values:['auto:a'],
 },
 'align-content':{ // checked
     alias:'ac',
@@ -220,7 +220,7 @@ const cssProps:{
 },
 
 'appearance':{// checked // need update 
-    alias:'a2',
+    alias:'ap',
     type:'s',
     compiler:(value:string)=>value.replace(/^-/,'').replace(/moz/,'-moz'),
     values:['none:n','auto:a','menulist-button:mb','textfield:t:tf'],
@@ -273,7 +273,7 @@ const cssProps:{
     values:['normal:nl','multiply:m','screen:s','overlay:o','darken:d','lighten:l','color-dodge:cd','saturation:sa|s2','color:c','luminosity:lu:l2'],
 },
 'background-clip':{
-    alias:'bgc2',
+    alias:'bgcl',
     type:'s',
     compiler:(value:string)=>value.replace(/^-/,'').replace(/(-|__)/g,', ').replace(/,[\s]b/g,'-b'),
     values:['border-box:bb','padding-box:pb','content-box:cb'],
@@ -967,7 +967,7 @@ const cssProps:{
     values:['none:n'],
 },
 'cursor':{
-    alias:'cu',
+    alias:'cur',
     type:'',
     // compiler:'',
     values:['alias:al','all-scroll:as','auto:a','cell:c','col-resize:cr','context-menu:cm','copy:cp',
@@ -1016,7 +1016,7 @@ const cssProps:{
     values:['none:n','invert():invert:i','sepia():sepia:se','grayscale():grayscale:gs'],
 },
 'flex':{
-    alias:'',
+    alias:'fx',
     type:'d',
     compiler:length,
     values:['none:n'],
@@ -1034,7 +1034,7 @@ const cssProps:{
     values:['row:r','row-reverse:rr','column:c','column-reverse:cr'],
 },
 'flex-flow':{// --incomplete
-    alias:'',
+    alias:'ffl',
     type:'d',
     compiler:(value:string)=>value.replace(/[-](w|n)/," $1"),
     values:[''],
@@ -1046,13 +1046,13 @@ const cssProps:{
     values:[''],
 },
 'flex-shrink':{
-    alias:'',
+    alias:'fsk',
     type:'d',
     compiler:length,
     values:[''],
 },
 'flex-wrap':{
-    alias:'',
+    alias:'fwp',
     type:'s',
     // compiler:'',
     values:['nowrap:nw:n','wrap:w','wrap-reverse:wr'],
@@ -1114,7 +1114,7 @@ const cssProps:{
     values:['ultra-condensed:uc','extra-condensed:ec','condensed:c','semi-condensed:sc','normal:nl','semi-expanded:se','expanded:e','extra-expanded:ee','ultra-expanded:ue'],
 },
 'font-style':{
-    alias:'',// --
+    alias:'fst',// --
     type:'s',
     // compiler:'',
     values:['normal:nl','italic:i','oblique:o'],
@@ -2064,7 +2064,7 @@ const cssProps:{
     values:[''],
 },
 'place-items':{
-    alias:'',
+    alias:'pli',
     type:'d',
     compiler:(value:string)=>{
         const m=/[-]?(start|end|flex-start|flex-end|self-start|self-end|normal|center|baseline|first|last|auto|right|left|legacy|stretch|safe|unsafe)/g;
@@ -2355,7 +2355,7 @@ const cssProps:{
 },
 
 'shape-outside':{
-    alias:'so',
+    alias:'',
     type:'d',
     compiler:clipPath,
     values:['none:n','margin-box:mb','border-box:bb','padding-box:pb','content-box:cb'],
@@ -2500,7 +2500,7 @@ const cssProps:{
     values:['none:n']
 },
 'text-underline-offset':{
-    alias:'tup',
+    alias:'tuo',
     type:'d',
      compiler:length,
     values:['auto:a'],

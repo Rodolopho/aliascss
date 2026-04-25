@@ -5,10 +5,28 @@ import { customColorsRadix  as c3} from '../../static/customColorsRadix';
 
 describe('Color Compiler Test',()=>{
     test('Color by name',()=>{
-         expect(color('-gray12',{colors:{...customColors,...c2,...c3}})).toBe('var(--gray12,#202020)');
+         expect(color('--bg-color',{colors:{...customColors,...c2,...c3}})).toBe('var(--bg-color)');
+    })
+    test('Color by name',()=>{
+         expect(color('--bg-color/7',{colors:{...customColors,...c2,...c3}})).toBe('oklch(from var(--bg-color) l c h/0.7 )');
+    })
+    test('Color by name',()=>{
+         expect(color('-red',{colors:{...customColors,...c2,...c3}})).toBe('red');
+    })
+     test('Color by name',()=>{
+         expect(color('-red/1',{colors:{...customColors,...c2,...c3}})).toBe('oklch(from red l c h/0.1 )');
+    })
+     test('Color by cusomName',()=>{
+         expect(color('-gray12/6',{colors:{...customColors,...c2,...c3}})).toBe('oklch(from var(--gray12,#202020) l c h/0.6 )');
+    })
+    test('Color by cusomName',()=>{
+         expect(color('-primary600/6',{colors:{...customColors,...c2,...c3}})).toBe('oklch(from var(--primary600,#7F56D9) l c h/0.6 )');
     })
     test('Color by hex',()=>{
          expect(color('-efefef',{})).toBe('#efefef');
+    })
+    test('Color by hex',()=>{
+         expect(color('-efefef/9',{})).toBe('oklch(from #efefef l c h/0.9 )');
     })
     test('Color by hex alpha',()=>{
          expect(color('-efefef00',{})).toBe('#efefef00');

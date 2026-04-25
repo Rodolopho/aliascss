@@ -6,6 +6,9 @@ describe("Pseudo Create Regex Test",()=>{
          expect('--hover-bgc-red'.match(match)?.toString()).toEqual(['--hover','--hover'].toString())
     })
     test("Create Pseudo Regex",()=>{
+         expect('--Is(--hover)-bgc-red'.match(match)?.toString()).toEqual(['--Is','--Is'].toString())
+    })
+    test("Create Pseudo Regex",()=>{
          expect('--h-bgc-red'.match(match)?.toString()).toEqual(['--h','--h'].toString())
     })
     test("Create Pseudo Regex",()=>{

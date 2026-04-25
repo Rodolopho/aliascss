@@ -8,7 +8,7 @@ export default function PseudoEleStateNew(data:string):string[]|null{
 
     const matchAndFunc=[
         {
-            match:/^-([-]?(not|has|is|where|n|hs|w))\((.+)\)/,
+            match:/^-([-]?(not|has|Has|is|Is|where|Where|n|hs|w|W))\((.+)\)/,
             func(value:string){
                 const matched=value.match(this.match);
                 const newData=matched?.[3];
@@ -56,9 +56,9 @@ export default function PseudoEleStateNew(data:string):string[]|null{
         const cont=mch?.[3];
         // console.log(data,cn,alias,mch)
         return [cn,`${alias}(${cont})`]
-    }else if(/(^-(-not|-has|-is|-where|-n|-hs|-w|-is)[-_])/.test(data)){
+    }else if(/(^-(-not|-has|-Has|-is|-Is|-where|-Where|-n|-hs|-w|-W|-is)[-_])/.test(data)){
         
-        const mch=data.match(/(^-(-not|-has|-is|-where|-n|-hs|-w|-is)([_-]+[a-zA-Z0-9\.,]+)(?=[-|_]))/);
+        const mch=data.match(/(^-(-not|-has|-Has|-is|-Is|-where|-Where|-n|-hs|-w|-W|-is)([_-]+[a-zA-Z0-9\.,]+)(?=[-|_]))/);
        
         const cn=mch?.[1]?data.replace(mch[1],''):'';
         const alias=mch?.[2]?prefix['-'+mch[2].replace(/-$/,'')]:'';
