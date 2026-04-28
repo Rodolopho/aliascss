@@ -1099,7 +1099,8 @@ const cssProps:{
     alias:'fs',
     type:'d',
     compiler:length,
-    values:['medium:m:md','xx-small:xxs','x-small:xs','small:sm:s','large:lg:l','x-large:xl','xx-large:xxl','smaller:smr','larger:lgr'],
+    values:['medium','xx-small','x-small','small','large','x-large','xx-large','smaller','larger'],
+    // values:['medium:m:md','xx-small:xxs','x-small:xs','small:sm:s','large:lg:l','x-large:xl','xx-large:xxl','smaller:smr','larger:lgr'],
 },
 'font-size-adjust':{
     alias:'fsa',
@@ -1373,7 +1374,7 @@ const cssProps:{
     alias:'h',// --
     type:'d',
     compiler:length,
-    values:['auto:a','max-content:xc','min-content:mc'],
+    values:['auto:a','max-content:xc','min-content:mc',...remUnits],
 },
 'hyphens':{
     alias:'',
@@ -2691,7 +2692,7 @@ const cssProps:{
     alias:'w',
     type:'d',
     compiler:length,
-    values:['max-content:xc','min-content:mc','auto:a','fit-content:fc'],
+    values:['max-content:xc','min-content:mc','auto:a','fit-content:fc',...remUnits],
 },
 'will-change':{
     alias:'wc',// --

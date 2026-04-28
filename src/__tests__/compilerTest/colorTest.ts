@@ -1,14 +1,24 @@
+/// <reference types="jest" />
 import color from '../../compilers/color'
 import { customColors } from '../../static/customColors';
-import { customColors as c2 } from '../../static/customColors2';
-import { customColorsRadix  as c3} from '../../static/customColorsRadix';
-
+import { customColorsRa as c2 } from '../../static/customColorsRA';
+//import { customColors as c2 } from '../../static/customColors2';
+import { customColorsRadixUi as c3} from '../../static/customColorsRadix';
 describe('Color Compiler Test',()=>{
     test('Color by name',()=>{
          expect(color('--bg-color',{colors:{...customColors,...c2,...c3}})).toBe('var(--bg-color)');
     })
     test('Color by name',()=>{
          expect(color('--bg-color/7',{colors:{...customColors,...c2,...c3}})).toBe('oklch(from var(--bg-color) l c h/0.7 )');
+    })
+     test('Color by name',()=>{
+         expect(color('-grayThemeA10',{colors:{...customColors,...c2,...c3}})).toBe('light-dark(#0000007c,#ffffff72)');
+    })
+    test('Color by name',()=>{
+         expect(color('-yellowThemeA11',{colors:{...customColors,...c2,...c3}})).toBe('light-dark(#9e6c00,#fee949f5)');
+    })
+    test('Color by name',()=>{
+         expect(color('-whiteThemeA10',{colors:{...customColors,...c2,...c3}})).toBe('light-dark(rgba(255, 255, 255, 0.8), rgba(0, 0, 0, 0.8))');
     })
     test('Color by name',()=>{
          expect(color('-red',{colors:{...customColors,...c2,...c3}})).toBe('red');
@@ -17,7 +27,7 @@ describe('Color Compiler Test',()=>{
          expect(color('-red/1',{colors:{...customColors,...c2,...c3}})).toBe('oklch(from red l c h/0.1 )');
     })
      test('Color by cusomName',()=>{
-         expect(color('-gray12/6',{colors:{...customColors,...c2,...c3}})).toBe('oklch(from var(--gray12,#202020) l c h/0.6 )');
+         expect(color('-gray12/6',{colors:{...customColors,...c2,...c3}})).toBe('oklch(from #202020 l c h/0.6 )');
     })
     test('Color by cusomName',()=>{
          expect(color('-primary600/6',{colors:{...customColors,...c2,...c3}})).toBe('oklch(from var(--primary600,#7F56D9) l c h/0.6 )');

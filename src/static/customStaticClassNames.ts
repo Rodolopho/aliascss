@@ -6,12 +6,44 @@ export const customStaticClassNames: { [key: string]: string } = {
   'x-lorem-3':`content:"At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."`,
   'x-lorem-4':`content:"The quick brown fox jumps over the lazy dog"`,
  
+ 
+  // Standard Widths
+  'width-xs': 'width:var(--width-xs, clamp(17.5000rem, calc(14.2105rem + 16.4474vw), 30.0000rem))',   // Scales from 280px to 480px 
+  'width-sm': 'width:var(--width-sm, clamp(20.0000rem, calc(14.7368rem + 26.3158vw), 40.0000rem))',   // Scales from 320px to 640px
+  'width-md': 'width:var(--width-md, clamp(30.0000rem, calc(25.2632rem + 23.6842vw), 48.0000rem))',   // Scales from 480px to 768px 
+  'width-lg': 'width:var(--width-lg, clamp(40.0000rem, calc(33.6842rem + 31.5789vw), 64.0000rem))',   // Scales from 640px to 1024px 
+  'width-xl': 'width:var(--width-xl, clamp(48.0000rem, calc(39.5789rem + 42.1053vw), 80.0000rem))',   // Scales from 768px to 1280px 
+  'width-2xl': 'width:var(--width-2xl, clamp(64.0000rem, calc(55.5789rem + 42.1053vw), 96.0000rem))', // Scales from 1024px to 1536px 
+
+  // Shorthand Utilities
+  'w-xs': 'width:var(--width-xs, clamp(17.5000rem, calc(14.2105rem + 16.4474vw), 30.0000rem))',
+  'w-sm': 'width:var(--width-sm, clamp(20.0000rem, calc(14.7368rem + 26.3158vw), 40.0000rem))',
+  'w-md': 'width:var(--width-md, clamp(30.0000rem, calc(25.2632rem + 23.6842vw), 48.0000rem))',
+  'w-lg': 'width:var(--width-lg, clamp(40.0000rem, calc(33.6842rem + 31.5789vw), 64.0000rem))',
+  'w-xl': 'width:var(--width-xl, clamp(48.0000rem, calc(39.5789rem + 42.1053vw), 80.0000rem))',
+  'w-2xl': 'width:var(--width-2xl, clamp(64.0000rem, calc(55.5789rem + 42.1053vw), 96.0000rem))',
+
+  
+  "x-radius-xs":'border-radius:var(--radius-xs,4px)',
+  "br-xs":'border-radius:var(--radius-xs,6px)',
   "x-radius-sm":'border-radius:var(--radius-sm,6px)',
+  "br-sm":'border-radius:var(--radius-sm,6px)',
+  "border-radius-sm":'border-radius:var(--radius-sm,6px)',
   "x-radius-md":'border-radius:var(--radius-md,8px)',
+  "br-md":'border-radius:var(--radius-md,8px)',
+  "border-radius-md":'border-radius:var(--radius-md,8px)',
   "x-radius-base":'border-radius:var(--radius-base,8px)',
+  "br-base":'border-radius:var(--radius-base,8px)',
+  "border-radius-base":'border-radius:var(--radius-base,8px)',
   "x-radius-lg":'border-radius:var(--radius-lg,10px)',
+  "br-lg":'border-radius:var(--radius-lg,10px)',
+  "border-radius-lg":'border-radius:var(--radius-lg,10px)',
   "x-radius-xl":'border-radius:var(--radius-xl,16px)',
+  "br-xl":'border-radius:var(--radius-xl,16px)',
+  "border-radius-xl":'border-radius:var(--radius-xl,16px)',
   "x-radius-full":'border-radius:var(--radius-full,9999px)',
+  "br-full":'border-radius:var(--radius-full,9999px)',
+  "border-radius-full":'border-radius:var(--radius-full,9999px)',
   // --------  end
 
   // // --Padding/Spacing
@@ -75,14 +107,31 @@ export const customStaticClassNames: { [key: string]: string } = {
 
 
 'x-text-xl': 'font-size: var(--text-xl,1.25rem); line-height: 1.875rem',
+  'fs-xl': 'font-size: var(--text-xl,1.25rem)',
+  'font-size-xl': 'font-size: var(--text-xl,1.25rem)',
 'x-text-lg': 'font-size: var(--text-lg,1.125rem); line-height: 1.75rem',
+  'fs-lg': 'font-size: var(--text-lg,1.125rem)',
+  'font-size-lg': 'font-size: var(--text-lg,1.125rem)',
 'x-text-md': 'font-size: var(--text-md,1rem); line-height: 1.5rem',
+  'fs-md': 'font-size: var(--text-md,1rem)',
+  'font-size-md': 'font-size: var(--text-md,1rem)',
 'x-text-base': 'font-size: var(--text-base,1rem); line-height: 1.5rem',
+  'fs-base': 'font-size: var(--text-base,1rem)',
+  'font-size-base': 'font-size: var(--text-base,1rem)',
 'x-text-sm': 'font-size: var(--text-sm,0.875rem); line-height: 1.25rem',
+  'fs-sm': 'font-size: var(--text-sm,0.875rem)',
+  'font-size-sm': 'font-size: var(--text-sm,0.875rem)',
 'x-text-xs': 'font-size: var(--text-xs,0.75rem); line-height: 1.125rem',
-'x-text-2xl':'font-size: var(--text-2xl);  line-height: 1.2',
-'x-text-3xl':'font-size: var(--text-3xl);  line-height: 1.1',
-'x-text-hero':'font-size: var(--text-hero); line-height: 1',
+  'fs-xs': 'font-size: var(--text-xs,0.75rem)',
+  'font-size-xs': 'font-size: var(--text-xs,0.75rem)',
+'x-text-2xl':'font-size: var(--text-2xl,1.5rem);  line-height: 1.2',
+  'fs-2xl':'font-size: var(--text-2xl,1.5rem)',
+  'font-size-2xl':'font-size: var(--text-2xl,1.5rem)',
+'x-text-3xl':'font-size: var(--text-3xl,1.875rem);  line-height: 1.1',
+  'fs-3xl':'font-size: var(--text-3xl,1.875rem)',
+  'font-size-3xl':'font-size: var(--text-3xl,1.875rem)',
+'x-text-hero':'font-size: var(--text-hero,2.25rem); line-height: 1',
+ 
 
 // Blur
   'x-blur-sm':'backdrop-filter: var(--x-blur-sm,blur(4px))',
@@ -196,34 +245,34 @@ export const customStaticClassNames: { [key: string]: string } = {
   'flex-between':'display:flex;align-items:center;justify-content:space-between',
 
   // ------new Added
-'min-h-screen':'min-height: 100vh',
-'max-w-sm':'max-width: 24rem', 
-'max-w-md':'max-width: 28rem', 
-'max-w-lg':'max-width: 32rem', 
-'max-w-xl':'max-width: 36rem', 
-'max-w-2xl':'max-width: 42rem', 
+'min-h-screen':'min-height: 100vh', 
+'max-w-sm':'max-width: 24rem', // 384px
+'max-w-md':'max-width: 28rem', // 448px
+'max-w-lg':'max-width: 32rem', // 512px
+'max-w-xl':'max-width: 36rem', // 576px
+'max-w-2xl':'max-width: 42rem', // 672px
 'max-w-full':'max-width: 100%',
 'x-min-h-screen':'min-height: 100vh',
-'x-max-w-sm':'max-width: 24rem', 
-'x-max-w-md':'max-width: 28rem', 
-'x-max-w-lg':'max-width: 32rem', 
-'x-max-w-xl':'max-width: 36rem', 
-'x-max-w-2xl':'max-width: 42rem', 
+'x-max-w-sm':'max-width: 24rem', // 384px
+'x-max-w-md':'max-width: 28rem', // 448px
+'x-max-w-lg':'max-width: 32rem', // 512px
+'x-max-w-xl':'max-width: 36rem', // 576px
+'x-max-w-2xl':'max-width: 42rem', // 672px
 'x-max-w-full':'max-width: 100%',
 
 'mh-screen':'min-height: 100vh',
-'xw-sm':'max-width: 24rem', 
-'xw-md':'max-width: 28rem', 
-'xw-lg':'max-width: 32rem', 
-'xw-xl':'max-width: 36rem', 
-'xw-2xl':'max-width: 42rem', 
+'xw-sm':'max-width: 24rem', // 384px
+'xw-md':'max-width: 28rem', // 448px
+'xw-lg':'max-width: 32rem', // 512px
+'xw-xl':'max-width: 36rem', // 576px
+'xw-2xl':'max-width: 42rem', // 672px
 'xw-full':'max-width: 100%',
 'x-mh-screen':'min-height: 100vh',
-'x-xw-sm':'max-width: 24rem', 
-'x-xw-md':'max-width: 28rem', 
-'x-xw-lg':'max-width: 32rem', 
-'x-xw-xl':'max-width: 36rem', 
-'x-xw-2xl':'max-width: 42rem', 
+'x-xw-sm':'max-width: 24rem', // 384px
+'x-xw-md':'max-width: 28rem', // 448px
+'x-xw-lg':'max-width: 32rem', // 512px
+'x-xw-xl':'max-width: 36rem', // 576px
+'x-xw-2xl':'max-width: 42rem', // 672px
 'x-xw-full':'max-width: 100%',
 
 'truncate':'overflow: hidden; text-overflow: ellipsis; white-space: nowrap',
