@@ -93,7 +93,16 @@ export function compileFile(file:string,config:any,statementMaker:
       compiledStatement+=`/* From:aliacss.config.group  */\n${statementMaker.customGroupStatement}\n/* -----End:aliacss.config.group----- */\n\n`;
         moduleStatement+=`/* From:aliacss.config.group  */\n${statementMaker.customGroupStatement}\n/* -----End:aliacss.config.group----- */\n\n`;
     }
-    const [classList,groups,keyframe]= extractClassNamesFromFile(file,config)
+    const [classList,groups,keyframe,rawCSSStatement]= extractClassNamesFromFile(file,config);
+
+
+    // 1. raw-css
+
+    if(rawCSSStatement){
+      globalStatement += rawCSSStatement + '\n';
+                
+    compiledStatement += rawCSSStatement + '\n';
+    }
     
 
 

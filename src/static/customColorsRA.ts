@@ -2,6 +2,8 @@
 
   const colorBase :{[key:string]:string} = {
               'brandRA':'var(--brandColor,oklch(1 .25049 284.23))',
+              'accentRA':'var(--accentColor,oklch(1 .25049 284.23))',
+              'tintRA':'var(--tintColor,oklch(1 .25049 284.23))',
               'grayRA': 'var(--grayColor,oklch(0.5 0 0))',
               'redRA': 'var(--redColor,oklch(0.6 .181447 27.0726))',
               'orangeRA': 'var(--orangeColor,oklch(0.7 .150492 54))',
@@ -87,4 +89,4 @@ const colors=()=>{
 return collection;
 };
 
-export const customColorsRa: { [key: string]: string } = colors();
+export const customColorsRa: { [key: string]: string } = {...colors(),...colorBase};

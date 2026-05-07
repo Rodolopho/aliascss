@@ -1,7 +1,8 @@
 import prebuild from "./prebuild.js";
 import { cssVarWithDefault } from "./utils/helper.js";
 import color from './compilers/color.js';
-
+import length from './compilers/length.js';
+import {compiler} from './returnStatement.js';
 type Property = {
     alias?:string,
     property?: string,
@@ -51,7 +52,227 @@ const cssCustomCompilers:{
 //         'lg':'border-radius: 6px;padding: 0px 16px;font-size: 16px;height: 40px;line-height: 24px;gap: 12px;',
 //         'lg':'border-radius: 6px; padding: 0px 24px;font-size: 18px;height: 48px;line-height: 26px;gap: 14px;',
 //     },
+
+
 // },
+'ButtonAR':{
+    type:'group',
+    compiler:(value,custom)=>{
+        const stm=`
+            --border-color: ${color('accentRA',custom)};
+            --button-background: ${color('accentRATheme100',custom)};
+            --button-gradient:${color('accentRATheme200',custom)};
+            --button-border: ${color('accentRATheme300',custom)};
+            --button-highlight: rgb(255 255 255 / 0.8);
+            --button-shadow: ${color('accentRATheme400',custom)};
+            --button-border-size: 1px;
+            --button-text: ${color('accentRATheme1400',custom)};
+            --button-gradient-size: 8px;
+            --text-color: var(--gray-1200,${color('grayRATheme1200',custom)});
+            --text-color-hover: var(--gray-1300,${color('grayRATheme1300',custom)});
+            --text-color-disabled: var(--gray-600,${color('grayRATheme600',custom)});
+    
+    background:var(--button-background);
+    display:inline-flex;align-items:center;justify-content:center;
+    color: var(--button-text);
+    box-shadow: 
+      inset 0 -1px 0 var(--button-shadow), /* bottom shadow */
+      inset 0 0 0 var(--button-border-size) var(--button-border), /* border */
+      inset 0px calc(var(--button-border-size) + 1px) 0px var(--button-highlight), /* top specular highlight */
+      inset 0px calc(-1 * var(--button-gradient-size)) var(--button-gradient-size) -2px var(--button-gradient); /* inner gradient */
+    outline: none;
+    transition-property: background, color, scale, box-shadow;
+    transition-duration: 200ms;
+    will-change: scale;
+    forced-color-adjust: none;
+    -webkit-tap-highlight-color: transparent;
+
+    @media (prefers-color-scheme: dark) {
+      --button-shadow: ${color('accentRATheme200',custom)};;
+      --button-highlight: rgb(255 255 255 / 0.15);
+      box-shadow:
+        inset 0 var(--button-border-size) 0 var(--button-highlight), /* top specular highlight */
+        inset 0 calc(-1 * var(--button-border-size)) 0 var(--button-shadow), /* bottom shadow */
+        inset 0 0 0 var(--button-border-size) var(--button-border), /* border */
+        inset 0 var(--button-gradient-size) var(--button-gradient-size) -2px var(--button-gradient); /* inner gradient */
+    }
+
+    &:where([data-pressed]) {
+      --button-background: ${color('accentRATheme200',custom)};
+    }
+
+    &:where([data-focus-visible]) {
+      outline: 2px solid var(--focus-ring-color,${color('accentRATheme1000',custom)});
+      outline-offset: 2px;
+    }
+
+    &:where([data-variant=secondary]) {
+      --button-color: ${color('grayRA',custom)};
+    }
+
+    &:where([data-variant=quiet]) {
+      --button-background: none;
+      --button-text: var(--text-color);
+      box-shadow: 0 0 0 1px transparent;
+
+      &:where([data-hovered], [data-pressed]) {
+        --button-background: ${color('accentRATheme200',custom)};
+        --button-text: var(--tint-1400);
+        box-shadow: 0 0 0 1px ${color('accentRATheme200',custom)};
+      }
+    }
+
+    &:where([data-selected]) {
+      --button-background: oklch(from var(--button-color) 55% c h);
+      --button-border: oklch(from var(--button-color) 50% c h);
+      --button-gradient: var(--button-border);
+      --button-highlight: rgb(255 255 255 / 0.2);
+      --button-shadow: oklch(from var(--button-color) 30% c h);
+      --button-text: var(--highlight-foreground);
+
+      box-shadow:
+        inset 0 -1px 0 var(--button-shadow), /* bottom shadow */
+        inset 0 0 0 1px var(--button-border), /* border */
+        inset 0 2px 0 var(--button-highlight), /* top specular highlight */
+        inset 0 calc(-1 * var(--button-gradient-size)) var(--button-gradient-size) var(--button-gradient); /* inner gradient */
+
+      @media (prefers-color-scheme: dark) {
+        --button-highlight: rgb(255 255 255 / 0.4);
+        --button-gradient: rgb(255 255 255 / 0.2);
+        --button-shadow: var(--button-border);
+        box-shadow:
+          inset 0 1px 0 var(--button-highlight), /* top specular highlight */
+          inset 0 var(--button-gradient-size) var(--button-gradient-size) var(--button-gradient), /* inner gradient */
+          inset 0 0 0 1px var(--button-border); /* border */
+      }
+
+      &:where([data-pressed]) {
+        --button-background: oklch(from var(--button-color) 50% c h);
+      }
+    }
+
+    &:where([data-disabled]) {
+      box-shadow: none;
+      --button-background: var(--border-color-disabled);
+      --button-text: var(--text-color-disabled);
+
+      &:where([data-variant=quiet]) {
+        --button-background: none;
+      }
+    }
+
+    @media (forced-colors: active) {
+      --button-background: ButtonFace;
+      --button-text: ButtonText;
+      --button-border: ButtonBorder;
+      box-shadow: inset 0 0 0 var(--button-border-size) var(--button-border);
+
+      &:where([data-variant=quiet]) {
+        --button-border: transparent;
+        &:where([data-hovered], [data-pressed]) {
+          --button-border: ButtonBorder;
+        }
+      }
+
+      &:where([data-selected]) {
+        --button-background: Highlight;
+        --button-text: HighlightText;
+        --button-border: Highlight;
+      }
+
+      &:where([data-disabled]) {
+        --button-background: ButtonFace;
+        --button-text: GrayText;
+        --button-border: GrayText;
+
+        &:where([data-variant=quiet]) {
+          --button-border: transparent;
+        }
+      }
+  }`
+        // const order=['padding','margin','gap'];
+        // const values=value.replace(/^\(|\)$/g,'').split(',');
+        // values.forEach((e,i)=>{
+        //     if(i<order.length && e){
+        //         if(/--[a-zA-Z]/.test(e)){
+        //             stm+=`${order[i]}:var(${e});`
+        //         }else{
+        //             stm+=`${order[i]}:${length(e)};`
+        //         }
+                
+        //     }
+        // });
+        return stm; 
+    }
+},
+// Button:{
+//     type:'group',
+//     compiler:(value,custom)=>{
+//         let stm=`
+//         `
+//     }
+// },
+'Space':{
+    type:'group',
+    compiler:(value,custom)=>{
+        let stm='';
+        const order=['padding','margin','gap'];
+        const values=value.replace(/^\(|\)$/g,'').split(',');
+        values.forEach((e,i)=>{
+            if(i<order.length && e){
+                if(/--[a-zA-Z]/.test(e)){
+                    stm+=`${order[i]}:var(${e});`
+                }else{
+                    stm+=`${order[i]}:${length(e)};`
+                }
+                
+            }
+        });
+        return stm; 
+    }
+},
+// 'Grid':{
+//     type:'group',
+//     compiler:(value,custom)=>{
+//         let stm=`display:grid;grid-template-columns:repeat(var(--columns),1fr);--columns:12;`;
+//         const order=['xs','md','gap'];
+//         const values=value.replace(/^\(|\)$/g,'').split(',');
+//         values.forEach((e,i)=>{
+//             if(i<order.length && e){
+//                 if(/--[a-zA-Z]/.test(e)){
+//                     stm+=`${order[i]}:var(${e});`
+//                 }else{
+//                     stm+=`${order[i]}:${length(e)};`
+//                 }
+                
+//             }
+//         });
+//         return stm; 
+//     }
+// },
+'Size':{
+    type:'group',
+    compiler:(value,custom)=>{
+        let stm='';
+        const order=['width','height','border-radius'];
+        const values=value.replace(/^\(|\)$/g,'').split(',');
+        if(values.length===1){
+            const val=/--[a-zA-Z]/.test(values[0])?`var(${values[0]})`:length(values[0])
+            return `width:${val};height:${val}`
+        }
+        values.forEach((e,i)=>{
+            if(i<order.length && e){
+                if(/--[a-zA-Z]/.test(e)){
+                    stm+=`${order[i]}:var(${e});`
+                }else{
+                    stm+=`${order[i]}:${length(e)};`
+                }
+                
+            }
+        });
+        return stm; 
+    }
+},
 
 'Color':{
     type:'group',
@@ -60,7 +281,7 @@ const cssCustomCompilers:{
         const order=['color','background-color','border-color'];
         const values=value.replace(/^\(|\)$/g,'').split(',');
         values.forEach((e,i)=>{
-            if(i<order.length){
+            if(i<order.length && e){
                 stm+=`${order[i]}:${color(e,custom)};`
             }
         });

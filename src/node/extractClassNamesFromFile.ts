@@ -15,11 +15,12 @@ type config={
     ignore?:string[],
 }
 
-export default function extractClassNamesFromFile(file:string,config:config):[string[],{[key:string]:string},{[key:string]:string}]{
+export default function extractClassNamesFromFile(file:string,config:config):[string[],{[key:string]:string},{[key:string]:string},string]{
         const data = fs.readFileSync(file, 'utf-8');
         const classList:string[] = [];
         const groups :{[key:string]:string}= {};
         const keyframes:{[key:string]:string}= {};
+        let rawCSSStatement='';
 
         const matchExtractorFunction=config.useExtractorFunction?config.matchExtractorFunction:null;
 
@@ -27,6 +28,22 @@ export default function extractClassNamesFromFile(file:string,config:config):[st
 
         const matchRegExp=config.useColon?config.matchRegExpWithColon:config.matchRegExp;
         const matchRegExpKeyFrame=config.useColon?config.matchRegExpWithColonKeyFrame:config.matchRegExpKeyFrame;
+        const matchRegExpRawCSSStatement=/data-raw-css=(["'])(.*?)\1/;
+
+
+     // 0. data-raw-css=
+     if(data.match(matchRegExpRawCSSStatement)){
+        const matchesRawCSS=data.match(new RegExp(matchRegExpRawCSSStatement,"g"));
+        if(matchesRawCSS){
+                  matchesRawCSS.forEach((each)=>{
+                    const extraction=each.match(matchRegExpRawCSSStatement);
+                    if(extraction && extraction[2]){
+                        rawCSSStatement+=extraction[2]+'\n';
+                    }
+                  })
+                }
+
+     }  
     
     // 1 - i. Extract from Extractor function
     if(config.useExtractorFunction && matchExtractorFunction){
@@ -129,5 +146,5 @@ export default function extractClassNamesFromFile(file:string,config:config):[st
         
 
     // extract from keyframes
-    return [classList,groups,keyframes]
+    return [classList,groups,keyframes,rawCSSStatement]
 }

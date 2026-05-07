@@ -48,6 +48,7 @@ export let classPrinter: ClassPrinter = {
     let attrValue = '';
     const testRegExp=this.useColon? /class[-_:]/: /class[-_]/;
     const testRegExpKF=this.useColon? /keyframes[-_:]/: /keyframes[-_]/;
+    const rawCSS=/data-raw-css/;
 
     // if class
     if (el.getAttribute('class')) attrValue += ' ' + el.getAttribute('class');
@@ -57,6 +58,8 @@ export let classPrinter: ClassPrinter = {
     // new Update
     [...el.attributes].map((each)=>{
       // ------------
+      // Raw-CSS Statement 
+
       // class-group
       if( testRegExp.test(each.name)){
             let value=each.value;
@@ -258,6 +261,9 @@ export let classPrinter: ClassPrinter = {
       Array.prototype.forEach.call(template.content.querySelectorAll('[class]'), (e) => {
         this.print(e);
       });
+      Array.prototype.forEach.call(template.content.querySelectorAll('[data-raw-css]'), (e) => {
+        this.appendToStyleTag(e.getAttribute('data-raw-css'));
+      });
     });
 
     // <html>
@@ -266,5 +272,8 @@ export let classPrinter: ClassPrinter = {
     Array.prototype.forEach.call($root.querySelectorAll('[class]'), (e) => {
       this.print(e);
     });
+     Array.prototype.forEach.call($root.querySelectorAll('[data-raw-css]'), (e) => {
+        this.appendToStyleTag(e.getAttribute('data-raw-css'));
+      });
   },
 };

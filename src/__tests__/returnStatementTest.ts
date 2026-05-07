@@ -26,7 +26,7 @@ statement.extend(config.extend);
 describe("Test Return statement",()=>{
 
      //StatementMaker.methods
-     console.log(statement.make('container'))
+     // console.log(statement.make('container'))
      test('statement from obj',()=>{
          expect(statement.groupForJs('c-red').toString()).toBe({"color": "red"}.toString());
      })
@@ -38,6 +38,7 @@ describe("Test Return statement",()=>{
      test('statement from obj',()=>{
          expect(statement.groupForJs('--c:red').toString()).toBe({"--cu": "red"}.toString());
      })
+     
      // ---------new Test &-----------
      test("Return statement &",()=>{
          expect(statement.make('--hover&-bgc-primary600')).toBe(':hover .--hover\\&-bgc-primary600{background-color:var(--primary600,#7F56D9)}')
@@ -61,6 +62,9 @@ describe("Test Return statement",()=>{
     })
     test("Return statement media",()=>{
          expect(statement.make('xs-bgc-red')).toBe('@media (max-width : 576px){ .xs-bgc-red{background-color:red}}')
+    })
+    test("Return statement media with as",()=>{
+         expect(statement.make('xs-bgc-red--as-Grid')).toBe('@media (max-width : 576px){ .Grid{background-color:red}} \n')
     })
     test("Return statement media nested single",()=>{
          expect(statement.make('@[xs]-bgc-red')).toBe('@media (max-width : 576px){ .\\@\\[xs\\]-bgc-red{background-color:red}}')

@@ -188,6 +188,12 @@ export function createRegexForPseudo(prefix:{[key:string]:string
   '--selection': '::selection', // -sl
   '--s': '::selection', // -sl
 
+  '--search-cancel-button':'::-webkit-search-cancel-button',
+  '--webkit-search-cancel-button':'::-webkit-search-cancel-button',
+
+  '--search-decoration':'::-webkit-search-decoration',
+  '--webkit-search-decoration':'::-webkit-search-decoration',
+
   '--spelling-error':'::spelling-error',
   '--se':'::spelling-error',
 

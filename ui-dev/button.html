@@ -1,16 +1,208 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/button.html.css">
     <title>UI-Development</title>
-    
+    <style>
+        .Button {
+            --border-color: var(--accentColor, oklch(1 .25049 284.23));
+            --button-background: light-dark(oklch(from var(--accentColor, oklch(1 .25049 284.23)) 98.1187% calc(l * c * 0.5) h), oklch(from var(--accentColor, oklch(1 .25049 284.23)) 29.6725% calc(l * c * 0.5) h));
+            --button-gradient: light-dark(oklch(from var(--accentColor, oklch(1 .25049 284.23)) 95.2045% calc(l * c * 0.6) h), oklch(from var(--accentColor, oklch(1 .25049 284.23)) 35.3616% calc(l * c * 0.6) h));
+            --button-border: light-dark(oklch(from var(--accentColor, oklch(1 .25049 284.23)) 91.1434% calc(l * c * 0.7) h), oklch(from var(--accentColor, oklch(1 .25049 284.23)) 41.0821% calc(l * c * 0.7) h));
+            --button-highlight: rgb(255 255 255 / 0.8);
+            --button-highlight: rgb(255 255 255 / 0.8);
+            --button-shadow: light-dark(oklch(from var(--accentColor, oklch(1 .25049 284.23)) 85.1751% calc(l * c * 0.8) h), oklch(from var(--accentColor, oklch(1 .25049 284.23)) 46.9058% calc(l * c * 0.8) h));
+            --button-border-size: 1px;
+            --button-border-size: 1px;
+            --button-text: light-dark(oklch(from var(--accentColor, oklch(1 .25049 284.23)) 29.6725% c h), oklch(from var(--accentColor, oklch(1 .25049 284.23)) 91.1434% c h));
+            --button-gradient-size: 8px;
+            --text-color: var(--gray-1200, light-dark(oklch(from var(--grayColor, oklch(0.5 0 0)) 41.0821% c h), oklch(from var(--grayColor, oklch(0.5 0 0)) 79.1773% c h)));
+            --text-color-hover: var(--gray-1300, light-dark(oklch(from var(--grayColor, oklch(0.5 0 0)) 35.3616% c h), oklch(from var(--grayColor, oklch(0.5 0 0)) 85.1751% c h)));
+            --text-color-disabled: var(--gray-600, light-dark(oklch(from var(--grayColor, oklch(0.5 0 0)) 72.3297% c h), oklch(from var(--grayColor, oklch(0.5 0 0)) 57.9699% c h)));
+            background: var(--button-background);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--button-text);
+            box-shadow: inset 0 -1px 0 var(--button-shadow),
+                /* bottom shadow */
+                inset 0 0 0 var(--button-border-size) var(--button-border),
+                /* border */
+                inset 0px calc(var(--button-border-size) + 1px) 0px var(--button-highlight),
+                /* top specular highlight */
+                inset 0px calc(-1 * var(--button-gradient-size)) var(--button-gradient-size) -2px var(--button-gradient);
+            /* inner gradient */
+            outline: none;
+            transition-property: background, color, scale, box-shadow;
+            transition-duration: 200ms;
+            will-change: scale;
+            forced-color-adjust: none;
+            -webkit-tap-highlight-color: transparent;
+
+            @media (prefers-color-scheme: dark) {
+                --button-shadow: light-dark(oklch(from var(--accentColor, oklch(1 .25049 284.23)) 95.2045% calc(l * c * 0.6) h), oklch(from var(--accentColor, oklch(1 .25049 284.23)) 35.3616% calc(l * c * 0.6) h));
+                ;
+                --button-highlight: rgb(255 255 255 / 0.15);
+                box-shadow: inset 0 var(--button-border-size) 0 var(--button-highlight),
+                    /* top specular highlight */
+                    inset 0 calc(-1 * var(--button-border-size)) 0 var(--button-shadow),
+                    /* bottom shadow */
+                    inset 0 0 0 var(--button-border-size) var(--button-border),
+                    /* border */
+                    inset 0 var(--button-gradient-size) var(--button-gradient-size) -2px var(--button-gradient);
+                /* inner gradient */
+            }
+
+            &:where([data-pressed]) {
+                --button-background: light-dark(oklch(from var(--accentColor, oklch(1 .25049 284.23)) 95.2045% calc(l * c * 0.6) h), oklch(from var(--accentColor, oklch(1 .25049 284.23)) 35.3616% calc(l * c * 0.6) h));
+            }
+
+            &:where([data-focus-visible]) {
+                outline: 2px solid var(--focus-ring-color, light-dark(oklch(from var(--accentColor, oklch(1 .25049 284.23)) 51.9076% c h), oklch(from var(--accentColor, oklch(1 .25049 284.23)) 67.0121% c h)));
+                outline-offset: 2px;
+            }
+
+            &:where([data-variant=secondary]) {
+                --button-color: var(--grayColor, oklch(0.5 0 0));
+            }
+
+            &:where([data-variant=quiet]) {
+                --button-background: none;
+                --button-text: var(--text-color);
+                box-shadow: 0 0 0 1px transparent;
+
+                &:where([data-hovered], [data-pressed]) {
+                    --button-background: light-dark(oklch(from var(--accentColor, oklch(1 .25049 284.23)) 95.2045% calc(l * c * 0.6) h), oklch(from var(--accentColor, oklch(1 .25049 284.23)) 35.3616% calc(l * c * 0.6) h));
+                    --button-text: var(--tint-1400);
+                    box-shadow: 0 0 0 1px light-dark(oklch(from var(--accentColor, oklch(1 .25049 284.23)) 95.2045% calc(l * c * 0.6) h), oklch(from var(--accentColor, oklch(1 .25049 284.23)) 35.3616% calc(l * c * 0.6) h));
+                }
+            }
+
+            &:where([data-selected]) {
+                --button-background: oklch(from var(--button-color) 55% c h);
+                --button-border: oklch(from var(--button-color) 50% c h);
+                --button-gradient: var(--button-border);
+                --button-highlight: rgb(255 255 255 / 0.2);
+                --button-shadow: oklch(from var(--button-color) 30% c h);
+                --button-text: var(--highlight-foreground);
+                box-shadow: inset 0 -1px 0 var(--button-shadow),
+                    /* bottom shadow */
+                    inset 0 0 0 1px var(--button-border),
+                    /* border */
+                    inset 0 2px 0 var(--button-highlight),
+                    /* top specular highlight */
+                    inset 0 calc(-1 * var(--button-gradient-size)) var(--button-gradient-size) var(--button-gradient);
+
+                /* inner gradient */
+                @media (prefers-color-scheme: dark) {
+                    --button-highlight: rgb(255 255 255 / 0.4);
+                    --button-gradient: rgb(255 255 255 / 0.2);
+                    --button-shadow: var(--button-border);
+                    box-shadow: inset 0 1px 0 var(--button-highlight),
+                        /* top specular highlight */
+                        inset 0 var(--button-gradient-size) var(--button-gradient-size) var(--button-gradient),
+                        /* inner gradient */
+                        inset 0 0 0 1px var(--button-border);
+                    /* border */
+                }
+
+                &:where([data-pressed]) {
+                    --button-background: oklch(from var(--button-color) 50% c h);
+                }
+            }
+
+            &:where([data-disabled]) {
+                box-shadow: none;
+                --button-background: var(--border-color-disabled);
+                --button-text: var(--text-color-disabled);
+
+                &:where([data-variant=quiet]) {
+                    --button-background: none;
+                }
+            }
+
+            @media (forced-colors: active) {
+                --button-background: ButtonFace;
+                --button-text: ButtonText;
+                --button-border: ButtonBorder;
+                box-shadow: inset 0 0 0 var(--button-border-size) var(--button-border);
+
+                &:where([data-variant=quiet]) {
+                    --button-border: transparent;
+
+                    &:where([data-hovered], [data-pressed]) {
+                        --button-border: ButtonBorder;
+                    }
+                }
+
+                &:where([data-selected]) {
+                    --button-background: Highlight;
+                    --button-text: HighlightText;
+                    --button-border: Highlight;
+                }
+
+                &:where([data-disabled]) {
+                    --button-background: ButtonFace;
+                    --button-text: GrayText;
+                    --button-border: GrayText;
+
+                    &:where([data-variant=quiet]) {
+                        --button-border: transparent;
+                    }
+                }
+            }
+        }
+    </style>
+
 </head>
+
 <body class="ff-inter xbgc-000000ee">
     <div class=" @base-reset c-fff bgc-gray-600">Click me</div>
     <div class="flex-center g-32px">
-<button class="btn @base[all-unset,dif,aic,jcc,py-12px,px-28px,bsbb,br-8px,fs-16px,fw5,cp,usn,wsn,bw-0,tp-background-color,tdu-0.2s,ttf-ease]--as-btn
+        <button class="@base-all-unset Space(8px-10px) br-full x-text-xs Button">ButtonRa</button>
+        <button class="
+        display-inline-flex
+            align-items-center
+            justify-content-center
+            border-none
+            br-sm 
+            appearance-none
+            font-size-1rem ff-system-ui
+            font-weight-500
+            margin-0
+            height-8
+            padding-y-0 px-3
+            text-decoration-none
+            gap-1
+            -webkit-tap-highlight-color-transparent
+            --border-accent-color:accentRA
+            --accentColor:--border-accent-color
+            --button-background:accentRA100
+            --button-gradient:accentRA100
+            --button-border:accentRA300 
+            --button-highlight:white/8
+            --button-shadow:accentRA400
+            --button-border-size:1px
+            --button-text-color:accentRA1400
+            --button-color:--button-text-color
+            --button-gradient-size:8px
+            --text-color:grayRA600
+            --text-color-hover:grayRA1200
+            --text-color-disabled:grayRA600
+            --border-padding:0px-8px 
+            background--button-background
+            color--button-color
+            border-1px-solid--button-border
+
+
+            
+
+            
+        ">XButtonRa</button>
+        <button class="btn @base[all-unset,dif,aic,jcc,py-12px,px-28px,bsbb,br-8px,fs-16px,fw5,cp,usn,wsn,bw-0,tp-background-color,tdu-0.2s,ttf-ease]--as-btn
                 @base[bgc--button-bg-color:gray-950,c--button-text-color:fff,bc--button-border-color]--as-btn
                 @base--hover[bgc--button-hover-bg-color:gray-700,c--button-hover-text-color:fff,bc--button-hover-border-color:transparent]--as-btn
              
@@ -25,11 +217,10 @@
             --button-hover-border-color:4f46e5
         
                      ">Click Me</button>
-             
-             
-         <!-- pill -->
-        <button
-            class=" btn --button-bg-color:10b981 wsn
+
+
+        <!-- pill -->
+        <button class=" btn --button-bg-color:10b981 wsn
                      --button-text-color:white
                      
                       --button-hover-bg-color:059669
@@ -53,10 +244,10 @@
                       --button-hover-text-color:fff
                       --button-hover-border-color:red
                       --button-shadow-color:(oklch(from,--button-bg-color,--l,c,h)) --l:calc(l-0.2)
-          bxs-0-6px-0--button-shadow-color --a[bxs-0px-2px-0px--button-shadow-color,tf-translateY-4px]">Press Me</button>
+          bxs-0-6px-0--button-shadow-color --a[bxs-0px-2px-0px--button-shadow-color,tf-translateY-4px]">Press
+            Me</button>
         <!-- Neon -->
-        <button
-            class="btn 
+        <button class="btn 
                     --button-bg-color:transparent
                      --button-text-color:primary-700
                       --button-border-color:--button-text-color
@@ -67,8 +258,8 @@
                       --button-shadow-color:(oklch(from,--button-text-color,l,c,h/33.33%)) 
                     b-2px-s--button-border-color tp-all tdu-0.3s 
                     --h[bxs-0px-0px-20px--button-text-color__bxs-0px-0px-40px--button-shadow-color]">Neon</button>
-                   
-                                        <!-- slide --></br>
+
+        <!-- slide --></br>
         <button class="btn
                         --button-bg-color:transparent
                         --button-text-color:4f46e5
@@ -81,10 +272,10 @@
                       --bf[cont,pa,inset-0,bgc-4f46e5,tf-scaleX-0,transform-origin-0,tp-transform,tdu-0.3s,ttf-e,zi--1]
                        --h[c-white,--bf-transform-scaleX-1]
                       ">Explore</button>
-                   
+
 
     </div>
-    
+
     <!-- Base button -->
 
     <button class="button mt-64px"
@@ -133,29 +324,32 @@
 
 
 
-    <button class="x-button x-button-large aspect-ratio-1-by-1 "><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-soup-icon lucide-soup">
-        <path d="M12 21a9 9 0 0 0 9-9H3a9 9 0 0 0 9 9Z" />
-        <path d="M7 21h10" />
-        <path d="M19.5 12 22 6" />
-        <path d="M16.25 3c.27.1.8.53.75 1.36-.06.83-.93 1.2-1 2.02-.05.78.34 1.24.73 1.62" />
-        <path d="M11.25 3c.27.1.8.53.74 1.36-.05.83-.93 1.2-.98 2.02-.06.78.33 1.24.72 1.62" />
-        <path d="M6.25 3c.27.1.8.53.75 1.36-.06.83-.93 1.2-1 2.02-.05.78.34 1.24.74 1.62" />
-    </svg></button>
+    <button class="x-button x-button-large aspect-ratio-1-by-1 "><svg xmlns="http://www.w3.org/2000/svg" width="24"
+            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" class="lucide lucide-soup-icon lucide-soup">
+            <path d="M12 21a9 9 0 0 0 9-9H3a9 9 0 0 0 9 9Z" />
+            <path d="M7 21h10" />
+            <path d="M19.5 12 22 6" />
+            <path d="M16.25 3c.27.1.8.53.75 1.36-.06.83-.93 1.2-1 2.02-.05.78.34 1.24.73 1.62" />
+            <path d="M11.25 3c.27.1.8.53.74 1.36-.05.83-.93 1.2-.98 2.02-.06.78.33 1.24.72 1.62" />
+            <path d="M6.25 3c.27.1.8.53.75 1.36-.06.83-.93 1.2-1 2.02-.05.78.34 1.24.74 1.62" />
+        </svg></button>
     <button class="x-button x-button-outline br-50px-i">Outline Button</button>
-<br/>
+    <br />
     <button class="x-button x-button-outline">outline Button</button>
     <button class="x-button x-button-outline x-button-primary">outline Button</button>
     <button class="x-button  x-button-error">outline Button</button>
-    <button class="x-button x-button-outline  c-indigo600 --border-color:indigo600-i --h--border-color:gray600-i"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-soup-icon lucide-soup">
-        <path d="M12 21a9 9 0 0 0 9-9H3a9 9 0 0 0 9 9Z" />
-        <path d="M7 21h10" />
-        <path d="M19.5 12 22 6" />
-        <path d="M16.25 3c.27.1.8.53.75 1.36-.06.83-.93 1.2-1 2.02-.05.78.34 1.24.73 1.62" />
-        <path d="M11.25 3c.27.1.8.53.74 1.36-.05.83-.93 1.2-.98 2.02-.06.78.33 1.24.72 1.62" />
-        <path d="M6.25 3c.27.1.8.53.75 1.36-.06.83-.93 1.2-1 2.02-.05.78.34 1.24.74 1.62" />
-    </svg></button>
+    <button class="x-button x-button-outline  c-indigo600 --border-color:indigo600-i --h--border-color:gray600-i"><svg
+            xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="lucide lucide-soup-icon lucide-soup">
+            <path d="M12 21a9 9 0 0 0 9-9H3a9 9 0 0 0 9 9Z" />
+            <path d="M7 21h10" />
+            <path d="M19.5 12 22 6" />
+            <path d="M16.25 3c.27.1.8.53.75 1.36-.06.83-.93 1.2-1 2.02-.05.78.34 1.24.73 1.62" />
+            <path d="M11.25 3c.27.1.8.53.74 1.36-.05.83-.93 1.2-.98 2.02-.06.78.33 1.24.72 1.62" />
+            <path d="M6.25 3c.27.1.8.53.75 1.36-.06.83-.93 1.2-1 2.02-.05.78.34 1.24.74 1.62" />
+        </svg></button>
 
     <div class="p100px df g-50px fdc --ring-width:30px ">
         <br />
@@ -167,18 +361,17 @@
                             bgc-gray-600 c-gray-100 --ho-bgc-gray-700 --fo-ring-gray-300'>
             Change
             password</button>
-            <button class='dn-i @base-all-unset ff-inter dif mx-auto aic jcc br-4px p-0px-14px fs-16px fw-5 lh-20px  h-35px
+        <button class='dn-i @base-all-unset ff-inter dif mx-auto aic jcc br-4px p-0px-14px fs-16px fw-5 lh-20px  h-35px
                                         bgc-gray-600 c-gray-100 --ho-bgc-gray-700 --fo-ring-gray-300'>
-                Change
-                password</button>
-                <button   class="x-buttonx  --ring-width:4px " >
-                    Edit Profile</button>
-                    <button class="x-buttonx x-button-size-sm --ring-width:4px ">
-                        Edit Profile-sm</button>
-                        <button class="x-buttonx x-button-size-xs --ring-width:4px ">
-                            Edit Profile-xs</button>
-                    <button class="x-buttonx x-button-size-md"
-                        class-x-buttonx='@base-all-unset @base[-bsbb,usn,dif,mx-auto,aic,jcc,fw5,--ring-width:2px,tac,flex-shrink-0]
+            Change
+            password</button>
+        <button class="x-buttonx  --ring-width:4px ">
+            Edit Profile</button>
+        <button class="x-buttonx x-button-size-sm --ring-width:4px ">
+            Edit Profile-sm</button>
+        <button class="x-buttonx x-button-size-xs --ring-width:4px ">
+            Edit Profile-xs</button>
+        <button class="x-buttonx x-button-size-md" class-x-buttonx='@base-all-unset @base[-bsbb,usn,dif,mx-auto,aic,jcc,fw5,--ring-width:2px,tac,flex-shrink-0]
                                 @base-[class~=x-button-xs][br-4px,p-0px-8px,fs-12px,h-24px,lh-16px,g-4px] 
                                 @base-[class~=x-button-sm][br-4px,p-0px-12px,fs-14px,h-32px,lh-20px,g-8px]
                                 @base-[br-4px,p-0px-15px,fs-15px,fs-15px,lh-1,fw5,h-35px] 
@@ -193,26 +386,24 @@
                                 @base-[class~=x-button-primary][bgc-primary-600,c-primary-100,--ho-bgc-primary-700,--fo-ring-primary-300] 
                                 
                                 '>
-                        Edit Profile</button>
+            Edit Profile</button>
 
-                        
 
-                        <button disabled
-                             class="x-buttonx x-button-lg x-button-success" >
-                            Edit Profile-lg</button>
-                            <button class="x-buttonx x-button-xl x-button-error">Cancel-xl</button>
-                            <button class="x-buttonx x-button-sm x-button-success br-50px">Cancel</button>
-                            <button class="x-buttonx x-button-xl x-button-warning">Cancel</button>
-                            <button class="x-buttonx x-button-xl x-button-primary">Cancel</button>
 
-                            <button
-                                 class="x-buttonx x-button-xl">
-                                Edit Profile</button>
+        <button disabled class="x-buttonx x-button-lg x-button-success">
+            Edit Profile-lg</button>
+        <button class="x-buttonx x-button-xl x-button-error">Cancel-xl</button>
+        <button class="x-buttonx x-button-sm x-button-success br-50px">Cancel</button>
+        <button class="x-buttonx x-button-xl x-button-warning">Cancel</button>
+        <button class="x-buttonx x-button-xl x-button-primary">Cancel</button>
+
+        <button class="x-buttonx x-button-xl">
+            Edit Profile</button>
 
     </div>
-               
 
-   
+
+
 </body>
 
 <script src="/js/aliascss.js"></script>
