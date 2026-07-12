@@ -4,8 +4,12 @@ export default function gradient(datas: string, custom: { [key: string]: { [key:
   datas = datas.replace(/^[-]/, '');
   let masterHolder = '';
   datas.split('__').forEach((data) => {
+    if(data.match(/[-]?(((repeating-)?(conic|linear|radial)-gradient)|(rrg|rg|lg|rcg|cg|rcg|rlg))[\(]/)){
+      masterHolder+=data.replace(/[_]/g,' ')+', ';
+
+    }
     const matched = data.match(
-      /[-]?(((repeating-)?(conic|linear|radial)-gradient)|(rrg|rg|lg|rcg|cg|rcg|rlg))([\w_-]+)/,
+      /[-]?(((repeating-)?(conic|linear|radial)-gradient)|(rrg|rg|lg|rcg|cg|rcg|rlg))([-_][\w_-]+)/,
     );
 
     //  console.warn(matched, data);

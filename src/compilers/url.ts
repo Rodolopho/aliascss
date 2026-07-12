@@ -1,10 +1,19 @@
 export default function url(data: string) {
+
+
   
   // bg-url3-path-to-folder-png
   // bg-url3_path_to-the_folder_name_png
   let holder = '';
   data.split(/__/).forEach((each) => {
     each = each.replace(/^[-]?url/, '');
+    // match raw-css function
+    if(each.match(/^[(]/)){
+      holder+='url'+each+',';
+      return
+    }
+
+    // css-var inside url
     if(each.match(/^--[a-zA-Z]/)){
       holder+= `url(var(${each})),`;
       return

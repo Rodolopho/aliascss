@@ -26,8 +26,12 @@ describe('Gradient Test',()=>{
     test('radial-gradient at ',()=>{
         expect(gradient('-rg-at-0p-30p-red-10px-yellow-30p-1e90ff-50p',{})).toEqual('radial-gradient( at 0% 30%, red 10px, yellow 30%, #1e90ff 50% )')
     })
+     test('gradient as function with () raws css only replace _ by. " " ',()=>{
+        expect(gradient('-radial-gradient(circle_at_20%_30%,rgba(127,86,217,0.45),transparent_65%)',{})).toEqual('radial-gradient(circle at 20% 30%,rgba(127,86,217,0.45),transparent 65%)')
+    })
 
     
 })
 
 let v=`radial-gradient(at 0% 30%, red 10px, yellow 30%, #1e90ff 50%)`
+

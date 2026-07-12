@@ -54,13 +54,13 @@ export  default function getPropertyAndValue(
                             const val=value.replace(/(--[\w-]+)/g,'var($1)')
                             .replace(/^[(]/,'').replace(/_$/,'').replace(/[)]$/,'')
                             .replace(/,/g,', ');
-                            value=val;
+                            value=val.replace(/_/g,' ');
                         }else{
                             
                             const val=value.replace(/(--[\w-]+)/g,'var($1)')
                             .replace(/^[(]/,'').replace(/[)]$/,'')
                             .replace(/,/g,' ');
-                            value=val;
+                            value=val.replace(/_/g,' ');
                         }
                         return bool?[property, value]: property+":"+ value;
                     }
@@ -168,13 +168,15 @@ export  default function getPropertyAndValue(
                 if(valuePortion.match(/_$/)){
                     const val=valuePortion.replace(/(--[\w-]+)/g,'var($1)')
                     .replace(/^[(]/,'').replace(/_$/,'').replace(/[)]$/,'')
-                    .replace(/,/g,', ');
-                    return bool?[prop,val]:prop+":"+ val;
+                    .replace(/,/g,', ')
+                    .replace(/[_]/g,' ');
+                    return bool?[prop,val]:prop+":"+val;
                 }else{
                     
                     const val=valuePortion.replace(/(--[\w-]+)/g,'var($1)')
                     .replace(/^[(]/,'').replace(/[)]$/,'')
-                    .replace(/,/g,' ');
+                    .replace(/,/g,' ')
+                    .replace(/[_]/g,' ');
                     return bool?[prop,val]:prop+":"+ val;
                 }
 

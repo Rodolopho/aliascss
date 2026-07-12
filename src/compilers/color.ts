@@ -1,6 +1,7 @@
 // custom.color will be provided {primary:'#2d3f3e....}
 export default function color(color: string, custom: { [key: string]: { [key: string]: string } }): string | undefined {
   
+ 
   // check for alpha 
   let alpha=null;
 
@@ -19,6 +20,11 @@ export default function color(color: string, custom: { [key: string]: { [key: st
 
   // remove - before the color
     color = color.replace(/^[-]/, '');
+
+     // check if is a raw function 
+  if(color.match(/^(rgb|hsl|hsla|rgba|hwb|hwba|lab|oklab|lch|oklch)[(]/)){
+    return color;
+  }
     
 
   // custom-color  

@@ -4,6 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        :root{
+            --color:orange;
+            --bg:yellow
+        }
+        .Button{
+            --button-color:var(--accent-color,gray700);
+            --button-bg:var(--bg);
+            --button-border-color:var(--color);
+            --button-box-shadow:var(--bg);
+            --button-border-radius:4px;
+            --button-padding:8px 16px;
+            
+            color:var(--button-color);
+            background-color:var(--button-bg);
+            border:1px solid var(--button-border-color);
+            box-shadow:0 0 0 1px var(--button-box-shadow);
+            border-radius:var(--button-border-radius);
+            padding:var(--button-padding);
+             
+        }
+    </style>
 </head>
 <body  data-raw-css=":root{button:{all:unset;color:red} input{border:none}}" keyframes-pop-up="@[10,40,60]-bgc-red @50-dn @[90,40]-tf-r-s45deg" keyframes-pop-down="@[10,40,60]-bgc-red @50-dn @[90,40]-tf-r-s45deg">
     <h1 class="bgc-red fs-12px" class-demo-class="df jcc aic c-blue">Hello World</h1>

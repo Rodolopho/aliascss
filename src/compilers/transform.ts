@@ -2,11 +2,17 @@ export default (value:string) => {
     // Remove - before value
     value=value.replace(/^-/,'');
     // initialize compilerValue
+   
 
     let compileValue='';
     // check for multiple value
 
     value.split(/__(?=[a-z])/).forEach((e)=>{
+      //
+          if(e.match(/[(]/)){
+            compileValue+=e+" ";
+            return
+          }
         // extract function
         const result=transformEach(e);
 

@@ -81,6 +81,12 @@ describe("Test Return statement",()=>{
     test("Return statement  custom compiler extend",()=>{
          expect(statement.make('box-shadow--shadow-xs')).toBe('.box-shadow--shadow-xs{box-shadow: var(--shadow-xs)}');
     })
+     test("Return statement  custom compiler extend",()=>{
+         expect(statement.make('bg(radial-gradient(circle_at_20%_30%,rgba(127,86,217,0.45),transparent_65%))_')).toBe('.bg\\(radial-gradient\\(circle_at_20\\%_30\\%\\,rgba\\(127\\,86\\,217\\,0\\.45\\)\\,transparent_65\\%\\)\\)_{background:radial-gradient(circle at 20% 30%, rgba(127, 86, 217, 0.45), transparent 65%)}');
+    })
+//     test('Retuen Stataement property() wuth  Function value _ by space ',()=>{
+//             expect(statement.make('bg(radial-gradient(circle_at_20%_30%,rgba(127,86,217,0.45),transparent_65%))_')?.toString()).toBe(['background','radial-gradient(circle at 20% 30%, rgba(127, 86, 217, 0.45), transparent 65%)'].toString())
+//         })
 //     test("Return statement custom className",()=>{
 //          expect(statement.make('x-shadow-xs')).toBe('.x-shadow-xs{box-shadow:var(--x-shadow-xs, 0px 1px 2px rgba(16, 24, 40, 0.05))}');
 //     })

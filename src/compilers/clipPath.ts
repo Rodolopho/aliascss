@@ -1,5 +1,11 @@
 export default function clipPath(data: string, custom: { [key: string]: { [key: string]: string } }) {
   const valuePortion: string = data.replace(/^-/, '') || '';
+
+  // for raw-css function 
+  if(valuePortion.match(/[(]/)){
+    return valuePortion;
+
+  }
 //   const match = /^(path|pa|circle|c|inset|i|polygon|p|ellipse|e|xywh|rect|r)[-]?[\d]/;
   const match = /^(path|pa|circle|c|inset|i|polygon|p|ellipse|e|xywh|rect|r)[-]?([\d]|-)/;
   let shape = null;

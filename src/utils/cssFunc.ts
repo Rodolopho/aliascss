@@ -1,6 +1,9 @@
 
  // GTC GTR GT left no grid
 export function repeat(data:string){
+     if(data.match(/-repeat[(]/)){
+        return data.replace(/^-/,'');
+     }
     data=data.replace(/repeat/g,'===');
    const matchRegex=/===-([\d]+|auto-fill|auto-fit)-([a-z0-9-]+)/;
 

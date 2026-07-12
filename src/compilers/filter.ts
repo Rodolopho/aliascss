@@ -6,6 +6,13 @@ export default function filter(valuePortion: string, custom: Custom) {
   let compileValue='';
   const matchRegEx=/^[-]?([a-zA-Z]+([-][\w]+)?)(?=[-])/;
   valuePortion.split(/__/).forEach((each)=>{
+    // check for raw-css funcion
+    if(each.match(/[(]/)){
+      compileValue+=each.replace(/^-/,'')+" ";
+      return;
+    }
+
+
       let [fn,value]=['',''];
       // css-var
       if(each.match(/--[a-zA-Z]/)){

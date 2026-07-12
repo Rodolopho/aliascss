@@ -252,7 +252,7 @@ const cssProps:{
     compiler:(value:string,custom:{})=>{
         if(value.match(/^[-]?url/)){
             return url(value)
-        }else if(value.match(/[-]?(((repeating-)?(conic|linear|radial)-gradient)|(rrg|rg|lg|rcg|cg|rcg|rlg))([\w_-]+)/)){
+        }else if(value.match(/[-]?(((repeating-)?(conic|linear|radial)-gradient)|(rrg|rg|lg|rcg|cg|rcg|rlg))([(-_][\w_-]+)/)){
             return gradient(value,custom)
         }else{
             return color(value, custom)
@@ -670,7 +670,7 @@ const cssProps:{
     compiler:length,
     values:[''],
 },
-'border-start-star-radius':{
+'border-start-start-radius':{
     alias:'bssr',
     type:'d',
     compiler:length,

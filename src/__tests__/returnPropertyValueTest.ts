@@ -50,6 +50,15 @@ describe('Return property and value test',()=>{
     test('getProperty and Value  Function value ',()=>{
         expect(getPropertyAndValue('m(10px,10px,10px)_',compilerObj,staticClassNames,{},extractProperty,true)?.toString()).toBe(['margin','10px, 10px, 10px'].toString())
     })
+    test('getProperty and Value  Function value _ by space ',()=>{
+        expect(getPropertyAndValue('m(10px,10px,10px)_',compilerObj,staticClassNames,{},extractProperty,true)?.toString()).toBe(['margin','10px, 10px, 10px'].toString())
+    })
+    test('getProperty and Value  Function value _ by space ',()=>{
+        expect(getPropertyAndValue('bg(radial-gradient(circle_at_20%_30%,rgba(127,86,217,0.45),transparent_65%))_',compilerObj,staticClassNames,{},extractProperty,true)?.toString()).toBe(['background','radial-gradient(circle at 20% 30%, rgba(127, 86, 217, 0.45), transparent 65%)'].toString())
+    })
+    test('getProperty and Value  Function value _ by space ',()=>{
+        expect(getPropertyAndValue('bg(radial-gradient(circle_at_20%_30%,rgba(127,86,217,0.45),transparent_65%))_',compilerObj,staticClassNames,{},extractProperty,true)?.toString()).toBe(['background','radial-gradient(circle at 20% 30%, rgba(127, 86, 217, 0.45), transparent 65%)'].toString())
+    })
     // test('getProperty and Value  css-var Test return array when true is passed',()=>{
     //     expect(getPropertyAndValue('ring--red',compilerObj,staticClassNames,{},extractProperty,true)?.toString()).toBe(['background-color','var(--red)'].toString())
     // })

@@ -4,40 +4,1784 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>20 CSS Backgrounds Demo</title>
-   <link rel="stylesheet" href="./index.html.css">
+    <title>Vessel — Design System (AliasCSS)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <!-- AliasCSS CDN -->
+    <script defer src="https://cdn.jsdelivr.net/npm/aliascss@latest/dist/aliascss.js"></script>
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
     
+        :root {
+            --ink-950: #0c0b0a;
+            --ink-900: #1a1916;
+            --ink-800: #2e2d28;
+            --ink-700: #4a4940;
+            --ink-500: #7a7870;
+            --ink-300: #b8b6ad;
+            --ink-100: #e8e6df;
+            --ink-50: #f5f3ee;
+            --ink-0: #faf9f5;
+    
+            --sand-100: #ede8dc;
+            --sand-200: #d9d2c0;
+    
+            --accent-h: 24;
+            --accent: hsl(var(--accent-h), 72%, 52%);
+            --accent-light: hsl(var(--accent-h), 72%, 94%);
+            --accent-dark: hsl(var(--accent-h), 72%, 36%);
+    
+            --blue: #2b6cb0;
+            --green: #276749;
+            --red: #c53030;
+            --amber: #b7791f;
+    
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 14px;
+            --radius-xl: 22px;
+            --radius-pill: 999px;
+    
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, .06), 0 1px 4px rgba(0, 0, 0, .06);
+            --shadow-md: 0 2px 8px rgba(0, 0, 0, .08), 0 4px 16px rgba(0, 0, 0, .06);
+            --shadow-lg: 0 8px 32px rgba(0, 0, 0, .10), 0 2px 8px rgba(0, 0, 0, .06);
+    
+            --font-display: 'Instrument Serif', Georgia, serif;
+            --font-body: 'DM Sans', sans-serif;
+            --font-mono: 'DM Mono', monospace;
+    
+            --page-bg: var(--ink-0);
+            --surface: #fff;
+            --border: var(--ink-100);
+            --text-primary: var(--ink-900);
+            --text-secondary: var(--ink-500);
+            --text-muted: var(--ink-300);
+        }
+    
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --page-bg: var(--ink-950);
+                --surface: var(--ink-900);
+                --border: var(--ink-800);
+                --text-primary: var(--ink-50);
+                --text-secondary: var(--ink-300);
+                --text-muted: var(--ink-700);
+                --accent-light: hsl(var(--accent-h), 72%, 16%);
+            }
+        }
+    
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--page-bg);
+            color: var(--text-primary);
+            min-height: 100vh;
+        }
+
+        /* Font helpers — can't be done via AliasCSS without a config file */
+        .ff-display {
+            font-family: var(--ff-display) !important;
+        }
+
+        .ff-mono {
+            font-family: var(--ff-mono) !important;
+        }
+
+        /* Dark-mode aware surfaces */
+        .surface {
+            background: var(--surface);
+        }
+
+        .page-bg {
+            background: var(--page-bg);
+        }
+
+        .c-text {
+            color: var(--text-primary);
+        }
+
+        .c-muted {
+            color: var(--text-muted);
+        }
+
+        .c-secondary {
+            color: var(--text-secondary);
+        }
+
+        .border-token {
+            border-color: var(--border) !important;
+        }
+
+        /* Sidebar active link */
+        .nav-link-active {
+            color: var(--accent) !important;
+            background: var(--accent-light) !important;
+        }
+
+        /* Spinner animation */
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .spin {
+            animation: spin .7s linear infinite;
+        }
+
+        /* Table row hover */
+        tbody tr:hover td {
+            background: var(--ink-50);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            tbody tr:hover td {
+                background: var(--ink-800);
+            }
+        }
+
+        /* Card footer dark mode */
+        @media (prefers-color-scheme: dark) {
+            .card-footer-bg {
+                background: var(--ink-800) !important;
+            }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 4px;
+        }
+    </style>
 </head>
+<body class="ff--font-body fs-15px lh-1.6 bg--page-bg c--text-primary mh-100vh">
 
-<body class="flex-center h-100vh">
-    <div class="w-320px h-500px b-1px-s-gray5 m-auto">
-        <div class="
-        --slide-up:100p --slide-down:--50p --slide-left:--100p --slide-right:100p
-        screen-root [w-100p,h-100p,pr,oh]--as-screen-root
-        [w-100p,h-100p,pa,inset-0,tp-transform,tdu400ms,ttf-linear]--as-screen
-        [class~=is-active][transform-translate-0-0]--as-screen
-        --not([class~=is-active])[class~=screen-down][transform-ty-100%]--as-screen
-        --not([class~=is-active])[class~=screen-up][transform-ty--100%]--as-screen
-        --not([class~=is-active])[class~=screen-right][transform-tx-t100%]--as-screen
-        --not([class~=is-active])[class~=screen-left][transform-tx--100%]--as-screen
-        --has([class~=screen-up][class~=is-active][class~=screen-transition-push])__[class~=screen-main][tf-ty--push-down]--as-screen-root
-        --has([class~=screen-down][class~=is-active][class~=screen-transition-push])__[class~=screen-main]tf-ty--50p--as-screen-root
-">
-            <div class="
-            screen screen-main screen-push --push-down:50% --push-right:50% --push-up:50% --push-left:50%
-            --push-right:50px  bgc-red11  "> Main
+    <nav
+        class="nav [pst,t-0,zi-100,bgc(oklch(from,--page-bg,l,c,h/0.8)),bf-blur-12px,bb-1px-s--border,p-0px-2rem,df,aic,g-2rem,h-56px]--as-nav ">
+        <a href="#" class="nav-logo [ff--font-display,fs-20px,les--0.3px,c--text-primary,tdn]--as-nav-logo ">Vessel<em
+                class="c--accent font-style-normal">.</em></a>
+        <ul
+            class="nav-links [df,g-1.5rem,ml-auto,lsn]--as-nav-links _a[fs-13px,fw-5,les-0.2px,c--text-secondary,tdn,tn-color-0.15s,--hover-c-text-primary]--as-nav-links ">
+            <li><a href="#foundation">Foundation</a></li>
+            <li><a href="#components">Components</a></li>
+            <li><a href="#patterns">Patterns</a></li>
+        </ul>
+    </nav>
 
+    <div class="page [df,mh-calc(100vh-56px)]--as-page ">
+        <aside
+            class="sidebar [w-220px,flex-shrink-0,brt-1px-s--border,p-2rem-1.25rem,pst,t-56px,h-calc(100vh-56px),oya]--as-sidebar ">
+            <div class="sidebar-section [mb-1.75rem]--as-sidebar-section ">
+                <p class="sidebar-label [fs-11px,fw-5,les-0.8px,ttu,c--text-muted,mb-0.6rem]--as-sidebar-label ">
+                    Foundation</p>
+                <ul class="sidebar-nav [lsn,df,fdc,g-2px]--as-sidebar-nav
+        _a[db,p-5px-10px,br--radius-sm,fs-14px,c--text-secondary,tdn,tn-all-0.15s]--as-sidebar-nav 
+         _a--hover[c--text-primary,bg--border]--as-sidebar-nav
+         _a--active[c--accent,bg--accent-light,fw5]--as-sidebar-nav
+        ">
+                    <li><a href="#typography">Typography</a></li>
+                    <li><a href="#colors">Colors</a></li>
+                    <li><a href="#spacing">Spacing & Radius</a></li>
+                    <li><a href="#shadows">Shadows</a></li>
+                </ul>
             </div>
-            <div data-slide="push" class="is-active screen  screen-transition-push screen-up height-50p bgc-pink ">Dowm
+            <div class="sidebar-section">
+                <p class="sidebar-label">Components</p>
+                <ul class="sidebar-nav">
+                    <li><a href="#buttons" class="active">Buttons</a></li>
+                    <li><a href="#inputs">Inputs</a></li>
+                    <li><a href="#cards">Cards</a></li>
+                    <li><a href="#badges">Badges</a></li>
+                    <li><a href="#avatars">Avatars</a></li>
+                    <li><a href="#alerts">Alerts</a></li>
+                    <li><a href="#tables">Tables</a></li>
+                    <li><a href="#feedback">Feedback</a></li>
+                </ul>
+            </div>
+            <div class="sidebar-section">
+                <p class="sidebar-label">Patterns</p>
+                <ul class="sidebar-nav">
+                    <li><a href="#forms">Form Controls</a></li>
+                    <li><a href="#stats">Stat Cards</a></li>
+                    <li><a href="#code">Code Blocks</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <main class="content [flex-1,p-3rem-3.5rem,xw-900px]--as-content">
+
+            <!-- Hero -->
+            <div class="hero [p-3rem-0px-2rem,mb-1rem,bb-1px-s--border]--as-hero ">
+                <p class="hero-eyebrow [fs-12px,fw-5,les-1px,ttu,c--accent,mb-0.75rem]--as-hero-eyebrow ">Design System
+                    v1.0</p>
+                <h1 class="hero-title [ff--font-display,fs-52px,lh-1.1,mb-1rem]--as-hero-title ">Vessel<em
+                        class="fsi c--accent">.</em><br>Design Language</h1>
+                <p class="hero-desc [fs-16px,c--text-secondary,xw-520px,lh-1.7]--as-hero-desc ">A refined, editorial
+                    design system combining typographic warmth with systematic precision.
+                    Built for interfaces that breathe.</p>
+                <div class="hero-meta [mt-1.5rem,df,g-2rem]--as-hero-meta ">
+                    <div class="hero-meta-item [tac]--as-hero-meta-item ">
+                        <span class="hero-meta-num [ff--font-display,fs-28px,db]--as-hero-meta-num ">48</span>
+                        <span
+                            class="hero-meta-label [fs-12px,c--text-muted,les-0.3px]--as-hero-meta-label ">Components</span>
+                    </div>
+                    <div class="hero-meta-item">
+                        <span class="hero-meta-num">12</span>
+                        <span class="hero-meta-label">Patterns</span>
+                    </div>
+                    <div class="hero-meta-item">
+                        <span class="hero-meta-num">2</span>
+                        <span class="hero-meta-label">Themes</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Typography -->
+            <section class="section [mb-4rem]--as-section" id="typography">
+                <h2
+                    class="section-title [ff--font-display,fs-28px,fw4,mb-0.25rem,scroll-margin-top-72px]--as-section-title ">
+                    Typography</h2>
+                <p class="section-desc [c--text-secondary,mb-2rem,fs-14px]--as-section-desc ">Instrument Serif pairs
+                    with DM Sans — editorial warmth, functional clarity.</p>
+                <div class="
+        demo [bgc--ink-900,bc--ink-800]--as-demo-dark
+        [bgc--surface,b-1px-solid--border,br--radius-lg,p-2rem,mb-0.75rem]--as-demo
+         [bn,bt-1px-s--border,mm-2px]--as-divider
+         ">
+                    <div
+                        class="type-row [df,aib,g-1.5rem,p-0.75rem-0px,bb-1px-s--border]--as-type-row --lc[bb-none]--as-type-row ">
+                        <span
+                            class="type-meta [fs-12px,ff--font-mono,c--text-muted,w-130px,flex-shrink-0]--as-type-meta ">display
+                            / 48px</span>
+                        <span class="type-sample [flex-1]--as-type-sample
+             t-display 
+             [ff--font-display,fs-48px,lh-1.1]--as-t-display
+             ">The quick brown fox</span>
+                    </div>
+                    <div class="type-row">
+                        <span class="type-meta">h1 / 32px serif</span>
+                        <span class="type-sample t-h1 [ff--font-display,fs-32px,fw4,lh-1.2]--as-t-h1">Design with
+                            intention</span>
+                    </div>
+                    <div class="type-row">
+                        <span class="type-meta">h2 / 22px 500</span>
+                        <span class="type-sample t-h2 [fs-22px,fw5,lh-1.25]--as-t-h2">Section heading</span>
+                    </div>
+                    <div class="type-row">
+                        <span class="type-meta">h3 / 16px 500</span>
+                        <span class="type-sample t-h3 [fs-16px,fw5,lh-1.3]--as-t-h3">Subsection title</span>
+                    </div>
+                    <div class="type-row">
+                        <span class="type-meta">body / 15px 400</span>
+                        <span class="type-sample t-body [fs-15px,fw4,lh-1.6]--as-t-body">The design system provides a
+                            consistent visual language across all product
+                            surfaces, enabling teams to build with confidence and coherence.</span>
+                    </div>
+                    <div class="type-row">
+                        <span class="type-meta">small / 13px</span>
+                        <span class="type-sample t-small [fs-13px,c--text-secondary]--as-t-small">Secondary and helper
+                            text, timestamps, captions.</span>
+                    </div>
+                    <div class="type-row">
+                        <span class="type-meta">mono / 13px</span>
+                        <span class="type-sample t-mono [fs-13px,ff--font-mono]--as-t-mono">const value = 'code
+                            snippets'</span>
+                    </div>
+                    <div class="type-row">
+                        <span class="type-meta">label / 11px</span>
+                        <span class="type-sample t-label [fs-11px,fw5,les-0.7px,c--text-muted]--as-t-label">Overline and
+                            section labels</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Colors -->
+            <section class="section" id="colors">
+                <h2 class="section-title">Colors</h2>
+                <p class="section-desc">A warm-neutral ink scale with a terracotta accent. Semantic tokens for status.
+                </p>
+
+                <div class="subsection [mb-2.5rem]--as-subsection">
+                    <p
+                        class="subsection-title [fs-13px,fw-500px,les-0.5px,ttu,c--text-muted,mb-1rem]--as-subsection-title">
+                        Ink scale</p>
+                    <div class="palette-row [df,g-4px,mb-1rem,aic]--as-palette-row">
+                        <span class="palette-label [w-60px,fs-12px,c--text-secondary]--as-palette-label">Ink</span>
+                        <div class="palette-chip 
+            [h-36px,flex-1,br--radius-sm,pr]--as-palette-chip
+            --fc[br(--radius-sm,0,0,--radius-sm)]--as-palette-chip
+            --lc[br(0,--radius-sm,--radius-sm,0)]--as-palette-chip
             
-            </div>
-            <div class="screen screen-up ">
+            " style="background:#faf9f5" title="--ink-0 · #faf9f5"></div>
+                        <div class="palette-chip" style="background:#f5f3ee" title="--ink-50"></div>
+                        <div class="palette-chip" style="background:#e8e6df" title="--ink-100"></div>
+                        <div class="palette-chip" style="background:#b8b6ad" title="--ink-300"></div>
+                        <div class="palette-chip" style="background:#7a7870" title="--ink-500"></div>
+                        <div class="palette-chip" style="background:#4a4940" title="--ink-700"></div>
+                        <div class="palette-chip" style="background:#2e2d28" title="--ink-800"></div>
+                        <div class="palette-chip" style="background:#1a1916" title="--ink-900"></div>
+                        <div class="palette-chip" style="background:#0c0b0a" title="--ink-950"></div>
+                    </div>
+                    <div class="palette-row">
+                        <span class="palette-label">Accent</span>
+                        <div class="palette-chip" style="background:#fef0e7"></div>
+                        <div class="palette-chip" style="background:#fdd5b4"></div>
+                        <div class="palette-chip" style="background:#f9aa72"></div>
+                        <div class="palette-chip" style="background:#e87d3e"></div>
+                        <div class="palette-chip" style="background:#d05c1f"></div>
+                        <div class="palette-chip" style="background:#a84417"></div>
+                        <div class="palette-chip" style="background:#7d2f0e"></div>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <p class="subsection-title">Semantic</p>
+                    <div class="swatch-grid [dg,gtc-repeat-auto-fill-minmax-100px-1fr,g-1rem]--as-swatch-grid">
+                        <div class="swatch [br--radius-md,oh]--as-swatch">
+                            <div class="swatch-color [h-60px]--as-swatch-color" style="background:var(--accent)"></div>
+                            <div
+                                class="swatch-info [p-0.5rem-0.6rem,bg--surface,b-1px-s--border,bt-none,br(0,0,--radius-md,--radius-md)]--as-swatch-info">
+                                <div class="swatch-name [fs-12px,fw-500]--as-swatch-name">Accent</div>
+                                <div class="swatch-hex [fs-11px,ff--font-mono,c--text-muted]--as-name">--accent</div>
+                            </div>
+                        </div>
+                        <div class="swatch">
+                            <div class="swatch-color" style="background:var(--blue)"></div>
+                            <div class="swatch-info">
+                                <div class="swatch-name">Info</div>
+                                <div class="swatch-hex">#2b6cb0</div>
+                            </div>
+                        </div>
+                        <div class="swatch">
+                            <div class="swatch-color" style="background:var(--green)"></div>
+                            <div class="swatch-info">
+                                <div class="swatch-name">Success</div>
+                                <div class="swatch-hex">#276749</div>
+                            </div>
+                        </div>
+                        <div class="swatch">
+                            <div class="swatch-color" style="background:var(--amber)"></div>
+                            <div class="swatch-info">
+                                <div class="swatch-name">Warning</div>
+                                <div class="swatch-hex">#b7791f</div>
+                            </div>
+                        </div>
+                        <div class="swatch">
+                            <div class="swatch-color" style="background:var(--red)"></div>
+                            <div class="swatch-info">
+                                <div class="swatch-name">Danger</div>
+                                <div class="swatch-hex">#c53030</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Spacing -->
+            <section class="section" id="spacing">
+                <h2 class="section-title">Spacing & Radius</h2>
+                <p class="section-desc">4px base grid. Radius tokens from tight to pill.</p>
+                <div class="demo">
+                    <div class="token-grid [dg,gtc-1fr-1fr,g-1rem]--as-token-grid">
+                        <div
+                            class="token-item [df,aic,g-0.75rem,p-0.75rem-1rem,bg--surface,b-1px-s--border,br--radius-md]--as-token-item">
+                            <div class="token-preview [w-36px,h-36px,flex-shrink-0,b-1px-s--border]--as-token-preview"
+                                style="border-radius:var(--radius-sm)"></div>
+                            <div>
+                                <div class="token-name [fs-13px,fw5]--as-token-name">--radius-sm</div>
+                                <div class="token-value [fs-12px,ff--font-mono,c--text-muted]--as-token-value">4px</div>
+                            </div>
+                        </div>
+                        <div class="token-item">
+                            <div class="token-preview" style="border-radius:var(--radius-md)"></div>
+                            <div>
+                                <div class="token-name">--radius-md</div>
+                                <div class="token-value">8px</div>
+                            </div>
+                        </div>
+                        <div class="token-item">
+                            <div class="token-preview" style="border-radius:var(--radius-lg)"></div>
+                            <div>
+                                <div class="token-name">--radius-lg</div>
+                                <div class="token-value">14px</div>
+                            </div>
+                        </div>
+                        <div class="token-item">
+                            <div class="token-preview" style="border-radius:var(--radius-pill)"></div>
+                            <div>
+                                <div class="token-name">--radius-pill</div>
+                                <div class="token-value">999px</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
             
+            <!-- Shadows -->
+            <section class="section" id="shadows">
+                <h2 class="section-title">Shadows</h2>
+                <div class="demo">
+                    <div class="row [df,aic,g-1rem,fww]--as-row">
+                        <div
+                            style="flex:1;padding:1.5rem;border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);background:var(--surface);border:1px solid var(--border);text-align:center;">
+                            <div class="t-small">shadow-sm</div>
+                        </div>
+                        <div
+                            style="flex:1;padding:1.5rem;border-radius:var(--radius-lg);box-shadow:var(--shadow-md);background:var(--surface);text-align:center;">
+                            <div class="t-small">shadow-md</div>
+                        </div>
+                        <div
+                            style="flex:1;padding:1.5rem;border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);background:var(--surface);text-align:center;">
+                            <div class="t-small">shadow-lg</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Buttons -->
+            <section class="section" id="buttons">
+                <h2 class="section-title">Buttons</h2>
+                <p class="section-desc">Five variants, three sizes, icon and pill support.</p>
+            
+                <div class="subsection">
+                    <p class="subsection-title">Variants</p>
+                    <div class="demo">
+                        <div class="btn-row [df,fww,g-0.75rem,aic]--as-btn-row">
+                            <button class="btn  btn-primary
+                          [dif,aic,g-6px,ff--font-body,fs-14px,fw5,p-0-1rem,h-36px,br--radius-md,b-1.5px-s-transparent,cp,tdn,tn-all-0.15s,wsn]--as-btn
+                          _svg[w-15px,h-15px]--as-btn
+                          [bg--accent,c-fff,bc--accent]--as-btn-primary
+                          --hover[bg--accent-dark,bc--accent-dark,tf-ty--1px,bxs--shadow-sm]--as-btn-primary
+                          ">
+                                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M8 3v10M3 8h10" />
+                                </svg>
+                                Primary
+                            </button>
+                            <button class="btn btn-secondary
+                          [bg--surface,c--text-primary,bc--border]--as-btn-secondary
+                          --hover[bg--ink-50,bc--ink-300,tf-ty--1px]--as-btn-secondary
+                          ">Secondary</button>
+                            <button class="btn btn-ghost
+                            [bg-transparent,c--text-secondary,bc-transparent]--as-btn-ghost
+                            --hover[c--text-primary,bg--border]--as-btn-ghost
+                          ">Ghost</button>
+                            <button class="btn btn-danger
+                          [bg-fff0f0 ,c--red,bc-fcc]--as-btn-danger
+                          --hover[bg-ffe0e0,tf-ty--1px]--as-btn-danger
+                          ">Delete</button>
+                            <button class="btn btn-primary [disabled][opacity-0.45,cna,pen]--as-btn" disabled>Disabled</button>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="subsection">
+                    <p class="subsection-title">Sizes</p>
+                    <div class="demo">
+                        <div class="btn-row">
+                            <button class="btn btn-primary btn-lg
+                          [h-44px,p-0-0.15rem,fs-15px,br--radius-lg]--as-btn-lg">Large</button>
+                            <button class="btn btn-primary">Default</button>
+                            <button class="btn btn-primary btn-sm
+                          [h-28px,p-0-0.75rem,fs-12px,br--radius-sm]--as-btn-sm">Small</button>
+                            <button class="btn btn-secondary btn-icon
+                          [w-36px,p0,jcc]--as-btn-icon">
+                                <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor"
+                                    stroke-width="1.5">
+                                    <circle cx="8" cy="8" r="5.5" />
+                                    <path d="M8 5.5v3l2 1.5" />
+                                </svg>
+                            </button>
+                            <button class="btn btn-primary btn-pill [br--radius-pill]--as-btn-pill">Pill button</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Inputs -->
+            <section class="section" id="inputs">
+                <h2 class="section-title">Inputs</h2>
+                <p class="section-desc">Text, select, textarea with labels, hints, and error states.</p>
+                <div class="demo">
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;">
+                        <div class="input-group [df,fdc,g-0.4rem,mb-1rem]--as-input-group">
+                            <label class="input-label [fs-13px,fw5,c--text-primary]--as-input-label">Full name</label>
+                            <input class="input 
+                          [w-100%,h-38px,p-0-0.875rem,ff--font-body,fs-14px,c--text-primary,bg--surface,b-1.5px-s--border,br--radius-md,oln,tn-all-0.15s,appearance-none]--as-input
+                          --placeholder[c--text-muted]--as-input
+                          --hover[bc--ink-300]--as-input
+                          [class~=error][bc--red]--as-input
+                          --focus[class~=error][bxs-0px-0px-0px-3px-rgba-197-48-48-0.15]--as-input
+                          --focus[bc--accent,bxs-0px-0px-0px-3px--accent-h]--as-input
+                          " type="text" placeholder="Jane Smith">
+                            <span class="input-hint [fs-12px,c--text-muted]--as-input-hint">Your legal name as it appears on
+                                ID.</span>
+                        </div>
+                        <div class="input-group">
+                            <label class="input-label">Email address</label>
+                            <div class="input-with-icon [pr]--as-input-with-icon _.input[pl-2.5rem]--as-input-with-icon" style="position:relative;">
+                                <svg class="input-icon
+                                [pa,l-0.75rem,t-50%,tf-ty--50%,c--text-muted,pen]--as-input-icon
+                                 " width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor"
+                                    stroke-width="1.5">
+                                    <rect x="1.5" y="3.5" width="13" height="9" rx="1.5" />
+                                    <path d="M1.5 5.5l6.5 4 6.5-4" />
+                                </svg>
+                                <input class="input" type="email" placeholder="jane@example.com">
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label class="input-label">Role</label>
+                            <select 
+                            class="input select [bgi--cavet-url,bgnr,bgp-right-0.875rem-center,pr-2.5px,cp]--as-select"
+                             style="--cavet-url:url(&quot;data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2712%27 height=%2712%27 viewBox=%270 0 12 12%27%3E%3Cpath fill=%27%237a7870%27 d=%27M6 8L1 3h10z%27/%3E%3C/svg%3E&quot;)">                             >
+                                <option>Product Designer</option>
+                                <option>Engineer</option>
+                                <option>Manager</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label class="input-label">Username</label>
+                            <input class="input error" type="text" value="jane@taken">
+                            <span class="input-error-msg">This username is already taken.</span>
+                        </div>
+                        <div class="input-group" style="grid-column:1/-1">
+                            <label class="input-label">Bio</label>
+                            <textarea class="input --Where(_textarea)[h-auto,p-0.625rem-0.875rem,resize-vertical,lh-1.5]--as-input" rows="3" placeholder="Tell us about yourself…"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Cards -->
+            <section class="section" id="cards">
+                <h2 class="section-title">Cards</h2>
+                <div class="card-row [dg,gtc-repeat-auto-fit-minmax-240px-1fr,g-1rem]--as-card-row">
+                    <div class="card [bg--surface,b-1px-s--border,br--radius-lg,oh]--as-card">
+                        <div class="card-header [p-1rem-1.5rem,bb-1px-s--border]--as-card-header">
+                            <div style="font-weight:500;font-size:15px">Default card</div>
+                        </div>
+                        <div class="card-body [p-1.25rem-1.5rem]--as-card-body">
+                            <p style="font-size:14px;color:var(--text-secondary);line-height:1.6">A surface for grouping related
+                                content. Pair with header, body, and footer slots.</p>
+                        </div>
+                        <div class="card-footer [p-1rem-1.5rem,bt-1px-s--border,bg--ink-50,df,jcfe,g-0.75rem,@dark-bg--ink-800]--as-card-footer">
+                            <button class="btn btn-ghost btn-sm">Cancel</button>
+                            <button class="btn btn-primary btn-sm">Confirm</button>
+                        </div>
+                    </div>
+                    <div class="card card-elevated [bxs--shadow-md,bc-transparent]--as-card-elevated ">
+                        <div class="card-body">
+                            <div style="font-weight:500;font-size:15px;margin-bottom:.5rem">Elevated card</div>
+                            <p style="font-size:14px;color:var(--text-secondary);line-height:1.6">Uses a medium shadow instead of
+                                border — draws content forward.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Badges -->
+            <section class="section" id="">
+                <h2 class="section-title">Badges</h2>
+                <div class="demo">
+                    <div class="row [class]-g-0.5rem" style="margin-bottom:1rem">
+                        <span class="badge
+                        [dif,aic,g-4px,p-2px-10px,br--radius-pill,fs-12px,fw5]--as-badge
+                         badge-default
+                         [bg--ink-100,c--ink-700]--as-badge-default">Default</span>
+                        <span class="badge badge-primary
+                        [bg--accent-light,c--accent-dark]--as-badge-primary">Primary</span>
+                        <span class="badge badge-success
+                        [bg-dcfce7,c-166534]--as-badge-success">Success</span>
+                        <span class="badge badge-warning
+                        [bg-fef3c7,c-92400e]--as-badge-warning">Warning</span>
+                        <span class="badge badge-danger
+                        [bg-fee2e2,c-991b1b]--as-badge-danger">Danger</span>
+                        <span class="badge  badge-info
+                        [bg-bbeafe,c-1e40af]--as-badge-info">Info</span>
+                    </div>
+                    <div class="row [class]-g-0.5rem">
+                        <span class="badge badge-success badge-dot --before[cont,w-6px,h-6px,br-50%,bg-currentColor,dib]--as-badge-dot">Active</span>
+                        <span class="badge badge-warning badge-dot">Pending</span>
+                        <span class="badge badge-danger badge-dot">Offline</span>
+                        <span class="badge badge-default badge-dot">Draft</span>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Avatars -->
+            <section class="section" id="avatars">
+                <h2 class="section-title">Avatars</h2>
+                <div class="demo">
+                    <div class="subsection">
+                        <p class="subsection-title">Sizes</p>
+                        <div class="avatar-row [df,aic,g-0.75rem,fww]--as-avatar-row">
+                            <div class="avatar 
+                            [br-50%,oh,flex-center,fw-5,flex-shrink-0]--as-avatar
+                             avatar-sm 
+                             [w-28px,h-28px,fs-11px]--as-avatar-sm
+                             bg(hsl(--accent-h,60%,85%))_ c--accent-dark ">JD</div>
+                            <div class="avatar avatar-md
+                            [w-40px,h-40px,fs-14px]--as-avatar-md bg-dbeafe c-1e40af">MR</div>
+                            <div class="avatar avatar-lg
+                            [w-56px,h-56px,fs-18px]--as-avatar-lg bg-dcfce7 c-166534">AB</div>
+                            <div class="avatar avatar-xl 
+                            [w-72px,h-72px,fs-24px]--as-avatar-xl bg-fef3c7 c-92400e">KL</div>
+                        </div>
+                    </div>
+                    <div class="subsection">
+                        <p class="subsection-title">Stacked group</p>
+                        <div class="avatar-stack df _.avatar[b-2px-s--surface,ml--10px,--fc-ml-0px]">
+                            <div class="avatar avatar-md bg(hsl(--accent-h,60%,85%))_ c--accent-dark">JD</div>
+                            <div class="avatar avatar-md bg-dbeafe c-1e40af">MR</div>
+                            <div class="avatar avatar-md bg-dcfce7 c-166534">AB</div>
+                            <div class="avatar avatar-md bg-fef3c7 c-92400e" style="background:var(--border);color:var(--text-secondary)">+4
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Alerts -->
+            <section class="section" id="alerts">
+                <h2 class="section-title">Alerts</h2>
+                <div class="demo">
+                    <div class="alert 
+                    [p-0.875rem-1.125rem,br--radius-md,b-1.5px-solid,df,g-0.75rem,aifs,fs-14px,mb-0.75rem]--as-alert
+                    _svg[flex-shrink-0,mt-1px]--as-alert
+                    alert-info
+                    Color(1e40af,eff6ff,bfdbfe)--as-alert-info">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="8" cy="8" r="6.5" />
+                            <path d="M8 7v4M8 5.5v.5" />
+                        </svg>
+                        <div class="alert-body [flex-1]--as-alert-body">
+                            <div class="alert-title [fw-5,mb-2px]--as-alert-title">Heads up</div>Your session will expire in 15 minutes.
+                        </div>
+                    </div>
+                    <div class="alert alert-success Color(166534,dcfce7,bbf7d0)--as-alert-success">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="8" cy="8" r="6.5" />
+                            <path d="M5.5 8l2 2 3-4" />
+                        </svg>
+                        <div class="alert-body">
+                            <div class="alert-title">Changes saved</div>Your profile was updated successfully.
+                        </div>
+                    </div>
+                    <div class="alert alert-warning Color(92400e,fef3c7,fde68a)--as-alert-warning">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M8 2L14.5 13H1.5L8 2z" />
+                            <path d="M8 6v3M8 11v.5" />
+                        </svg>
+                        <div class="alert-body">
+                            <div class="alert-title">Action required</div>Please verify your email address to continue.
+                        </div>
+                    </div>
+                    <div class="alert alert-danger Color(991b1b,fee2e2,fecaca)--as-alert-danger" style="margin-bottom:0">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="8" cy="8" r="6.5" />
+                            <path d="M6 6l4 4M10 6l-4 4" />
+                        </svg>
+                        <div class="alert-body">
+                            <div class="alert-title">Payment failed</div>Your card was declined. Please update billing details.
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Table -->
+            <section class="section" id="tables">
+                <h2 class="section-title">Tables</h2>
+                <div class="demo">
+                    <div class="table-wrap ox-auto--as-table-wrap">
+                        <table class="table [w-100p,border-collapse-collapse,fs-14px]--as-table">
+                            <thead class="border-bottom-2px-solid--border
+                            _th[tal,p-0.75rem-1rem,fs-12px,fw5,les-0.4px,ttu,c--text-muted]">
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Role</th>
+                                    <th>Status</th>
+                                    <th>Joined</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody class="_tr--lc_td-bb-none _tr--hover_td-bg--ink-50  _td[p-0.75rem-1rem,bb-1px-s--border]">
+                                <tr>
+                                    <td>
+                                        <div class="row gap-sm">
+                                            <div class="avatar avatar-sm bg(hsl(--accent-h,60%,85%))_ c--accent-dark">JD</div>
+                                            <div>
+                                                <div style="font-weight:500;font-size:14px">Jane Doe</div>
+                                                <div style="font-size:12px;color:var(--text-muted)">jane@vessel.co</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>Designer</td>
+                                    <td><span class="badge badge-success badge-dot">Active</span></td>
+                                    <td style="color:var(--text-secondary)">Jan 2024</td>
+                                    <td><button class="btn btn-ghost btn-sm">Edit</button></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="row gap-sm">
+                                            <div class="avatar avatar-sm bg-dbeafe c-1e40af">MR</div>
+                                            <div>
+                                                <div style="font-weight:500;font-size:14px">Marcus Reed</div>
+                                                <div style="font-size:12px;color:var(--text-muted)">m.reed@vessel.co</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>Engineer</td>
+                                    <td><span class="badge badge-warning badge-dot">Pending</span></td>
+                                    <td style="color:var(--text-secondary)">Mar 2024</td>
+                                    <td><button class="btn btn-ghost btn-sm">Edit</button></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="row gap-sm">
+                                            <div class="avatar avatar-sm bg-dcfce7 c-166534">AB</div>
+                                            <div>
+                                                <div style="font-weight:500;font-size:14px">Aisha Brown</div>
+                                                <div style="font-size:12px;color:var(--text-muted)">a.brown@vessel.co</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>Manager</td>
+                                    <td><span class="badge badge-default badge-dot">Inactive</span></td>
+                                    <td style="color:var(--text-secondary)">Nov 2023</td>
+                                    <td><button class="btn btn-ghost btn-sm">Edit</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Feedback -->
+            <section class="section" id="feedback">
+                <h2 class="section-title">Feedback</h2>
+                <div class="demo">
+                    <div class="row" style="margin-bottom:1.5rem">
+                        <div keyframes-spin="@100-rotate-360deg" class="spinner [w-20px,h-20px,b-2px-s--border,btc--accent,br-50%,animation-spin-0.7s-linear-infinite]--as-spinner"></div>
+                        <div class="spinner spinner-lg [w-32px,h-32px,bw-3px]--as-spinner-lg" style="border-top-color:var(--green)"></div>
+                    </div>
+                    <div style="margin-bottom:.6rem;font-size:13px;color:var(--text-muted)">Progress bars</div>
+                    <div class="progress [h-6px,br--radius-pill,oh,mb-1rem]--as-progress">
+                        <div class="progress-bar [h-100%,bg--accent,br--radius-pill,tn-width-0.4s-ease]--as-progress-bar" style="width:72%"></div>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar success bg--green" style="width:48%"></div>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar danger bg--red" style="width:20%"></div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Form Controls -->
+            <section class="section" id="forms">
+                <h2 class="section-title">Form Controls</h2>
+                <div class="demo">
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem">
+                        <div>
+                            <p class="subsection-title">Checkboxes</p>
+                            <label class="form-check
+                             [df,aic,g-0.6rem,mb-0.6rem,cp]--as-form-check
+                             _input[w-16px,h-16px,accent-color--accent,cp]--as-form-check
+                             _span[fs-14px]--as-form-check
+                             "><input type="checkbox" checked><span>Option one</span></label>
+                            <label class="form-check"><input type="checkbox"><span>Option two</span></label>
+                            <label class="form-check"><input type="checkbox" disabled><span
+                                    style="color:var(--text-muted)">Disabled</span></label>
+                        </div>
+                        <div>
+                            <p class="subsection-title">Radio</p>
+                            <label class="form-check"><input type="radio" name="r" checked><span>Choice A</span></label>
+                            <label class="form-check"><input type="radio" name="r"><span>Choice B</span></label>
+                            <label class="form-check"><input type="radio" name="r"><span>Choice C</span></label>
+                        </div>
+                        <div>
+                            <p class="subsection-title">Toggles</p>
+                            <label class="
+                            toggle 
+                            [pr,aif,aic,g-0.6rem,cp]--as-toggle
+                            _input[pa,o-0,w-0,h-0]--as-toggle
+
+                            " style="margin-bottom:.75rem">
+                                <input type="checkbox" checked>
+                                <div class="toggle-track [w-40px,h-22px,bg--border,br--radius-pill,tn-background-0.2s,pr]--as-toggle-track
+                                ____.toggle_input--checked&[bg--accent]--as-toggle-track">
+                                    <div class="toggle-thumb 
+                                    [pa,t-3px,l-3px,w-16px,h-16px,bg-fff,br-50%,tn-transform-0.2s,bxs--shadow-sm]--as-toggle-thumb
+                                    _.toggle_input--checked____[class~=toggle-track]&[tf-translateX-18px]--as-toggle-thumb
+                                    "></div>
+                                </div>
+                                <span>Notifications</span>
+                            </label>
+                            <br>
+                            <label class="toggle">
+                                <input type="checkbox">
+                                <div class="toggle-track">
+                                    <div class="toggle-thumb"></div>
+                                </div>
+                                <span>Dark mode</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Stat Cards -->
+            <section class="section" id="stats">
+                <h2 class="section-title">Stat Cards</h2>
+                <div class="card-row [dg,gtc-repeat-auto-fit-minmax-200px-1fr,g-1rem]--as-card-row">
+                    <div class="stat-card [p-1.25rem-1.5rem,bg--surface,b-1px-s--border,br--radius-lg]--as-stat-card">
+                        <div class="stat-label [fs-12px,fw5,les-0.4px,ttu,c--text-muted,mb-0.4rem]--as-stat-label">Monthly Revenue</div>
+                        <div class="stat-value [ff--font-display,fs-36px,lh-1,mb-0.25rem]--as-stat-value">$48.2k</div>
+                        <div class="stat-change [fs-13px,c--green,df,aic,g-4px]--as-stat-change [class~=down][c--red]--as-stat-change">
+                            <svg width="13" height="13" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M6 9V3M3 6l3-3 3 3" />
+                            </svg>
+                            12.4% vs last month
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Active Users</div>
+                        <div class="stat-value">3,241</div>
+                        <div class="stat-change">
+                            <svg width="13" height="13" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M6 9V3M3 6l3-3 3 3" />
+                            </svg>
+                            8.1% vs last month
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Churn Rate</div>
+                        <div class="stat-value">2.3%</div>
+                        <div class="stat-change down">
+                            <svg width="13" height="13" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M6 3v6M3 6l3 3 3-3" />
+                            </svg>
+                            0.4% increase
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        <!-- ── CODE BLOCKS ── -->
+        <section class="mb-4rem" id="code">
+            <h2 class="ff-display fs-28px fw-400 mb-0.25rem">Code Blocks</h2>
+            <p class="c-secondary mb-2rem fs-14px">Pre-formatted blocks and inline code.</p>
+            <pre class="bgc-1a1916 c-e8e6df p-1.25rem-1.5rem br-14px ff-mono fs-13px lh-1.7 ox-a mb-0.75rem">
+                <code style="background:transparent;padding:0;border-radius:0;color:inherit">/* AliasCSS — property-alias style */
+        &lt;button class="dif ai-c g-6px fs-14px fw5
+                       p-0-1rem h-36px br-8px cur-pointer
+                       bgc-d05c1f c-white b-1px-s-d05c1f
+                       --h-bgc-a84417 tn-all-0.15s"&gt;
+          Primary Button
+        &lt;/button&gt;</code></pre>
+            <p class="fs-14px c-secondary">Use inline
+                <code class="ff-mono fs-13px br-4px p-1px-6px"
+                    style="background:var(--ink-100);color:var(--ink-800)">code</code>
+                for short snippets within prose. Reserve
+                <code class="ff-mono fs-13px br-4px p-1px-6px" style="background:var(--ink-100);color:var(--ink-800)">pre</code>
+                for multi-line blocks.
+            </p>
+        </section>
+        </main>
+            </div>
+            </body>
+
+            <!-- two -->
+
+<body class="ff-body fs-15px lh-1.6 dn-i">
+
+    <!-- ═══════════════════════════ NAV ═══════════════════════════ -->
+    <nav class="pst t-0 zi-100 b-1px-s--border bb-1px-s--border border-token
+            d-f ai-c g-2rem p-0-2rem h-56px
+            bgc--page-bg-color" style="--page-bg-color:color-mix(in srgb,var(--page-bg) 85%,transparent);
+            backdrop-filter:blur(12px)">
+
+        <a href="#" class="ff-display fs-20px c--text-primary tdn les--0.3px" style="color:var(--text-primary)">
+            Vessel<span style="color:var(--accent)">.</span>
+        </a>
+
+        <ul class="d-f g-1.5rem ls-none ml-auto">
+            <li><a href="#foundation" class="fs-13px fw5 c--text-secondary tdn --h-c--text-primary"
+                    style="color:var(--text-secondary);transition:color .15s">Foundation</a></li>
+            <li><a href="#components" class="fs-13px fw5 c--text-secondary tdn --h-c--text-primary"
+                    style="color:var(--text-secondary);transition:color .15s">Components</a></li>
+            <li><a href="#patterns" class="fs-13px fw5 c--text-secondary tdn --h-c--text-primary"
+                    style="color:var(--text-secondary);transition:color .15s">Patterns</a></li>
+        </ul>
+    </nav>
+
+    <!-- ═══════════════════════════ PAGE ═══════════════════════════ -->
+    <div class="d-f mh-calc(100vh_-_56px)">
+
+        <!-- Sidebar -->
+        <aside class="w-220px brt-1px-s--border border-token p-2rem-1.25rem pst t-56px h-calc(100vh_-_56px) oy-a"
+            style="flex-shrink:0">
+
+            <div class="mb-1.75rem">
+                <p class="fs-11px fw5 les-0.8px tt-uppercase c-muted mb-0.6rem">Foundation</p>
+                <ul class="ls-none d-f fd-c g-2px">
+                    <li><a href="#typography" class="db p-5px-10px br-4px fs-14px c-secondary tdn
+                                         --h-c--text-primary --h-bgc--border"
+                            style="color:var(--text-secondary);transition:all .15s">Typography</a></li>
+                    <li><a href="#colors" class="db p-5px-10px br-4px fs-14px tdn
+                                     --h-c--text-primary --h-bgc--border"
+                            style="color:var(--text-secondary);transition:all .15s">Colors</a></li>
+                    <li><a href="#spacing" class="db p-5px-10px br-4px fs-14px tdn
+                                      --h-c--text-primary --h-bgc--border"
+                            style="color:var(--text-secondary);transition:all .15s">Spacing & Radius</a></li>
+                    <li><a href="#shadows" class="db p-5px-10px br-4px fs-14px tdn
+                                      --h-c--text-primary --h-bgc--border"
+                            style="color:var(--text-secondary);transition:all .15s">Shadows</a></li>
+                </ul>
             </div>
 
-        </div>
+            <div class="mb-1.75rem">
+                <p class="fs-11px fw5 les-0.8px tt-uppercase c-muted mb-0.6rem">Components</p>
+                <ul class="ls-none d-f fd-c g-2px">
+                    <li><a href="#buttons" class="db p-5px-10px br-4px fs-14px tdn --h-c--text-primary --h-bgc--border"
+                            style="color:var(--text-secondary);transition:all .15s">Buttons</a></li>
+                    <li><a href="#inputs" class="db p-5px-10px br-4px fs-14px tdn --h-c--text-primary --h-bgc--border"
+                            style="color:var(--text-secondary);transition:all .15s">Inputs</a></li>
+                    <li><a href="#cards" class="db p-5px-10px br-4px fs-14px tdn --h-c--text-primary --h-bgc--border"
+                            style="color:var(--text-secondary);transition:all .15s">Cards</a></li>
+                    <li><a href="#badges" class="db p-5px-10px br-4px fs-14px tdn --h-c--text-primary --h-bgc--border"
+                            style="color:var(--text-secondary);transition:all .15s">Badges</a></li>
+                    <li><a href="#avatars" class="db p-5px-10px br-4px fs-14px tdn --h-c--text-primary --h-bgc--border"
+                            style="color:var(--text-secondary);transition:all .15s">Avatars</a></li>
+                    <li><a href="#alerts" class="db p-5px-10px br-4px fs-14px tdn --h-c--text-primary --h-bgc--border"
+                            style="color:var(--text-secondary);transition:all .15s">Alerts</a></li>
+                    <li><a href="#tables" class="db p-5px-10px br-4px fs-14px tdn --h-c--text-primary --h-bgc--border"
+                            style="color:var(--text-secondary);transition:all .15s">Tables</a></li>
+                    <li><a href="#feedback" class="db p-5px-10px br-4px fs-14px tdn --h-c--text-primary --h-bgc--border"
+                            style="color:var(--text-secondary);transition:all .15s">Feedback</a></li>
+                </ul>
+            </div>
+
+            <div class="mb-1.75rem">
+                <p class="fs-11px fw5 les-0.8px tt-uppercase c-muted mb-0.6rem">Patterns</p>
+                <ul class="ls-none d-f fd-c g-2px">
+                    <li><a href="#forms" class="db p-5px-10px br-4px fs-14px tdn --h-c--text-primary --h-bgc--border"
+                            style="color:var(--text-secondary);transition:all .15s">Form Controls</a></li>
+                    <li><a href="#stats" class="db p-5px-10px br-4px fs-14px tdn --h-c--text-primary --h-bgc--border"
+                            style="color:var(--text-secondary);transition:all .15s">Stat Cards</a></li>
+                    <li><a href="#code" class="db p-5px-10px br-4px fs-14px tdn --h-c--text-primary --h-bgc--border"
+                            style="color:var(--text-secondary);transition:all .15s">Code Blocks</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Main content -->
+        <main class="fx-1 p-3rem-3.5rem xw-900px">
+
+            <!-- ── Hero ── -->
+            <div class="pt-3rem pb-2rem mb-1rem bb-1px-s--border border-token" id="foundation">
+                <p class="fs-12px fw5 les-1px tt-uppercase mb-0.75rem" style="color:var(--accent)">Design System v1.0
+                </p>
+                <h1 class="ff-display fs-52px lh-1.1 mb-1rem">
+                    Vessel<span style="color:var(--accent);font-style:italic">.</span><br>
+                    <span style="font-style:italic">Design Language</span>
+                </h1>
+                <p class="fs-16px c-secondary xw-520px lh-1.7">
+                    A refined, editorial design system combining typographic warmth with systematic precision. Built for
+                    interfaces that breathe.
+                </p>
+                <div class="d-f g-2rem mt-1.5rem">
+                    <div class="tac">
+                        <span class="ff-display fs-28px db">48</span>
+                        <span class="fs-12px c-muted les-0.3px">Components</span>
+                    </div>
+                    <div class="tac">
+                        <span class="ff-display fs-28px db">12</span>
+                        <span class="fs-12px c-muted les-0.3px">Patterns</span>
+                    </div>
+                    <div class="tac">
+                        <span class="ff-display fs-28px db">2</span>
+                        <span class="fs-12px c-muted les-0.3px">Themes</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── TYPOGRAPHY ── -->
+            <section class="mb-4rem" id="typography">
+                <h2 class="ff-display fs-28px fw-400 mb-0.25rem">Typography</h2>
+                <p class="c-secondary mb-2rem fs-14px">Instrument Serif pairs with DM Sans — editorial warmth,
+                    functional clarity.</p>
+
+                <div class="surface b-1px-s--border border-token br-14px p-2rem mb-0.75rem">
+
+                    <!-- Display -->
+                    <div class="d-f ai-baseline g-1.5rem p-0.75rem-0 bb-1px-s--border border-token">
+                        <span class="fs-12px ff-mono c-muted w-130px" style="flex-shrink:0">display / 48px</span>
+                        <span class="ff-display fs-48px lh-1.1">The quick brown fox</span>
+                    </div>
+                    <!-- H1 -->
+                    <div class="d-f ai-baseline g-1.5rem p-0.75rem-0 bb-1px-s--border border-token">
+                        <span class="fs-12px ff-mono c-muted w-130px" style="flex-shrink:0">h1 / 32px serif</span>
+                        <span class="ff-display fs-32px fw-400 lh-1.2">Design with intention</span>
+                    </div>
+                    <!-- H2 -->
+                    <div class="d-f ai-baseline g-1.5rem p-0.75rem-0 bb-1px-s--border border-token">
+                        <span class="fs-12px ff-mono c-muted w-130px" style="flex-shrink:0">h2 / 22px 500</span>
+                        <span class="fs-22px fw5 lh-1.25">Section heading</span>
+                    </div>
+                    <!-- H3 -->
+                    <div class="d-f ai-baseline g-1.5rem p-0.75rem-0 bb-1px-s--border border-token">
+                        <span class="fs-12px ff-mono c-muted w-130px" style="flex-shrink:0">h3 / 16px 500</span>
+                        <span class="fs-16px fw5 lh-1.3">Subsection title</span>
+                    </div>
+                    <!-- Body -->
+                    <div class="d-f ai-baseline g-1.5rem p-0.75rem-0 bb-1px-s--border border-token">
+                        <span class="fs-12px ff-mono c-muted w-130px" style="flex-shrink:0">body / 15px</span>
+                        <span class="fs-15px fw-400 lh-1.6">The design system provides a consistent visual language
+                            across all product surfaces.</span>
+                    </div>
+                    <!-- Small -->
+                    <div class="d-f ai-baseline g-1.5rem p-0.75rem-0 bb-1px-s--border border-token">
+                        <span class="fs-12px ff-mono c-muted w-130px" style="flex-shrink:0">small / 13px</span>
+                        <span class="fs-13px c-secondary">Secondary text, timestamps, captions.</span>
+                    </div>
+                    <!-- Mono -->
+                    <div class="d-f ai-baseline g-1.5rem p-0.75rem-0 bb-1px-s--border border-token">
+                        <span class="fs-12px ff-mono c-muted w-130px" style="flex-shrink:0">mono / 13px</span>
+                        <span class="fs-13px ff-mono">const value = 'code snippets'</span>
+                    </div>
+                    <!-- Label -->
+                    <div class="d-f ai-baseline g-1.5rem p-0.75rem-0">
+                        <span class="fs-12px ff-mono c-muted w-130px" style="flex-shrink:0">label / 11px</span>
+                        <span class="fs-11px fw5 les-0.7px tt-uppercase c-muted">Overline and section labels</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ── COLORS ── -->
+            <section class="mb-4rem" id="colors">
+                <h2 class="ff-display fs-28px fw-400 mb-0.25rem">Colors</h2>
+                <p class="c-secondary mb-2rem fs-14px">A warm-neutral ink scale with a terracotta accent. Semantic
+                    tokens for status.</p>
+
+                <p class="fs-11px fw5 les-0.5px tt-uppercase c-muted mb-1rem">Ink scale</p>
+                <div class="d-f g-4px mb-1rem ai-c">
+                    <span class="fs-12px c-secondary w-60px" style="flex-shrink:0">Ink</span>
+                    <div class="h-36px fx-1 br-4px" style="background:#faf9f5"></div>
+                    <div class="h-36px fx-1 br-4px" style="background:#f5f3ee"></div>
+                    <div class="h-36px fx-1 br-4px" style="background:#e8e6df"></div>
+                    <div class="h-36px fx-1 br-4px" style="background:#b8b6ad"></div>
+                    <div class="h-36px fx-1 br-4px" style="background:#7a7870"></div>
+                    <div class="h-36px fx-1 br-4px" style="background:#4a4940"></div>
+                    <div class="h-36px fx-1 br-4px" style="background:#2e2d28"></div>
+                    <div class="h-36px fx-1 br-4px" style="background:#1a1916"></div>
+                    <div class="h-36px fx-1 br-4px" style="background:#0c0b0a"></div>
+                </div>
+                <div class="d-f g-4px mb-2rem ai-c">
+                    <span class="fs-12px c-secondary w-60px" style="flex-shrink:0">Accent</span>
+                    <div class="h-36px fx-1 br-4px" style="background:#fef0e7"></div>
+                    <div class="h-36px fx-1 br-4px" style="background:#fdd5b4"></div>
+                    <div class="h-36px fx-1 br-4px" style="background:#f9aa72"></div>
+                    <div class="h-36px fx-1 br-4px" style="background:#e87d3e"></div>
+                    <div class="h-36px fx-1 br-4px" style="background:var(--accent)"></div>
+                    <div class="h-36px fx-1 br-4px" style="background:var(--accent-dark)"></div>
+                    <div class="h-36px fx-1 br-4px" style="background:#7d2f0e"></div>
+                </div>
+
+                <p class="fs-11px fw5 les-0.5px tt-uppercase c-muted mb-1rem">Semantic</p>
+                <div class="d-g g-1rem mb-2rem" style="grid-template-columns:repeat(auto-fill,minmax(100px,1fr))">
+                    <div class="br-8px oh">
+                        <div class="h-60px" style="background:var(--accent)"></div>
+                        <div class="p-0.5rem-0.6rem surface b-1px-s--border border-token bt-0 br-0-0-8px-8px">
+                            <div class="fs-12px fw5">Accent</div>
+                            <div class="fs-11px ff-mono c-muted">--accent</div>
+                        </div>
+                    </div>
+                    <div class="br-8px oh">
+                        <div class="h-60px" style="background:var(--blue)"></div>
+                        <div class="p-0.5rem-0.6rem surface b-1px-s--border border-token bt-0 br-0-0-8px-8px">
+                            <div class="fs-12px fw5">Info</div>
+                            <div class="fs-11px ff-mono c-muted">#2b6cb0</div>
+                        </div>
+                    </div>
+                    <div class="br-8px oh">
+                        <div class="h-60px" style="background:var(--green)"></div>
+                        <div class="p-0.5rem-0.6rem surface b-1px-s--border border-token bt-0 br-0-0-8px-8px">
+                            <div class="fs-12px fw5">Success</div>
+                            <div class="fs-11px ff-mono c-muted">#276749</div>
+                        </div>
+                    </div>
+                    <div class="br-8px oh">
+                        <div class="h-60px" style="background:var(--amber)"></div>
+                        <div class="p-0.5rem-0.6rem surface b-1px-s--border border-token bt-0 br-0-0-8px-8px">
+                            <div class="fs-12px fw5">Warning</div>
+                            <div class="fs-11px ff-mono c-muted">#b7791f</div>
+                        </div>
+                    </div>
+                    <div class="br-8px oh">
+                        <div class="h-60px" style="background:var(--red)"></div>
+                        <div class="p-0.5rem-0.6rem surface b-1px-s--border border-token bt-0 br-0-0-8px-8px">
+                            <div class="fs-12px fw5">Danger</div>
+                            <div class="fs-11px ff-mono c-muted">#c53030</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ── SPACING & RADIUS ── -->
+            <section class="mb-4rem" id="spacing">
+                <h2 class="ff-display fs-28px fw-400 mb-0.25rem">Spacing &amp; Radius</h2>
+                <p class="c-secondary mb-2rem fs-14px">4px base grid. Radius tokens from tight to pill.</p>
+                <div class="surface b-1px-s--border border-token br-14px p-2rem mb-0.75rem
+                  d-g g-1rem" style="grid-template-columns:1fr 1fr">
+                    <div class="d-f ai-c g-0.75rem p-0.75rem-1rem surface b-1px-s--border border-token br-8px">
+                        <div class="w-36px h-36px b-1px-s--border border-token br-4px" style="flex-shrink:0"></div>
+                        <div>
+                            <div class="fs-13px fw5 ff-mono">--r-sm</div>
+                            <div class="fs-12px ff-mono c-muted">4px</div>
+                        </div>
+                    </div>
+                    <div class="d-f ai-c g-0.75rem p-0.75rem-1rem surface b-1px-s--border border-token br-8px">
+                        <div class="w-36px h-36px b-1px-s--border border-token br-8px" style="flex-shrink:0"></div>
+                        <div>
+                            <div class="fs-13px fw5 ff-mono">--r-md</div>
+                            <div class="fs-12px ff-mono c-muted">8px</div>
+                        </div>
+                    </div>
+                    <div class="d-f ai-c g-0.75rem p-0.75rem-1rem surface b-1px-s--border border-token br-8px">
+                        <div class="w-36px h-36px b-1px-s--border border-token br-14px" style="flex-shrink:0"></div>
+                        <div>
+                            <div class="fs-13px fw5 ff-mono">--r-lg</div>
+                            <div class="fs-12px ff-mono c-muted">14px</div>
+                        </div>
+                    </div>
+                    <div class="d-f ai-c g-0.75rem p-0.75rem-1rem surface b-1px-s--border border-token br-8px">
+                        <div class="w-36px h-36px b-1px-s--border border-token br-999px" style="flex-shrink:0"></div>
+                        <div>
+                            <div class="fs-13px fw5 ff-mono">--r-pill</div>
+                            <div class="fs-12px ff-mono c-muted">999px</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ── SHADOWS ── -->
+            <section class="mb-4rem" id="shadows">
+                <h2 class="ff-display fs-28px fw-400 mb-0.25rem">Shadows</h2>
+                <p class="c-secondary mb-2rem fs-14px">Three elevation tiers.</p>
+                <div class="surface b-1px-s--border border-token br-14px p-2rem mb-0.75rem d-f g-1rem ai-c">
+                    <div class="fx-1 p-1.5rem br-14px tac bxs--shadow-sm b-1px-s--border surface border-token"
+                        style="--shadow-sm:var(--shadow-sm)">
+                        <span class="fs-13px c-secondary">shadow-sm</span>
+                    </div>
+                    <div class="fx-1 p-1.5rem br-14px tac bxs--shadow-md surface"
+                        style="--shadow-md:0 2px 8px rgba(0,0,0,.08),0 4px 16px rgba(0,0,0,.06)">
+                        <span class="fs-13px c-secondary">shadow-md</span>
+                    </div>
+                    <div class="fx-1 p-1.5rem br-14px tac bxs--shadow-lg surface"
+                        style="--shadow-lg:0 8px 32px rgba(0,0,0,.10),0 2px 8px rgba(0,0,0,.06)">
+                        <span class="fs-13px c-secondary">shadow-lg</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ═══════════ COMPONENTS ═══════════ -->
+            <div id="components"></div>
+
+            <!-- ── BUTTONS ── -->
+            <section class="mb-4rem" id="buttons">
+                <h2 class="ff-display fs-28px fw-400 mb-0.25rem">Buttons</h2>
+                <p class="c-secondary mb-2rem fs-14px">Five variants, three sizes, icon and pill support.</p>
+
+                <p class="fs-11px fw5 les-0.5px tt-uppercase c-muted mb-1rem">Variants</p>
+                <div class="surface b-1px-s--border border-token br-14px p-2rem mb-1rem d-f fw g-0.75rem ai-c">
+                    <!-- Primary -->
+                    <button class="dif ai-c g-6px fs-14px fw5 p-0-1rem h-36px br-8px cur-pointer tn-all-0.15s"
+                        style="background:var(--accent);color:#fff;border:1.5px solid var(--accent)"
+                        onmouseover="this.style.background='var(--accent-dark)';this.style.transform='translateY(-1px)'"
+                        onmouseout="this.style.background='var(--accent)';this.style.transform=''">
+                        <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor"
+                            stroke-width="1.5">
+                            <path d="M8 3v10M3 8h10" />
+                        </svg>
+                        Primary
+                    </button>
+                    <!-- Secondary -->
+                    <button class="dif ai-c fs-14px fw5 p-0-1rem h-36px br-8px cur-pointer tn-all-0.15s"
+                        style="background:var(--surface);color:var(--text-primary);border:1.5px solid var(--border)"
+                        onmouseover="this.style.transform='translateY(-1px)'"
+                        onmouseout="this.style.transform=''">Secondary</button>
+                    <!-- Ghost -->
+                    <button class="dif ai-c fs-14px fw5 p-0-1rem h-36px br-8px cur-pointer tn-all-0.15s"
+                        style="background:transparent;color:var(--text-secondary);border:1.5px solid transparent"
+                        onmouseover="this.style.color='var(--text-primary)';this.style.background='var(--border)'"
+                        onmouseout="this.style.color='var(--text-secondary)';this.style.background='transparent'">Ghost</button>
+                    <!-- Danger -->
+                    <button class="dif ai-c fs-14px fw5 p-0-1rem h-36px br-8px cur-pointer tn-all-0.15s"
+                        style="background:#fff0f0;color:var(--red);border:1.5px solid #fcc">Danger</button>
+                    <!-- Disabled -->
+                    <button class="dif ai-c fs-14px fw5 p-0-1rem h-36px br-8px" disabled
+                        style="background:var(--accent);color:#fff;border:1.5px solid var(--accent);opacity:.45;cursor:not-allowed">Disabled</button>
+                </div>
+
+                <p class="fs-11px fw5 les-0.5px tt-uppercase c-muted mb-1rem">Sizes</p>
+                <div class="surface b-1px-s--border border-token br-14px p-2rem d-f fw g-0.75rem ai-c">
+                    <!-- Large -->
+                    <button class="dif ai-c fs-15px fw5 p-0-1.5rem h-44px br-14px cur-pointer"
+                        style="background:var(--accent);color:#fff;border:1.5px solid var(--accent)">Large</button>
+                    <!-- Default -->
+                    <button class="dif ai-c fs-14px fw5 p-0-1rem h-36px br-8px cur-pointer"
+                        style="background:var(--accent);color:#fff;border:1.5px solid var(--accent)">Default</button>
+                    <!-- Small -->
+                    <button class="dif ai-c fs-12px fw5 p-0-0.75rem h-28px br-4px cur-pointer"
+                        style="background:var(--accent);color:#fff;border:1.5px solid var(--accent)">Small</button>
+                    <!-- Icon -->
+                    <button class="dif ai-c jc-c w-36px h-36px br-8px cur-pointer"
+                        style="background:var(--surface);border:1.5px solid var(--border)">
+                        <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor"
+                            stroke-width="1.5">
+                            <circle cx="8" cy="8" r="5.5" />
+                            <path d="M8 5.5v3l2 1.5" />
+                        </svg>
+                    </button>
+                    <!-- Pill -->
+                    <button class="dif ai-c fs-14px fw5 p-0-1rem h-36px br-999px cur-pointer"
+                        style="background:var(--accent);color:#fff;border:1.5px solid var(--accent)">Pill
+                        button</button>
+                </div>
+            </section>
+
+            <!-- ── INPUTS ── -->
+            <section class="mb-4rem" id="inputs">
+                <h2 class="ff-display fs-28px fw-400 mb-0.25rem">Inputs</h2>
+                <p class="c-secondary mb-2rem fs-14px">Text, select, textarea with labels, hints, and error states.</p>
+                <div class="surface b-1px-s--border border-token br-14px p-2rem d-g g-1.5rem"
+                    style="grid-template-columns:1fr 1fr">
+                    <!-- Full name -->
+                    <div class="d-f fd-c g-0.4rem">
+                        <label class="fs-13px fw5">Full name</label>
+                        <input type="text" placeholder="Jane Smith"
+                            class="w-100% h-38px p-0-0.875rem fs-14px br-8px ol-n tn-all-0.15s"
+                            style="background:var(--surface);color:var(--text-primary);border:1.5px solid var(--border);font-family:var(--ff-body)"
+                            onfocus="this.style.borderColor='var(--accent)';this.style.boxShadow='0 0 0 3px hsl(24,72%,52%,.15)'"
+                            onblur="this.style.borderColor='var(--border)';this.style.boxShadow=''">
+                        <span class="fs-12px c-muted">Your legal name as it appears on ID.</span>
+                    </div>
+                    <!-- Email -->
+                    <div class="d-f fd-c g-0.4rem">
+                        <label class="fs-13px fw5">Email address</label>
+                        <div class="pr">
+                            <svg style="position:absolute;left:.75rem;top:50%;transform:translateY(-50%);color:var(--text-muted);pointer-events:none"
+                                width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor"
+                                stroke-width="1.5">
+                                <rect x="1.5" y="3.5" width="13" height="9" rx="1.5" />
+                                <path d="M1.5 5.5l6.5 4 6.5-4" />
+                            </svg>
+                            <input type="email" placeholder="jane@example.com"
+                                class="w-100% h-38px fs-14px br-8px ol-n pl-40px pr-0.875rem tn-all-0.15s"
+                                style="background:var(--surface);color:var(--text-primary);border:1.5px solid var(--border);font-family:var(--ff-body)"
+                                onfocus="this.style.borderColor='var(--accent)';this.style.boxShadow='0 0 0 3px hsl(24,72%,52%,.15)'"
+                                onblur="this.style.borderColor='var(--border)';this.style.boxShadow=''">
+                        </div>
+                    </div>
+                    <!-- Role -->
+                    <div class="d-f fd-c g-0.4rem">
+                        <label class="fs-13px fw5">Role</label>
+                        <select class="w-100% h-38px p-0-0.875rem fs-14px br-8px ol-n cur-pointer tn-all-0.15s ap-none"
+                            style="background:var(--surface);color:var(--text-primary);border:1.5px solid var(--border);font-family:var(--ff-body);
+                         background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%237a7870' d='M6 8L1 3h10z'/%3E%3C/svg%3E&quot;);
+                         background-repeat:no-repeat;background-position:right .875rem center;padding-right:2.5rem">
+                            <option>Product Designer</option>
+                            <option>Engineer</option>
+                            <option>Manager</option>
+                        </select>
+                    </div>
+                    <!-- Error state -->
+                    <div class="d-f fd-c g-0.4rem">
+                        <label class="fs-13px fw5">Username</label>
+                        <input type="text" value="jane@taken" class="w-100% h-38px p-0-0.875rem fs-14px br-8px ol-n"
+                            style="background:var(--surface);color:var(--text-primary);border:1.5px solid var(--red);font-family:var(--ff-body)">
+                        <span class="fs-12px" style="color:var(--red)">This username is already taken.</span>
+                    </div>
+                    <!-- Textarea -->
+                    <div class="d-f fd-c g-0.4rem" style="grid-column:1/-1">
+                        <label class="fs-13px fw5">Bio</label>
+                        <textarea rows="3" placeholder="Tell us about yourself…"
+                            class="w-100% p-0.625rem-0.875rem fs-14px br-8px ol-n lh-1.5 rs-v tn-all-0.15s"
+                            style="background:var(--surface);color:var(--text-primary);border:1.5px solid var(--border);font-family:var(--ff-body)"
+                            onfocus="this.style.borderColor='var(--accent)';this.style.boxShadow='0 0 0 3px hsl(24,72%,52%,.15)'"
+                            onblur="this.style.borderColor='var(--border)';this.style.boxShadow=''"></textarea>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ── CARDS ── -->
+            <section class="mb-4rem" id="cards">
+                <h2 class="ff-display fs-28px fw-400 mb-0.25rem">Cards</h2>
+                <p class="c-secondary mb-2rem fs-14px">Default, elevated, with header/body/footer slots.</p>
+                <div class="d-g g-1rem" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
+                    <!-- Default card -->
+                    <div class="surface b-1px-s--border border-token br-14px oh">
+                        <div class="p-1rem-1.5rem bb-1px-s--border border-token">
+                            <span class="fs-15px fw5">Default card</span>
+                        </div>
+                        <div class="p-1.25rem-1.5rem">
+                            <p class="fs-14px c-secondary lh-1.6">A surface for grouping related content. Pair with
+                                header, body, and footer slots.</p>
+                        </div>
+                        <div class="p-1rem-1.5rem bt-1px-s--border border-token d-f jc-fe g-0.75rem card-footer-bg"
+                            style="background:var(--ink-50)">
+                            <button class="fs-12px fw5 p-0-0.75rem h-28px br-4px cur-pointer"
+                                style="background:transparent;color:var(--text-secondary);border:1.5px solid transparent">Cancel</button>
+                            <button class="fs-12px fw5 p-0-0.75rem h-28px br-4px cur-pointer"
+                                style="background:var(--accent);color:#fff;border:1.5px solid var(--accent)">Confirm</button>
+                        </div>
+                    </div>
+                    <!-- Elevated card -->
+                    <div class="surface br-14px oh bxs--shadow-md"
+                        style="--shadow-md:0 2px 8px rgba(0,0,0,.08),0 4px 16px rgba(0,0,0,.06)">
+                        <div class="p-1.25rem-1.5rem">
+                            <div class="fs-15px fw5 mb-0.5rem">Elevated card</div>
+                            <p class="fs-14px c-secondary lh-1.6">Uses a medium shadow instead of border — draws content
+                                forward.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ── BADGES ── -->
+            <section class="mb-4rem" id="badges">
+                <h2 class="ff-display fs-28px fw-400 mb-0.25rem">Badges</h2>
+                <p class="c-secondary mb-2rem fs-14px">Six semantic variants with optional dot indicator.</p>
+                <div class="surface b-1px-s--border border-token br-14px p-2rem">
+                    <div class="d-f fw g-0.5rem ai-c mb-1rem">
+                        <span class="dif ai-c p-2px-10px br-999px fs-12px fw5"
+                            style="background:var(--ink-100);color:var(--ink-700)">Default</span>
+                        <span class="dif ai-c p-2px-10px br-999px fs-12px fw5"
+                            style="background:var(--accent-light);color:var(--accent-dark)">Primary</span>
+                        <span class="dif ai-c p-2px-10px br-999px fs-12px fw5"
+                            style="background:#dcfce7;color:#166534">Success</span>
+                        <span class="dif ai-c p-2px-10px br-999px fs-12px fw5"
+                            style="background:#fef3c7;color:#92400e">Warning</span>
+                        <span class="dif ai-c p-2px-10px br-999px fs-12px fw5"
+                            style="background:#fee2e2;color:#991b1b">Danger</span>
+                        <span class="dif ai-c p-2px-10px br-999px fs-12px fw5"
+                            style="background:#dbeafe;color:#1e40af">Info</span>
+                    </div>
+                    <div class="d-f fw g-0.5rem ai-c">
+                        <span class="dif ai-c g-4px p-2px-10px br-999px fs-12px fw5"
+                            style="background:#dcfce7;color:#166534">
+                            <span
+                                style="width:6px;height:6px;border-radius:50%;background:currentColor;display:inline-block"></span>Active
+                        </span>
+                        <span class="dif ai-c g-4px p-2px-10px br-999px fs-12px fw5"
+                            style="background:#fef3c7;color:#92400e">
+                            <span
+                                style="width:6px;height:6px;border-radius:50%;background:currentColor;display:inline-block"></span>Pending
+                        </span>
+                        <span class="dif ai-c g-4px p-2px-10px br-999px fs-12px fw5"
+                            style="background:#fee2e2;color:#991b1b">
+                            <span
+                                style="width:6px;height:6px;border-radius:50%;background:currentColor;display:inline-block"></span>Offline
+                        </span>
+                        <span class="dif ai-c g-4px p-2px-10px br-999px fs-12px fw5"
+                            style="background:var(--ink-100);color:var(--ink-700)">
+                            <span
+                                style="width:6px;height:6px;border-radius:50%;background:currentColor;display:inline-block"></span>Draft
+                        </span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ── AVATARS ── -->
+            <section class="mb-4rem" id="avatars">
+                <h2 class="ff-display fs-28px fw-400 mb-0.25rem">Avatars</h2>
+                <p class="c-secondary mb-2rem fs-14px">Four sizes with stacking support.</p>
+                <div class="surface b-1px-s--border border-token br-14px p-2rem">
+                    <p class="fs-11px fw5 les-0.5px tt-uppercase c-muted mb-1rem">Sizes</p>
+                    <div class="d-f ai-c g-0.75rem fw mb-1.5rem">
+                        <div class="d-f ai-c jc-c w-28px h-28px br-999px fw5 fs-11px"
+                            style="background:hsl(24,60%,85%);color:var(--accent-dark)">JD</div>
+                        <div class="d-f ai-c jc-c w-40px h-40px br-999px fw5 fs-14px"
+                            style="background:#dbeafe;color:#1e40af">MR</div>
+                        <div class="d-f ai-c jc-c w-56px h-56px br-999px fw5 fs-18px"
+                            style="background:#dcfce7;color:#166534">AB</div>
+                        <div class="d-f ai-c jc-c w-72px h-72px br-999px fw5 fs-24px"
+                            style="background:#fef3c7;color:#92400e">KL</div>
+                    </div>
+                    <p class="fs-11px fw5 les-0.5px tt-uppercase c-muted mb-1rem">Stacked group</p>
+                    <div class="d-f">
+                        <div class="d-f ai-c jc-c w-40px h-40px br-999px fw5 fs-14px b-2px-s--surface"
+                            style="background:hsl(24,60%,85%);color:var(--accent-dark)">JD</div>
+                        <div class="d-f ai-c jc-c w-40px h-40px br-999px fw5 fs-14px b-2px-s--surface ml--10px"
+                            style="background:#dbeafe;color:#1e40af;--surface:var(--surface)">MR</div>
+                        <div class="d-f ai-c jc-c w-40px h-40px br-999px fw5 fs-14px b-2px-s--surface ml--10px"
+                            style="background:#dcfce7;color:#166534;--surface:var(--surface)">AB</div>
+                        <div class="d-f ai-c jc-c w-40px h-40px br-999px fw5 fs-14px b-2px-s--surface ml--10px c-secondary"
+                            style="background:var(--border);--surface:var(--surface)">+4</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ── ALERTS ── -->
+            <section class="mb-4rem" id="alerts">
+                <h2 class="ff-display fs-28px fw-400 mb-0.25rem">Alerts</h2>
+                <p class="c-secondary mb-2rem fs-14px">Info, success, warning, danger.</p>
+                <div class="surface b-1px-s--border border-token br-14px p-2rem d-f fd-c g-0.75rem">
+                    <!-- Info -->
+                    <div class="p-0.875rem-1.125rem br-8px d-f g-0.75rem ai-start fs-14px"
+                        style="background:#eff6ff;border:1.5px solid #bfdbfe;color:#1e40af">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor"
+                            stroke-width="1.5" style="flex-shrink:0;margin-top:1px">
+                            <circle cx="8" cy="8" r="6.5" />
+                            <path d="M8 7v4M8 5.5v.5" />
+                        </svg>
+                        <div>
+                            <div class="fw5 mb-2px">Heads up</div>Your session will expire in 15 minutes.
+                        </div>
+                    </div>
+                    <!-- Success -->
+                    <div class="p-0.875rem-1.125rem br-8px d-f g-0.75rem ai-start fs-14px"
+                        style="background:#f0fdf4;border:1.5px solid #bbf7d0;color:#166534">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor"
+                            stroke-width="1.5" style="flex-shrink:0;margin-top:1px">
+                            <circle cx="8" cy="8" r="6.5" />
+                            <path d="M5.5 8l2 2 3-4" />
+                        </svg>
+                        <div>
+                            <div class="fw5 mb-2px">Changes saved</div>Your profile was updated successfully.
+                        </div>
+                    </div>
+                    <!-- Warning -->
+                    <div class="p-0.875rem-1.125rem br-8px d-f g-0.75rem ai-start fs-14px"
+                        style="background:#fffbeb;border:1.5px solid #fde68a;color:#92400e">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor"
+                            stroke-width="1.5" style="flex-shrink:0;margin-top:1px">
+                            <path d="M8 2L14.5 13H1.5L8 2z" />
+                            <path d="M8 6v3M8 11v.5" />
+                        </svg>
+                        <div>
+                            <div class="fw5 mb-2px">Action required</div>Please verify your email address to continue.
+                        </div>
+                    </div>
+                    <!-- Danger -->
+                    <div class="p-0.875rem-1.125rem br-8px d-f g-0.75rem ai-start fs-14px"
+                        style="background:#fef2f2;border:1.5px solid #fecaca;color:#991b1b">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor"
+                            stroke-width="1.5" style="flex-shrink:0;margin-top:1px">
+                            <circle cx="8" cy="8" r="6.5" />
+                            <path d="M6 6l4 4M10 6l-4 4" />
+                        </svg>
+                        <div>
+                            <div class="fw5 mb-2px">Payment failed</div>Your card was declined. Please update billing
+                            details.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ── TABLE ── -->
+            <section class="mb-4rem" id="tables">
+                <h2 class="ff-display fs-28px fw-400 mb-0.25rem">Tables</h2>
+                <p class="c-secondary mb-2rem fs-14px">With avatar cells, badges, and actions.</p>
+                <div class="surface b-1px-s--border border-token br-14px oh">
+                    <div class="ox-a">
+                        <table class="w-100% bcp fs-14px" style="border-collapse:collapse">
+                            <thead class="bb-2px-s--border border-token">
+                                <tr>
+                                    <th class="tal p-0.75rem-1rem fs-12px fw5 les-0.4px tt-uppercase c-muted">Name</th>
+                                    <th class="tal p-0.75rem-1rem fs-12px fw5 les-0.4px tt-uppercase c-muted">Role</th>
+                                    <th class="tal p-0.75rem-1rem fs-12px fw5 les-0.4px tt-uppercase c-muted">Status
+                                    </th>
+                                    <th class="tal p-0.75rem-1rem fs-12px fw5 les-0.4px tt-uppercase c-muted">Joined
+                                    </th>
+                                    <th class="p-0.75rem-1rem"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="p-0.75rem-1rem bb-1px-s--border border-token">
+                                        <div class="d-f ai-c g-0.5rem">
+                                            <div class="d-f ai-c jc-c w-28px h-28px br-999px fw5 fs-11px"
+                                                style="background:hsl(24,60%,85%);color:var(--accent-dark);flex-shrink:0">
+                                                JD</div>
+                                            <div>
+                                                <div class="fw5 fs-14px">Jane Doe</div>
+                                                <div class="fs-12px c-muted">jane@vessel.co</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="p-0.75rem-1rem bb-1px-s--border border-token">Designer</td>
+                                    <td class="p-0.75rem-1rem bb-1px-s--border border-token">
+                                        <span class="dif ai-c g-4px p-2px-10px br-999px fs-12px fw5"
+                                            style="background:#dcfce7;color:#166534">
+                                            <span
+                                                style="width:6px;height:6px;border-radius:50%;background:currentColor;display:inline-block"></span>Active
+                                        </span>
+                                    </td>
+                                    <td class="p-0.75rem-1rem bb-1px-s--border border-token c-secondary">Jan 2024</td>
+                                    <td class="p-0.75rem-1rem bb-1px-s--border border-token">
+                                        <button class="fs-12px fw5 p-0-0.75rem h-28px br-4px cur-pointer"
+                                            style="background:transparent;color:var(--text-secondary);border:1.5px solid transparent">Edit</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="p-0.75rem-1rem bb-1px-s--border border-token">
+                                        <div class="d-f ai-c g-0.5rem">
+                                            <div class="d-f ai-c jc-c w-28px h-28px br-999px fw5 fs-11px"
+                                                style="background:#dbeafe;color:#1e40af;flex-shrink:0">MR</div>
+                                            <div>
+                                                <div class="fw5 fs-14px">Marcus Reed</div>
+                                                <div class="fs-12px c-muted">m.reed@vessel.co</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="p-0.75rem-1rem bb-1px-s--border border-token">Engineer</td>
+                                    <td class="p-0.75rem-1rem bb-1px-s--border border-token">
+                                        <span class="dif ai-c g-4px p-2px-10px br-999px fs-12px fw5"
+                                            style="background:#fef3c7;color:#92400e">
+                                            <span
+                                                style="width:6px;height:6px;border-radius:50%;background:currentColor;display:inline-block"></span>Pending
+                                        </span>
+                                    </td>
+                                    <td class="p-0.75rem-1rem bb-1px-s--border border-token c-secondary">Mar 2024</td>
+                                    <td class="p-0.75rem-1rem bb-1px-s--border border-token">
+                                        <button class="fs-12px fw5 p-0-0.75rem h-28px br-4px cur-pointer"
+                                            style="background:transparent;color:var(--text-secondary);border:1.5px solid transparent">Edit</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="p-0.75rem-1rem">
+                                        <div class="d-f ai-c g-0.5rem">
+                                            <div class="d-f ai-c jc-c w-28px h-28px br-999px fw5 fs-11px"
+                                                style="background:#dcfce7;color:#166534;flex-shrink:0">AB</div>
+                                            <div>
+                                                <div class="fw5 fs-14px">Aisha Brown</div>
+                                                <div class="fs-12px c-muted">a.brown@vessel.co</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="p-0.75rem-1rem">Manager</td>
+                                    <td class="p-0.75rem-1rem">
+                                        <span class="dif ai-c g-4px p-2px-10px br-999px fs-12px fw5"
+                                            style="background:var(--ink-100);color:var(--ink-700)">
+                                            <span
+                                                style="width:6px;height:6px;border-radius:50%;background:currentColor;display:inline-block"></span>Inactive
+                                        </span>
+                                    </td>
+                                    <td class="p-0.75rem-1rem c-secondary">Nov 2023</td>
+                                    <td class="p-0.75rem-1rem">
+                                        <button class="fs-12px fw5 p-0-0.75rem h-28px br-4px cur-pointer"
+                                            style="background:transparent;color:var(--text-secondary);border:1.5px solid transparent">Edit</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ── FEEDBACK ── -->
+            <section class="mb-4rem" id="feedback">
+                <h2 class="ff-display fs-28px fw-400 mb-0.25rem">Feedback</h2>
+                <p class="c-secondary mb-2rem fs-14px">Spinners and progress bars.</p>
+                <div class="surface b-1px-s--border border-token br-14px p-2rem">
+                    <div class="d-f ai-c g-1rem mb-1.5rem">
+                        <div class="w-20px h-20px br-999px spin"
+                            style="border:2px solid var(--border);border-top-color:var(--accent)"></div>
+                        <div class="w-32px h-32px br-999px spin"
+                            style="border:3px solid var(--border);border-top-color:var(--green)"></div>
+                    </div>
+                    <p class="fs-13px c-muted mb-0.6rem">Progress bars</p>
+                    <div class="h-6px bgc--border br-999px oh mb-1rem" style="background:var(--border)">
+                        <div class="h-100% br-999px w-72%" style="background:var(--accent);transition:width .4s ease">
+                        </div>
+                    </div>
+                    <div class="h-6px br-999px oh mb-1rem" style="background:var(--border)">
+                        <div class="h-100% br-999px w-48%" style="background:var(--green);transition:width .4s ease">
+                        </div>
+                    </div>
+                    <div class="h-6px br-999px oh" style="background:var(--border)">
+                        <div class="h-100% br-999px w-20%" style="background:var(--red);transition:width .4s ease">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ═══════════ PATTERNS ═══════════ -->
+            <div id="patterns"></div>
+
+            <!-- ── FORM CONTROLS ── -->
+            <section class="mb-4rem" id="forms">
+                <h2 class="ff-display fs-28px fw-400 mb-0.25rem">Form Controls</h2>
+                <p class="c-secondary mb-2rem fs-14px">Checkboxes, radios, toggles.</p>
+                <div class="surface b-1px-s--border border-token br-14px p-2rem d-g g-2rem"
+                    style="grid-template-columns:1fr 1fr 1fr">
+                    <!-- Checkboxes -->
+                    <div>
+                        <p class="fs-11px fw5 les-0.5px tt-uppercase c-muted mb-1rem">Checkboxes</p>
+                        <label class="d-f ai-c g-0.6rem mb-0.6rem cur-pointer fs-14px">
+                            <input type="checkbox" checked
+                                style="width:16px;height:16px;accent-color:var(--accent);cursor:pointer">
+                            <span>Option one</span>
+                        </label>
+                        <label class="d-f ai-c g-0.6rem mb-0.6rem cur-pointer fs-14px">
+                            <input type="checkbox"
+                                style="width:16px;height:16px;accent-color:var(--accent);cursor:pointer">
+                            <span>Option two</span>
+                        </label>
+                        <label class="d-f ai-c g-0.6rem cur-pointer fs-14px">
+                            <input type="checkbox" disabled style="width:16px;height:16px;accent-color:var(--accent)">
+                            <span class="c-muted">Disabled</span>
+                        </label>
+                    </div>
+                    <!-- Radios -->
+                    <div>
+                        <p class="fs-11px fw5 les-0.5px tt-uppercase c-muted mb-1rem">Radio</p>
+                        <label class="d-f ai-c g-0.6rem mb-0.6rem cur-pointer fs-14px">
+                            <input type="radio" name="rd" checked
+                                style="width:16px;height:16px;accent-color:var(--accent);cursor:pointer">Choice A
+                        </label>
+                        <label class="d-f ai-c g-0.6rem mb-0.6rem cur-pointer fs-14px">
+                            <input type="radio" name="rd"
+                                style="width:16px;height:16px;accent-color:var(--accent);cursor:pointer">Choice B
+                        </label>
+                        <label class="d-f ai-c g-0.6rem cur-pointer fs-14px">
+                            <input type="radio" name="rd"
+                                style="width:16px;height:16px;accent-color:var(--accent);cursor:pointer">Choice C
+                        </label>
+                    </div>
+                    <!-- Toggles — built with inline CSS vars + AliasCSS positioning -->
+                    <div>
+                        <p class="fs-11px fw5 les-0.5px tt-uppercase c-muted mb-1rem">Toggles</p>
+                        <label class="d-f ai-c g-0.6rem cur-pointer mb-0.75rem" style="position:relative">
+                            <input type="checkbox" checked id="tog1"
+                                style="position:absolute;opacity:0;width:0;height:0"
+                                onchange="const t=document.getElementById('tr1');const th=document.getElementById('th1');if(this.checked){t.style.background='var(--accent)';th.style.transform='translateX(18px)'}else{t.style.background='var(--border)';th.style.transform='translateX(0)'}">
+                            <div id="tr1" class="pr br-999px tn-background-0.2s"
+                                style="width:40px;height:22px;background:var(--accent);flex-shrink:0">
+                                <div id="th1" class="pa br-999px bxs-0px-1px-2px-black/1"
+                                    style="top:3px;left:3px;width:16px;height:16px;background:#fff;transition:transform .2s;transform:translateX(18px)">
+                                </div>
+                            </div>
+                            <span class="fs-14px">Notifications</span>
+                        </label>
+                        <label class="d-f ai-c g-0.6rem cur-pointer" style="position:relative">
+                            <input type="checkbox" id="tog2" style="position:absolute;opacity:0;width:0;height:0"
+                                onchange="const t=document.getElementById('tr2');const th=document.getElementById('th2');if(this.checked){t.style.background='var(--accent)';th.style.transform='translateX(18px)'}else{t.style.background='var(--border)';th.style.transform='translateX(0)'}">
+                            <div id="tr2" class="pr br-999px tn-background-0.2s"
+                                style="width:40px;height:22px;background:var(--border);flex-shrink:0">
+                                <div id="th2" class="pa br-999px bxs-0px-1px-2px-black/1"
+                                    style="top:3px;left:3px;width:16px;height:16px;background:#fff;transition:transform .2s">
+                                </div>
+                            </div>
+                            <span class="fs-14px">Dark mode</span>
+                        </label>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ── STAT CARDS ── -->
+            <section class="mb-4rem" id="stats">
+                <h2 class="ff-display fs-28px fw-400 mb-0.25rem">Stat Cards</h2>
+                <p class="c-secondary mb-2rem fs-14px">Summary numbers with trend indicators.</p>
+                <div class="d-g g-1rem" style="grid-template-columns:repeat(auto-fit,minmax(180px,1fr))">
+                    <div class="p-1.25rem-1.5rem surface b-1px-s--border border-token br-14px">
+                        <div class="fs-12px fw5 les-0.4px tt-uppercase c-muted mb-0.4rem">Monthly Revenue</div>
+                        <div class="ff-display fs-36px lh-1 mb-0.25rem">$48.2k</div>
+                        <div class="d-f ai-c g-4px fs-13px" style="color:var(--green)">
+                            <svg width="13" height="13" viewBox="0 0 12 12" fill="none" stroke="currentColor"
+                                stroke-width="1.5">
+                                <path d="M6 9V3M3 6l3-3 3 3" />
+                            </svg>
+                            12.4% vs last month
+                        </div>
+                    </div>
+                    <div class="p-1.25rem-1.5rem surface b-1px-s--border border-token br-14px">
+                        <div class="fs-12px fw5 les-0.4px tt-uppercase c-muted mb-0.4rem">Active Users</div>
+                        <div class="ff-display fs-36px lh-1 mb-0.25rem">3,241</div>
+                        <div class="d-f ai-c g-4px fs-13px" style="color:var(--green)">
+                            <svg width="13" height="13" viewBox="0 0 12 12" fill="none" stroke="currentColor"
+                                stroke-width="1.5">
+                                <path d="M6 9V3M3 6l3-3 3 3" />
+                            </svg>
+                            8.1% vs last month
+                        </div>
+                    </div>
+                    <div class="p-1.25rem-1.5rem surface b-1px-s--border border-token br-14px">
+                        <div class="fs-12px fw5 les-0.4px tt-uppercase c-muted mb-0.4rem">Churn Rate</div>
+                        <div class="ff-display fs-36px lh-1 mb-0.25rem">2.3%</div>
+                        <div class="d-f ai-c g-4px fs-13px" style="color:var(--red)">
+                            <svg width="13" height="13" viewBox="0 0 12 12" fill="none" stroke="currentColor"
+                                stroke-width="1.5">
+                                <path d="M6 3v6M3 6l3 3 3-3" />
+                            </svg>
+                            0.4% increase
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ── CODE BLOCKS ── -->
+            <section class="mb-4rem" id="code">
+                <h2 class="ff-display fs-28px fw-400 mb-0.25rem">Code Blocks</h2>
+                <p class="c-secondary mb-2rem fs-14px">Pre-formatted blocks and inline code.</p>
+                <pre class="bgc-1a1916 c-e8e6df p-1.25rem-1.5rem br-14px ff-mono fs-13px lh-1.7 ox-a mb-0.75rem"><code style="background:transparent;padding:0;border-radius:0;color:inherit">/* AliasCSS — property-alias style */
+&lt;button class="dif ai-c g-6px fs-14px fw5
+               p-0-1rem h-36px br-8px cur-pointer
+               bgc-d05c1f c-white b-1px-s-d05c1f
+               --h-bgc-a84417 tn-all-0.15s"&gt;
+  Primary Button
+&lt;/button&gt;</code></pre>
+                <p class="fs-14px c-secondary">Use inline
+                    <code class="ff-mono fs-13px br-4px p-1px-6px"
+                        style="background:var(--ink-100);color:var(--ink-800)">code</code>
+                    for short snippets within prose. Reserve
+                    <code class="ff-mono fs-13px br-4px p-1px-6px"
+                        style="background:var(--ink-100);color:var(--ink-800)">pre</code>
+                    for multi-line blocks.
+                </p>
+            </section>
+
+        </main>
     </div>
+
+    <script>
+        /* Active sidebar link on scroll */
+        const links = document.querySelectorAll('aside a');
+        const sections = document.querySelectorAll('section[id], div[id]');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    links.forEach(l => {
+                        l.style.color = 'var(--text-secondary)';
+                        l.style.background = 'transparent';
+                    });
+                    const a = document.querySelector(`aside a[href="#${e.target.id}"]`);
+                    if (a) { a.style.color = 'var(--accent)'; a.style.background = 'var(--accent-light)'; }
+                }
+            });
+        }, { rootMargin: '-20% 0px -70% 0px' });
+        sections.forEach(s => observer.observe(s));
+    </script>
 </body>
 
-<script src="./public/js/aliascss.js"></script>
 </html>
