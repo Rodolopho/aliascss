@@ -1169,6 +1169,16 @@ const cssProps:{
     // compiler:'',
     values:['normal:nl','sub:s','super:su:s2'],
 },
+'font-variation-settings':{
+    alias:'fvs',
+    type:'d',
+    compiler:(value,custom)=>{
+        return value.replace(/^-/,'')
+        .replace(/[_]/g,' ')
+        .replace(/([a-zA-Z]+)/g,'"$1"')
+        .replace(/[-]/g,',')
+    }
+},
 'font-variant-emoji':{
     alias:'fve',
     type:'s',
@@ -2338,7 +2348,7 @@ const cssProps:{
 'scrollbar-width':{
     alias:'sbw',
     type:'d',
-    compiler:color,
+    compiler:length,
     values:[''],
 },
 'shape-image-threshold':{

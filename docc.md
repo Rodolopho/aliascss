@@ -257,3 +257,230 @@ Group multiple AliasCSS classes under the same state/selector:
 xml
 <!-- Instead of repeating --hover multiple times: -->
 <button class="b0 color-fff bgc-blue --hover-c-gray --hover-border-radius-4px --hover-bgc-skyBlue">
+
+Here is the complete table of repeated CSS values along with all the alias keys that map to them:
+
+## Repeated CSS Values Table
+
+| Repeated CSS Value | Keys / Aliases |
+| --- | --- |
+| `align-content: start` | `acs`, `acs/start`<br> |
+| `align-content: stretch` | `acs2`, `acs/stretch`, `acst`<br> |
+| `animation-direction: normal` | `adn`, `adnl`<br> |
+| `animation-fill-mode: backwards` | `afmb`, `afmb/backward`<br> |
+| `animation-fill-mode: both` | `afmb2`, `afmb/both`, `afmbo`<br> |
+| `background-blend-mode: darken` | `bgbmd`, `bgbmd/darken`<br> |
+| `background-blend-mode: difference` | `bgbmd2`, `bgbmd/difference`, `bgbmdf`<br> |
+| `background-blend-mode: lighten` | `bgbml`, `bgbml/lighteb`<br> |
+| `background-blend-mode: luminosity` | `bgbml2`, `bgbml/luminosity`, `bgbmlu`<br> |
+| `background-blend-mode: saturation` | `bgbms2`, `bgbms/saturation`, `bgbmsa`<br> |
+| `background-blend-mode: screen` | `bgbms`, `bgbms/screen`<br> |
+| `background-repeat: no-repeat` | `bgnr`, `bgrn`<br> |
+| `background-repeat: repeat no-repeat` | `bgrnr`, `bgrrn`, `bgrrnr`<br> |
+| `background-repeat: repeat-x` | `bgrrx`, `bgrx`<br> |
+| `background-repeat: repeat-y` | `bgrry`, `bgry`<br> |
+| `background-size: cover` | `bgsc`, `bgsc/cover`<br> |
+| `background-size:contain` | `bgsc2`, `bgsc/contain`<br> |
+| `border-bottom-style: dashed` | `bbsd`, `bbsd/dashed`, `bbsds`<br> |
+| `border-bottom-style: dotted` | `bbsd3`, `bbsd/dotted`, `bbsdt`<br> |
+| `border-bottom-style: double` | `bbsd2`, `bbsd/double`, `bbsdb`<br> |
+| `border-bottom-width: thick` | `bbwt`, `bbwt/thick`<br> |
+| `border-bottom-width: thin` | `bbwt2`, `bbwt/thin`, `bbwtn`<br> |
+| `border-image-repeat: repeat` | `birr`, `birr/repeat`<br> |
+| `border-image-repeat: round` | `birro`, `birr2`, `birr/round`<br> |
+| `border-image-repeat: space` | `birs`, `birs/space`<br> |
+| `border-image-repeat: stretch` | `birs2`, `birs/stretch`, `birsth`<br> |
+| `border-image-source: none` | `bisn2`, `bisn/source`, `bisn/image-source`, `bisno`<br> |
+| `border-inline-end-style: dashed` | `biesd`, `biesd/dashed`, `biesds`<br> |
+| `border-inline-end-style: dotted` | `biesd3`, `biesd/dotted`, `biesdt`<br> |
+| `border-inline-end-style: double` | `biesd2`, `biesd/double`, `biesdb`<br> |
+| `border-inline-start-style: dashed` | `bissd`, `bissd/dashed`, `bissds`<br> |
+| `border-inline-start-style: dotted` | `bissd3`, `bissd/dotted`, `bissdt`<br> |
+| `border-inline-start-style: double` | `bissd2`, `bissd/double`, `bissdb`<br> |
+| `border-inline-style: dashed` | `bisd`, `bisd/dashed`, `bisds`<br> |
+| `border-inline-style: dotted` | `bisd3`, `bisd/dotted`, `bisdt`<br> |
+| `border-inline-style: double` | `bisd2`, `bisd/double`, `bisdb`<br> |
+| `border-inline-style: none` | `bisn`, `bisn/inline-style`, `bisn/style`<br> |
+| `border-left-style: dashed` | `blsd`, `blsd/dashed`, `blsds`<br> |
+| `border-left-style: dotted` | `blsd3`, `blsd/dotted`, `blsdt`<br> |
+| `border-left-style: double` | `blsd2`, `blsd/double`, `blsdb`<br> |
+| `border-left-width: thick` | `blwt`, `blwt/thick`<br> |
+| `border-left-width: thin` | `blwt2`, `blwt/thin`, `blwtn`<br> |
+| `border-right-style: dashed` | `brsd`, `brsd/dashed`, `brsds`<br> |
+| `border-right-style: dotted` | `brsd3`, `brsd/dotted`, `brsdt`<br> |
+| `border-right-style: double` | `brsd2`, `brsd/double`, `brsdb`<br> |
+| `border-right-width: thick` | `brwt`, `brwt/thick`<br> |
+| `border-right-width: thin` | `brwt2`, `brwt/thin`, `brwtn`<br> |
+| `border-style: dashed` | `bsd`, `bsd/dashed`, `bsds`<br> |
+| `border-style: dotted` | `bsd3`, `bsd/dotted`, `bsdt`<br> |
+| `border-style: double` | `bsd2`, `bsd/double`, `bsdb`<br> |
+| `border-style: inset` | `bsi`, `bsi/inset`<br> |
+| `border-top-style: dashed` | `btsd`, `btsd/dashed`, `btsds`<br> |
+| `border-top-style: dotted` | `btsd3`, `btsd/dotted`, `btsdt`<br> |
+| `border-top-style: double` | `btsd2`, `btsd/double`, `btsdb`<br> |
+| `border-top-width: thick` | `btwt`, `btwt/thick`<br> |
+| `border-top-width: thin` | `btwt2`, `btwt/thin`, `btwtn`<br> |
+| `border-width: thick` | `bwt`, `bwt/thick`<br> |
+| `border-width: thin` | `bwt2`, `bwt/thin`, `bwtn`<br> |
+| `bottom: auto` | `ba`, `btma`<br> |
+| `box-align: baseline` | `bab2`, `bab/baseline`, `babl`<br> |
+| `box-align: before` | `bab`, `bab/before`<br> |
+| `break-after: always` | `baa3`, `baa/always`, `baal`<br> |
+| `break-after: auto` | `baa`, `baa/auto`<br> |
+| `break-after: avoid` | `baa2`, `baa/avoid`, `baav`<br> |
+| `break-before: always` | `bba3`, `bba/always`, `bbal`<br> |
+| `break-before: auto` | `bba`, `bba/auto`<br> |
+| `break-before: avoid` | `bba2`, `bba/avoid`, `bbav`<br> |
+| `break-inside: auto` | `bia`, `bia/auto`<br> |
+| `break-inside: avoid` | `bia2`, `bia/avoid`, `biav`<br> |
+| `clear-after: both` | `cab`, `cab/both`<br> |
+| `clear-after: bottom` | `cab2`, `cab/bottom`, `cabtm`<br> |
+| `clear-after: start` | `cas2`, `cas/after`, `cas/clear`, `cast`<br> |
+| `clear: none` | `cn`, `cn/clear`<br> |
+| `clip: auto` | `ca3`, `ca/clip`, `cla`<br> |
+| `column-rule-style: dashed` | `crsd`, `crsd/dashed`, `crsds`<br> |
+| `column-rule-style: dotted` | `crsd3`, `crsd/dotted`, `crsdt`<br> |
+| `column-rule-style: double` | `crsd2`, `crsd/double`, `crsdb`<br> |
+| `column-rule-width: thick` | `crwt`, `crwt/thick`<br> |
+| `column-rule-width: thin` | `crwt2`, `crwt/thin`, `crwtn`<br> |
+| `content: close-quote` | `concq`, `ccq`<br> |
+| `content: icon` | `ci2`, `ci/icon`, `ci/content`, `coni`<br> |
+| `content: no-close-quote` | `cncq`, `conncq`<br> |
+| `content: no-open-quote` | `cnoq`, `connoq`<br> |
+| `content: none` | `cn3`, `cn/content`, `conn`<br> |
+| `content: normal` | `cn4`, `cn/normal`, `connl`<br> |
+| `cursor: alias` | `ca2`, `ca/alias`, `cal`<br> |
+| `cursor: all-scroll` | `cas`, `cas/cursor`<br> |
+| `cursor: auto` | `ca`, `ca/auto`, `ca/cursor`<br> |
+| `cursor: n-resize` | `cnr`, `cnr/n`<br> |
+| `cursor: ne-resize` | `cner`, `cnr7`, `cnr8`, `cnr/ne`<br> |
+| `cursor: nesw-resize` | `cneswr`, `cnr5`, `cnr6`, `cnr/nesw`<br> |
+| `cursor: none` | `cn2`, `cn/cursor`, `cnone`<br> |
+| `cursor: ns-resize` | `cnr2`, `cnr/ns`, `cnsr`<br> |
+| `cursor: nw-resize` | `cnr3`, `cnr/nw`, `cnwr`<br> |
+| `cursor: nwse-resize` | `cnr4`, `cnr/nwse`, `cnwser`<br> |
+| `cursor: pointer` | `cp`, `cp/pointer`<br> |
+| `cursor: progress` | `cp2`, `cp/progress`, `cpg`<br> |
+| `cursor: s-resize` | `csr`, `csr/s`<br> |
+| `cursor: se-resize` | `cser`, `csr3`, `csr/se`<br> |
+| `cursor: sw-resize` | `csr2`, `csr/sw`, `cswr`<br> |
+| `display: compact` | `dc2`, `dc/compact`, `dcp`<br> |
+| `display: container` | `dc`, `dc/container`<br> |
+| `display: table-caption` | `dtc2`, `dtc/caption`, `dtcp`<br> |
+| `display: table-cell` | `dtc3`, `dtc/cell`, `dtcl`<br> |
+| `display: table-column` | `dtc`, `dtc/column`<br> |
+| `flex-direction: column` | `fdc`, `ffc`<br> |
+| `flex-direction: column-reverse` | `fdcr`, `ffcr`<br> |
+| `flex-direction: row` | `fdr`, `ffr`<br> |
+| `flex-direction: row-reverse` | `fdrr`, `ffrr`<br> |
+| `flex-item-align: start` | `fias`, `fias/start`<br> |
+| `flex-item-align: stretch` | `fias2`, `fias/stretch`, `fiasth`<br> |
+| `flex-line-pack: stretch` | `flps/stretch`, `flpsth`<br> |
+| `flex-wrap: nowrap` | `ffn`, `fwn`<br> |
+| `font-kerning: normal` | `fkn2`, `fknl`<br> |
+| `font-size: large` | `fsl`, `fsl/large`<br> |
+| `font-size: larger` | `fsl2`, `fsl/larger`, `fslr`<br> |
+| `font-size: small` | `fss`, `fss/small`<br> |
+| `font-size: smaller` | `fss2`, `fss/smaller`, `fssr`<br> |
+| `font-size: x-large` | `fsxl`, `fsxl/x`<br> |
+| `font-size: xx-large` | `fsxl2`, `fsxl/xx`, `fsxxl`<br> |
+| `font-size: xx-small` | `fsxs2`, `fsxs`, `fsxxs`<br> |
+| `font-smooth: never` | `fsn4`, `fsn/never`, `fsnv`<br> |
+| `font-stretch: normal` | `fsn3`, `fsnml`<br> |
+| `font-style: italic` | `fsi`, `fsi/italic`<br> |
+| `font-style: normal` | `fsn2`, `fsnl`<br> |
+| `font-variant-caps: normal` | `fvcn`, `fvcnl`<br> |
+| `font-weight: bold` | `fwb`, `fwb/bold`<br> |
+| `font-weight: bolder` | `fwb2`, `fwb/bolder`, `fwbr`<br> |
+| `font-weight: normal` | `fwn2`, `fwnl`<br> |
+| `height:auto` | `ha2`, `ha/height`<br> |
+| `hyphens: auto` | `ha`, `ha/hyphen`<br> |
+| `justify-items: right` | `jir`, `jir/right`<br> |
+| `justify-items: start` | `jis`, `jis/start`<br> |
+| `justify-items: stretch` | `jis2`, `jis/stretch`, `jist`<br> |
+| `justify-self: right` | `jsr`, `jsr/right`<br> |
+| `justify-self: start` | `jss`, `jss/start`<br> |
+| `justify-self: stretch` | `jss2`, `jss/stretch`, `jsst`<br> |
+| `letter-spacing: normal` | `lesnl`, `lsn2`, `lsn/normal`, `lsnl`<br> |
+| `line-break: normal` | `lbn`, `lbnl`<br> |
+| `line-height: normal` | `lhn`, `lhnl`<br> |
+| `list-style-type: armenian` | `lsa`, `lsta`<br> |
+| `list-style-type: circle` | `lsc`, `lstc`<br> |
+| `list-style-type: decimal` | `lsd2`, `lsd/decimal`, `lsdc`, `lstd2`, `lstd/decimal`<br> |
+| `list-style-type: decimal-leading-zero` | `lsdlz`, `lstdlz`<br> |
+| `list-style-type: disc` | `lsd`, `lsd/disc`, `lstd`, `lstd/disc`<br> |
+| `list-style-type: georgian` | `lsg`, `lstg`<br> |
+| `list-style-type: lower-alpha` | `lsla`, `lstla`<br> |
+| `list-style-type: lower-greek` | `lslg`, `lstlg`<br> |
+| `list-style-type: lower-latin` | `lsll`, `lstll`<br> |
+| `list-style-type: lower-roman` | `lslr`, `lstlr`<br> |
+| `list-style-type: square` | `lss`, `lsts`<br> |
+| `list-style-type: upper-alpha` | `lstua`, `lsua`<br> |
+| `list-style-type: upper-latin` | `lstul`, `lsul`<br> |
+| `list-style-type: upper-roman` | `lstur`, `lsur`<br> |
+| `list-style: none` | `lsn`, `lsn/none`<br> |
+| `mask-repeat: repeat` | `mrr`, `mrr/repeat`<br> |
+| `mask-repeat: round` | `mrr2`, `mrr/round`, `mrro`<br> |
+| `mix-blend-mode: darken` | `mbmd`, `mbmd/darken`<br> |
+| `mix-blend-mode: difference` | `mbmd2`, `mbmd/difference`, `mbmdf`<br> |
+| `mix-blend-mode: lighten` | `mbml`, `mbml/lighten`<br> |
+| `mix-blend-mode: luminosity` | `mbml2`, `mbml/luminisity`, `mbmlu`<br> |
+| `mix-blend-mode: saturation` | `mbms2`, `mbms/saturation`, `mbmsa`<br> |
+| `mix-blend-mode: screen` | `mbms`, `mbms/screen`<br> |
+| `outline-style: dashed` | `osd`, `osd/dashed`, `osds`<br> |
+| `outline-style: dotted` | `osd3`, `osd/dotted`, `osdt`<br> |
+| `outline-style: double` | `osd2`, `osd/double`, `osdb`<br> |
+| `outline-width: thick` | `owt`, `owt/thick`<br> |
+| `outline-width: thin` | `owt2`, `owt/thin`, `owtn`<br> |
+| `outline:none` | `oln`, `on`<br> |
+| `overflow-wrap: normal` | `own`, `ownl`<br> |
+| `page-break-after: always` | `pbaa3`, `pbaa/always`, `pbaal`<br> |
+| `page-break-after: auto` | `pbaa`, `pbaa/auto`<br> |
+| `page-break-after: avoid` | `pbaa2`, `pbaa/avoid`, `pbaav`<br> |
+| `page-break-before: always` | `pbba3`, `pbba/always`, `pbbal`<br> |
+| `page-break-before: auto` | `pbba`, `pbba/auto`<br> |
+| `page-break-before: avoid` | `pbba2`, `pbba/avoid`, `pbbav`<br> |
+| `page-break-inside: avoid` | `pbia2`, `pbiav`<br> |
+| `perspective-origin: bottom` | `pob`, `pobtm`<br> |
+| `place-items: start legacy` | `pisl`, `pisl/start`<br> |
+| `place-items: stretch legacy` | `pisl2`, `pisl/stretch`, `pistl`<br> |
+| `place-self: start auto` | `pssa`, `pssa/start`<br> |
+| `place-self: stretch auto` | `pssa2`, `pssa/stretch`, `pssta`<br> |
+| `position: static` | `ps`, `ps/static`<br> |
+| `position: sticky` | `ps2`, `ps/sticky`, `pst`<br> |
+| `stroke-linecap:butt` | `slb`, `slb/butt`, `slcb`<br> |
+| `stroke-linecap:round` | `slcr`, `slr`, `slr/linecap`, `slr/cap`<br> |
+| `stroke-linecap:square` | `slcs`, `sls`<br> |
+| `stroke-linejoin:arcs` | `sla`, `slja`<br> |
+| `stroke-linejoin:bevel` | `slb2`, `slb/bevel`, `sljb`<br> |
+| `stroke-linejoin:milter` | `sljm`, `slm`<br> |
+| `stroke-linejoin:milter-clip` | `sljmc`, `slmc`<br> |
+| `stroke-linejoin:round` | `sljr`, `slr2`, `slr/linejoin`, `slr/join`<br> |
+| `text-decoration-style: dashed` | `tdsd2`, `tdsd/double`, `tdsds`<br> |
+| `text-decoration-style: dotted` | `tdsd3`, `tdsd/dotted`, `tdsdt`<br> |
+| `text-decoration-style: double` | `tdsd`, `tdsd/dashed`, `tdsdb`<br> |
+| `text-decoration: dashed` | `tdd`, `tdd/dashed`, `tdds`<br> |
+| `text-decoration: dotted` | `tdd3`, `tdd/dotted`, `tddt`<br> |
+| `text-decoration: double` | `tdd2`, `tdd/double`, `tddb`<br> |
+| `text-decoration: overline` | `tdlo`, `tdo`<br> |
+| `text-overflow: clip` | `toc2`, `toc/clip`, `toc/text`, `toc/overflow`<br> |
+| `text-rendering: geometricPrecision` | `trg`, `trgp`<br> |
+| `text-rendering: optimizeLegibility` | `tro`, `trop`<br> |
+| `text-rendering: optimizeSpeed` | `tro2`, `tros`<br> |
+| `transform-origin: bottom` | `tob`, `tobtm`<br> |
+| `transform-origin: center` | `toc`, `toc/center`, `toc/transform`, `toc/origin`<br> |
+| `transform-style: preserve-3d` | `tsp3`, `tsp3d`<br> |
+| `unicode-bidi: normal` | `ubn`, `ubnl`<br> |
+| `user-select: all` | `usa2`, `usa/all`, `usal`<br> |
+| `user-select: auto` | `usa`, `usa/auto`<br> |
+| `vertical-align: baseline` | `vab`, `vab/baseline`<br> |
+| `vertical-align: bottom` | `vab2`, `vab/bottom`, `vabtm`<br> |
+| `white-space: normal` | `wsn2`, `wsn/space`, `wsn/white`, `wsnl`<br> |
+| `white-space: nowrap` | `wsn`, `wsn/nowrap`<br> |
+| `word-break: normal` | `wbn`, `wbnl`<br> |
+| `word-spacing:normal` | `wsn3`, `wsn/world`, `wsn/spacing`<br> |
+| `word-wrap: normal` | `wwn`, `wwnl`<br> |
+| `writing-direction-ltr` | `wdl`, `wdltr`<br> |
+| `writing-direction-rtl` | `wdr`, `wdrtl`<br> |
+| `writing-mode: vertical-lr` | `wmvl`, `wmvlr`<br> |
+| `writing-mode: vertical-rl` | `wmvr`, `wmvrl`<br> |

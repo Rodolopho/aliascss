@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="sbs dark --has(_html-[class~=dark])_body-bgc-red"  theme="dark" data-class="bordefr">
+<html lang="en" class=" @root--tint:red sbs dark --has(_html-[class~=dark])_body-bgc-red"  theme="dark" data-class="bordefr">
 
 <head>
     <meta charset="UTF-8">
@@ -48,7 +48,7 @@
     </style>
 </head>
 
-<body  xdatas-raw-css=":root{--color:orange;--bg:yellow}" class=" xbg--color xtheme(color,red,green)  dark-bg-brown sbs e--var--10x theme --has(_div-[class~=dark])-bgc-red ff-inter  _all-bsbb -is(_html-[theme=dark])-bgc-gray " theme="dark">
+<body  data-raw-css=":root{--color:orange;--bg:yellow;}" class="  x-import-utils-ra  xbg--color xtheme(color,red,green)  dark-bg-brown sbs e--var--10x theme --has(_div-[class~=dark])-bgc-red ff-inter  _all-bsbb -is(_html-[theme=dark])-bgc-gray " theme="dark">
     <!-- <div class=" _li-bgc-gray5 dg gtc(repeat(--rp,1fr))_ --rp:1 md--rp:2 ld--rp:3 xl--rp:4 g-16px ">
         <li>1</li>
         <li>2</li>
@@ -72,7 +72,7 @@ Hello
     hellp-2
     </button> -->
        
-<div data-class="bordefr" class="d-f div fd-c jc-c ai-c border-width-10px bsd/double border-color-red">
+<div data-class="bordefr" class="d-f div fd-c jc-c ai-c bsbb">
         <div class="p-32px d-f fdc lg-fdr g-32px w80vw">
             <div class="w100p">
                 
@@ -141,7 +141,9 @@ Hello
             
         </div>
 
-
+        <button>Button</button>
+        <span>Span</span>
+        <a href="">Link</a>
         <div keyframes-demo="@0-bg-lg217deg-2550000000d8-2550000000_70d71p__lg270deg-0002550000d8_011p-0002550000_70d71p__lg336deg-0000002550d8-0000002550_70d71p
         @33-bg-lg270deg-0002550000d8_011p-0002550000_70d71p__lg217deg-2550000000d8-2550000000_70d71p__lg336deg-0000002550d8-0000002550_70d71p
         @66-bg-lg270deg-0002550000d8_011p-0002550000_70d71p__lg336deg-0000002550d8-0000002550_70d71p__lg217deg-2550000000d8-2550000000_70d71p
@@ -165,13 +167,23 @@ Hello
     <script>
         let custom = {
             colors: {
-                'test': 'rest'
+                'test': 'rest',
+                'pinkBlue':'pinkdeep'
             }
         }
-        //window.addEventListener("acss:init",(e)=>{
-        AliasCSS.addCustom(custom);
-        // })
+        window.addEventListener("acss:init",(e)=>{
+            AliasCSS.addCustom(custom);
+         })
     </script>
 </body>
 
 </html>
+
+
+
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+

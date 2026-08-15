@@ -9,10 +9,16 @@ import {customColors as customColors2} from '../static/customColors2'
 
 const [ staticClassNames, compilerObj]=createCompilerObj({...cssCustomCompilers,...cssProps},config.globalValues);
 const customColors={...customColors1,...customColors2}
-
+// --tintColor:fff
 describe('Return property and value test',()=>{
     test('getProperty and Value Test',()=>{
         expect(getPropertyAndValue('bgc-grayDark-400',compilerObj,staticClassNames,{colors:customColors},extractProperty)).toBe('background-color:var(--grayDark-400,#94969C)')
+    })
+    test('getProperty and Value  for css-variable as classname Test',()=>{
+        expect(getPropertyAndValue('--tintColor:fff',compilerObj,staticClassNames,{colors:customColors},extractProperty)).toBe('--tintColor:#fff')
+    })
+    test('getProperty and Value  for css-variable as classname Test',()=>{
+        expect(getPropertyAndValue('--tint-color:fff',compilerObj,staticClassNames,{colors:customColors},extractProperty)).toBe('--tint-color:#fff')
     })
     test('getProperty and Value Test',()=>{
         expect(getPropertyAndValue('bgc-grayDark400',compilerObj,staticClassNames,{colors:customColors},extractProperty)).toBe('background-color:var(--grayDark400,#94969C)')
@@ -20,6 +26,13 @@ describe('Return property and value test',()=>{
     test('define CSS Var token',()=>{
         expect(getPropertyAndValue('--bgc-gray:200p',compilerObj,staticClassNames,{colors:customColors},extractProperty)).toBe('--bgc-gray:200%')
     })
+     test('define CSS Var token',()=>{
+        expect(getPropertyAndValue('--gray-color:ccc/80%',compilerObj,staticClassNames,{colors:customColors},extractProperty)).toBe('--gray-color:oklch(from #ccc l c h/80% )')
+    })
+    test('define CSS Var token',()=>{
+        expect(getPropertyAndValue('--gray-color:--some-color/0.23',compilerObj,staticClassNames,{colors:customColors},extractProperty)).toBe('--gray-color:oklch(from var(--some-color) l c h/0.23 )')
+    })
+    
     test('define CSS Var token with css-vars',()=>{
         expect(getPropertyAndValue('--bgc-gray:--gray-200px',compilerObj,staticClassNames,{colors:customColors},extractProperty)).toBe('--bgc-gray: var(--gray-200px)')
     })
@@ -36,7 +49,10 @@ describe('Return property and value test',()=>{
         expect(getPropertyAndValue('margin-10%-10px--20%--30p',compilerObj,staticClassNames,{},extractProperty)).toBe('margin: 10% 10px -20% -30%')
     })
      test('getProperty and Value Test',()=>{
-        expect(getPropertyAndValue('bgc--bg-theme',compilerObj,staticClassNames,{},extractProperty)).toBe('background-color: var(--bg-theme)')
+        expect(getPropertyAndValue('bgc--bg-theme',compilerObj,staticClassNames,{},extractProperty)).toBe('background-color:var(--bg-theme)')
+    })
+     test('getProperty and Value Test',()=>{
+        expect(getPropertyAndValue('bgc--bg-theme/0.7',compilerObj,staticClassNames,{},extractProperty)).toBe('background-color:oklch(from var(--bg-theme) l c h/0.7 )')
     })
     test('getProperty and Value Test return array when true is passed',()=>{
         expect(getPropertyAndValue('bgc-red',compilerObj,staticClassNames,{},extractProperty,true)?.toString()).toBe(['background-color','red'].toString())
@@ -58,6 +74,12 @@ describe('Return property and value test',()=>{
     })
     test('getProperty and Value  Function value _ by space ',()=>{
         expect(getPropertyAndValue('bg(radial-gradient(circle_at_20%_30%,rgba(127,86,217,0.45),transparent_65%))_',compilerObj,staticClassNames,{},extractProperty,true)?.toString()).toBe(['background','radial-gradient(circle at 20% 30%, rgba(127, 86, 217, 0.45), transparent 65%)'].toString())
+    })
+    test('getProperty and Value   value as function  ',()=>{
+        expect(getPropertyAndValue('bg-rgba(127,86,217,0.45)',compilerObj,staticClassNames,{},extractProperty,true)?.toString()).toBe(['background','rgba(127,86,217,0.45)'].toString())
+    })
+    test('getProperty and Value   value as function with css-var  ',()=>{
+        expect(getPropertyAndValue('bg-rgba(127,86,--b,0.45)',compilerObj,staticClassNames,{},extractProperty,true)?.toString()).toBe(['background','rgba(127,86,var(--b),0.45)'].toString())
     })
     // test('getProperty and Value  css-var Test return array when true is passed',()=>{
     //     expect(getPropertyAndValue('ring--red',compilerObj,staticClassNames,{},extractProperty,true)?.toString()).toBe(['background-color','var(--red)'].toString())

@@ -2,7 +2,8 @@ import {getCompiler,main} from './lib/index.js'
 import { compilers } from './custom-compilers.js';
 import prebuild from './lib/prebuild.js';
 const config={
-    input:['ui-dev/**/*.html','experiments/**/*.html'],
+    // input:['ui-dev/**/*.html','experiments/**/*.html'],
+    input:['ui-dev/**/css-nono-test.html'],
     output:{
         location:'demo/css/css/style/acss.css',
         "--file":true
@@ -10,105 +11,16 @@ const config={
     '--module':true,
     prefix:'',
     importModuleAs:'x',
-    minify:false,
-    extractorFunction:"x|@",
+    // minify:true,
+    extractorFunction:"String",
     //reg:new RegExp('x' + "(`|\\(["+`"'])`+ "(.+)" + "(`|" + `["']` + "\\))") ,
     media:{
         prefix:{
             xs:'@media (max-width : 24px)'
         }
     },
-    extend:{
-        // Note property cannot include uppercase/number character but first character uppercase allowed
-        ...compilers,
-        'txt-shadow':{
-            property:'--webkit-text-shadow',
-            compiler:(value)=>{
-                console.log(value);
-                return value
-            },
-        },
-        'text':{
-            property:'color',
-            extend:'color',
-            // compiler:(value)=>this.compiler(value)
-        },
-        $color:{extend:'color'},
-        text:{
-            property:'color',
-            compiler:(value,custom)=>{
-                return config.extend.$color.compiler(value,custom);
-            },
-            values:['red:danger']
-        },
-        // 'font-size':{
-        //     alias:'fs',
-        //     values:["2rem:xl"],
-        //     compiler:(value)=>{
-        //         return value;
-        //     }
-        // },
-        $padding:{extend:'padding'},
-        // 'padding':{
-        //    alias:'p',
-        //     compiler:getCompiler('padding').compiler,
-        //     values:[...getCompiler('padding').values,'var(--padding-xs,4px):xs','8px:sm','12px:md','14px:lg','16px:xl','20px:xxl']
-        // },
-        
-        'shadows':{
-            property:'box-shadow',
-            //alias:'sdo',
-            compiler:(value)=>{
-                value=value.slice(1);
-                const values={
-                    '3xl': ' 0px 32px 64px -12px var(--shadow-color)',
-                    '2xl': ' 0px 24px 48px -12px var(--shadow-color)',
-                    'xl': ' 0px 20px 24px -4px var(--shadow-color)',
-                    'lg': ' 0px 12px 16px -4px var(--shadow-color)',
-                    'md': ' 0px 4px 8px -2px var(--shadow-color)',
-                    'sm': ' 0px 1px 3px var(--shadow-color)',
-                    'xs': ' 0px 1px 2px var(--shadow-color)',
-                };
-                if(values.hasOwnProperty(value)) return values[value];
-            }
-         
-        }
-    },
-    //statement:``,
-    custom:{
-        colors:{
-            white:'#e3e3e3',
-            'whiter':'#f3f3f3',
-            whitest:'#ffffff',
-            "primary":"#4E60FF",
-        "primary-lightest":"#F8F9FF",
-        "primary-light":"#F3F4FF",
-        "primary-30":"#CACFFF",
-        "primary-hover":"#697BFF",
-        "primary-dark":"#3A4CEB",
-
-        "black":"#2B2B43",
-        "gray-dark":"#545563",
-        "gray":"#83859C",
-        "gray-light":"#C7C8D2",
-        "gray-lightest":"#EDEEF2",
-        "main-bg-color":"#F7F7F9",
-
-        "error":"#FF5C60",
-        "error-lightest":"#FFF6F6",
-        "error-light":"#FFEAEA",
-        "error-hover":"#FF6B6F",
-        "error-dark":"#E13E42",
-        "success":'#1ABF70',
-        "success-light":'#E8F9F1',
-        "secondary":"#FD6D22",
-        "secondary-light":"#FFF3ED",
-        "tertiary":"#8C3EEE",
-        "tertiary-light":"#F6F0FE",
-        }
-    },
-    prebuild:{
-        //'colorize-dark':'background:#0f0f0f;color:#e3e3e3',
+     prebuild:{
+        'colorize-dark':'background:#0f0f0f;color:#e3e3e3',
         //'x-clip-menu':'clip-path: polygon(0% 10%,100% 10%,100% 20%,0% 20%,0% 45%,100% 45%,100% 55%,0% 55%,0% 80%,100% 80%,100% 90%,0% 90%);',
         
     },
@@ -122,8 +34,16 @@ const config={
         'x-responsive-xl':'xs-w-100p sm-w-100p md-w-100p lg-w-100p xl-w-1140px 2xl-w-1320px',
         'x-responsive-2xl':'xs-w-100p sm-w-100p md-w-100p lg-w-100p xl-w-100p 2xl-w-1320px',
         'x-responsive-fluid':'xs-w-100p sm-w-100p md-w-100p lg-w-100p xl-100p 2xl-100p',
+        'btn':`\
+        [bgc-red,c-yellow] 
+        --hover[c-blue,bgc-yellow]
+        `,
+        
     },
     statement:`.color{color:red}`,
+
+   
+   
    ignore:['bgc-red'] 
 }
 export  default config;

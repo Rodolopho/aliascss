@@ -1,5 +1,34 @@
 export default {
-      
+  // bgc-red pa l-0 t-0 r-0 [class~=x-absolute-hide]-tf-ty--100% [data-absolute-hide]-tf-ty--100%
+  'x-absolute-0':{
+            type:'statement',
+            statement:`pa t-0 l-0 r-0 btm-0`
+        },      
+  'x-absolute-top':{
+            type:'statement',
+            statement:`tp-transform tdu-0.35s ttf(cubic-bezier(0.16,1,0.3,1))_  will-change-transform 
+            pa l-0 t-0 r-0 [class~=x-absolute-hide]-tf-ty--100% [data-absolute-hide]-tf-ty--100%"
+            `
+        },
+        
+         'x-absolute-bottom':{
+            type:'statement',
+            statement:`tp-transform tdu-0.35s ttf(cubic-bezier(0.16,1,0.3,1))_  will-change-transform 
+            pa l-0 btm-0 r-0 [class~=x-absolute-hide]-tf-ty-100% [data-absolute-hide]-tf-ty-100%
+            `
+        },
+         'x-absolute-right':{
+            type:'statement',
+            statement:`tp-transform tdu-0.35s ttf(cubic-bezier(0.16,1,0.3,1))_  will-change-transform 
+            pa btm-0 t-0 w-220px r-0 [class~=x-absolute-hide]-tf-tx-100% [data-absolute-hide]-tf-tx-100%
+            `
+        },
+         'x-absolute-left':{
+            type:'statement',
+            statement:`tp-transform tdu-0.35s ttf(cubic-bezier(0.16,1,0.3,1))_  will-change-transform 
+            pa l-0 t-0 btm-0  [class~=x-absolute-hide]-tf-tx--100% [data-absolute-hide]-tf-tx--100%
+            `
+        },
         'x-btn':{
             type:'statement',
             statement:`@base-all-unset 
@@ -48,63 +77,8 @@ export default {
 
     'x-import-tokens':{
         type:'raw',
-        statement:`
-        :root {
-            --text-white:#ffffffff;
-            --text-black:#00000000;
-            --text-color:initial;
-            --text-hover-color:initial;
-            --text-pressed-color:initial;
-            --text-disabled-color:initial;
-            --text-active-color:initial;
-            --text-link-color:initial;
-            --text-visited-color:initial;
-            --bg-color:initial;
-            --bg-hover-color:initial;
-            --bg-disabled-color:initial;
-            --bg-pressed-color:initial;
-            --bg--active-color:initial;
-
-            --border-color:initial;
-            --border-hover-color:initial;
-            --border-disabled-color:initial;
-            --border-pressed-color:initial;
-            --border--active-color:initial;
-        }
-        
-        @media (prefers-color-scheme: dark) {
-            :root{
-            --text-white:#00000000;
-            --text-black:#fffffff;
-            --text-color:initial;
-            --text-hover-color:initial;
-            --text-pressed-color:initial;
-            --text-disabled-color:initial;
-            --text-active-color:initial;
-            --text-link-color:initial;
-            --text-visited-color:initial;
-            --text-color:initial;
-
-            --bg-color:initial;
-            --bg-hover-color:initial;
-            --bg-disabled-color:initial;
-            --bg-pressed-color:initial;
-            --bg--active-color:initial;
-
-            --border-color:initial;
-            --border-hover-color:initial;
-            --border-disabled-color:initial;
-            --border-pressed-color:initial;
-            --border--active-color:initial;
-            }
-        }
-
-        .x-import-semantics-vars{
-            color:var(--text-color)
-        }
-
+        statement:`   
         :root{
-
 
             /* Fluid Display Scale */
             --display-xs:  clamp(1.125rem, calc(1rem + 0.625vw), 1.5rem);      /* Scales from 18px to 24px */
@@ -114,10 +88,8 @@ export default {
             --display-xl:  clamp(2.25rem,  calc(1.75rem + 2.5vw), 3.75rem);     /* Scales from 36px to 60px */
             --display-2xl: clamp(2.5rem,   calc(1.8333rem + 3.3333vw), 4.5rem); /* Scales from 40px to 72px */
                
-            
             /* Typography scale — fluid */
     
-            
             --text-xs:   clamp(0.75rem,  calc(0.7rem + 0.25vw),  0.875rem);
             --text-sm:   clamp(0.875rem, calc(0.8rem + 0.35vw),  1rem);
             --text-base: clamp(1rem,     calc(0.95rem + 0.25vw), 1.125rem);
@@ -226,9 +198,6 @@ export default {
                 0 16px 32px oklch(var(--shadow-color) / 0.06),
                 0 32px 80px oklch(var(--shadow-color) / 0.14);
 
-
-
-
             /* Layout */
             --content-narrow:  640px;
             --content-default: 960px;
@@ -261,33 +230,33 @@ export default {
 
             // CSS entities
             
-            'x-currency-dollar' :{type:'statement',statement:'--bf-cont_0024'
-            },
-            'x-currency-cent' :{type:'statement',statement:'--bf-cont_00A2'
-            },
-            'x-currency-pound' :{type:'statement',statement:'--bf-cont_00A3'
-            },
-            'x-currency' :{type:'statement',statement:'--bf-cont_00A4'
-            },
-            'x-currency-yen' :{type:'statement',statement:'--bf-cont_00A5'
-            },
-            'x-currency-euro-currency' :{type:'statement',statement:'--bf-cont_20A0', /* Historical ECU */
-            },
-            'x-currency-euro' :{type:'statement',statement:'--bf-cont_20AC',
-            },
+            // 'x-currency-dollar' :{type:'statement',statement:'--bf-cont_0024'
+            // },
+            // 'x-currency-cent' :{type:'statement',statement:'--bf-cont_00A2'
+            // },
+            // 'x-currency-pound' :{type:'statement',statement:'--bf-cont_00A3'
+            // },
+            // 'x-currency' :{type:'statement',statement:'--bf-cont_00A4'
+            // },
+            // 'x-currency-yen' :{type:'statement',statement:'--bf-cont_00A5'
+            // },
+            // 'x-currency-euro-currency' :{type:'statement',statement:'--bf-cont_20A0', /* Historical ECU */
+            // },
+            // 'x-currency-euro' :{type:'statement',statement:'--bf-cont_20AC',
+            // },
 
-            'x-currency-rupee' :{type:'statement',statement:'--bf-cont_20B9',},
-            'x-symbol-copy-right' :{type:'statement',statement:'--bf-cont_00A9',},
-            'x-symbol-registered' :{type:'statement',statement:'--bf-cont_00AE',},
-            'x-symbol-divide' :{type:'statement',statement:'--bf-cont_00Ff7',},
-            'x-symbol-arrow-left' :{type:'statement',statement:'--bf-cont_2190',},
-            'x-symbol-arrow-up' :{type:'statement',statement:'--bf-cont_2191',},
-            'x-symbol-arrow-right' :{type:'statement',statement:'--bf-cont_2192',},
-            'x-symbol-arrow-down' :{type:'statement',statement:'--bf-cont_2193',},
-            'x-symbol-arrow-left-right' :{type:'statement',statement:'--bf-cont_2194',},
-            'x-symbol-arrow-down-left' :{type:'statement',statement:'--bf-cont_2195',},
-            'x-symbol-square-root' :{type:'statement',statement:'--bf-cont_221A',},
-            'x-symbol-trade-mark' :{type:'statement',statement:'--bf-cont_2122',},
+            // 'x-currency-rupee' :{type:'statement',statement:'--bf-cont_20B9',},
+            // 'x-symbol-copy-right' :{type:'statement',statement:'--bf-cont_00A9',},
+            // 'x-symbol-registered' :{type:'statement',statement:'--bf-cont_00AE',},
+            // 'x-symbol-divide' :{type:'statement',statement:'--bf-cont_00Ff7',},
+            // 'x-symbol-arrow-left' :{type:'statement',statement:'--bf-cont_2190',},
+            // 'x-symbol-arrow-up' :{type:'statement',statement:'--bf-cont_2191',},
+            // 'x-symbol-arrow-right' :{type:'statement',statement:'--bf-cont_2192',},
+            // 'x-symbol-arrow-down' :{type:'statement',statement:'--bf-cont_2193',},
+            // 'x-symbol-arrow-left-right' :{type:'statement',statement:'--bf-cont_2194',},
+            // 'x-symbol-arrow-down-left' :{type:'statement',statement:'--bf-cont_2195',},
+            // 'x-symbol-square-root' :{type:'statement',statement:'--bf-cont_221A',},
+            // 'x-symbol-trade-mark' :{type:'statement',statement:'--bf-cont_2122',},
 
 
             // --
@@ -307,7 +276,7 @@ export default {
                     [x-menu-open][--af-tf-r-45deg,--af-t-50p,--bf-tf-r--45deg,--bf-t50p,--af-tn-all-0d5s,--bf-tn-all-0d5s]`
                 },
 
-                'x-import-utils-1':{
+                'x-import-utils-classes':{
                     type:'statement',
                     statement:`
                     [c-gray-900,dark-c-grayDark-50]--as-text-primary
@@ -383,12 +352,520 @@ export default {
                     `,
                     },
 
-                    'x-import-vars-dark':{
-                        type:'statement',
-                        statement:`
-                        --text-primary:--gray-50
-                        --text-secondary:--gray-200
-                        --text-disabled:--gray-400
-                        `,
-                    },
+                    'x-import-utils-ra':{
+                        type:'raw',
+                        statement:`/* colors */
+:root {
+  /* Change this variable to set the theme color for all components. */
+  /* You can use the below presets, or choose a custom color. */
+  --tint: var(--indigo);
+
+  /* theme colors */
+  /* lightness channel is only used as a multiplier for chroma (see below) */
+  --gray: oklch(0.5 0 0);
+  --red: oklch(0.6 0.181447 27.0726);
+  --orange: oklch(0.7 0.150492 54);
+  --yellow: oklch(0.8 0.128516 73.8032);
+  --turquoise: oklch(0.5 0.081146 205.114);
+  --cyan: oklch(0.4 0.142107 243.926);
+  --green: oklch(0.5 0.121276 155.372);
+  --blue: oklch(0.5 0.22049 266.315);
+  --indigo: oklch(1 0.25049 284.23);
+  --purple: oklch(0.7 0.223324 302);
+  --pink: oklch(0.6 0.177717 347.813);
+
+  /** tint color scale */
+  --tint-100: oklch(from var(--tint) var(--lightness-100) var(--chroma-100) h);
+  --tint-200: oklch(from var(--tint) var(--lightness-200) var(--chroma-200) h);
+  --tint-300: oklch(from var(--tint) var(--lightness-300) var(--chroma-300) h);
+  --tint-400: oklch(from var(--tint) var(--lightness-400) var(--chroma-400) h);
+  --tint-500: oklch(from var(--tint) var(--lightness-500) var(--chroma-500) h);
+  --tint-600: oklch(from var(--tint) var(--lightness-600) var(--chroma-600) h);
+  --tint-700: oklch(from var(--tint) var(--lightness-700) var(--chroma-700) h);
+  --tint-800: oklch(from var(--tint) var(--lightness-800) var(--chroma-800) h);
+  --tint-900: oklch(from var(--tint) var(--lightness-900) var(--chroma-900) h);
+  --tint-1000: oklch(from var(--tint) var(--lightness-1000) var(--chroma-1000) h);
+  --tint-1100: oklch(from var(--tint) var(--lightness-1100) var(--chroma-1100) h);
+  --tint-1200: oklch(from var(--tint) var(--lightness-1200) var(--chroma-1200) h);
+  --tint-1300: oklch(from var(--tint) var(--lightness-1300) var(--chroma-1300) h);
+  --tint-1400: oklch(from var(--tint) var(--lightness-1400) var(--chroma-1400) h);
+  --tint-1500: oklch(from var(--tint) var(--lightness-1500) var(--chroma-1500) h);
+  --tint-1600: oklch(from var(--tint) var(--lightness-1600) var(--chroma-1600) h);
+
+  /* gray scale */
+  --gray-100: oklch(from var(--gray) var(--lightness-100) c h);
+  --gray-200: oklch(from var(--gray) var(--lightness-200) c h);
+  --gray-300: oklch(from var(--gray) var(--lightness-300) c h);
+  --gray-400: oklch(from var(--gray) var(--lightness-400) c h);
+  --gray-500: oklch(from var(--gray) var(--lightness-500) c h);
+  --gray-600: oklch(from var(--gray) var(--lightness-600) c h);
+  --gray-700: oklch(from var(--gray) var(--lightness-700) c h);
+  --gray-800: oklch(from var(--gray) var(--lightness-800) c h);
+  --gray-900: oklch(from var(--gray) var(--lightness-900) c h);
+  --gray-1000: oklch(from var(--gray) var(--lightness-1000) c h);
+  --gray-1100: oklch(from var(--gray) var(--lightness-1100) c h);
+  --gray-1200: oklch(from var(--gray) var(--lightness-1200) c h);
+  --gray-1300: oklch(from var(--gray) var(--lightness-1300) c h);
+  --gray-1400: oklch(from var(--gray) var(--lightness-1400) c h);
+  --gray-1500: oklch(from var(--gray) var(--lightness-1500) c h);
+  --gray-1600: oklch(from var(--gray) var(--lightness-1600) c h);
+}
+
+/* light mode colors */
+:root {
+  --background-color: #f8f8f8;
+  --gray-50: #ffffff;
+
+  --lightness-100: 98.1187%;
+  --lightness-200: 95.2045%;
+  --lightness-300: 91.1434%;
+  --lightness-400: 85.1751%;
+  --lightness-500: 79.1773%;
+  --lightness-600: 72.3297%;
+  --lightness-700: 67.0121%;
+  --lightness-800: 62.3039%;
+  --lightness-900: 57.9699%;
+  --lightness-1000: 51.9076%;
+  --lightness-1100: 46.9058%;
+  --lightness-1200: 41.0821%;
+  --lightness-1300: 35.3616%;
+  --lightness-1400: 29.6725%;
+  --lightness-1500: 24.5366%;
+  --lightness-1600: 16.6959%;
+
+  /* lower chroma at low lightness levels */
+  --chroma-100: calc(l * c * 0.5);
+  --chroma-200: calc(l * c * 0.6);
+  --chroma-300: calc(l * c * 0.7);
+  --chroma-400: calc(l * c * 0.8);
+  --chroma-500: calc(l * c * 0.9);
+  --chroma-600: c;
+  --chroma-700: c;
+  --chroma-800: c;
+  --chroma-900: c;
+  --chroma-1000: c;
+  --chroma-1100: c;
+  --chroma-1200: c;
+  --chroma-1300: c;
+  --chroma-1400: c;
+  --chroma-1500: c;
+  --chroma-1600: c;
+
+  --highlight-hover: rgb(0 0 0 / 0.07);
+  --highlight-pressed: rgb(0 0 0 / 0.15);
+  --overlay-background: var(--gray-50);
+  --overlay-border: rgb(0 0 0 / 0.06);
+  --popover-shadow: 0 8px 20px rgba(0 0 0 / 0.12);
+}
+
+/* dark mode colors */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-color: #1b1b1b;
+    --gray-50: oklch(22% 0 0);
+
+    --lightness-100: 29.6725%;
+    --lightness-200: 35.3616%;
+    --lightness-300: 41.0821%;
+    --lightness-400: 46.9058%;
+    --lightness-500: 51.9076%;
+    --lightness-600: 57.9699%;
+    --lightness-700: 56.1347%;
+    --lightness-800: 59.2866%;
+    --lightness-900: 62.3039%;
+    --lightness-1000: 67.0121%;
+    --lightness-1100: 72.3297%;
+    --lightness-1200: 79.1773%;
+    --lightness-1300: 85.1751%;
+    --lightness-1400: 91.1434%;
+    --lightness-1500: 95.2045%;
+    --lightness-1600: 100%;
+
+    --highlight-hover: rgb(255 255 255 / 0.1);
+    --highlight-pressed: rgb(255 255 255 / 0.2);
+    --overlay-background: var(--gray-100);
+    --overlay-border: rgb(255 255 255 / 0.2);
+    --popover-shadow: 0 8px 20px rgba(0 0 0 / 0.5);
+  }
+}
+
+/* Semantic colors */
+:root {
+  --focus-ring-color: var(--tint-1000);
+  --text-color: var(--gray-1200);
+  --text-color-hover: var(--gray-1300);
+  --text-color-disabled: var(--gray-600);
+  --text-color-placeholder: var(--gray-1000);
+  --link-color: var(--tint-1200);
+  --link-color-secondary: var(--gray-1200);
+  --link-color-pressed: var(--tint-1300);
+  --border-color: var(--gray-400);
+  --border-color-hover: var(--gray-500);
+  --border-color-disabled: var(--gray-300);
+  --field-text-color: var(--gray-1400);
+  --button-background: var(--tint-100);
+  --button-background-pressed: var(--tint-200);
+  /* these colors are the same between light and dark themes
+   * to ensure contrast with the foreground color */
+  --highlight-background: oklch(from var(--tint) 55% c h);
+  --highlight-background-pressed: oklch(from var(--tint) 50% c h);
+  --highlight-background-invalid: oklch(from var(--red) var(--lightness-900) c h);
+  --highlight-foreground: white;
+  --highlight-overlay: oklch(from var(--tint-1000) l c h / 15%);
+  --invalid-color: oklch(from var(--red) var(--lightness-1000) c h);
+  --field-background: var(--gray-50);
+}
+
+/* Windows high contrast mode overrides */
+@media (forced-colors: active) {
+  :root {
+    --background-color: Canvas;
+    --focus-ring-color: Highlight;
+    --text-color: ButtonText;
+    --text-color-hover: ButtonText;
+    --text-color-disabled: GrayText;
+    --text-color-placeholder: ButtonText;
+    --link-color: LinkText;
+    --link-color-secondary: LinkText;
+    --link-color-pressed: LinkText;
+    --border-color: ButtonBorder;
+    --border-color-hover: ButtonBorder;
+    --border-color-pressed: ButtonBorder;
+    --border-color-disabled: GrayText;
+    --field-background: Field;
+    --field-text-color: FieldText;
+    --overlay-background: Canvas;
+    --overlay-border: ButtonBorder;
+    --button-background: ButtonFace;
+    --button-background-pressed: ButtonFace;
+    --highlight-background: Highlight;
+    --highlight-background-pressed: Highlight;
+    --highlight-background-invalid: LinkText;
+    --highlight-foreground: HighlightText;
+    --invalid-color: LinkText;
+  }
+}
+
+/* typography and spacing scale */
+:root {
+  --font-size: 0.875rem; /* 14px */
+  --font-size-sm: 0.75rem; /* 12px */
+  --font-size-lg: 1rem; /* 16px */
+  --radius: 8px;
+  --radius-sm: 6px;
+  --radius-lg: 10px;
+  --radius-xl: 16px;
+  --spacing: 0.25rem; /* 4px */
+  --spacing-1: var(--spacing);
+  --spacing-2: calc(2 * var(--spacing));
+  --spacing-3: calc(3 * var(--spacing));
+  --spacing-4: calc(4 * var(--spacing));
+  --spacing-5: calc(5 * var(--spacing));
+  --spacing-6: calc(6 * var(--spacing));
+  --spacing-7: calc(7 * var(--spacing));
+  --spacing-8: calc(8 * var(--spacing));
+  --spacing-9: calc(9 * var(--spacing));
+  --spacing-10: calc(10 * var(--spacing));
+}
+
+/* Scale up hit targets on high resolution mobile devices. */
+@media (min-resolution: 200dpi) {
+  :root {
+    --spacing: calc(0.25rem * 1.25);
+    --font-size: 1.0625rem; /* 17px */
+    --font-size-sm: 0.9375rem; /* 15px */
+    --font-size-lg: 1.25rem; /* 20px */
+  }
+}
+
+@layer utilities {
+  /* utility that creates a button-like element, which can be optionally selected */
+  .button-base {
+    --button-color: var(--tint);
+    --button-background: oklch(from var(--button-color) var(--lightness-100) var(--chroma-100) h);
+    --button-gradient: oklch(from var(--button-color) var(--lightness-200) var(--chroma-200) h);
+    --button-border: oklch(from var(--button-color) var(--lightness-300) var(--chroma-300) h);
+    --button-highlight: rgb(255 255 255 / 0.8);
+    --button-shadow: oklch(from var(--button-color) var(--lightness-400) var(--chroma-400) h);
+    --button-border-size: 1px;
+    --button-text: oklch(from var(--button-color) var(--lightness-1400) var(--chroma-1400) h);
+    --button-gradient-size: 8px;
+
+    background: var(--button-background);
+    color: var(--button-text);
+    box-shadow:
+      inset 0 -1px 0 var(--button-shadow),
+      /* bottom shadow */ inset 0 0 0 var(--button-border-size) var(--button-border),
+      /* border */ inset 0px calc(var(--button-border-size) + 1px) 0px var(--button-highlight),
+      /* top specular highlight */ inset 0px calc(-1 * var(--button-gradient-size))
+        var(--button-gradient-size) -2px var(--button-gradient); /* inner gradient */
+    outline: none;
+    transition-property: background, color, scale, box-shadow;
+    transition-duration: 200ms;
+    will-change: scale;
+    forced-color-adjust: none;
+    -webkit-tap-highlight-color: transparent;
+
+    @media (prefers-color-scheme: dark) {
+      --button-shadow: oklch(from var(--button-color) var(--lightness-200) var(--chroma-200) h);
+      --button-highlight: rgb(255 255 255 / 0.15);
+      box-shadow:
+        inset 0 var(--button-border-size) 0 var(--button-highlight),
+        /* top specular highlight */ inset 0 calc(-1 * var(--button-border-size)) 0
+          var(--button-shadow),
+        /* bottom shadow */ inset 0 0 0 var(--button-border-size) var(--button-border),
+        /* border */ inset 0 var(--button-gradient-size) var(--button-gradient-size) -2px
+          var(--button-gradient); /* inner gradient */
+    }
+
+    &:where([data-pressed]) {
+      --button-background: oklch(from var(--button-color) var(--lightness-200) var(--chroma-200) h);
+    }
+
+    &:where([data-focus-visible]) {
+      outline: 2px solid var(--focus-ring-color);
+      outline-offset: 2px;
+    }
+
+    &:where([data-variant='secondary']) {
+      --button-color: var(--gray);
+    }
+
+    &:where([data-variant='quiet']) {
+      --button-background: none;
+      --button-text: var(--text-color);
+      box-shadow: 0 0 0 1px transparent;
+
+      &:where([data-hovered], [data-pressed]) {
+        --button-background: var(--tint-200);
+        --button-text: var(--tint-1400);
+        box-shadow: 0 0 0 1px var(--tint-200);
+      }
+    }
+
+    &:where([data-selected]) {
+      --button-background: oklch(from var(--button-color) 55% c h);
+      --button-border: oklch(from var(--button-color) 50% c h);
+      --button-gradient: var(--button-border);
+      --button-highlight: rgb(255 255 255 / 0.2);
+      --button-shadow: oklch(from var(--button-color) 30% c h);
+      --button-text: var(--highlight-foreground);
+
+      box-shadow:
+        inset 0 -1px 0 var(--button-shadow),
+        /* bottom shadow */ inset 0 0 0 1px var(--button-border),
+        /* border */ inset 0 2px 0 var(--button-highlight),
+        /* top specular highlight */ inset 0 calc(-1 * var(--button-gradient-size))
+          var(--button-gradient-size) var(--button-gradient); /* inner gradient */
+
+      @media (prefers-color-scheme: dark) {
+        --button-highlight: rgb(255 255 255 / 0.4);
+        --button-gradient: rgb(255 255 255 / 0.2);
+        --button-shadow: var(--button-border);
+        box-shadow:
+          inset 0 1px 0 var(--button-highlight),
+          /* top specular highlight */ inset 0 var(--button-gradient-size)
+            var(--button-gradient-size) var(--button-gradient),
+          /* inner gradient */ inset 0 0 0 1px var(--button-border); /* border */
+      }
+
+      &:where([data-pressed]) {
+        --button-background: oklch(from var(--button-color) 50% c h);
+      }
+    }
+
+    &:where([data-disabled]) {
+      box-shadow: none;
+      --button-background: var(--border-color-disabled);
+      --button-text: var(--text-color-disabled);
+
+      &:where([data-variant='quiet']) {
+        --button-background: none;
+      }
+    }
+
+    @media (forced-colors: active) {
+      --button-background: ButtonFace;
+      --button-text: ButtonText;
+      --button-border: ButtonBorder;
+      box-shadow: inset 0 0 0 var(--button-border-size) var(--button-border);
+
+      &:where([data-variant='quiet']) {
+        --button-border: transparent;
+        &:where([data-hovered], [data-pressed]) {
+          --button-border: ButtonBorder;
+        }
+      }
+
+      &:where([data-selected]) {
+        --button-background: Highlight;
+        --button-text: HighlightText;
+        --button-border: Highlight;
+      }
+
+      &:where([data-disabled]) {
+        --button-background: ButtonFace;
+        --button-text: GrayText;
+        --button-border: GrayText;
+
+        &:where([data-variant='quiet']) {
+          --button-border: transparent;
+        }
+      }
+    }
+  }
+
+  /* utility that creates a small indicator, such as a checkbox, radio, switch, or slider thumb */
+  .indicator {
+    --indicator-color: var(--gray);
+    --indicator-background: oklch(
+      from var(--indicator-color) var(--lightness-100) var(--chroma-100) h
+    );
+    --indicator-border: oklch(from var(--indicator-color) var(--lightness-800) var(--chroma-800) h);
+    --indicator-drop-shadow: 0 0;
+
+    background: var(--indicator-background);
+    box-shadow:
+      inset 0 0 0 1px var(--indicator-border),
+      /* border */ inset 0 2px 0 white,
+      /* top specular highlight */ inset 0 -4px 2px
+        oklch(from var(--indicator-color) 30% c h / 0.08),
+      /* inner gradient */ var(--indicator-drop-shadow); /* optional drop shadow */
+    will-change: scale;
+
+    @media (prefers-color-scheme: dark) {
+      box-shadow:
+        inset 0 1px 0 rgb(255 255 255 / 0.4),
+        /* top specular highlight */ inset 0 4px 2px rgb(255 255 255 / 0.1),
+        /* inner shadow */ inset 0 0 0 1px var(--indicator-border),
+        /* border */ var(--indicator-drop-shadow); /* optional drop shadow */
+    }
+
+    @media (forced-colors: active) {
+      --indicator-background: ButtonFace;
+      --indicator-border: ButtonBorder;
+      box-shadow: inset 0 0 0 1px var(--indicator-border);
+    }
+
+    &[data-pressed],
+    [data-pressed] & {
+      scale: 0.9;
+    }
+
+    [data-selected] > &,
+    [data-indeterminate] > & {
+      --indicator-color: var(--highlight-background);
+      --indicator-background: var(--indicator-color);
+      --indicator-highlight: rgb(255 255 255 / 0.3);
+      --indicator-shadow: oklch(from var(--indicator-color) 45% c h);
+      --indicator-border: var(--indicator-background);
+      box-shadow:
+        inset 0 -1px 0 var(--indicator-shadow),
+        /* bottom shadow */ inset 0 0 0 1px var(--indicator-border),
+        /* border */ inset 0 2px 0 var(--indicator-highlight),
+        /* top specular highlight */ var(--indicator-drop-shadow); /* optional drop shadow */
+
+      @media (prefers-color-scheme: dark) {
+        --indicator-highlight: rgb(255 255 255 / 0.5);
+        --indicator-gradient: rgb(255 255 255 / 0.12);
+        box-shadow:
+          inset 0 1px 0 var(--indicator-highlight),
+          /* top specular highlight */ inset 0 4px 2px var(--indicator-gradient),
+          /* inner gradient */ inset 0 0 0 1px var(--indicator-border),
+          /* border */ var(--indicator-drop-shadow); /* optional drop shadow */
+      }
+
+      @media (forced-colors: active) {
+        box-shadow: none;
+      }
+    }
+
+    &[data-invalid],
+    [data-invalid] > & {
+      --indicator-color: var(--invalid-color);
+
+      @media (forced-colors: active) {
+        --indicator-border: var(--invalid-color);
+      }
+    }
+
+    &[data-focus-visible],
+    [data-focus-visible] > & {
+      outline: 2px solid var(--focus-ring-color);
+      outline-offset: 2px;
+    }
+
+    &[data-disabled],
+    [data-disabled] > & {
+      background: var(--field-background);
+      box-shadow: inset 0 0 0 1px var(--border-color-disabled);
+    }
+  }
+
+  /* utility that creates an inset effect, used for form fields, slider/progress tracks, etc. */
+  .inset {
+    --inset-background: var(--field-background);
+    --inset-border: var(--border-color);
+    --inset-border-size: 1px;
+    --inset-shadow-offset: 2px;
+    --inset-shadow-size: 4px;
+
+    background: var(--inset-background);
+    box-shadow:
+      inset 0 0 0 var(--inset-border-size) var(--inset-border),
+      /* border */ inset 0 var(--inset-shadow-offset) var(--inset-shadow-size) rgb(0 0 0 / 0.15),
+      /* inner shadow */ 0 1px 0 var(--gray-50); /* bottom specular highlight */
+    transition: box-shadow 200ms;
+    forced-color-adjust: none;
+
+    @media (prefers-color-scheme: dark) {
+      --inset-border: var(--gray-200);
+      --border-color-hover: var(--gray-300);
+      --inset-highlight: var(--gray-400);
+      --inset-shadow-size: 6px;
+      box-shadow:
+        inset 0 calc(-1 * var(--inset-border-size)) 0 var(--inset-highlight),
+        /* bottom specular highlight */ inset 0 0 0 var(--inset-border-size) var(--inset-border),
+        /* border */ inset 0 1px var(--inset-shadow-size) rgb(0 0 0); /* inner shadow */
+    }
+
+    &:where([data-hovered], [data-pressed]) {
+      --inset-border: var(--border-color-hover);
+    }
+
+    @media (forced-colors: active) {
+      --inset-border: ButtonBorder;
+      box-shadow: inset 0 0 0 var(--inset-border-size) var(--inset-border);
+    }
+
+    &:where([data-invalid]) {
+      --inset-border: var(--invalid-color);
+      --inset-highlight: var(--inset-border);
+    }
+
+    &:where([data-disabled]) {
+      box-shadow: inset 0 0 0 1px var(--border-color-disabled);
+    }
+
+    &.track {
+      --inset-shadow-offset: 1px;
+      --inset-shadow-size: 3px;
+
+      @media (prefers-color-scheme: light) {
+        --inset-background: var(--gray-300);
+        --inset-border: var(--gray-500);
+        --inset-border-size: 0.5px;
+      }
+
+      @media (forced-colors: active) {
+        --inset-background: Field;
+        --inset-border: ButtonBorder;
+        --inset-border-size: 1px;
+      }
+    }
+  }
+}
+
+`
+                    }
 }

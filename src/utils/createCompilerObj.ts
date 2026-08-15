@@ -47,7 +47,8 @@ export function extractProperty(className:string, data:{[key:string]:Property}){
 
             // we just need parts before '--' or __ as they can't be in property  is any;
             const splittedClassName=className.split('--')[0];
-            const extractPossiblePropertyPortion = splittedClassName.match(/^[A-Z]?[a-z-]+/);
+            // const extractPossiblePropertyPortion = splittedClassName.match(/^[A-Z]?[a-z-]+/);
+            const extractPossiblePropertyPortion = splittedClassName.match(/^[a-z-]+/i);
 
             //  Not a valid Aliascss class name
             if (!extractPossiblePropertyPortion) return[ null, null];
@@ -67,8 +68,8 @@ export function extractProperty(className:string, data:{[key:string]:Property}){
             //   console.log(className,0);
             } else {
             //  remove  last -[a-z]+ and try again un till ^[a-z]+ means we are at begin ing
-                while (/[-][a-z]+$/.test(propertyPortion)) {
-                    propertyPortion = propertyPortion.replace(/[-][a-z]+$/, '');
+                while (/[-][a-z]+$/i.test(propertyPortion)) {
+                    propertyPortion = propertyPortion.replace(/[-][a-z]+$/i, '');
                     if (data.hasOwnProperty(propertyPortion)) {
                          propertyHolder = data[propertyPortion];
                     break;

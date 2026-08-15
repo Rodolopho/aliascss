@@ -198,6 +198,7 @@ export const customStaticClassNames: { [key: string]: string } = {
   'x-absolute-inset-y':"position:absolute;margin:auto;top:0;bottom:0;",
   'x-absolute-inset-x':"position:absolute;left:0;right:0;",
   'x-fixed-center':"position:fixed;margin:auto;top:0;left:0;right:0;bottom:0;",
+  'x-isolate':'isolation:isolate',
   'x-sr-only':'position:absolute;overflow:hidden;clip-path:rect(0 0 0 0);height:1px;width:1px;margin:-1px;padding:0;border:0',
 
 

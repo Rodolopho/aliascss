@@ -1,4 +1,6 @@
 export default function transition(data: string) {
+
+  if(data.match(/^-?\d*\.?\d+(ms|s)$/)) return data.replace(/^-/,'');
   let holder = '';
 
   data

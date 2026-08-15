@@ -9,8 +9,12 @@ const config={
         
         },
         extend:{
-            shadow:{
+            hadow:{
                 property:'box-shadow',
+            },
+            'Fsh':{
+               property:'flex-shrink',
+               compiler:(v:string)=> v.replace(/^-/,'')
             }
     },
     groups:{
@@ -37,6 +41,10 @@ describe("Test Return statement",()=>{
      })
      test('statement from obj',()=>{
          expect(statement.groupForJs('--c:red').toString()).toBe({"--cu": "red"}.toString());
+     })
+      test('statement from obj for flex-shrink',()=>{
+         expect(statement.make('Fsh-10px')).toBe('.Fsh-10px{flex-shrink:10px}');
+
      })
      
      // ---------new Test &-----------

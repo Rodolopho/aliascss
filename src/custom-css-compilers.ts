@@ -2,7 +2,7 @@ import prebuild from "./prebuild.js";
 import { cssVarWithDefault } from "./utils/helper.js";
 import color from './compilers/color.js';
 import length from './compilers/length.js';
-import {compiler} from './returnStatement.js';
+// import {compiler} from './returnStatement.js';
 type Property = {
     alias?:string,
     property?: string,
@@ -55,10 +55,96 @@ const cssCustomCompilers:{
 
 
 // },
-'ButtonAR':{
+'InsetRA':{
     type:'group',
     compiler:(value,custom)=>{
+        const val=value.replace(/^\(/,'').replace(/\)$/,'').trim();
         const stm=`
+    --lightness-1000: 67.0121%;
+    --border-color-disabled: var(--gray-300,${color('grayRATheme300',custom)});
+    --border-color-hover: var(--gray-500,${color('grayRATheme500',custom)});
+    --invalid-color: oklch(from ${color('redRA',custom)} var(--lightness-1000) c h);
+    --gray-50: #ffffff;
+    --field-background: var(--gray-50);
+    --inset-background: var(--field-background);
+    --inset-border: var(--border-color);
+    --inset-border-size: 1px;
+    --inset-shadow-offset: 2px;
+    --inset-shadow-size: 4px;
+
+
+    background: var(--inset-background);
+    box-shadow:
+      inset 0 0 0 var(--inset-border-size) var(--inset-border),
+      /* border */ inset 0 var(--inset-shadow-offset) var(--inset-shadow-size) rgb(0 0 0 / 0.15),
+      /* inner shadow */ 0 1px 0 var(--gray-50); /* bottom specular highlight */
+    transition: box-shadow 200ms;
+    forced-color-adjust: none;
+
+    @media (prefers-color-scheme: dark) {
+      --inset-border: var(--gray-200,${color('grayRATheme200',custom)});
+      --border-color-hover: var(--gray-300,${color('grayRATheme300',custom)});
+      --inset-highlight: var(--gray-400,${color('grayRATheme400',custom)});
+      --inset-shadow-size: 6px;
+     --gray-50: oklch(22% 0 0);
+
+      box-shadow:
+        inset 0 calc(-1 * var(--inset-border-size)) 0 var(--inset-highlight),
+        /* bottom specular highlight */ inset 0 0 0 var(--inset-border-size) var(--inset-border),
+        /* border */ inset 0 1px var(--inset-shadow-size) rgb(0 0 0); /* inner shadow */
+    }
+
+    &:where([data-hovered], [data-pressed]) {
+      --inset-border: var(--border-color-hover);
+    }
+
+    @media (forced-colors: active) {
+      --inset-border: ButtonBorder;
+      box-shadow: inset 0 0 0 var(--inset-border-size) var(--inset-border);
+    }
+
+    &:where([data-invalid]) {
+      --inset-border: var(--invalid-color);
+      --inset-highlight: var(--inset-border);
+    }
+
+    &:where([data-disabled]) {
+      box-shadow: inset 0 0 0 1px var(--border-color-disabled);
+    }
+
+    &.track {
+      --inset-shadow-offset: 1px;
+      --inset-shadow-size: 3px;
+
+      @media (prefers-color-scheme: light) {
+        --inset-background: var(--gray-300,${color('grayRATheme300',custom)});
+        --inset-border: var(--gray-500,${color('grayRATheme500',custom)});
+        --inset-border-size: 0.5px;
+        
+      }
+
+      @media (forced-colors: active) {
+        --field-background: Field;
+        --border-color-disabled: GrayText;
+        --border-color-hover: ButtonBorder; 
+        --inset-background: Field;
+        --inset-border: ButtonBorder;
+        --inset-border-size: 1px;
+        --invalid-color: LinkText;
+      }
+    }
+  `;
+        return stm;
+
+    }
+
+},
+'ButtonRA':{
+    type:'group',
+    compiler:(value,custom)=>{
+        const val=value.replace(/^\(/,'').replace(/\)$/,'').trim();
+        const stm=`
+            ${val?'--accentColor:'+color(val,custom)+';':''}
             --border-color: ${color('accentRA',custom)};
             --button-background: ${color('accentRATheme100',custom)};
             --button-gradient:${color('accentRATheme200',custom)};
@@ -205,6 +291,32 @@ const cssCustomCompilers:{
         return stm; 
     }
 },
+'x-color-scale-tint':{
+    type:'group',
+    compiler:(value)=>{
+        return `
+
+    --tint-100: oklch(from var(--tint) var(--lightness-100) var(--chroma-100) h);
+  --tint-200: oklch(from var(--tint) var(--lightness-200) var(--chroma-200) h);
+  --tint-300: oklch(from var(--tint) var(--lightness-300) var(--chroma-300) h);
+  --tint-400: oklch(from var(--tint) var(--lightness-400) var(--chroma-400) h);
+  --tint-500: oklch(from var(--tint) var(--lightness-500) var(--chroma-500) h);
+  --tint-600: oklch(from var(--tint) var(--lightness-600) var(--chroma-600) h);
+  --tint-700: oklch(from var(--tint) var(--lightness-700) var(--chroma-700) h);
+  --tint-800: oklch(from var(--tint) var(--lightness-800) var(--chroma-800) h);
+  --tint-900: oklch(from var(--tint) var(--lightness-900) var(--chroma-900) h);
+  --tint-1000: oklch(from var(--tint) var(--lightness-1000) var(--chroma-1000) h);
+  --tint-1100: oklch(from var(--tint) var(--lightness-1100) var(--chroma-1100) h);
+  --tint-1200: oklch(from var(--tint) var(--lightness-1200) var(--chroma-1200) h);
+  --tint-1300: oklch(from var(--tint) var(--lightness-1300) var(--chroma-1300) h);
+  --tint-1400: oklch(from var(--tint) var(--lightness-1400) var(--chroma-1400) h);
+  --tint-1500: oklch(from var(--tint) var(--lightness-1500) var(--chroma-1500) h);
+  --tint-1600: oklch(from var(--tint) var(--lightness-1600) var(--chroma-1600) h);
+
+        `
+
+    }
+},
 // Button:{
 //     type:'group',
 //     compiler:(value,custom)=>{
@@ -253,6 +365,7 @@ const cssCustomCompilers:{
 'Size':{
     type:'group',
     compiler:(value,custom)=>{
+        if(!value.replace(/^\(|\)$/g,'').trim()) return;
         let stm='';
         const order=['width','height','border-radius'];
         const values=value.replace(/^\(|\)$/g,'').split(',');
@@ -260,6 +373,25 @@ const cssCustomCompilers:{
             const val=/--[a-zA-Z]/.test(values[0])?`var(${values[0]})`:length(values[0])
             return `width:${val};height:${val}`
         }
+        values.forEach((e,i)=>{
+            if(i<order.length && e){
+                if(/--[a-zA-Z]/.test(e)){
+                    stm+=`${order[i]}:var(${e});`
+                }else{
+                    stm+=`${order[i]}:${length(e)};`
+                }
+                
+            }
+        });
+        return stm; 
+    }
+},
+'Font':{
+    type:'group',
+    compiler:(value,custom)=>{
+        let stm='';
+        const order=['font-size','font-weight','line-height','letter-spacing'];
+        const values=value.replace(/^\(|\)$/g,'').split(',');
         values.forEach((e,i)=>{
             if(i<order.length && e){
                 if(/--[a-zA-Z]/.test(e)){
@@ -345,6 +477,7 @@ const cssCustomCompilers:{
    
     },
 },
+
 'px':{
     type:'group',
     compiler:(y)=>{

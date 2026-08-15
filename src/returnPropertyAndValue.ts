@@ -36,21 +36,31 @@ export  default function getPropertyAndValue(
         return staticClassNames[className];
     }
 
-    // case CSS define var
+    // case 2  defining css-variable as className 
 
     if(className.startsWith('--') && className.includes(':')){
         let value=className.slice(className.indexOf(':')).replace(':','');
         const property=className.replace(value,'').replace(':','');
-        const possiblePropsName=property.slice(property.lastIndexOf('-')+1);
+       
+        let possiblePropsName='';
+        const camelCasePropertyHint=property.match(/[A-Z][a-z0-9]*$/)?.[0];
+        if(camelCasePropertyHint){
+             possiblePropsName=camelCasePropertyHint.toLowerCase();
+            
+        }else{
+             possiblePropsName=property.slice(property.lastIndexOf('-')+1);     
+        }
+
         let compiler=null;
         if(cssPropertiesWithAlias.hasOwnProperty(possiblePropsName) && cssPropertiesWithAlias[possiblePropsName].hasOwnProperty('compiler') && typeof cssPropertiesWithAlias[possiblePropsName].compiler === 'function'){
             compiler =cssPropertiesWithAlias[possiblePropsName].compiler;
+            
         }
-        // New Case :()
-        // check if has :()
-
+     
+        // if value is function i.e --some-var:(12px,red,blue);
                     if(/^\(.+\)[_]?$/.test(value)){
                         if(value.match(/_$/)){
+                            // replace --[name] with var(--[name])
                             const val=value.replace(/(--[\w-]+)/g,'var($1)')
                             .replace(/^[(]/,'').replace(/_$/,'').replace(/[)]$/,'')
                             .replace(/,/g,', ');
@@ -66,25 +76,28 @@ export  default function getPropertyAndValue(
                     }
 
                     //
-        // case 1: CSS Variable inside css variable
-        if(/^calc/.test(value)){
-            return bool?[property,value.replace(/([-+/*])([\d]|var\(|calc\()/g,' $1 $2')]:property+":"+value.replace(/([-+/*])([\d]|var\(|calc\()/g,' $1 $2');
-        }
+            // case 1: CSS Variable inside css variable
+            if(/^calc/.test(value)){
+                return bool?[property,value.replace(/([-+/*])([\d]|var\(|calc\()/g,' $1 $2')]:property+":"+value.replace(/([-+/*])([\d]|var\(|calc\()/g,' $1 $2');
+            }
 
         // case 2: CSS variable in side css variable
-        if(/^--[a-zA-Z]/.test(value)){
-            if(value.includes(':')){
-                let val=value.slice(value.indexOf(':')).replace(':','');
-                const cssVar=value.replace(val,'').replace(':','');
-                if(compiler && typeof compiler === 'function'){
-                    const v=compiler(val ,custom);
-                    val=v?v:val;
+            if(/^--[a-zA-Z]/.test(value)){
+                if(value.includes(':')){
+                    let val=value.slice(value.indexOf(':')).replace(':','');
+                    const cssVar=value.replace(val,'').replace(':','');
+                    if(compiler && typeof compiler === 'function'){
+                        const v=compiler(val ,custom);
+                        val=v?v:val;
+                    }
+                    return  bool?[property,"var("+cssVar + ','+ val+')']:property+": var("+cssVar + ','+ val+ ')';
+                }else if(compiler && compiler.name==='color'){
+                    return bool?[property,compiler(value)]:property+":"+ compiler(value);
                 }
-                return  bool?[property,"var("+cssVar + ','+ val+')']:property+": var("+cssVar + ','+ val+ ')';
-            }
-            return  bool?[property,"var("+value + ')']:property+": var("+value+ ')';
-            
-        }else{
+                
+                return  bool?[property,"var("+value + ')']:property+": var("+value+ ')';
+                
+            }else{
             // If has text in end 
             if(/text$/.test(property)){
                 const v='"'+value.replace(/([_]?)[_]/g,'$1 ').replace(/_[\s]/g,'_')+'"';
@@ -110,17 +123,9 @@ export  default function getPropertyAndValue(
             
             return bool?[property,value]:property+":"+value;
             
-            // return bool?[property,value.replace(/[-]([-]?[\w])/g,' $1').replace(/([\d])d([\d])/g,'$1.$2').replace(/([\d])p[\s]/g,"$1% ").replace(/([\d])p$/,"$1%").replace(/[\s]by[\s]/g,' / ')
-            //     .replace(/auto flow/g,'auto-flow').replace(/__/g," ")
-            //     .replace(/[\s](mix|cmyk|set|gradient|bezier|content|shadow|rotate|dark|conic|linear|radial)/g,'-$1')
-            //     ]
-            // :
-            // property+":"+value.replace(/[-]([-]?[\w])/g,' $1').replace(/([\d])d([\d])/g,'$1.$2').replace(/([\d])p[\s]/g,"$1% ").replace(/([\d])p$/,"$1%").replace(/[\s]by[\s]/g,' / ')
-            // .replace(/auto flow/g,'auto-flow')
-            // .replace(/__/g," ")
-            // .replace(/[\s](mix|cmyk|set|gradient|bezier|content|shadow|rotate|dark|conic|linear|radial)/g,'-$1'); 
-        }
+            }
     }
+    // End of CSS-variable as a className
 
      
     const [property, propertyKey]=extractProperty(className,cssPropertiesWithAlias);
@@ -224,6 +229,14 @@ export  default function getPropertyAndValue(
                         value=val?val:value; 
                      }
                     return  bool?[prop,"var("+cssVar + ','+ value+')']: prop+": var("+cssVar + ','+ value+ ')';
+                }
+
+                if(/(background|color)$/.test(prop)){
+                    if(cssPropertiesWithAlias.color.compiler && typeof cssPropertiesWithAlias.color.compiler === 'function') {
+                            const value=cssPropertiesWithAlias.color.compiler(valuePortion,custom);
+                            return  bool?[prop,value]:prop+":"+ value;
+                    }
+                      
                 }
                 
                 return  bool?[prop,"var("+valuePortion + ')']:prop+": var("+valuePortion + ')';

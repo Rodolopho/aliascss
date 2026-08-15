@@ -28,7 +28,7 @@ export default function extractClassNamesFromFile(file:string,config:config):[st
 
         const matchRegExp=config.useColon?config.matchRegExpWithColon:config.matchRegExp;
         const matchRegExpKeyFrame=config.useColon?config.matchRegExpWithColonKeyFrame:config.matchRegExpKeyFrame;
-        const matchRegExpRawCSSStatement=/data-raw-css=(["'])(.*?)\1/;
+        const matchRegExpRawCSSStatement=/data-raw-css=(["'])([\s\S]*?)\1/; // data-raw-css=(["'])(.*?)\1/s
 
 
      // 0. data-raw-css=

@@ -8,6 +8,7 @@ import postcss from 'postcss';
 import postcssDiscardDuplicates from 'postcss-discard-duplicates';
 import cssnano from 'cssnano';
 import chokidar from 'chokidar';
+import sortMediaQueries from 'postcss-sort-media-queries';
 
 const init={
     classList:[], // hold className for MasterCSS to avoid repeating
@@ -199,6 +200,9 @@ export function createCSSFileByFile(file:string,bool:boolean=false){
     if(init["--file"]){
         try {
                 fs.writeFileSync(file+'.css',content);
+                postify(file+'.css',[postcssDiscardDuplicates],init.minify);
+
+                
                 // console.log(content);
                 console.log('AliasCSS compiled', path.relative('.',file), 'Locally');
             } catch (error) {
@@ -229,8 +233,11 @@ export function createCSSFileByFile(file:string,bool:boolean=false){
 
 }
 
-export function postify(file:string,plugin:any[],minify:boolean=false){
+export function postify(file:string,plugin:any[],minify:boolean=false,sort:"mobile-first" | "desktop-first" = "mobile-first"){
     const data = fs.readFileSync(file, 'utf-8');
+    plugin.push(sortMediaQueries({
+    sort
+  }))
     if(fs.existsSync(file)){
         if(minify===true) plugin.push(cssnano)
         postcss(plugin).process(data,{ from: undefined }).then(
@@ -335,6 +342,9 @@ export function initialize(configFile: { [key: string]: any }) {
     if (configFile.hasOwnProperty('extractorFunction')) {
       init.config.useExtractorFunction = configFile.extractorFunction.trim()?true:false;
       if(init.config.useExtractorFunction) init.config.matchExtractorFunction=init.config.createExtractorRegex(configFile.extractorFunction);
+    }else{
+      init.config.useExtractorFunction = true;
+      init.config.matchExtractorFunction=init.config.createExtractorRegex('String');
     }
 
     // ---------Extend----------------

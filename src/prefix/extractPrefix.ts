@@ -2,6 +2,7 @@
 import pseudoSelector from './pseudoSelectorNew.js'
 import elementSelector from './element-selector.js'
 import attribute from './attribute-selector.js';
+import fallbackSelector from './fallback-selector.js';
 
     export default function extractPrefix(className:string){
         let workingClassName=className;
@@ -42,6 +43,21 @@ import attribute from './attribute-selector.js';
                 match=true;
             }else if(attribute.test.test(workingClassName)){
                 const [replacedClassName, selector]=attribute.process(workingClassName);
+                if(result.match(/:(not|where|has|is)[)]?$/)){
+                    const m=result.match(/:(not|where|has|is)([)])?$/);
+                    if(m?.[2]){
+                       result=result.replace(/\)$/,'')+ `(${selector}))`;
+                    }else{
+                        result +=`(${selector})`
+                    }
+                }else{
+                    result +=selector
+                }
+                workingClassName=replacedClassName;
+                match=true;
+            }else if(fallbackSelector.test.test(workingClassName)){
+                console.log('=-=-=-=-=-=--=',workingClassName);
+                const [replacedClassName, selector]=fallbackSelector.process(workingClassName);
                 if(result.match(/:(not|where|has|is)[)]?$/)){
                     const m=result.match(/:(not|where|has|is)([)])?$/);
                     if(m?.[2]){

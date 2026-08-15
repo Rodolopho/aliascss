@@ -4,11 +4,17 @@ export default function color(color: string, custom: { [key: string]: { [key: st
  
   // check for alpha 
   let alpha=null;
-
-    if(color.match(/\/[1-9]$/)){
-      alpha="0."+color.slice(-1);
-      color=color.replace(/\/[1-9]$/,'');
-    }
+   
+  // const match=color.match(/\/([0][.][1-9][0-9]?$)/);
+  const match=color.match(/\/(0\.[0-9][0-9]?|1(\.0+)?)$/);
+  const matchPercentage=color.match(/\/(100%|[1-9]?[0-9]%)$/);
+  if(match){
+    alpha = match[1] ?? null;
+    color = color.replace(match[0], '');
+  }else if(matchPercentage){
+    alpha = matchPercentage[1] ?? null;
+    color = color.replace(matchPercentage[0], '');
+  }
 
   // ----check for css variables
 
@@ -23,7 +29,7 @@ export default function color(color: string, custom: { [key: string]: { [key: st
 
      // check if is a raw function 
   if(color.match(/^(rgb|hsl|hsla|rgba|hwb|hwba|lab|oklab|lch|oklch)[(]/)){
-    return color;
+    return color.replace(/--([\w][\w-]*)/g,'var(--$1)');
   }
     
 

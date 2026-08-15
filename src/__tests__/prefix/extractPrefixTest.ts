@@ -3,6 +3,9 @@ describe("Extract Prefix Test",()=>{
     test("Extract Prefix hover",()=>{
          expect(JSON.stringify(extractPrefix('--hover-bg-red'))).toBe(JSON.stringify([":hover",'-bg-red']));
     })
+    test("@selectorFallback",()=>{
+         expect(JSON.stringify(extractPrefix('__@selector(:hover)-bg-red'))).toBe(JSON.stringify([" >:hover",'-bg-red']));
+    })
     test("Extract Prefix div:hover",()=>{
          expect(JSON.stringify(extractPrefix('_div--hover-bg-red'))).toBe(JSON.stringify([" div:hover",'-bg-red']));
     })
