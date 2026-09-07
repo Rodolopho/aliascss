@@ -890,7 +890,7 @@
             </section>
 
         <!-- ── CODE BLOCKS ── -->
-        <section class="mb-4rem" id="code">
+        <section class="mb-4rem" id="code" keyframes-fadeIn="@100-opacity-1">
             <h2 class="ff-display fs-28px fw-400 mb-0.25rem">Code Blocks</h2>
             <p class="c-secondary mb-2rem fs-14px">Pre-formatted blocks and inline code.</p>
             <pre class="bgc-1a1916 c-e8e6df p-1.25rem-1.5rem br-14px ff-mono fs-13px lh-1.7 ox-a mb-0.75rem">
@@ -926,6 +926,30 @@
                 }, { rootMargin: '-20% 0px -70% 0px' });
 
                 sections.forEach(s => observer.observe(s));
+
+                async function getRawAttributes(elementId) {
+                        // 1. Fetch the raw, unparsed HTML string of the current page
+                        const response = await fetch(window.location.href);
+                        const rawHTML = await response.text();
+
+                        // 2. Locate the specific element inside the raw source text
+                        // (Assuming you are searching for an element with a specific ID)
+                        const regex = new RegExp(`<[^>]*id=["']${elementId}["'][^>]*>`, 'i');
+                        const match = rawHTML.match(regex);
+
+                        if (match) {
+                            const fullTag = match[0]; // e.g., '<div id="test" MYCamelCaseAttr="value">'
+
+                            // 3. Extract all attribute tokens from the tag string
+                            const attrRegex = /([A-Za-z0-9_\-]+)(?=\s*=\s*['"])/g;
+                            const rawAttributeNames = fullTag.match(attrRegex);
+
+                            console.log(rawAttributeNames);
+                            // Outputs exact casing: ["id", "MYCamelCaseAttr"]
+                        }
+                    }
+
+                    console.log(getRawAttributes('code')); // Call the function with the desired element ID
             </script>
             </body>
 

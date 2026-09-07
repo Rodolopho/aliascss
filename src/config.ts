@@ -1,4 +1,5 @@
 const config:{
+
     prefix:string|null,
     matchExtractorFunction:RegExp|null,
     matchRegExp:RegExp,
@@ -18,11 +19,14 @@ const config:{
     remUnitsNegative:string[],
     widths:string[],
     modes:string[],
+    layers:string[],
     makeStaticGlobalValues?:(a:string,b:string)=>string[],
 }={ 
     prefix:null,
     useColon:false,
     ignore:[],
+    layers:['reset','base','theme','components','utilities','xs','sm','md','lg','xl','xxl'],
+    
     useExtractorFunction:false, // (?<=x(`|\(['"]))([\s\w-\(\)]+)[^`"']
     matchExtractorFunction:new RegExp('(?:'+'x|@'+')' + "[\\s*]?(`|\\(["+`"'])`+ "([^)`]+)" + "(`|" + `["']` + "\\))"),
 
@@ -39,7 +43,8 @@ const config:{
     createExtractorRegex:(fname:string)=>new RegExp('(?:'+fname+')' + "[\\s*]?(`|\\(["+`"'])`+ "([^'`"+'"]+)' + "(`|" + `["']` + "\\))"),
     createCSSModuleRegex:(fname:string)=>new RegExp("(?:"+fname+")\\[[`'"+'"]([^`"'+"']+)(?:[`'"+'"]\\])'),
 
-    globalValues:['initial:ini','inherit:in','unset:un', 'revert:re','revert-layer:rl'],
+    // globalValues:['initial:ini','inherit:in','unset:un', 'revert:re','revert-layer:rl'],
+    globalValues:['initial','inherit','unset', 'revert','revert-layer'],
 
     // makeStaticGlobalValues:(property:string,alias?:string)=>{
         

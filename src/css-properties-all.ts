@@ -466,7 +466,7 @@ const cssProps:{
 'border-boundary':{
     alias:'',
     type:'s',
-    'values':['none:n','patent:p','display:d']
+    'values':['none:n','parent:p','display:d']
 },
 'border-collapse':{
     alias:'',
@@ -1187,8 +1187,8 @@ const cssProps:{
 },
 'font-weight':{
     alias:'fw',
-    type:'s',
-    // compiler:'',
+    type:'d',
+    compiler:(value,custom)=>value.replace(/^-/,''),
     values:['bolder:b2:blr','lighter:l:ltr','100:1:thin','200:2:extra-light','300:3:light','400:4:normal:nl:regular','500:5:medium','600:6:semi-bold','700:7:bold','800:8:extra-bold','900:9:black'],
 },
 'forced-color-adjust':{
@@ -2829,10 +2829,10 @@ const cssProps:{
     alias:'slj',
     type:'s',
     // compiler:'',
-    values:['arcs','bevel','iter','miter-clip','round'],
+    values:['arcs','bevel','miter','miter-clip','round'],
 },
 // -------------webkit---
-'webkit-line-cramp':{
+'webkit-line-clamp':{
     alias:'',
     property:'-webkit-line-clamp',
     type:'d',

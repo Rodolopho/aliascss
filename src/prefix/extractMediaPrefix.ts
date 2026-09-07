@@ -8,8 +8,9 @@ export default function extractMediaPrefix(className:string, prefix:{[key:string
         const prefixMedia=className.match(match)?.[0];
         if(prefixMedia){
             if(prefix.hasOwnProperty(prefixMedia)){
-                medias.push(prefix[prefixMedia]);
+                medias.push(prefix[prefixMedia]+'::::'+prefixMedia);
                 cls=className.replace(prefixMedia,'');
+                
                 // return [[], ]
             }
         }
@@ -20,10 +21,12 @@ export default function extractMediaPrefix(className:string, prefix:{[key:string
                 const prefixMedia=suffixedMatch.match(match)?.[0] || ('@'+suffixedMatch).match(match)?.[0]
                 if(prefixMedia){
                     if(prefix.hasOwnProperty(prefixMedia)){
-                        medias.push(prefix[prefixMedia]);
+                        medias.push(prefix[prefixMedia]+'::::'+prefixMedia);
                         // return [[], ]
                     }
                 }
+            }else{
+                medias.push('@' + e);
             }
 
         })

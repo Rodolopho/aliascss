@@ -69,16 +69,16 @@ describe("Test Return statement",()=>{
          expect(statement.make('m-1.5rem-40%--20px')).toBe('.m-1\\.5rem-40\\%--20px{margin: 1.5rem 40% -20px}')
     })
     test("Return statement media",()=>{
-         expect(statement.make('xs-bgc-red')).toBe('@media (max-width : 576px){ .xs-bgc-red{background-color:red}}')
+         expect(statement.make('xs-bgc-red')).toBe('@layer xs{ @media (max-width: 575.99px) {.xs-bgc-red{background-color:red}}}')
     })
     test("Return statement media with as",()=>{
-         expect(statement.make('xs-bgc-red--as-Grid')).toBe('@media (max-width : 576px){ .Grid{background-color:red}} \n')
+         expect(statement.make('xs-bgc-red--as-Grid')).toBe('@layer xs{ @media (max-width: 575.99px) {.Grid{background-color:red}}} \n')
     })
     test("Return statement media nested single",()=>{
-         expect(statement.make('@[xs]-bgc-red')).toBe('@media (max-width : 576px){ .\\@\\[xs\\]-bgc-red{background-color:red}}')
+         expect(statement.make('@[xs]-bgc-red')).toBe('@layer xs{ @media (max-width: 575.99px) {.\\@\\[xs\\]-bgc-red{background-color:red}}}')
     })
     test("Return statement Nested media",()=>{
-         expect(statement.make('@[base,xs]-bgc-red')).toBe('@layer base{ @media (max-width : 576px){ .\\@\\[base\\,xs\\]-bgc-red{background-color:red}}}')
+         expect(statement.make('@[base,xs]-bgc-red')).toBe('@layer base{ @layer xs{ @media (max-width: 575.99px) {.\\@\\[base\\,xs\\]-bgc-red{background-color:red}}}}')
     })
     test("Return statement hover",()=>{
          expect(statement.make('--h-bgc-red')).toBe('.--h-bgc-red:hover{background-color:red}')

@@ -176,14 +176,22 @@ export const compiler:{
 
         if(result){
             let stm='';
-            className=(as?as:className).replace(/([$.&%=\]\[@~,:*#+\(\)\/^])/g,'\\$1');
+            className=(as?as:className).replace(/([$.&%=\]\[@~,:*#+\(\)\/^/</>])/g,'\\$1');
             if(bool===true) return result;
             this.cache.propertyAndValue[pnv]=result;
             if(mediaEX.length){
                 let [bf,af]=['',''];
                 mediaEX.map((e)=>{
-                    bf=bf+e+"{ ";
-                    af=af+"}";
+                    const mediaQuery=e.split('::::')[0];
+                    const mediaPrefix=e.split('::::')[1].replace(/^@/,'');
+                    if(['xs','sm','md','lg','xl','xxl'].indexOf(mediaPrefix)!==-1){
+                         bf=bf+`@layer ${mediaPrefix}{ ${mediaQuery} {`;
+                        af=af+"}}";
+                    }else{
+                        bf=bf+mediaQuery+"{ ";
+                        af=af+"}";
+                    }
+                    
                 })
                 stm=`${bf}${
                        beforeClassNameSelector+'.'+className+ elementAndPseudo
@@ -203,6 +211,11 @@ export const compiler:{
         }
 
     },
+    // groupSingle(str:string, as:string){
+    //     let pnv='';
+
+
+    // },
 
     group(str:string, as:string){
         

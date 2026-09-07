@@ -10,7 +10,7 @@ import cssnano from 'cssnano';
 import chokidar from 'chokidar';
 import sortMediaQueries from 'postcss-sort-media-queries';
 
-const init={
+const init:{[key:string]:any}={
     classList:[], // hold className for MasterCSS to avoid repeating
     groups:[],
     input:'', // input glob pattern 
@@ -20,6 +20,7 @@ const init={
     config,
     '--module':false,
     rawCSS:'',
+    layers:[],
     customGroupStatement:'',
     minify:false,
     globPattern:'',// Use this to check valid new created file to add to watch during watch.on
@@ -57,8 +58,9 @@ export  function globalCSSCompiler(){
         try {
         fs.writeFileSync(
             init.output,
-
-            `\n/* Start :-----------ACSS ${path.relative('.',file)}------------------------*/\n${
+            
+            `@layer ${init.layers.join(', ')};
+            \n/* Start :-----------ACSS ${path.relative('.',file)}------------------------*/\n${
             gbContent
             }
             \n/* End :-----------ACSS ${path.relative('.',file)}----------------------------*/\n
@@ -292,6 +294,13 @@ export function initialize(configFile: { [key: string]: any }) {
       init.globPattern=configFile.input;
     }
 
+    // ----------------input-------------------
+    if (configFile.hasOwnProperty('layers') && Array.isArray(configFile.layers)) {
+      init.layers = configFile.layers;
+    }else{
+      init.layers = config.layers;
+    }
+
     // ----------------Prefix-------------------
     if (configFile.hasOwnProperty('prefix')) {
       init.config.prefix = configFile.prefix;
@@ -377,6 +386,7 @@ export function initialize(configFile: { [key: string]: any }) {
       // do nothing
     } else{
         if(fs.existsSync(init.output)) fs.truncateSync(path.resolve(init.output));
+        writeStatementToFile(init.output,`@layer ${init.layers.join(', ')};`,'Initializating @layer,');
     }
     // Custom CSS statement
     if (configFile.hasOwnProperty('statement')) {

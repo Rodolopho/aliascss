@@ -1,5 +1,6 @@
 import { compiler as statementMaker} from './returnStatement.js';
-
+import config from './config.js';
+// import mapRawAttributeNames from './utils/browser-helper.js';
 export default statementMaker;
 type ClassPrinter = { [key: string]: any };
 export let classPrinter: ClassPrinter = {
@@ -8,6 +9,8 @@ export let classPrinter: ClassPrinter = {
   styleTagExists: false,
   customCheck: false,
   useColon:true,
+  cls: {},
+  kfs: {},
   kfNames:{},
 
   styleTag: null,
@@ -18,6 +21,11 @@ export let classPrinter: ClassPrinter = {
     const styleTag = document.createElement('style');
     styleTag.id = 'styleAlias';
     document.getElementsByTagName('head')[0].appendChild(styleTag);
+    // initialize @layer for reset, base, theme, components and utilities
+    const initLayer = document.createTextNode(
+      `@layer ${config.layers.join(', ')};`
+    );
+    styleTag.appendChild(initLayer);
     this.styleTag = styleTag;
     this.styleTagExists = true;
     return styleTag;
@@ -44,11 +52,12 @@ export let classPrinter: ClassPrinter = {
 
   // print className of el to style tag; gets statement from statementMaker.make(eachClass);
   print(el: HTMLElement) {
+    
     // initialize class or acss-class value container
     let attrValue = '';
     const testRegExp=this.useColon? /class[-_:]/: /class[-_]/;
     const testRegExpKF=this.useColon? /keyframes[-_:]/: /keyframes[-_]/;
-    const rawCSS=/data-raw-css/;
+    // const rawCSS=/data-raw-css/;
 
     // if class
     if (el.getAttribute('class')) attrValue += ' ' + el.getAttribute('class');
@@ -240,12 +249,21 @@ export let classPrinter: ClassPrinter = {
     return statement;
   },
   run(el: HTMLElement) {
-    //  const event = new Event('acss:init');
-
     const $root = el || document;
 
     //  $root.dispatchEvent(event);
     $root.dispatchEvent(new CustomEvent('acss:init', { bubbles: true , detail:{aliascss:this}}));
+    // mapRawAttributeNames().then(({ kfs, cls }) => {
+    //     // Use the variables inside this block
+    //     this.cls = cls;
+    //     this.kfs = kfs;
+    //   }).catch(error => {
+    //     console.error("cannot initialize keyframes and class-grouping for case free names:", error);
+    //   });
+    
+    //  const event = new Event('acss:init');
+
+    
 
     // create a keyframes object to fix case-sensitive issue
      (el||document.body).outerHTML.match(/keyframes-[a-z0-9_-]+(?==)/gi)?.forEach((each)=>{
@@ -276,4 +294,5 @@ export let classPrinter: ClassPrinter = {
         this.appendToStyleTag(e.getAttribute('data-raw-css'));
       });
   },
+
 };

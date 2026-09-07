@@ -1,3 +1,5 @@
+import {describe, test, expect} from '@jest/globals';
+
 import { main, styleJSX, staticClassNames as sc, extend } from "../index";
 // import { customStaticClassNames } from "./static/customStaticClassNames.js";
 describe('Main Index Test',()=>{

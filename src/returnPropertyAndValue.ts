@@ -61,13 +61,13 @@ export  default function getPropertyAndValue(
                     if(/^\(.+\)[_]?$/.test(value)){
                         if(value.match(/_$/)){
                             // replace --[name] with var(--[name])
-                            const val=value.replace(/(--[\w-]+)/g,'var($1)')
+                            const val=value.replace(/(?<!var\()(--[\w-]+)/g,'var($1)')
                             .replace(/^[(]/,'').replace(/_$/,'').replace(/[)]$/,'')
                             .replace(/,/g,', ');
                             value=val.replace(/_/g,' ');
                         }else{
                             
-                            const val=value.replace(/(--[\w-]+)/g,'var($1)')
+                            const val=value.replace(/(?<!var\()(--[\w-]+)/g,'var($1)')
                             .replace(/^[(]/,'').replace(/[)]$/,'')
                             .replace(/,/g,' ');
                             value=val.replace(/_/g,' ');
@@ -171,14 +171,14 @@ export  default function getPropertyAndValue(
             if(/^\(.+\)[_]?$/.test(valuePortion)){
         
                 if(valuePortion.match(/_$/)){
-                    const val=valuePortion.replace(/(--[\w-]+)/g,'var($1)')
+                    const val=valuePortion.replace(/(?<!var\()(--[\w-]+)/g,'var($1)')
                     .replace(/^[(]/,'').replace(/_$/,'').replace(/[)]$/,'')
                     .replace(/,/g,', ')
                     .replace(/[_]/g,' ');
                     return bool?[prop,val]:prop+":"+val;
                 }else{
                     
-                    const val=valuePortion.replace(/(--[\w-]+)/g,'var($1)')
+                    const val=valuePortion.replace(/(?<!var\()(--[\w-]+)/g,'var($1)')
                     .replace(/^[(]/,'').replace(/[)]$/,'')
                     .replace(/,/g,' ')
                     .replace(/[_]/g,' ');
@@ -204,13 +204,13 @@ export  default function getPropertyAndValue(
 
                     if(/^\(.+\)[_]?$/.test(value)){
                         if(value.match(/_$/)){
-                            const val=value.replace(/(--[\w-]+)/g,'var($1)')
+                            const val=value.replace(/(?<!var\()(--[\w-]+)/g,'var($1)')
                             .replace(/^[(]/,'').replace(/_$/,'').replace(/[)]$/,'')
                             .replace(/,/g,', ');
                             value=val;
                         }else{
                             
-                            const val=value.replace(/(--[\w-]+)/g,'var($1)')
+                            const val=value.replace(/(?<!var\()(--[\w-]+)/g,'var($1)')
                             .replace(/^[(]/,'').replace(/[)]$/,'')
                             .replace(/,/g,' ');
                             value=val;

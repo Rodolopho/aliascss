@@ -56,7 +56,7 @@ import fallbackSelector from './fallback-selector.js';
                 workingClassName=replacedClassName;
                 match=true;
             }else if(fallbackSelector.test.test(workingClassName)){
-                console.log('=-=-=-=-=-=--=',workingClassName);
+                // console.log('=-=-=-=-=-=--=',workingClassName);
                 const [replacedClassName, selector]=fallbackSelector.process(workingClassName);
                 if(result.match(/:(not|where|has|is)[)]?$/)){
                     const m=result.match(/:(not|where|has|is)([)])?$/);
