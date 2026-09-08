@@ -26,7 +26,7 @@ export default function extractMediaPrefix(className:string, prefix:{[key:string
                     }
                 }
             }else{
-                medias.push('@' + e);
+                medias.push('@' + e+'::::'+'Custom');
             }
 
         })
