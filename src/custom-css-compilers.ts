@@ -61,6 +61,7 @@ const cssCustomCompilers:{
         const val=value.replace(/^\(/,'').replace(/\)$/,'').trim();
         const stm=`
     --lightness-1000: 67.0121%;
+    --border-color: var(--gray-400,${color('grayRATheme400',custom)});
     --border-color-disabled: var(--gray-300,${color('grayRATheme300',custom)});
     --border-color-hover: var(--gray-500,${color('grayRATheme500',custom)});
     --invalid-color: oklch(from ${color('redRA',custom)} var(--lightness-1000) c h);
@@ -203,7 +204,7 @@ const cssCustomCompilers:{
 
       &:where([data-hovered], [data-pressed]) {
         --button-background: ${color('accentRATheme200',custom)};
-        --button-text: var(--tint-1400);
+        --button-text: var(--${name}-1400);
         box-shadow: 0 0 0 1px ${color('accentRATheme200',custom)};
       }
     }
@@ -291,27 +292,83 @@ const cssCustomCompilers:{
         return stm; 
     }
 },
-'x-color-scale-tint':{
+'UseColorScale':{
     type:'group',
-    compiler:(value)=>{
+    compiler:(value,custom,)=>{
+        let name='tint';
+        const values=value.replace(/^\(|\)$/g,'').split(',');
+        if(values.length===2 && values[1]) name=values[1]; 
+        if(!values[0]) return
         return `
 
-    --tint-100: oklch(from var(--tint) var(--lightness-100) var(--chroma-100) h);
-  --tint-200: oklch(from var(--tint) var(--lightness-200) var(--chroma-200) h);
-  --tint-300: oklch(from var(--tint) var(--lightness-300) var(--chroma-300) h);
-  --tint-400: oklch(from var(--tint) var(--lightness-400) var(--chroma-400) h);
-  --tint-500: oklch(from var(--tint) var(--lightness-500) var(--chroma-500) h);
-  --tint-600: oklch(from var(--tint) var(--lightness-600) var(--chroma-600) h);
-  --tint-700: oklch(from var(--tint) var(--lightness-700) var(--chroma-700) h);
-  --tint-800: oklch(from var(--tint) var(--lightness-800) var(--chroma-800) h);
-  --tint-900: oklch(from var(--tint) var(--lightness-900) var(--chroma-900) h);
-  --tint-1000: oklch(from var(--tint) var(--lightness-1000) var(--chroma-1000) h);
-  --tint-1100: oklch(from var(--tint) var(--lightness-1100) var(--chroma-1100) h);
-  --tint-1200: oklch(from var(--tint) var(--lightness-1200) var(--chroma-1200) h);
-  --tint-1300: oklch(from var(--tint) var(--lightness-1300) var(--chroma-1300) h);
-  --tint-1400: oklch(from var(--tint) var(--lightness-1400) var(--chroma-1400) h);
-  --tint-1500: oklch(from var(--tint) var(--lightness-1500) var(--chroma-1500) h);
-  --tint-1600: oklch(from var(--tint) var(--lightness-1600) var(--chroma-1600) h);
+    --${name}:${color(values[0],custom)};
+    --lightness-100: 98.1187%;
+    --lightness-200: 95.2045%;
+    --lightness-300: 91.1434%;
+    --lightness-400: 85.1751%;
+    --lightness-500: 79.1773%;
+    --lightness-600: 72.3297%;
+    --lightness-700: 67.0121%;
+    --lightness-800: 62.3039%;
+    --lightness-900: 57.9699%;
+    --lightness-1000: 51.9076%;
+    --lightness-1100: 46.9058%;
+    --lightness-1200: 41.0821%;
+    --lightness-1300: 35.3616%;
+    --lightness-1400: 29.6725%;
+    --lightness-1500: 24.5366%;
+    --lightness-1600: 16.6959%;
+    --chroma-100: calc(l * c * 0.5);
+    --chroma-200: calc(l * c * 0.6);
+    --chroma-300: calc(l * c * 0.7);
+    --chroma-400: calc(l * c * 0.8);
+    --chroma-500: calc(l * c * 0.9);
+    --chroma-600: c;
+    --chroma-700: c;
+    --chroma-800: c;
+    --chroma-900: c;
+    --chroma-1000: c;
+    --chroma-1100: c;
+    --chroma-1200: c;
+    --chroma-1300: c;
+    --chroma-1400: c;
+    --chroma-1500: c;
+    --chroma-1600: c;
+    @media (prefers-color-scheme: dark) {
+    --lightness-100: 29.6725%;
+    --lightness-200: 35.3616%;
+    --lightness-300: 41.0821%;
+    --lightness-400: 46.9058%;
+    --lightness-500: 51.9076%;
+    --lightness-600: 57.9699%;
+    --lightness-700: 56.1347%;
+    --lightness-800: 59.2866%;
+    --lightness-900: 62.3039%;
+    --lightness-1000: 67.0121%;
+    --lightness-1100: 72.3297%;
+    --lightness-1200: 79.1773%;
+    --lightness-1300: 85.1751%;
+    --lightness-1400: 91.1434%;
+    --lightness-1500: 95.2045%;
+    --lightness-1600: 100%;
+  }
+
+  --${name}-100: oklch(from var(--${name}) var(--lightness-100) var(--chroma-100) h);
+  --${name}-200: oklch(from var(--${name}) var(--lightness-200) var(--chroma-200) h);
+  --${name}-300: oklch(from var(--${name}) var(--lightness-300) var(--chroma-300) h);
+  --${name}-400: oklch(from var(--${name}) var(--lightness-400) var(--chroma-400) h);
+  --${name}-500: oklch(from var(--${name}) var(--lightness-500) var(--chroma-500) h);
+  --${name}-600: oklch(from var(--${name}) var(--lightness-600) var(--chroma-600) h);
+  --${name}-700: oklch(from var(--${name}) var(--lightness-700) var(--chroma-700) h);
+  --${name}-800: oklch(from var(--${name}) var(--lightness-800) var(--chroma-800) h);
+  --${name}-900: oklch(from var(--${name}) var(--lightness-900) var(--chroma-900) h);
+  --${name}-1000: oklch(from var(--${name}) var(--lightness-1000) var(--chroma-1000) h);
+  --${name}-1100: oklch(from var(--${name}) var(--lightness-1100) var(--chroma-1100) h);
+  --${name}-1200: oklch(from var(--${name}) var(--lightness-1200) var(--chroma-1200) h);
+  --${name}-1300: oklch(from var(--${name}) var(--lightness-1300) var(--chroma-1300) h);
+  --${name}-1400: oklch(from var(--${name}) var(--lightness-1400) var(--chroma-1400) h);
+  --${name}-1500: oklch(from var(--${name}) var(--lightness-1500) var(--chroma-1500) h);
+  --${name}-1600: oklch(from var(--${name}) var(--lightness-1600) var(--chroma-1600) h);
 
         `
 
@@ -420,7 +477,7 @@ const cssCustomCompilers:{
         return stm; 
     }
 },
-'theme':{
+'Theme':{
     type:'group',
     compiler:(value,custom)=>{
         const values=value.replace(/^\(|\)$/g,'').split(',');

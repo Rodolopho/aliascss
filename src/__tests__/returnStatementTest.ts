@@ -112,7 +112,7 @@ describe("Test Return statement",()=>{
          expect(statement.make('ring--red',undefined,true)).toBe('box-shadow:0 0 0 var(--ring-width,2px) var(--red)');
     })
     test("Return statement lightDark className",()=>{
-         expect(statement.make('theme(color,red,blue)',undefined,true)).toBe('color:light-dark(red,blue)');
+         expect(statement.make('Theme(color,red,blue)',undefined,true)).toBe('color:light-dark(red,blue)');
     })
 //     ----New 
     

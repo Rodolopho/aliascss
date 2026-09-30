@@ -4,7 +4,7 @@ import cssCustomCompilers from '../custom-css-compilers';
 // import { customStaticClassNames } from "./static/customStaticClassNames.js";
 const c=cssCustomCompilers['Color'].compiler|| function(){};
 const Space=cssCustomCompilers['Space'].compiler|| function(){};
-const c2=cssCustomCompilers['theme'].compiler|| function(){};
+const c2=cssCustomCompilers['Theme'].compiler|| function(){};
 const col=cssCustomCompilers['x-col'].compiler|| function(){};
 
 describe('Custom Compiler Test',()=>{

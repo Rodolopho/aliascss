@@ -20,7 +20,7 @@ export default {
          'x-absolute-right':{
             type:'statement',
             statement:`tp-transform tdu-0.35s ttf(cubic-bezier(0.16,1,0.3,1))_  will-change-transform 
-            pa btm-0 t-0 w-220px r-0 [class~=x-absolute-hide]-tf-tx-100% [data-absolute-hide]-tf-tx-100%
+            pa btm-0 t-0 r-0 [class~=x-absolute-hide]-tf-tx-100% [data-absolute-hide]-tf-tx-100%
             `
         },
          'x-absolute-left':{
@@ -225,7 +225,7 @@ export default {
             'x-arrow':{
                 type:'statement',
                 statement:
-            `[bss,bc--x-arrow-color:black,brw--x-arrow-width:3px,bbw--x-arrow-width:3px,dib,p-3px] [class~=x-arrow-left]-tf-r-135deg [class~=x-arrow-up]-tf-r--135deg [class~=x-arrow-right]-tf-r--45deg [class~=x-arrow-down]-tf-r-45deg`,
+            `[bss,bc--x-arrow-color:black,brw--x-arrow-width:3px,bbw--x-arrow-width:3px,dib,p-3px,btw-0px,blw-0px] [class~=x-arrow-left]-tf-r-135deg [class~=x-arrow-up]-tf-r--135deg [class~=x-arrow-right]-tf-r--45deg [class~=x-arrow-down]-tf-r-45deg`,
             },
 
             // CSS entities
